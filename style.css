@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to right, #f8991e, #fe6c3a, #f43c57, #d80974, #aa088e);
+}
+
+header {
+    font-family: "Arial Black", sans-serif;
+    font-size: 3em;
+    letter-spacing: -1px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(51, 243, 12);
+    padding: 0%;
+}
+
+header,
+form {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input,
+form button {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: 4px solid black;
+    background: #eeeee6;
+}
+
+form button {
+    color: #1511ff;
+    background: #f7fffe;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 4px solid black;
+}
+
+form button:hover {
+    background: #1511ff;
+    color: white;
+}
+
+.todo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list {
+    min-width: 40%;
+    list-style: none;
+}
+
+.todo {
+    margin: 0.5rem;
+    background: #eff1ee;
+    font-size: 2rem;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
+    border: 4px solid black;
+}
+
+.filter-todo {
+    padding: 1rem;
+}
+
+.todo li {
+    flex: 1;
+}
+
+.trash-btn,
+.complete-btn {
+    background: #153dec;
+    color: #e0f70c;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.complete-btn {
+    background: rgb(165, 255, 21);
+    color: black;
+}
+
+.todo-item {
+    padding: 0rem 0.5rem;
+}
+
+.fa-trash,
+.fa-check {
+    pointer-events: none;
+}
+
+.fall {
+    transform: translateY(10rem) rotateZ(20deg);
+    opacity: 0;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+
+/*CUSTOM SELECTOR */
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none;
+}
+
+
+/* Custom Select */
+
+.select {
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(245, 250, 244);
+    border: 4px solid black;
+}
+
+.select {
+    color: #1511ff;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    width: 12rem;
+}
+
+
+/* Arrow */
+
+.select::after {
+    content: "\25BC";
+    color: rgb(51, 243, 12);
+    ;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    background: #1511ff;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+
+/* Transition  */
+
+.select:hover::after {
+    background-color: #f7fffe;
+    color: #1511ff;
+}
