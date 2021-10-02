@@ -15,7 +15,7 @@ Link-https://avinash201199.github.io/To-Do-List/
 * Pull request should have screenshot of the changes you have made.
 * Wait for review.
 
-For any doubt-https://www.instagram.com/lets__code/ <br>
+For any doubt contact me here -https://www.instagram.com/lets__code/ <br>
 Follow for more such repo to contribute - https://github.com/avinash201199
 
 ### Thank you for your contribution 
