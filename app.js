@@ -15,6 +15,10 @@ filterOption.addEventListener("click", filterTodo);
 function addTodo(e) {
   //Prevent natural behaviour
   e.preventDefault();
+  if(todoInput.value=== "") {
+    alert("Fill the box")
+    return
+  }
   //Create todo div
   const todoDiv = document.createElement("div");
   todoDiv.classList.add("todo");
