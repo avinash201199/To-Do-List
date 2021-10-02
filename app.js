@@ -80,7 +80,7 @@ function filterTodo(e) {
           todo.style.display = "none";
         }
         break;
-      case "uncompleted":
+      case "incomplete":
         if (!todo.classList.contains("completed")) {
           todo.style.display = "flex";
         } else {
