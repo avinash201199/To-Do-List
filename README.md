@@ -15,7 +15,6 @@
 
 
 For any doubt contact me here: - <br>
-[<img src="https://img.icons8.com/color/50/000000/instagram-new--v2.png"/>](https://www.instagram.com/lets__code/) [<img src="https://img.icons8.com/color/48/000000/github--v3.png"/>](https://github.com/avinash201199)
+[<img src="https://img.icons8.com/color/50/000000/instagram-new--v2.png"/>](https://www.instagram.com/lets__code/) [<img src="https://img.icons8.com/color/48/000000/github--v3.png"/>](https://github.com/avinash201199)[<img src="https://img.icons8.com/color/48/000000/linkedin.png"/>](https://www.linkedin.com/in/avinash-singh-071b79175/)
 <br>(Must Check My Github for more cool stuff !)<br>
 ### Thank you for your valuable contribution!
-<p align="center"><img src="https://i.pinimg.com/originals/7c/3b/63/7c3b63598dc8b65b93a9532d4228947b.gif"></p>
