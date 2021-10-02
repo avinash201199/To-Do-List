@@ -12,6 +12,7 @@
 body {
   margin: 0;
   padding: 0;
+  height: 100vh;
   box-sizing: border-box;
 }
 
@@ -153,7 +154,7 @@ select {
 
 .select {
   margin: 1rem;
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
   background-color: var(--green);
   outline: none;
@@ -164,19 +165,34 @@ select {
   border-radius: 5px;
 }
 
+.abc{
+  display: flex;
+  flex-direction: row;
+}
+
+.todoform{
+  display: flex;
+  flex-direction: row;
+}
+
+
+@media only screen and (max-width: 440px) {
+  .abc{
+    flex-direction: column;
+  }
+
+  .todoform{
+    flex-direction: column;
+  }
+  
+} 
+
 /* Arrow */
 
-.select::after {
-  content: "\25BC";
-  color: var(--green);
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1rem;
-  background: #1511ff;
-  cursor: pointer;
-  pointer-events: none;
-}
+
+
+
+
 
 /* Transition  */
 
