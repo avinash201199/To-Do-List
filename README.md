@@ -1,7 +1,7 @@
 # To-Do-List
 Link-https://avinash201199.github.io/To-Do-List/
 
-# Are you excited to contribute this Projects under Hacktoberfest2021? 😍
+# Are you excited to contribute under Hacktoberfest2021? 😍
 
 ![Hacktoberfest_Wallpaper_desktop-02](https://user-images.githubusercontent.com/59393136/135513229-89dbc17d-09fc-4dee-90a7-9ec26e4c9e3f.png)
 
