@@ -31,6 +31,9 @@ form button {
     font-size: 2rem;
     border: 4px solid black;
     background: #eeeee6;
+    border-radius: 10px;
+    height: 40px;
+    margin-left: 0.5%;
 }
 
 form button {
@@ -44,6 +47,10 @@ form button {
 form button:hover {
     background: #1511ff;
     color: white;
+}
+
+form input {
+    border-radius: 7px;
 }
 
 .todo-container {
@@ -67,6 +74,7 @@ form button:hover {
     align-items: center;
     transition: all 0.5s ease;
     border: 4px solid black;
+    border-radius: 7px;
 }
 
 .filter-todo {
