@@ -39,6 +39,7 @@ header,
 form {
   min-height: 10vh;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 2rem;
