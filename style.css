@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
+
+:root {
+  --black: rgb(0, 0, 0);
+  --green: rgb(51, 243, 12);
+  --backgroundGreen: rgb(139, 255, 116);
+  --white: rgb(255, 255, 255);
+  --blue: rgb(21, 17, 255);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -20,10 +29,10 @@ body {
 header {
   letter-spacing: -1px;
   background-color: rgb(0, 0, 0);
-  color: rgb(51, 243, 12);
+  color: var(--green);
   border-radius: 10px;
   padding: 0%;
-  box-shadow: 10px 10px rgb(51, 243, 12);
+  box-shadow: 10px 10px var(--green);
 }
 
 header,
@@ -43,15 +52,15 @@ form button {
   margin: 1rem;
   font-size: 2rem;
   outline: none;
-  background: rgb(139, 255, 116);
+  background: var(--backgroundGreen);
   border-radius: 5px;
   border: none;
-  box-shadow: 5px 5px black;
+  box-shadow: 5px 5px var(--black);
 }
 
 form button:hover {
-  background: #1511ff;
-  color: white;
+  background: var(--blue);
+  color: var(--white);
 }
 
 .todo-container {
@@ -67,9 +76,9 @@ form button:hover {
 
 .todo {
   margin: 0.5rem;
-  background: rgb(139, 255, 116);
+  background: var(--backgroundGreen);
   font-size: 2rem;
-  color: black;
+  color: var(--black);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -103,7 +112,7 @@ form button:hover {
 
 .complete-btn {
   background: rgb(165, 255, 21);
-  color: black;
+  color: var(--black);
 }
 
 .todo-item {
@@ -137,7 +146,7 @@ select {
   border: 0 !important;
   background-image: none;
   border-radius: 5px;
-  background-color: rgb(139, 255, 116);
+  background-color: var(--backgroundGreen);
 }
 
 /* Custom Select */
@@ -146,7 +155,7 @@ select {
   margin: 1rem;
   position: relative;
   overflow: hidden;
-  background-color: rgb(51, 243, 12);
+  background-color: var(--green);
   outline: none;
   color: #1511ff;
   font-family: "Poppins", sans-serif;
@@ -159,7 +168,7 @@ select {
 
 .select::after {
   content: "\25BC";
-  color: rgb(51, 243, 12);
+  color: var(--green);
   position: absolute;
   top: 0;
   right: 0;
@@ -174,4 +183,36 @@ select {
 .select:hover::after {
   background-color: #f7fffe;
   color: #1511ff;
+}
+
+/* Footer */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--black);
+  text-align: center;
+  padding: 1rem;
+  font-family: 'Lobster', cursive;
+}
+
+.footer h3 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: var(--green);
+  height: 3.5rem;
+}
+
+.social-icon {
+  width: 4.5rem;
+  margin: 1rem 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 10px var(--backgroundGreen);
+}
+
+.footer-desc {
+  color: var(--green);
+  font-size: 0.9em;
 }
