@@ -181,9 +181,7 @@ function removeLocalTodos(id) {
 
 function getTodos() {
   let todos = getItemFromLocalStorage();
-  console.log(todos);
   todos.forEach(function(todo) {
-  	console.log(todo);
     //Create todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
@@ -193,10 +191,9 @@ function getTodos() {
     todoDiv.setAttribute('key',todo.id)
     //Create list
     const newTodo = document.createElement("li");
-    newTodo.innerText = "task";//todo.task;
+    newTodo.innerText = todo.task;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
-    todoInput.value = "s";
     //Create Completed Button
     const completedButton = document.createElement("button");
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
@@ -257,34 +254,34 @@ function removeLocalTodos(todo) {
 	localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function getTodos() {
-	let todos;
-	if (localStorage.getItem("todos") === null) {
-		todos = [];
-	} else {
-		todos = JSON.parse(localStorage.getItem("todos"));
-	}
-	todos.forEach(function (todo) {
-		//Create todo div
-		const todoDiv = document.createElement("div");
-		todoDiv.classList.add("todo");
-		//Create list
-		const newTodo = document.createElement("li");
-		newTodo.innerText = todo.task;
-		newTodo.classList.add("todo-item");
-		todoDiv.appendChild(newTodo);
-		todoInput.value = "";
-		//Create Completed Button
-		const completedButton = document.createElement("button");
-		completedButton.innerHTML = `<i class="fas fa-check"></i>`;
-		completedButton.classList.add("complete-btn");
-		todoDiv.appendChild(completedButton);
-		//Create trash button
-		const trashButton = document.createElement("button");
-		trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
-		trashButton.classList.add("trash-btn");
-		todoDiv.appendChild(trashButton);
-		//attach final Todo
-		todoList.appendChild(todoDiv);
-	});
-}
+// function getTodos() {
+// 	let todos;
+// 	if (localStorage.getItem("todos") === null) {
+// 		todos = [];
+// 	} else {
+// 		todos = JSON.parse(localStorage.getItem("todos"));
+// 	}
+// 	todos.forEach(function (todo) {
+// 		//Create todo div
+// 		const todoDiv = document.createElement("div");
+// 		todoDiv.classList.add("todo");
+// 		//Create list
+// 		const newTodo = document.createElement("li");
+// 		newTodo.innerText = todo.task;
+// 		newTodo.classList.add("todo-item");
+// 		todoDiv.appendChild(newTodo);
+// 		todoInput.value = "";
+// 		//Create Completed Button
+// 		const completedButton = document.createElement("button");
+// 		completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+// 		completedButton.classList.add("complete-btn");
+// 		todoDiv.appendChild(completedButton);
+// 		//Create trash button
+// 		const trashButton = document.createElement("button");
+// 		trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+// 		trashButton.classList.add("trash-btn");
+// 		todoDiv.appendChild(trashButton);
+// 		//attach final Todo
+// 		todoList.appendChild(todoDiv);
+// 	});
+// }
