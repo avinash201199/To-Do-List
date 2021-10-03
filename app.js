@@ -181,7 +181,9 @@ function removeLocalTodos(id) {
 
 function getTodos() {
   let todos = getItemFromLocalStorage();
+  console.log(todos);
   todos.forEach(function(todo) {
+  	console.log(todo);
     //Create todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
@@ -191,10 +193,10 @@ function getTodos() {
     todoDiv.setAttribute('key',todo.id)
     //Create list
     const newTodo = document.createElement("li");
-    newTodo.innerText = todo.task;
+    newTodo.innerText = "task";//todo.task;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
-    todoInput.value = "";
+    todoInput.value = "s";
     //Create Completed Button
     const completedButton = document.createElement("button");
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
@@ -268,7 +270,7 @@ function getTodos() {
 		todoDiv.classList.add("todo");
 		//Create list
 		const newTodo = document.createElement("li");
-		newTodo.innerText = todo;
+		newTodo.innerText = todo.task;
 		newTodo.classList.add("todo-item");
 		todoDiv.appendChild(newTodo);
 		todoInput.value = "";
