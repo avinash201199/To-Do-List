@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
-
 :root {
   --black: rgb(0, 0, 0);
   --green: rgb(51, 243, 12);
@@ -9,11 +8,17 @@
   --blue: rgb(21, 17, 255);
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 body {
@@ -44,7 +49,6 @@ form {
   justify-content: center;
   align-items: center;
   margin: 2rem;
-
   border-radius: 5px;
 }
 
@@ -166,34 +170,36 @@ select {
   border-radius: 5px;
 }
 
-.abc{
+.abc {
   display: flex;
   flex-direction: row;
 }
 
-.todoform{
+.todoform {
   display: flex;
   flex-direction: row;
 }
 
+.footer {
+  margin-top: auto;
+  width: 100%;
+  background-color: var(--black);
+  text-align: center;
+  padding: 1rem;
+  font-family: "Lobster", cursive;
+}
 
 @media only screen and (max-width: 440px) {
-  .abc{
+  .abc {
     flex-direction: column;
   }
 
-  .todoform{
+  .todoform {
     flex-direction: column;
   }
-  
-} 
+}
 
 /* Arrow */
-
-
-
-
-
 
 /* Transition  */
 
@@ -203,17 +209,6 @@ select {
 }
 
 /* Footer */
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--black);
-  text-align: center;
-  padding: 1rem;
-  font-family: 'Lobster', cursive;
-}
-
 .footer h3 {
   margin-block-start: 0;
   margin-block-end: 0;
