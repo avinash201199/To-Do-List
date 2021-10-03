@@ -141,7 +141,7 @@ function saveStatus(id, status) {
   const todos = getItemFromLocalStorage();
    const intId = Number(id);
   const newTodo = todos.find((todo) => todo.id === intId);
-  const newStatus = newTodo.status === "incompleted" ? "completed" : "incompleted";
+  const newStatus = newTodo.status === "incomplete" ? "completed" : "incomplete";
   const todoIndex = todos.indexOf(newTodo)
   todos.splice(todoIndex, 1)
   newTodo.status = newStatus;
