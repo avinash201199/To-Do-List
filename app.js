@@ -194,7 +194,6 @@ function getTodos() {
     newTodo.innerText = todo.task;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
-    todoInput.value = "";
     //Create Completed Button
     const completedButton = document.createElement("button");
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
@@ -268,7 +267,7 @@ function getTodos() {
 		todoDiv.classList.add("todo");
 		//Create list
 		const newTodo = document.createElement("li");
-		newTodo.innerText = todo;
+		newTodo.innerText = todo.task;
 		newTodo.classList.add("todo-item");
 		todoDiv.appendChild(newTodo);
 		todoInput.value = "";
