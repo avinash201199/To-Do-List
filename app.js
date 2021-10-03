@@ -138,10 +138,10 @@ function deleteTodo(e) {
 
 //save the status of the task -> and persist by saving it to the localstorage
 function saveStatus(id, status) {
-  const newStatus = status === "" ? "incomplete" : status;
-  const intId = Number(id);
   const todos = getItemFromLocalStorage();
+   const intId = Number(id);
   const newTodo = todos.find((todo) => todo.id === intId);
+  const newStatus = newTodo.status === "incompleted" ? "completed" : "incompleted";
   const todoIndex = todos.indexOf(newTodo)
   todos.splice(todoIndex, 1)
   newTodo.status = newStatus;
