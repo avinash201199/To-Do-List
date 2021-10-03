@@ -11,6 +11,11 @@ todoList.addEventListener("click", deleteTodo);
 filterOption.addEventListener("click", filterTodo);
 
 //Functions
+function getItemFromLocalStorage(){  
+  const todos = JSON.parse( localStorage.getItem('todos')) || []
+
+  return todos
+}
 
 function addTodo(e) {
   //Prevent natural behaviour
@@ -25,9 +30,17 @@ function addTodo(e) {
   //Create list
   const newTodo = document.createElement("li");
   newTodo.innerText = todoInput.value;
+
+  let newTodoItem = {
+    id: Math.round(Math.random()*100), //id for selection
+    task: todoInput.value,
+    status: 'incomplete'
+  }
+  todoDiv.setAttribute('key',newTodoItem.id)
+
   //Save to local - do this last
   //Save to local
-  saveLocalTodos(todoInput.value);
+  saveLocalTodos(newTodoItem);
   //
   newTodo.classList.add("todo-item");
   todoDiv.appendChild(newTodo);
@@ -48,23 +61,42 @@ function addTodo(e) {
 
 function deleteTodo(e) {
   const item = e.target;
+  const todo = item.parentElement;
+  const id = todo.getAttribute('key')
 
   if (item.classList[0] === "trash-btn") {
     // e.target.parentElement.remove();
-    const todo = item.parentElement;
     todo.classList.add("fall");
     //at the end
-    removeLocalTodos(todo);
+    removeLocalTodos(id);
     todo.addEventListener("transitionend", e => {
       todo.remove();
     });
   }
   if (item.classList[0] === "complete-btn") {
-    const todo = item.parentElement;
     todo.classList.toggle("completed");
+    let status=''
+    if(todo.classList.contains('completed')){
+      status='completed'
+    }
+    console.log(id,status)
+    saveStatus(id,status)
     console.log(todo);
   }
 }
+
+//save the status of the task -> and persist by saving it to the localstorage
+function saveStatus(id,status){
+  const newStatus = status === ''? 'incomplete': status
+  const intId = Number(id)
+  const todos = getItemFromLocalStorage()
+  const newTodo = todos.find(todo => todo.id === intId)
+  newTodo.status = newStatus
+  console.log(todos)
+  localStorage.setItem('todos',JSON.stringify(todos))
+}
+
+
 
 function filterTodo(e) {
   const todos = todoList.childNodes;
@@ -80,7 +112,7 @@ function filterTodo(e) {
           todo.style.display = "none";
         }
         break;
-      case "uncompleted":
+      case "incomplete":
         if (!todo.classList.contains("completed")) {
           todo.style.display = "flex";
         } else {
@@ -90,42 +122,35 @@ function filterTodo(e) {
   });
 }
 
+//save the task to the local storage
 function saveLocalTodos(todo) {
-  let todos;
-  if (localStorage.getItem("todos") === null) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem("todos"));
-  }
+  let todos = getItemFromLocalStorage();
   todos.push(todo);
   localStorage.setItem("todos", JSON.stringify(todos));
 }
-function removeLocalTodos(todo) {
-  let todos;
-  if (localStorage.getItem("todos") === null) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem("todos"));
-  }
-  const todoIndex = todo.children[0].innerText;
-  todos.splice(todos.indexOf(todoIndex), 1);
-  localStorage.setItem("todos", JSON.stringify(todos));
+
+//function to delete a task
+function removeLocalTodos(id) {
+  const intId = Number(id)
+  let todos = getItemFromLocalStorage()
+  const newTodo = todos.filter( todo => todo.id !== intId)
+  
+  localStorage.setItem("todos", JSON.stringify(newTodo));
 }
 
 function getTodos() {
-  let todos;
-  if (localStorage.getItem("todos") === null) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem("todos"));
-  }
+  let todos = getItemFromLocalStorage();
   todos.forEach(function(todo) {
     //Create todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
+    if(todo.status==='completed'){
+      todoDiv.classList.add('completed')
+    }
+    todoDiv.setAttribute('key',todo.id)
     //Create list
     const newTodo = document.createElement("li");
-    newTodo.innerText = todo;
+    newTodo.innerText = todo.task;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     todoInput.value = "";
