@@ -208,6 +208,7 @@ function getTodos() {
     //attach final Todo
     todoList.appendChild(todoDiv);
   });
+}
 // function filterTodo(e) {
 //   const todos = todoList.childNodes;
 //   todos.forEach(function(todo) {
