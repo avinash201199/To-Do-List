@@ -54,7 +54,8 @@ form {
 }
 
 form input,
-form button {
+form button,
+.delete-all {
   padding: 1rem;
   margin: 1rem;
   font-size: 2rem;
@@ -65,9 +66,15 @@ form button {
   box-shadow: 5px 5px var(--black);
 }
 
-form button:hover {
+form button:hover,
+.delete-all:hover {
   background: var(--black);
   color: var(--white);
+}
+
+.delete-all{
+  width: 200px;
+  margin: auto;
 }
 
 .todo-container {
