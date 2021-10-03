@@ -300,3 +300,8 @@ function getTodos() {
     todoList.appendChild(todoDiv);
   });
 }
+
+function deleteAll(){
+  [...document.getElementsByClassName("todo")].map(n => n && n.remove());
+  localStorage.removeItem("todos");
+}
