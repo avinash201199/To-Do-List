@@ -237,3 +237,62 @@ select {
   color: var(--green);
   font-size: 0.9em;
 }
+
+
+
+.modal{
+  display:none;
+  position: fixed; /* Stay in place */
+  z-index: 9; /* Sit on top */
+  color: white;
+  opacity:1;
+  top: 1;
+  
+  height: fit-content;
+  
+}
+
+
+.true{
+display: block;
+  
+  
+}
+.content{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding:10px;
+  
+  animation-name: slideIn;
+  animation-duration: 0.4s;
+  width: fit-content;
+  margin: auto;
+}
+
+.green{
+  background-color: rgb(76, 165, 76);
+  
+}
+.red{
+  background-color: red;
+  
+}
+.blue{
+  background-color: rgb(0, 0, 255);
+}
+
+.modal-btn{
+  background-color:white;
+  color: black;
+  box-shadow: none;
+  border: none;
+}
+.modal-btn:hover{
+  background-color: black;
+  color: white;
+}
+@keyframes slideIn {
+  from {top: -300px; opacity: 0} 
+  to {top: 0; opacity: 1}
+}

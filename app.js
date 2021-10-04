@@ -21,7 +21,8 @@ function addTodo(e) {
   //Prevent natural behaviour
   e.preventDefault();
   if (todoInput.value === "") {
-    alert("Fill the box");
+    //alert("Fill the box");
+    openmodal('red',"Fill the box" )
     return;
   }
   //Create todo div
@@ -311,3 +312,17 @@ function deleteAll(){
   [...document.getElementsByClassName("todo")].map(n => n && n.remove());
   localStorage.removeItem("todos");
 }
+
+
+
+function openmodal(color, message) //pass color as either 'red' (for error), 'blue' for info and 'green' for success
+    {
+      console.log("in");
+        document.getElementById("content").classList.add(color);
+        document.getElementById("modal-text").innerText=message;
+        document.getElementById("Modal").classList.add("true");
+    }
+    function closemodal()
+    {
+        document.getElementById("Modal").classList.remove("true");
+    }
