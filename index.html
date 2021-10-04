@@ -21,6 +21,14 @@
       <h1>Todo List</h1>
     </div>
   </header>
+  <div class="modal red" id="Modal">
+    <div class="content" id="content">
+      <span id="modal-text">
+        Some Text
+      </span>
+        <button onclick="closemodal()" class="modal-btn">x</button>
+    </div>
+  </div>
   <form class="todoform">
     <input type="text" placeholder="add a task .." class="todo-input" required />
     <div class="abc">
@@ -57,6 +65,7 @@
   </footer>
 
   <script src="./app.js"></script>
+  
 </body>
 
 </html>
