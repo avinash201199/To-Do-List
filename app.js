@@ -79,9 +79,7 @@ function deleteTodo(e) {
     if (todo.classList.contains("completed")) {
       status = "completed";
     }
-    console.log(id, status);
     saveStatus(id, status);
-    console.log(todo);
   }
   //Prevent natural behaviour
   e.preventDefault();
@@ -132,18 +130,22 @@ function deleteTodo(e) {
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
-    console.log(todo);
+    const status = "completed";
+    const id = todo.getAttribute("key");
+    saveStatus(id, status);
   }
 }
 
 //save the status of the task -> and persist by saving it to the localstorage
 function saveStatus(id, status) {
-  const newStatus = status === "" ? "incomplete" : status;
-  const intId = Number(id);
   const todos = getItemFromLocalStorage();
+   const intId = Number(id);
   const newTodo = todos.find((todo) => todo.id === intId);
+  const newStatus = newTodo.status === "incomplete" ? "completed" : "incomplete";
+  const todoIndex = todos.indexOf(newTodo)
+  todos.splice(todoIndex, 1)
   newTodo.status = newStatus;
-  console.log(todos);
+  todos.splice(todoIndex, 0, newTodo)
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
@@ -280,6 +282,9 @@ function getTodos() {
     //Create todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
+    if (todo.status == "completed") {
+        todoDiv.classList.toggle("completed");
+    }
     //Create list
     const newTodo = document.createElement("li");
     newTodo.innerText = todo.task;
@@ -295,6 +300,7 @@ function getTodos() {
     const trashButton = document.createElement("button");
     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
     trashButton.classList.add("trash-btn");
+    todoDiv.setAttribute("key", todo.id);
     todoDiv.appendChild(trashButton);
     //attach final Todo
     todoList.appendChild(todoDiv);
