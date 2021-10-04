@@ -22,23 +22,16 @@ body {
 }
 
 body {
-  background-image: linear-gradient(
-    to right,
-    #f8991e,
-    #fe6c3a,
-    #f43c57,
-    #d80974,
-    #aa088e
-  );
+  background-color: rgb(204, 232, 250);
 }
 
 header {
   letter-spacing: -1px;
-  background-color: rgb(0, 0, 0);
-  color: var(--green);
+  background-color: white;
+  color: black;
   border-radius: 10px;
   padding: 0%;
-  box-shadow: 10px 10px var(--green);
+  box-shadow: rgb(170, 169, 169) 5px 5px 20px;
 }
 
 header,
@@ -56,25 +49,31 @@ form {
 form input,
 form button,
 .delete-all {
-  padding: 1rem;
+  padding: 10px 20px;
   margin: 1rem;
   font-size: 2rem;
   outline: none;
-  background: var(--backgroundGreen);
+  width: fit-content;
+  background-color: white;
   border-radius: 5px;
   border: none;
-  box-shadow: 5px 5px var(--black);
+  box-shadow: rgb(170, 169, 169) 5px 5px 20px;
 }
 
-form button:hover,
-.delete-all:hover {
-  background: var(--black);
+form button:hover
+{
+  background: #55acee;
   color: var(--white);
 }
 
 .delete-all{
+  background-color: red;
+  color: white;
   width: 200px;
   margin: auto;
+}
+.delete-all:hover {
+  background-color: rgb(207, 2, 2);
 }
 
 .todo-container {
@@ -90,7 +89,7 @@ form button:hover,
 
 .todo {
   margin: 0.5rem;
-  background: var(--backgroundGreen);
+  background: #FFF;
   font-size: 2rem;
   color: var(--black);
   display: flex;
@@ -116,8 +115,8 @@ form button:hover,
 
 .trash-btn,
 .complete-btn {
-  background: #153dec;
-  color: #e0f70c;
+  background: red;
+  color: #FFFFFF;
   border: none;
   padding: 2rem;
   cursor: pointer;
@@ -125,8 +124,8 @@ form button:hover,
 }
 
 .complete-btn {
-  background: rgb(165, 255, 21);
-  color: var(--black);
+  background-color: #55acee;
+  color: #FFF;
 }
 
 .todo-item {
@@ -160,7 +159,8 @@ select {
   border: 0 !important;
   background-image: none;
   border-radius: 5px;
-  background-color: var(--backgroundGreen);
+  background-color: #55acee;
+  cursor: pointer;
 }
 
 /* Custom Select */
@@ -169,13 +169,13 @@ select {
   margin: 1rem;
   /* position: relative; */
   overflow: hidden;
-  background-color: var(--green);
+  background-color: #55acee;
   outline: none;
   color: #1511ff;
   font-family: "Poppins", sans-serif;
-  cursor: pointer;
   width: 12rem;
   border-radius: 5px;
+  box-shadow: rgb(170, 169, 169) 5px 5px 20px;
 }
 
 .abc {
@@ -191,7 +191,7 @@ select {
 .footer {
   margin-top: auto;
   width: 100%;
-  background-color: var(--black);
+  background-color: #55acee;
   text-align: center;
   padding: 1rem;
   font-family: "Lobster", cursive;
@@ -221,7 +221,7 @@ select {
 .footer h3 {
   margin-block-start: 0;
   margin-block-end: 0;
-  color: var(--green);
+  color: #FFF;
   height: 3.5rem;
 }
 
@@ -230,11 +230,11 @@ select {
   margin: 1rem 0.5rem;
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: 1px 1px 10px var(--backgroundGreen);
+  /* box-shadow: 1px 1px 10px var(--backgroundGreen); */
 }
 
 .footer-desc {
-  color: var(--green);
+  color: white;
   font-size: 0.9em;
 }
 
