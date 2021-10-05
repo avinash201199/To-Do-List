@@ -326,3 +326,7 @@ function openmodal(color, message) //pass color as either 'red' (for error), 'bl
     {
         document.getElementById("Modal").classList.remove("true");
     }
+
+var today = new Date();
+var date=today.toString();
+document.getElementById("d1").innerHTML=date;

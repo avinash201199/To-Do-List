@@ -296,3 +296,8 @@ display: block;
   from {top: -300px; opacity: 0} 
   to {top: 0; opacity: 1}
 }
+.todayDate {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
