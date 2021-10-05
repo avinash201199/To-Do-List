@@ -1,9 +1,9 @@
 ### To-Do-List web link -> https://avinash201199.github.io/To-Do-List/
 
-# Are you excited to contribute under Hacktoberfest2021?😍
+# Are you excited to contribute under Hacktoberfest2021? 😍
 ![hack](https://user-images.githubusercontent.com/61057666/135253939-df4c0569-9ea6-49ae-b53c-63c797933b30.png)
 
-### How to contribute 😎<br>
+### How To Contribute 😎<br>
 
 * Star this repository.
 * Create an issue with description that how you want to contribute in this project.
