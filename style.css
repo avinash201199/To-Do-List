@@ -85,6 +85,8 @@ form button:hover
 .todo-list {
   min-width: 40%;
   list-style: none;
+  padding-left:40px;
+  padding-right:40px;
 }
 
 .todo {
@@ -130,6 +132,7 @@ form button:hover
 
 .todo-item {
   padding: 0rem 0.5rem;
+  line-break: anywhere;
 }
 
 .fa-trash,
