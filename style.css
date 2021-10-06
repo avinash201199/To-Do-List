@@ -12,6 +12,10 @@ html {
   height: 100%;
 }
 
+.hide{
+  display: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -128,6 +132,13 @@ form button:hover
 .complete-btn {
   background-color: #55acee;
   color: #FFF;
+}
+
+.edit-btn{
+  border: none;
+  padding: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .todo-item {
