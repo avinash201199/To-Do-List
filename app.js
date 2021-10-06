@@ -126,7 +126,7 @@ function deleteTodo(e) {
   todoDiv.appendChild(newTodo);
   todoInput.value = "";
   //Create Completed Button
-  const completedButton = documente.createElement("button");
+  const completedButton = document.createElement("button");
   completedButton.innerHTML = `<i class="fas fa-check"></i>`;
   completedButton.classList.add("complete-btn");
   todoDiv.appendChild(completedButton);
