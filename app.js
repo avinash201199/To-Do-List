@@ -197,6 +197,21 @@ function removeLocalTodos(id) {
   localStorage.setItem("todos", JSON.stringify(newTodo));
 }
 
+//function to edit a task
+function editTodo(todo,todoDiv){
+  // todoDiv.classList.add("hide");
+  let editTask=prompt("Correct the todo",todo.task);
+  let todos=getItemFromLocalStorage();
+  todos.forEach((t)=>{
+    if(t.id==todo.id){
+      t.task=editTask;
+    }
+  });
+  localStorage.setItem("todos",JSON.stringify(todos));
+  todoDiv.children[0].innerText=editTask;
+}
+
+
 function getTodos() {
   let todos = getItemFromLocalStorage();
   todos.forEach(function (todo) {
@@ -297,6 +312,12 @@ function getTodos() {
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
     completedButton.classList.add("complete-btn");
     todoDiv.appendChild(completedButton);
+    //Create edit button
+    const editButton = document.createElement("button");
+    editButton.innerHTML = `<i class="fas fa-pen"></i>`;
+    editButton.classList.add("edit-btn");
+    editButton.addEventListener("click",()=>editTodo(todo,todoDiv));
+    todoDiv.appendChild(editButton);
     //Create trash button
     const trashButton = document.createElement("button");
     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
