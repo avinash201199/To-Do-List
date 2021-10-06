@@ -25,6 +25,14 @@ function addTodo(e) {
     openmodal("red", "Fill the box");
     return;
   }
+
+  // alert("Duplicate task")
+  if(isDuplicate(todoInput.value)){
+    openmodal('red','Task already added');
+    return;
+  }
+
+
   //Create todo div
   const todoDiv = document.createElement("div");
   todoDiv.classList.add("todo");
@@ -250,6 +258,17 @@ function editTask(todo, todoDiv) {
   });
   localStorage.setItem("todos", JSON.stringify(todos));
   todoDiv.children[0].innerText = editInput;
+}
+
+function isDuplicate(){
+  let todos = getItemFromLocalStorage();
+  let tasks = [];
+
+  for (var i = 0; i < todos.length; i++){
+    tasks.push(todos[i].task);
+  }
+  
+  return tasks.includes(todoInput.value);
 }
 
 function getTodos() {
