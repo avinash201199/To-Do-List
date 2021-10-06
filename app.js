@@ -20,7 +20,7 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behaviour
   e.preventDefault();
-  if (todoInput.value === "") {
+  if (todoInput.value.trim() === "") {
     //alert("Fill the box");
     openmodal('red',"Fill the box" )
     return;
