@@ -74,7 +74,7 @@ form button:hover
   background-color: red;
   color: white;
   width: 200px;
-  margin: auto;
+  margin: auto auto 1.5rem;
 }
 .delete-all:hover {
   background-color: rgb(207, 2, 2);
