@@ -180,6 +180,9 @@ select {
 /* Custom Select */
 
 .select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 1rem;
   /* position: relative; */
   overflow: hidden;
