@@ -52,6 +52,7 @@ function addTodo(e) {
   saveLocalTodos(newTodoItem);
   //
   newTodo.classList.add("todo-item");
+  newTodo.classList.add("todo")
   todoDiv.appendChild(newTodo);
   todoInput.value = "";
   const edit = document.createElement("div");
