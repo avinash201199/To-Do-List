@@ -1,5 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes expand {
+  from {
+    transform: scale(0);
+    opacity: 0;
+    background: #5470B0;
+  }
+}
+
 :root {
   --black: rgb(0, 0, 0);
   --green: rgb(51, 243, 12);
@@ -23,10 +40,12 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 body {
   background-color: rgb(204, 232, 250);
+  
 }
 
 header {
@@ -104,6 +123,7 @@ form button:hover
   transition: all 0.5s ease;
   outline: none;
   border-radius: 5px;
+  animation: expand .5s ease-in-out;
 }
 
 .main_heading h1 {
