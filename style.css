@@ -50,7 +50,8 @@ body {
 
 header {
   letter-spacing: -1px;
-  background-color: white;
+  background: rgb(111,108,221);
+  background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
   color: black;
   border-radius: 10px;
   padding: 0%;
