@@ -22,13 +22,13 @@ function addTodo(e) {
   e.preventDefault();
   if (todoInput.value.trim() === "") {
     //alert("Fill the box");
-    openmodal("red", "Fill the box");
+    openmodal("red", "Please enter a Task!");
     return;
   }
 
   // alert("Duplicate task")
   if(isDuplicate(todoInput.value)){
-    openmodal('red','Task already added');
+    openmodal('red','This Task is already added!');
     return;
   }
 
