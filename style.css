@@ -314,6 +314,8 @@ display: block;
 }
 .red{
   background-color: red;
+  border-radius: 0.25em;
+  font-family: 'Poppins';
   
 }
 .blue{
@@ -324,10 +326,15 @@ display: block;
   background-color:white;
   color: black;
   box-shadow: none;
-  border: none;
+  border: 0.1em solid white;
+  padding: 0.02em 0.68em;
+  margin: 0 0 0.03em 0.5em;
+  border-radius: 0.25em;
+  font-size: 0.9em;
+  font-weight: bold;
 }
 .modal-btn:hover{
-  background-color: black;
+  background-color: rgb(112, 112, 112);
   color: white;
 }
 @keyframes slideIn {
