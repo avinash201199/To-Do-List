@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
+
 @keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
@@ -14,6 +15,12 @@
     transform: scale(0);
     opacity: 0;
     background: #5470B0;
+  }
+}
+@media screen and (min-width: 40.5em) {
+  .product-img {
+    width: 50%;
+    float: left;
   }
 }
 
@@ -32,6 +39,9 @@ html {
 .hide{
   display: none;
 }
+.column {
+  width: 100%;
+}
 
 body {
   margin: 0;
@@ -45,7 +55,7 @@ body {
 
 body {
   background-color: rgb(204, 232, 250);
-  
+
 }
 
 header {
@@ -285,23 +295,23 @@ select {
   color: white;
   opacity:1;
   top: 1;
-  
+
   height: fit-content;
-  
+
 }
 
 
 .true{
 display: block;
-  
-  
+
+
 }
 .content{
   position: fixed;
   top: 10px;
   left: 10px;
   padding:10px;
-  
+
   animation-name: slideIn;
   animation-duration: 0.4s;
   width: fit-content;
@@ -310,13 +320,13 @@ display: block;
 
 .green{
   background-color: rgb(76, 165, 76);
-  
+
 }
 .red{
   background-color: red;
   border-radius: 0.25em;
   font-family: 'Poppins';
-  
+
 }
 .blue{
   background-color: rgb(0, 0, 255);
@@ -338,7 +348,7 @@ display: block;
   color: white;
 }
 @keyframes slideIn {
-  from {top: -300px; opacity: 0} 
+  from {top: -300px; opacity: 0}
   to {top: 0; opacity: 1}
 }
 .todayDate {
