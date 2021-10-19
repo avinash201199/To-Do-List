@@ -411,6 +411,7 @@ function getTodos() {
 function deleteAll() {
   [...document.getElementsByClassName("todo")].map((n) => n && n.remove());
   localStorage.removeItem("todos");
+  document.getElementById("confirmation_box").classList.add("hide");
 }
 
 function openmodal(color, message) {
@@ -427,3 +428,16 @@ function closemodal() {
 var today = new Date();
 var date = today.toString();
 document.getElementById("d1").innerHTML = date;
+function show_alert() {
+  if (localStorage.getItem("todos") === null) {
+    let html='Please add items first';
+    console.log(html);
+  } 
+  else{
+    document.getElementById("confirmation_box").classList.remove("hide");
+  }
+  
+}
+function goback() {
+  document.getElementById("confirmation_box").classList.add("hide");
+}
