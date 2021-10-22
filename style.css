@@ -98,7 +98,13 @@ form button:hover
 {
   background: #55acee;
   color: var(--white);
+
 }
+.alltag{
+  text-align: center;
+ 
+}
+
 
 .delete-all{
   background-color: red;
@@ -165,6 +171,7 @@ form button:hover
   color: #FFF;
 }
 
+
 .edit-btn{
   border: none;
   padding: 2rem;
@@ -204,20 +211,23 @@ select {
   border: 0 !important;
   background-image: none;
   border-radius: 5px;
-  background-color: #55acee;
+  background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
   cursor: pointer;
 }
-
+select:hover{
+  background: linear-gradient(90deg, rgb(69, 66, 145) 0%, rgb(113, 201, 202) 44%, rgb(168, 126, 207) 100%);
+}
 /* Custom Select */
 
 .select {
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
   margin: 1rem;
   /* position: relative; */
   overflow: hidden;
-  background-color: #55acee;
+  background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
   outline: none;
   color: #1511ff;
   font-family: "Poppins", sans-serif;
