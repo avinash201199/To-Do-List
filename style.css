@@ -245,6 +245,13 @@ select {
   font-family: "Lobster", cursive;
 }
 
+.social-icon:hover,
+.social-icon:focus {
+  border: none;
+  filter: drop-shadow(5px 5px 5px rgb(54, 141, 207));
+}
+
+
 @media only screen and (max-width: 440px) {
   .abc {
     flex-direction: column;
