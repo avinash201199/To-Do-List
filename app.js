@@ -27,8 +27,8 @@ function addTodo(e) {
   }
 
   // alert("Duplicate task")
-  if(isDuplicate(todoInput.value)){
-    openmodal('red','This Task is already added!');
+  if (isDuplicate(todoInput.value)) {
+    openmodal('red', 'This Task is already added!');
     return;
   }
 
@@ -261,14 +261,14 @@ function editTask(todo, todoDiv) {
   todoDiv.children[0].innerText = editInput;
 }
 
-function isDuplicate(){
+function isDuplicate() {
   let todos = getItemFromLocalStorage();
   let tasks = [];
 
-  for (var i = 0; i < todos.length; i++){
+  for (var i = 0; i < todos.length; i++) {
     tasks.push(todos[i].task);
   }
-  
+
   return tasks.includes(todoInput.value);
 }
 
@@ -425,18 +425,26 @@ function closemodal() {
   document.getElementById("Modal").classList.remove("true");
 }
 
-var today = new Date();
-var date = today.toString();
-document.getElementById("d1").innerHTML = date;
+//changed the sequence as the old one was looking odd
+setInterval(function () {
+  var today = new Date();
+
+  var hour = today.getHours();
+  var min = today.getMinutes();
+  var sec = today.getSeconds();
+  var time = hour + " : " + min + " : " + sec;
+  document.getElementById("d1").innerHTML = time;
+
+}, 100)
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
-    let html='Please add items first';
+    let html = 'Please add items first';
     console.log(html);
-  } 
-  else{
+  }
+  else {
     document.getElementById("confirmation_box").classList.remove("hide");
   }
-  
+
 }
 function goback() {
   document.getElementById("confirmation_box").classList.add("hide");

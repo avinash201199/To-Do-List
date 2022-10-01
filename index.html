@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8" />
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" /> -->
   <title>To-Do List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
   <!-- favicon -->
   <link rel="shortcut icon" type="image/jpg" href="images/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
@@ -18,38 +17,38 @@
 
 <body>
   <header>
-    <div class="main_heading">
-      <h1>To-Do List</h1>
-    </div>
+    <h1>To-Do List</h1>
   </header>
   <div class="modal red" id="Modal">
     <div class="content" id="content">
       <span id="modal-text">
         Some Text
       </span>
-        <button onclick="closemodal()" class="modal-btn">x</button>
+      <button onclick="closemodal()" class="modal-btn"><i class="fas fa-times"></i></button>
     </div>
   </div>
-  <span class="todayDate">Day <span id="d1"></span></span>
+  <span class="todayDate">Current Time: <span id="d1"></span></span>
   <form class="todoform">
     <input type="text" placeholder="Add a new Task .." class="todo-input" required />
     <div class="abc">
-    <button class="todo-button" type="submit">
-      <i class="fas fa-plus-square"></i>
-    </button>
-    <div class="select">
+      <button class="todo-button" type="submit">
+        <i class="fas fa-plus-square"></i>
+      </button>
+      <div class="select">
         <select name="todos" class="filter-todo " style="color:black;">
-        <option value="all" style="color:black;">All</option>
-        <option value="completed" style="color:black;">Completed</option>
-        <option value="incomplete" style="color:black;">Incomplete</option>
-      </select>
+          <option value="all" style="color:black;">All</option>
+          <option value="completed" style="color:black;">Completed</option>
+          <option value="incomplete" style="color:black;">Incomplete</option>
+        </select>
+      </div>
     </div>
-  </div>
   </form>
   <div class="todo-container">
     <ul class="todo-list"></ul>
   </div>
   <button class="delete-all" onclick="show_alert()">Delete All Tasks</button>
+
+  <!-- <div cla ss="confirmation_box"></div> -->
 
   <div class="confirmation_box hide " id="confirmation_box">
     <div class="optbox_header">
@@ -72,10 +71,10 @@
       <a class="link" href="https://www.linkedin.com/in/avinash-singh-071b79175/" target="_blank"
         rel="noopener noreferrer"><img class="social-icon" src="images/linkedin.svg" alt="linkedin" /></a>
       <!-- gmail -->
-        <a class="link" href="mailto: avinash201199@gmail.com" target="_blank" rel="noopener noreferrer"><img
+      <a class="link" href="mailto: avinash201199@gmail.com" target="_blank" rel="noopener noreferrer"><img
           class="social-icon" src="images/gmail.svg" alt="gmail" /></a>
       <!-- github -->
-          <a class="link" href="https://github.com/avinash201199" target="_blank" rel="noopener noreferrer"><img
+      <a class="link" href="https://github.com/avinash201199" target="_blank" rel="noopener noreferrer"><img
           class="social-icon" src="images/github.svg" alt="Github" /></a>
 
     </div>
