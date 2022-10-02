@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 /* removed the translate since it results in bad user expericence */
 @keyframes slideInFromLeft {
   0% {
@@ -53,13 +53,31 @@ body {
   min-height: 100%;
   box-sizing: border-box;
   display: flex;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto',sans-serif;
   flex-direction: column;
   animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
+.jumbotron{
+  height: 10rem;
+  margin: 0;
+  background-image: linear-gradient(135deg, #FAF4B7 0%, #dfdc34 100%);
+  background-color:#CDF0EA ;
+}
+div.container{
+  margin-top: -20px;
+}
+
+@media screen and (max-width:400px) {
+  .jumbotron{
+    height: 7rem;
+    margin: 0;
+  }
+  
+}
+
 body {
-  background-color: rgb(204, 232, 250);
+  background-color: rgb(255, 255, 255);
 
 }
 
@@ -93,11 +111,38 @@ form button,
   background-color: white;
   border-radius: 5px;
   border: none;
+  font-weight: bold;
 }
 
+@media screen and (max-width:400px){
+  .myBtn {
+
+    text-align: center;
+    font-family: 'Roboto',sans-serif;
+    font-weight: bold;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none;
+    border-radius: 5px;
+    background-color: #ECC5FB;
+    cursor: pointer;
+    padding: 1rem;
+    justify-content: center;
+    margin: 2rem auto;
+    margin-left: 2rem;
+    display: flex;
+    width: 20rem;
+  }
+  
+}
 .myBtn {
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Roboto',sans-serif;
   font-weight: bold;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -108,12 +153,14 @@ form button,
   border: 0 !important;
   background-image: none;
   border-radius: 5px;
-  background-color: #80D0C7;
+  background-color: #ECC5FB;
   cursor: pointer;
   padding: 1rem;
   justify-content: center;
   margin: 2rem auto;
-  display: flex;
+  margin-left: 2rem;
+  
+  display: 0;
   width: 20rem;
 }
 
@@ -159,13 +206,15 @@ form button,
   margin: 2rem auto;
 }
 
-.button-div {
+div.button-div {
   display: inline-block;
   vertical-align: middle;
+  margin-right: 20px;
+
 }
 
 .todo-button {
-  background: darkcyan;
+  background: rgb(255, 255, 255);
 }
 
 form button,
@@ -179,7 +228,7 @@ form button:hover {
 }
 
 .delete-all {
-  background-color: red;
+  background-color: #e34242c9;
   color: white;
   width: 200px;
   margin: auto auto 1.5rem;
@@ -215,6 +264,7 @@ form button:hover {
   outline: none;
   border-radius: 5px;
   animation: expand .5s ease-in-out;
+  border-color: #55acee;
 }
 
 .main_heading h1 {
@@ -224,6 +274,12 @@ form button:hover {
 
 .filter-todo {
   padding: 1rem;
+  background-color: #ECC5FB;
+  font-family: 'Roboto',sans-serif;
+  font-weight: bold;
+  text-align: center;
+  border: white;
+  
 }
 
 .todo li {
@@ -283,35 +339,12 @@ form button:hover {
 }
 
 /*CUSTOM SELECTOR */
-
-select {
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  outline: 0;
-  box-shadow: none;
-  border: 0 !important;
-  background-image: none;
-  border-radius: 5px;
-  background-color: #80D0C7;
-  cursor: pointer;
-}
-
-/* Custom Select */
-
-.select {
-  display: inline-block;
-  vertical-align: middle;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem;
-  overflow: hidden;
-  background-color: #80D0C7;
-  border-radius: 5px;
+.select{
+  
+  margin: 20px;
+ text-align: center;
+ border: none;
+ 
 }
 
 .abc {
@@ -325,14 +358,14 @@ select {
 }
 
 .footer {
-  background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+  background-image: linear-gradient(135deg, #FAF4B7 0%, #95df34 100%);
   height: 10vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-top: auto;
   width: 100%;
-  background-color: #55acee;
+  background-color: #FAF4B7;
   text-align: center;
 }
 
@@ -353,7 +386,7 @@ select {
 
 .select:hover::after {
   background-color: #f7fffe;
-  color: #1511ff;
+  color: #e0dff0;
 }
 
 /* Footer */
@@ -362,6 +395,7 @@ select {
   margin-block-start: 0;
   margin-block-end: 0;
   color: #111;
+  padding-top: 15px;
 }
 
 .social-icon {
@@ -488,8 +522,8 @@ select {
 }
 
 .optbox_header {
-  background-color: #0093E9;
-  background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
+  background-color: #FAF4B7;
+  /* background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%); */
   height: 40px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -502,12 +536,12 @@ select {
 }
 
 .proceed {
-  background-color: #0093E9;
-  background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
+  background-color: #e34242c9;
+  /* background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%); */
   height: 60px;
   width: 180px;
   border-radius: 10px;
-
+color: white;
   position: relative;
   left: 20px;
   text-align: center;
@@ -516,10 +550,11 @@ select {
 }
 
 .donot_proceed {
-  background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
+  /* background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%); */
   height: 60px;
   width: 180px;
   border-radius: 10px;
+  background-color: #ECC5FB;
 
   position: relative;
   left: 20px;
@@ -581,10 +616,11 @@ select {
   }
 
   .optbox_header {
-    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
+    /* background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%); */
     height: 40px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    background-color: #FAF4B7;
   }
 
   .confirmation_box p {
@@ -599,7 +635,7 @@ select {
     height: 60px;
     width: 90px;
     border-radius: 10px;
-
+   
     position: relative;
     left: 20px;
     box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
@@ -666,9 +702,9 @@ select {
   }
 }
 
-@media only screen and (max-width: 731px) {
+@media only screen and (max-width: 400px) {
   .footer {
-    background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+    /* background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%); */
     height: 20vh;
     display: grid;
     justify-content: space-around;
@@ -677,5 +713,6 @@ select {
     width: 100%;
     background-color: #55acee;
     text-align: center;
+
   }
 }
