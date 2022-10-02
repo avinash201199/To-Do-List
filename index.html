@@ -11,6 +11,10 @@
   <link rel="shortcut icon" type="image/jpg" href="images/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
     integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+  integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  
 
   <link rel="stylesheet" href="./style.css" />
 </head>
@@ -28,21 +32,37 @@
     </div>
   </div>
   <span class="todayDate">Current Time: <span id="d1"></span></span>
-  <form class="todoform">
-    <input type="text" placeholder="Add a new Task .." class="todo-input" required />
-    <div class="abc">
-      <button class="todo-button" type="submit">
-        <i class="fas fa-plus-square"></i>
-      </button>
-      <div class="select">
-        <select name="todos" class="filter-todo " style="color:black;">
-          <option value="all" style="color:black;">All</option>
-          <option value="completed" style="color:black;">Completed</option>
-          <option value="incomplete" style="color:black;">Incomplete</option>
-        </select>
-      </div>
+  <!-- Trigger/Open The Modal -->
+  
+  <div class="buttons-wrapper">
+    <div class="button-div"><button id="myBtn" class="myBtn">Add a new task</button></div>
+    <div class="select">
+      <select name="todos" class="filter-todo " style="color:black;">
+        <option value="all" style="color:black;">All</option>
+        <option value="completed" style="color:black;">Completed</option>
+        <option value="incomplete" style="color:black;">Incomplete</option>
+      </select>
     </div>
-  </form>
+  </div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal-new">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form class="todoform">
+        <div class="input-group mb-3">
+          <input type="text" placeholder="Add a new Task .." class="todo-input form-control" required />
+          <div class="abc">
+            <button id="todo-button" class="todo-button" type="submit">
+              <i class="fas fa-plus-square"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
   <div class="todo-container">
     <ul class="todo-list"></ul>
   </div>
