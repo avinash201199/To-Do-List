@@ -12,6 +12,7 @@ filterOption.addEventListener("click", filterTodo);
 
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
+var textField = document.getElementById("textInput");
 var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
 
@@ -407,6 +408,7 @@ function goback() {
 
 btn.onclick = function() {
   modal.style.display = "block";
+  textField.focus();
 }
 
 span.onclick = function() {
