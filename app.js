@@ -402,6 +402,7 @@ function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = 'Please add items first';
     console.log(html);
+    alert(html);
   }
   else {
     document.getElementById("confirmation_box").classList.remove("hide");
