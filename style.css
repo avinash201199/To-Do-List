@@ -1,12 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
+/* removed the translate since it results in bad user expericence */
 @keyframes slideInFromLeft {
   0% {
-    transform: translateX(-100%);
+    opacity: 0;
   }
+
   100% {
-    transform: translateX(0);
+    opacity: 100%;
   }
 }
 
@@ -17,12 +18,14 @@
     background: #5470B0;
   }
 }
+
 @media screen and (min-width: 40.5em) {
   .product-img {
     width: 50%;
     float: left;
   }
 }
+
 
 :root {
   --black: rgb(0, 0, 0);
@@ -36,9 +39,10 @@ html {
   height: 100%;
 }
 
-.hide{
+.hide {
   display: none;
 }
+
 .column {
   width: 100%;
 }
@@ -49,6 +53,7 @@ body {
   min-height: 100%;
   box-sizing: border-box;
   display: flex;
+  font-family: 'Montserrat', sans-serif;
   flex-direction: column;
   animation: 1s ease-out 0s 1 slideInFromLeft;
 }
@@ -60,12 +65,11 @@ body {
 
 header {
   letter-spacing: -1px;
-  background: rgb(111,108,221);
-  background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
-  color: black;
+  background-color: #0093E9;
+  background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+  color: #111;
   border-radius: 10px;
   padding: 0%;
-  box-shadow: rgb(170, 169, 169) 5px 5px 20px;
 }
 
 header,
@@ -76,7 +80,6 @@ form {
   justify-content: center;
   align-items: center;
   margin: 2rem;
-
   border-radius: 5px;
 }
 
@@ -85,27 +88,30 @@ form button,
 .delete-all {
   padding: 10px 20px;
   margin: 1rem;
-  font-size: 2rem;
+  font-size: 1rem;
   outline: none;
-  width: fit-content;
   background-color: white;
   border-radius: 5px;
   border: none;
-  box-shadow: rgb(170, 169, 169) 5px 5px 20px;
 }
 
-form button:hover
-{
-  background: #55acee;
+form button,
+.delete-all {
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #5470B0;
   color: var(--white);
 }
 
-.delete-all{
+.delete-all {
   background-color: red;
   color: white;
   width: 200px;
   margin: auto auto 1.5rem;
 }
+
 .delete-all:hover {
   background-color: rgb(207, 2, 2);
 }
@@ -119,14 +125,15 @@ form button:hover
 .todo-list {
   min-width: 40%;
   list-style: none;
-  padding-left:40px;
-  padding-right:40px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .todo {
   margin: 0.5rem;
   background: #FFF;
-  font-size: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--black);
   display: flex;
   justify-content: space-between;
@@ -138,7 +145,7 @@ form button:hover
 }
 
 .main_heading h1 {
-  font-family: "Lobster", cursive;
+
   font-size: 8rem;
 }
 
@@ -155,7 +162,7 @@ form button:hover
   background: red;
   color: #FFFFFF;
   border: none;
-  padding: 2rem;
+  padding: 1rem;
   cursor: pointer;
   font-size: 1rem;
 }
@@ -165,9 +172,9 @@ form button:hover
   color: #FFF;
 }
 
-.edit-btn{
+.edit-btn {
   border: none;
-  padding: 2rem;
+  padding: 1rem;
   cursor: pointer;
   font-size: 1rem;
 }
@@ -192,9 +199,22 @@ form button:hover
   opacity: 0.5;
 }
 
+.todo-list form input,
+.todo-list form button {
+  background-color: #80D0C7;
+  color: #111;
+}
+
+.todo-list form input::placeholder {
+  color: rgb(83, 82, 82);
+}
+
 /*CUSTOM SELECTOR */
 
 select {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -204,7 +224,7 @@ select {
   border: 0 !important;
   background-image: none;
   border-radius: 5px;
-  background-color: #55acee;
+  background-color: #80D0C7;
   cursor: pointer;
 }
 
@@ -215,15 +235,9 @@ select {
   align-items: center;
   justify-content: center;
   margin: 1rem;
-  /* position: relative; */
   overflow: hidden;
-  background-color: #55acee;
-  outline: none;
-  color: #1511ff;
-  font-family: "Poppins", sans-serif;
-  width: 12rem;
+  background-color: #80D0C7;
   border-radius: 5px;
-  box-shadow: rgb(170, 169, 169) 5px 5px 20px;
 }
 
 .abc {
@@ -237,20 +251,16 @@ select {
 }
 
 .footer {
+  background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   margin-top: auto;
   width: 100%;
   background-color: #55acee;
   text-align: center;
-  padding: 1rem;
-  font-family: "Lobster", cursive;
 }
-
-.social-icon:hover,
-.social-icon:focus {
-  border: none;
-  filter: drop-shadow(5px 5px 5px rgb(54, 141, 207));
-}
-
 
 @media only screen and (max-width: 440px) {
   .abc {
@@ -260,7 +270,7 @@ select {
   .todoform {
     flex-direction: column;
   }
-  
+
 }
 
 /* Arrow */
@@ -277,31 +287,31 @@ select {
 .footer h3 {
   margin-block-start: 0;
   margin-block-end: 0;
-  color: #FFF;
-  height: 3.5rem;
+  color: #111;
 }
 
 .social-icon {
-  width: 4.5rem;
+  width: 2rem;
   margin: 1rem 0.5rem;
-  padding: 1rem;
   border-radius: 1rem;
-  /* box-shadow: 1px 1px 10px var(--backgroundGreen); */
 }
 
 .footer-desc {
-  color: white;
+  color: #111;
   font-size: 0.9em;
+  font-weight: bold;
 }
 
 
 
-.modal{
-  display:none;
-  position: fixed; /* Stay in place */
-  z-index: 9; /* Sit on top */
+.modal {
+  display: none;
+  position: fixed;
+  /* Stay in place */
+  z-index: 9;
+  /* Sit on top */
   color: white;
-  opacity:1;
+  opacity: 1;
   top: 1;
 
   height: fit-content;
@@ -309,16 +319,17 @@ select {
 }
 
 
-.true{
-display: block;
+.true {
+  display: block;
 
 
 }
-.content{
+
+.content {
   position: fixed;
   top: 10px;
   left: 10px;
-  padding:10px;
+  padding: 10px;
 
   animation-name: slideIn;
   animation-duration: 0.4s;
@@ -326,44 +337,66 @@ display: block;
   margin: auto;
 }
 
-.green{
+.green {
   background-color: rgb(76, 165, 76);
 
 }
-.red{
-  background-color: red;
-  border-radius: 0.25em;
-  font-family: 'Poppins';
 
+.red {
+  background-color: rgb(255, 44, 44);
+  border-radius: 0.25em;
 }
-.blue{
+
+
+.blue {
   background-color: rgb(0, 0, 255);
 }
 
-.modal-btn{
-  background-color:white;
-  color: black;
+.modal-btn {
+  background: transparent;
+  color: white;
   box-shadow: none;
-  border: 0.1em solid white;
+  border: none;
   padding: 0.02em 0.68em;
   margin: 0 0 0.03em 0.5em;
   border-radius: 0.25em;
   font-size: 0.9em;
   font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
-.modal-btn:hover{
-  background-color: rgb(112, 112, 112);
-  color: white;
+
+.modal-btn:hover {
+  opacity: .7;
 }
+
 @keyframes slideIn {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
+  from {
+    top: -300px;
+    opacity: 0
+  }
+
+  to {
+    top: 0;
+    opacity: 1
+  }
 }
+
 .todayDate {
   display: block;
   text-align: center;
   font-weight: bold;
 }
+
+.confirmation_box {
+  width: 700px;
+  height: 300px;
+  background: #f7fffe;
+  position: fixed;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+=======
 .confirmation_box{
   position: fixed;
   top: 0;
@@ -388,45 +421,48 @@ display: block;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.optbox_header{
-  background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
+
+.optbox_header {
+  background-color: #0093E9;
+  background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
   height: 40px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
-.confirmation_box p{
+
+.confirmation_box p {
   position: relative;
-  left: 85px;
-  top: 20px;
-  font-size:3.4rem;
-  font-family: "Lobster", cursive;
+  font-size: 2rem;
+  text-align: center;
 }
-.proceed{
-  background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
+
+.proceed {
+  background-color: #0093E9;
+  background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
   height: 60px;
   width: 180px;
   border-radius: 10px;
-  font-family: "Lobster", cursive;
+
   position: relative;
   left: 20px;
-  box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
   text-align: center;
   line-height: 60px;
   font-size: 2.2rem;
 }
-.donot_proceed{
-  background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
+
+.donot_proceed {
+  background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
   height: 60px;
   width: 180px;
   border-radius: 10px;
-  font-family: "Lobster", cursive;
+
   position: relative;
   left: 20px;
-  box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
   text-align: center;
   line-height: 60px;
   font-size: 2.2rem;
 }
+
 .option_box {
   display: flex;
   justify-content: space-between;
@@ -434,24 +470,25 @@ display: block;
   position: relative;
   left: 70px;
   top: 50px;
-  
+
 }
-.proceed:hover{
-  box-shadow: 10px 10px 10px rgb(132, 131, 131);
+
+.proceed:hover {
   cursor: pointer;
   height: 65px;
   width: 200px;
-  font-size:2.8rem;
+  font-size: 2.8rem;
 }
-.donot_proceed:hover{
-  box-shadow: 10px 10px 10px rgb(132, 131, 131);
+
+.donot_proceed:hover {
   cursor: pointer;
   height: 65px;
   width: 200px;
-  font-size:2.8rem;
+  font-size: 2.8rem;
 }
-.optbox_header i{
-  font-size: 3rem;
+
+.optbox_header i {
+  font-size: 2rem;
   color: #FFF;
   position: relative;
   /* background-color:red; */
@@ -461,42 +498,43 @@ display: block;
   left: 665px;
   top: 5px;
 }
-.optbox_header i:hover{
+
+.optbox_header i:hover {
   cursor: pointer;
   color: black;
 }
 
-@media only screen and (max-width: 440px){
-  .confirmation_box{
+@media only screen and (max-width: 440px) {
+  .confirmation_box {
     /* border: 1px solid black; */
     width: 300px;
     height: 300px;
     background: #f7fffe;
     position: relative;
-    left: 30px;
     bottom: 280px;
     border-radius: 20px;
   }
-  .optbox_header{
-    background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
+
+  .optbox_header {
+    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
     height: 40px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
-  .confirmation_box p{
+
+  .confirmation_box p {
     position: relative;
-    left: 5px;
-    top: 20px;
-    font-size:2rem;
-    font-family: "Lobster", cursive;
+    font-size: 1rem;
+
     text-align: center;
   }
-  .proceed{
-    background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
+
+  .proceed {
+    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
     height: 60px;
     width: 90px;
     border-radius: 10px;
-    font-family: "Lobster", cursive;
+
     position: relative;
     left: 20px;
     box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
@@ -504,12 +542,13 @@ display: block;
     line-height: 60px;
     font-size: 2.2rem;
   }
-  .donot_proceed{
-    background: linear-gradient(90deg, rgba(111,108,221,1) 0%, rgba(57,190,193,1) 44%, rgba(155,110,198,1) 100%);
+
+  .donot_proceed {
+    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
     height: 60px;
     width: 90px;
     border-radius: 10px;
-    font-family: "Lobster", cursive;
+
     position: relative;
     left: 20px;
     box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
@@ -517,6 +556,7 @@ display: block;
     line-height: 60px;
     font-size: 2.2rem;
   }
+
   .option_box {
     display: flex;
     justify-content: space-between;
@@ -524,24 +564,27 @@ display: block;
     position: relative;
     left: 0px;
     top: 50px;
-    
+
   }
-  .proceed:hover{
+
+  .proceed:hover {
     box-shadow: 10px 10px 10px rgb(132, 131, 131);
     cursor: pointer;
     height: 65px;
     width: 95px;
-    font-size:2.8rem;
+    font-size: 2.8rem;
   }
-  .donot_proceed:hover{
+
+  .donot_proceed:hover {
     box-shadow: 10px 10px 10px rgb(132, 131, 131);
     cursor: pointer;
     height: 65px;
     width: 95px;
-    font-size:2.8rem;
+    font-size: 2.8rem;
   }
-  .optbox_header i{
-    font-size: 3rem;
+
+  .optbox_header i {
+    font-size: 2rem;
     color: #FFF;
     position: relative;
     /* background-color:red; */
@@ -551,8 +594,23 @@ display: block;
     left: 255px;
     top: 5px;
   }
-  .optbox_header i:hover{
+
+  .optbox_header i:hover {
     cursor: pointer;
     color: black;
+  }
+}
+
+@media only screen and (max-width: 731px) {
+  .footer {
+    background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+    height: 20vh;
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: auto;
+    width: 100%;
+    background-color: #55acee;
+    text-align: center;
   }
 }
