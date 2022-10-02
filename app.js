@@ -404,7 +404,6 @@ function goback() {
 
 btn.onclick = function () {
   modal.style.display = "block";
-  textField.focus();
 };
 
 span.onclick = function () {
@@ -412,6 +411,7 @@ span.onclick = function () {
 };
 addBtn.onclick = function () {
   modal.style.display = "none";
+  textField.focus();
 };
 
 window.onclick = function (event) {
