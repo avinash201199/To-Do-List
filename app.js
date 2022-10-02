@@ -381,17 +381,23 @@ function closemodal() {
   document.getElementById("Modal").classList.remove("true");
 }
 
-//changed the sequence as the old one was looking odd
-setInterval(function () {
-  var today = new Date();
+// //changed the sequence as the old one was looking odd
+// setInterval(function () {
+//   var today = new Date();
 
-  var hour = today.getHours();
-  var min = today.getMinutes();
-  var sec = today.getSeconds();
-  var time = hour + " : " + min + " : " + sec;
-  document.getElementById("d1").innerHTML = time;
+//   var hour = today.getHours();
+//   var min = today.getMinutes();
+//   var sec = today.getSeconds();
+//   var time = hour + " : " + min + " : " + sec;
+//   document.getElementById("d1").innerHTML = time;
 
-}, 100)
+// }, 100)
+
+// Added Date Time and Month format to support Time Globally
+var date = new Date();
+document.getElementById("m1").innerHTML = date;
+  
+
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = 'Please add items first';
