@@ -18,16 +18,17 @@ function getItemFromLocalStorage() {
 }
 
 function addTodo(e) {
-  //Prevent natural behaviour
+  //Prevent natural behavior
   e.preventDefault();
-  if (todoInput.value.trim() === "") {
+  const currentValue = todoInput.value?.trim() || ""
+  if (!currentValue) {
     //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
     return;
   }
 
   // alert("Duplicate task")
-  if (isDuplicate(todoInput.value)) {
+  if (isDuplicate(currentValue)) {
     openmodal('red', 'This Task is already added!');
     return;
   }
@@ -38,11 +39,11 @@ function addTodo(e) {
   todoDiv.classList.add("todo");
   //Create list
   const newTodo = document.createElement("li");
-  newTodo.innerText = todoInput.value;
+  newTodo.innerText = currentValue;
 
   let newTodoItem = {
     id: Math.round(Math.random() * 100), //id for selection
-    task: todoInput.value,
+    task: currentValue,
     status: "incomplete",
   };
   todoDiv.setAttribute("key", newTodoItem.id);
@@ -84,61 +85,6 @@ function addTodo(e) {
   editButton.classList.add("edit-btn");
   editButton.addEventListener("click", () => editTodo(newTodoItem, todoDiv));
   todoDiv.appendChild(editButton);
-  //Create trash button
-  const trashButton = document.createElement("button");
-  trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
-  trashButton.classList.add("trash-btn");
-  todoDiv.appendChild(trashButton);
-  //attach final Todo
-  todoList.appendChild(todoDiv);
-}
-
-function deleteTodo(e) {
-  const item = e.target;
-  const todo = item.parentElement;
-  const id = todo.getAttribute("key");
-
-  if (item.classList[0] === "trash-btn") {
-    // e.target.parentElement.remove();
-    todo.classList.add("fall");
-    //at the end
-    removeLocalTodos(id);
-    todo.addEventListener("transitionend", (e) => {
-      todo.remove();
-    });
-  }
-  if (item.classList[0] === "complete-btn") {
-    todo.classList.toggle("completed");
-    let status = "";
-    if (todo.classList.contains("completed")) {
-      status = "completed";
-    }
-    saveStatus(id, status);
-  }
-  //Prevent natural behaviour
-  e.preventDefault();
-  if (todoInput.value === "") {
-    alert("Fill the box");
-    return;
-  }
-  //Create todo div
-  const todoDiv = document.createElement("div");
-  todoDiv.classList.add("todo");
-  //Create list
-  const newTodo = document.createElement("li");
-  newTodo.innerText = todoInput.value;
-  //Save to local - do this last
-  //Save to local
-  saveLocalTodos(todoInput.value);
-  //
-  newTodo.classList.add("todo-item");
-  todoDiv.appendChild(newTodo);
-  todoInput.value = "";
-  //Create Completed Button
-  const completedButton = document.createElement("button");
-  completedButton.innerHTML = `<i class="fas fa-check"></i>`;
-  completedButton.classList.add("complete-btn");
-  todoDiv.appendChild(completedButton);
   //Create trash button
   const trashButton = document.createElement("button");
   trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
@@ -241,35 +187,39 @@ function editTodo(todo, todoDiv) {
     }
   }
   const editBtn = document.getElementById(`editBtn-` + `${todo.id}`);
-  editBtn.addEventListener("click", () => editTask(todo, todoDiv));
+  editBtn.addEventListener("click", (e) => {
+    e.preventDefault(); 
+    editTask(todo, todoDiv)
+  });
 }
 
 function editTask(todo, todoDiv) {
   let todos = getItemFromLocalStorage();
-  const editInput = document.getElementById(`edit-` + `${todo.id}`).value;
-  if (editInput === "") {
+  const editInputElem = document.getElementById(`edit-` + `${todo.id}`);
+  const editValue = editInputElem.value?.trim() || "";
+  if (!editValue) {
     //alert("Fill the box");
     openmodal("red", "Fill the box");
     return;
   }
-  todos.forEach((t) => {
-    if (t.id == todo.id) {
-      t.task = editInput;
+  if (isDuplicate(editValue)) {
+    openmodal('red', 'This Task is already added!');
+    return;
+  }
+  const updatedTodos = todos.map((t) => {
+    if (t.id === todo.id) {
+      return { ...t, task: editValue }
     }
-  });
-  localStorage.setItem("todos", JSON.stringify(todos));
-  todoDiv.children[0].innerText = editInput;
+    return t;
+  })
+  localStorage.setItem("todos", JSON.stringify(updatedTodos));
+  todoDiv.children[0].innerText = editValue;
 }
 
-function isDuplicate() {
+function isDuplicate(task) {
   let todos = getItemFromLocalStorage();
-  let tasks = [];
-
-  for (var i = 0; i < todos.length; i++) {
-    tasks.push(todos[i].task);
-  }
-
-  return tasks.includes(todoInput.value);
+  const index = todos.findIndex(t => t.task === task)
+  return index > -1
 }
 
 function getTodos() {
