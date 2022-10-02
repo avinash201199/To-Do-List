@@ -95,6 +95,79 @@ form button,
   border: none;
 }
 
+.myBtn {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background-image: none;
+  border-radius: 5px;
+  background-color: #80D0C7;
+  cursor: pointer;
+  padding: 1rem;
+  justify-content: center;
+  margin: 2rem auto;
+  display: flex;
+  width: 20rem;
+}
+
+.modal-new {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.buttons-wrapper {
+  margin: 2rem auto;
+}
+
+.button-div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.todo-button {
+  background: darkcyan;
+}
+
 form button,
 .delete-all {
   cursor: pointer;
@@ -231,7 +304,8 @@ select {
 /* Custom Select */
 
 .select {
-  display: flex;
+  display: inline-block;
+  vertical-align: middle;
   align-items: center;
   justify-content: center;
   margin: 1rem;
@@ -388,15 +462,6 @@ select {
   font-weight: bold;
 }
 
-.confirmation_box {
-  width: 700px;
-  height: 300px;
-  background: #f7fffe;
-  position: fixed;
-  bottom: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-=======
 .confirmation_box{
   position: fixed;
   top: 0;

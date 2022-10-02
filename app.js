@@ -10,6 +10,11 @@ todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteTodo);
 filterOption.addEventListener("click", filterTodo);
 
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+var addBtn = document.getElementById("todo-button");
+
 //Functions
 function getItemFromLocalStorage() {
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
@@ -448,4 +453,21 @@ function show_alert() {
 }
 function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
+}
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+addBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
