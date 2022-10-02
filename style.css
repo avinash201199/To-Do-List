@@ -396,7 +396,30 @@ select {
   bottom: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
+=======
+.confirmation_box{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 18%);
+}
+.confirmation_box_inner{
+  /* border: 1px solid black; */
+  width: 700px;
+  height: 300px;
+  background: #f7fffe;
+  bottom: 280px;
   border-radius: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .optbox_header {
