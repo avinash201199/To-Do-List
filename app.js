@@ -12,6 +12,7 @@ filterOption.addEventListener("click", filterTodo);
 
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
+var textField = document.getElementById("textInput");
 var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
 
@@ -25,7 +26,7 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
-  const currentValue = todoInput.value?.trim() || ""
+  const currentValue = todoInput.value?.trim() || "";
   if (!currentValue) {
     //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
@@ -34,10 +35,9 @@ function addTodo(e) {
 
   // alert("Duplicate task")
   if (isDuplicate(currentValue)) {
-    openmodal('red', 'This Task is already added!');
+    openmodal("red", "This Task is already added!");
     return;
   }
-
 
   //Create todo div
   const todoDiv = document.createElement("div");
@@ -58,7 +58,7 @@ function addTodo(e) {
   saveLocalTodos(newTodoItem);
   //
   newTodo.classList.add("todo-item");
-  newTodo.classList.add("todo")
+  newTodo.classList.add("todo");
   todoDiv.appendChild(newTodo);
   todoInput.value = "";
   const edit = document.createElement("div");
@@ -193,8 +193,8 @@ function editTodo(todo, todoDiv) {
   }
   const editBtn = document.getElementById(`editBtn-` + `${todo.id}`);
   editBtn.addEventListener("click", (e) => {
-    e.preventDefault(); 
-    editTask(todo, todoDiv)
+    e.preventDefault();
+    editTask(todo, todoDiv);
   });
 }
 
@@ -208,23 +208,23 @@ function editTask(todo, todoDiv) {
     return;
   }
   if (isDuplicate(editValue)) {
-    openmodal('red', 'This Task is already added!');
+    openmodal("red", "This Task is already added!");
     return;
   }
   const updatedTodos = todos.map((t) => {
     if (t.id === todo.id) {
-      return { ...t, task: editValue }
+      return { ...t, task: editValue };
     }
     return t;
-  })
+  });
   localStorage.setItem("todos", JSON.stringify(updatedTodos));
   todoDiv.children[0].innerText = editValue;
 }
 
 function isDuplicate(task) {
   let todos = getItemFromLocalStorage();
-  const index = todos.findIndex(t => t.task === task)
-  return index > -1
+  const index = todos.findIndex((t) => t.task === task);
+  return index > -1;
 }
 
 function getTodos() {
@@ -389,35 +389,33 @@ setInterval(function () {
   var sec = today.getSeconds();
   var time = hour + " : " + min + " : " + sec;
   document.getElementById("d1").innerHTML = time;
-
-}, 100)
+}, 100);
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
-    let html = 'Please add items first';
+    let html = "Please add items first";
     console.log(html);
-  }
-  else {
+  } else {
     document.getElementById("confirmation_box").classList.remove("hide");
   }
-
 }
 function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
 }
 
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
-}
+  textField.focus();
+};
 
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
-}
-addBtn.onclick = function() {
+};
+addBtn.onclick = function () {
   modal.style.display = "none";
-}
+};
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
