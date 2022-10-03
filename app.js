@@ -17,6 +17,12 @@ var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
 
 //Functions
+function htmlEncode(str) {
+  return String(str).replace(/[^\w. ]/gi, function(c){
+    return '&#' + c.charCodeAt(0) + ';';
+  });
+}
+
 function getItemFromLocalStorage() {
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -26,7 +32,7 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
-  const currentValue = todoInput.value?.trim() || ""
+  const currentValue = htmlEncode(todoInput.value)?.trim() || ""
   if (!currentValue) {
     //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
