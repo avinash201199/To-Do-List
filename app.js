@@ -17,6 +17,12 @@ var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
 
 //Functions
+function htmlEncode(str) {
+  return String(str).replace(/[^\w. ]/gi, function(c){
+    return '&#' + c.charCodeAt(0) + ';';
+  });
+}
+
 function getItemFromLocalStorage() {
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -26,7 +32,7 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
-  const currentValue = todoInput.value?.trim() || ""
+  const currentValue = htmlEncode(todoInput.value)?.trim() || ""
   if (!currentValue) {
     //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
@@ -396,6 +402,7 @@ function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = 'Please add items first';
     console.log(html);
+    alert(html);
   }
   else {
     document.getElementById("confirmation_box").classList.remove("hide");
@@ -423,3 +430,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+var day = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
+document.getElementById("d2").innerHTML = day;
