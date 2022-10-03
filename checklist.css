@@ -20,7 +20,8 @@ background: #fff;
 width: 350px;
 }
 .list h2
-{background-image: #03a9f4;
+{
+background-image: #03a9f4;
 color: #fff;
 padding: 10px 20px;
 font-weight:600;
