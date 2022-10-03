@@ -68,7 +68,7 @@ header {
   background-color: #0093E9;
   background-image: radial-gradient(circle at top center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 6%,transparent 6%, transparent 54%,transparent 54%, transparent 93%,rgba(48, 184, 210,0.15) 93%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 2%,transparent 2%, transparent 19%,transparent 19%, transparent 36%,rgba(48, 184, 210,0.15) 36%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 1%,transparent 1%, transparent 2%,transparent 2%, transparent 11%,rgba(48, 184, 210,0.15) 11%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at center center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 13%,transparent 13%, transparent 59%,transparent 59%, transparent 67%,rgba(48, 184, 210,0.15) 67%, rgba(48, 184, 210,0.15) 100%),linear-gradient(90deg, hsl(38,64%,92%),hsl(38,64%,92%)); background-size: 111px 111px;
   color: #111;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 0%;
 }
 
