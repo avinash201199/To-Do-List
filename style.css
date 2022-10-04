@@ -113,6 +113,13 @@ form button,
     margin: 2rem auto;
     display: flex;
     width: 20rem;
+
+@media (min-width: 359px) and (max-width: 741px) {
+    margin-left: 11px;
+    width:12rem;
+
+}
+
 }
 
 .modal-new {
