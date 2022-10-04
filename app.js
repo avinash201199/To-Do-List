@@ -433,3 +433,17 @@ window.onclick = function(event) {
 
 var day = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
 document.getElementById("d2").innerHTML = day;
+
+
+var icon=document.getElementById("icon");
+icon.onclick=function(){
+console.log("hello")
+document.body.classList.toggle("dark-theme");
+if(document.body.classList.contains("dark-theme"))
+{
+icon.src="images/dark theme icon/sun.png";
+}
+else{
+icon.src="images/dark theme icon/moon.png" 
+} 
+}

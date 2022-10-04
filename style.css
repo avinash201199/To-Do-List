@@ -32,6 +32,22 @@
     --backgroundGreen: rgb(139, 255, 116);
     --white: rgb(255, 255, 255);
     --blue: rgb(21, 17, 255);
+    --primary-color: rgb(204, 232, 250);
+    --secondary-color: #212121;
+}
+
+.dark-theme{
+    --primary-color: #121212;
+    --secondary-color: #fff;
+    opacity: 0.8;
+}
+
+#icon{
+    width: 30px;
+    cursor: pointer;
+    margin-left: 750px;
+    margin-top: 19px;
+   
 }
 
 html {
@@ -58,7 +74,7 @@ body {
 }
 
 body {
-    background-color: rgb(204, 232, 250);
+    background-color: var(--primary-color);
 }
 
 header {
@@ -68,7 +84,7 @@ header {
     color: #111;
     border-radius: 10px;
     padding: 0%;
-}
+} 
 
 header,
 form {
@@ -88,7 +104,7 @@ form button,
     margin: 1rem;
     font-size: 1rem;
     outline: none;
-    background-color: white;
+    background-color: var(--primary-color);
     border-radius: 5px;
     border: none;
 }
@@ -142,7 +158,7 @@ form button,
 /* Modal Content */
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--primary-color);
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -153,7 +169,7 @@ form button,
 /* The Close Button */
 
 .close {
-    color: #aaaaaa;
+    color: var(--secondary-color);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -161,13 +177,13 @@ form button,
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: var(--secondary-color);
     text-decoration: none;
     cursor: pointer;
 }
 
 .buttons-wrapper {
-    margin: 2rem auto;
+    margin: 0rem auto;
 }
 
 .button-div {
@@ -479,6 +495,7 @@ select {
     display: block;
     text-align: center;
     font-weight: bold;
+    color: var(--secondary-color);
 }
 
 .confirmation_box {
@@ -496,7 +513,8 @@ select {
     /* border: 1px solid black; */
     width: 700px;
     height: 300px;
-    background: #f7fffe;
+    background: var(--primary-color);
+    color: var(--secondary-color);
     bottom: 280px;
     border-radius: 20px;
     margin: 0;
