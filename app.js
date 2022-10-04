@@ -4,6 +4,9 @@ const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
 
+const deleteAllButton = document.querySelector(".delete-all")
+const noToDoItemText = document.querySelector(".no-to-do-item")
+
 //Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos);
 todoButton.addEventListener("click", addTodo);
@@ -17,8 +20,25 @@ var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
 
 //Functions
+function checkForEmptyList() {
+  if (localStorage.getItem("todos") === null) {
+    deleteAllButton.classList.add("hide")
+    noToDoItemText.classList.remove("hide")
+  }
+  else {
+    if (getItemFromLocalStorage().length == 0) {
+      deleteAllButton.classList.add("hide")
+      noToDoItemText.classList.remove("hide")
+    }
+    else {
+      deleteAllButton.classList.remove("hide")
+      noToDoItemText.classList.add("hide")
+    }
+  }
+}
+
 function htmlEncode(str) {
-  return String(str).replace(/[^\w. ]/gi, function(c){
+  return String(str).replace(/[^\w. ]/gi, function (c) {
     return '&#' + c.charCodeAt(0) + ';';
   });
 }
@@ -200,7 +220,7 @@ function editTodo(todo, todoDiv) {
   }
   const editBtn = document.getElementById(`editBtn-` + `${todo.id}`);
   editBtn.addEventListener("click", (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     editTask(todo, todoDiv)
   });
 }
@@ -413,23 +433,25 @@ function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
 }
 
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
   textField.focus();
 }
 
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
 }
-addBtn.onclick = function() {
+addBtn.onclick = function () {
   modal.style.display = "none";
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
-var day = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
+var day = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
 document.getElementById("d2").innerHTML = day;
+
+setInterval(checkForEmptyList, 100)

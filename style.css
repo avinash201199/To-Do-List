@@ -56,6 +56,11 @@ body {
     flex-direction: column;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
+.no-to-do-item{
+    text-align: center;
+    padding-top: 80px;
+    color: #4d4c4c;
+}
 
 body {
     background-color: rgb(204, 232, 250);
