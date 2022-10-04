@@ -433,3 +433,5 @@ window.onclick = function(event) {
 
 var day = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
 document.getElementById("d2").innerHTML = day;
+
+
