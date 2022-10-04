@@ -85,16 +85,29 @@ header {
     border-radius: 10px;
     padding: 0%;
 } 
+=======
+ background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%,rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%,rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%,rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%,rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%,rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%,rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%),linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%,rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%,rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%,rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%,rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%,rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%,rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%,rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+}
+
+header {
+  letter-spacing: -1px;
+  background-color: #0093E9;
+  background-image: radial-gradient(circle at top center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 6%,transparent 6%, transparent 54%,transparent 54%, transparent 93%,rgba(48, 184, 210,0.15) 93%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 2%,transparent 2%, transparent 19%,transparent 19%, transparent 36%,rgba(48, 184, 210,0.15) 36%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 1%,transparent 1%, transparent 2%,transparent 2%, transparent 11%,rgba(48, 184, 210,0.15) 11%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at center center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 13%,transparent 13%, transparent 59%,transparent 59%, transparent 67%,rgba(48, 184, 210,0.15) 67%, rgba(48, 184, 210,0.15) 100%),linear-gradient(90deg, hsl(38,64%,92%),hsl(38,64%,92%)); background-size: 111px 111px;
+  color: #111;
+  border-radius: 10px;
+  padding: 0%;
+}
+
 
 header,
 form {
-    min-height: 10vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem;
-    border-radius: 5px;
+  min-height: 10vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 5px;
 }
 
 form input,
@@ -129,6 +142,13 @@ form button,
     margin: 2rem auto;
     display: flex;
     width: 20rem;
+
+@media (min-width: 359px) and (max-width: 741px) {
+    margin-left: 11px;
+    width:12rem;
+
+}
+
 }
 
 .modal-new {
@@ -206,10 +226,10 @@ form button:hover {
 }
 
 .delete-all {
-    background-color: red;
-    color: white;
-    width: 200px;
-    margin: auto auto 1.5rem;
+  background-color: #D75281;
+  color: white;
+  width: 200px;
+  margin: auto auto 1.5rem;
 }
 
 .delete-all:hover {
@@ -367,17 +387,15 @@ select {
 }
 
 .footer {
-    background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
-    /* height: 20vh; */
-    height: fit-content;
-    padding: 20px 0;
-    /* display: flex; */
-    justify-content: space-around;
-    align-items: center;
-    margin-top: auto;
-    width: 100%;
-    background-color: #55acee;
-    text-align: center;
+  background-image: radial-gradient(circle at top center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 6%,transparent 6%, transparent 54%,transparent 54%, transparent 93%,rgba(48, 184, 210,0.15) 93%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 2%,transparent 2%, transparent 19%,transparent 19%, transparent 36%,rgba(48, 184, 210,0.15) 36%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 1%,transparent 1%, transparent 2%,transparent 2%, transparent 11%,rgba(48, 184, 210,0.15) 11%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at center center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 13%,transparent 13%, transparent 59%,transparent 59%, transparent 67%,rgba(48, 184, 210,0.15) 67%, rgba(48, 184, 210,0.15) 100%),linear-gradient(90deg, hsl(38,64%,92%),hsl(38,64%,92%)); background-size: 111px 111px;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: auto;
+  width: 100%;
+  background-color: #55acee;
+  text-align: center;
 }
 
 @media only screen and (max-width: 440px) {
