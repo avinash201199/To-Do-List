@@ -32,22 +32,6 @@
     --backgroundGreen: rgb(139, 255, 116);
     --white: rgb(255, 255, 255);
     --blue: rgb(21, 17, 255);
-    --primary-color: rgb(204, 232, 250);
-    --secondary-color: #212121;
-}
-
-.dark-theme{
-    --primary-color: #121212;
-    --secondary-color: #fff;
-    opacity: 0.8;
-}
-
-#icon{
-    width: 30px;
-    cursor: pointer;
-    margin-left: 750px;
-    margin-top: 19px;
-   
 }
 
 html {
@@ -74,18 +58,6 @@ body {
 }
 
 body {
-    background-color: var(--primary-color);
-}
-
-header {
-    letter-spacing: -1px;
-    background-color: #0093E9;
-    background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
-    color: #111;
-    border-radius: 10px;
-    padding: 0%;
-} 
-=======
  background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%,rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%,rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%,rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%,rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%,rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%,rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%),linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%,rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%,rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%,rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%,rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%,rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%,rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%,rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
 }
 
@@ -97,7 +69,6 @@ header {
   border-radius: 10px;
   padding: 0%;
 }
-
 
 header,
 form {
@@ -117,7 +88,7 @@ form button,
     margin: 1rem;
     font-size: 1rem;
     outline: none;
-    background-color: var(--primary-color);
+    background-color: white;
     border-radius: 5px;
     border: none;
 }
@@ -178,7 +149,7 @@ form button,
 /* Modal Content */
 
 .modal-content {
-    background-color: var(--primary-color);
+    background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -189,7 +160,7 @@ form button,
 /* The Close Button */
 
 .close {
-    color: var(--secondary-color);
+    color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -197,13 +168,13 @@ form button,
 
 .close:hover,
 .close:focus {
-    color: var(--secondary-color);
+    color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 
 .buttons-wrapper {
-    margin: 0rem auto;
+    margin: 2rem auto;
 }
 
 .button-div {
@@ -513,7 +484,6 @@ select {
     display: block;
     text-align: center;
     font-weight: bold;
-    color: var(--secondary-color);
 }
 
 .confirmation_box {
@@ -531,8 +501,7 @@ select {
     /* border: 1px solid black; */
     width: 700px;
     height: 300px;
-    background: var(--primary-color);
-    color: var(--secondary-color);
+    background: #f7fffe;
     bottom: 280px;
     border-radius: 20px;
     margin: 0;
