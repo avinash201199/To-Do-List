@@ -35,13 +35,13 @@ function addTodo(e) {
   const currentValue = htmlEncode(todoInput.value)?.trim() || ""
   if (!currentValue) {
     //alert("Fill the box");
-    openmodal("red", "Please enter a Task!");
+    openmodal("red", StaticLabels.ENTER_TASK_MESSAGE);
     return;
   }
 
   // alert("Duplicate task")
   if (isDuplicate(currentValue)) {
-    openmodal('red', 'This Task is already added!');
+    openmodal('red', StaticLabels.ENTER_TASK_MESSAGE);
     return;
   }
 
@@ -146,32 +146,30 @@ function filterTodo(e) {
   const todos = todoList.childNodes;
   todos.forEach((todo) => {
     // console.log(e.target.value);
-
-    if (
-      e.target.value === "completed" &&
-      todo.classList.contains("completed")
-    ) {
-      todo.style.display = "flex";
-    } else if (
-      e.target.value === "completed" &&
-      !todo.classList.contains("completed")
-    ) {
-      todo.style.display = "none";
-    } else if (
-      e.target.value === "incomplete" &&
-      !todo.classList.contains("completed")
-    ) {
-      todo.style.display = "flex";
-    } else if (
-      e.target.value === "incomplete" &&
-      !todo.classList.contains("incomplete")
-    ) {
-      todo.style.display = "none";
-    } else {
-      todo.style.display = "flex";
-    }
+    filterTodos(e, todo);
+   
   });
 }
+
+//function to return todos based upon status
+function filterTodos(e, todo) {
+  if (e.target.value === "completed" &&
+    todo.classList.contains("completed")) {
+    todo.style.display = "flex";
+  } else if (e.target.value === "completed" &&
+    !todo.classList.contains("completed")) {
+    todo.style.display = "none";
+  } else if (e.target.value === "incomplete" &&
+    !todo.classList.contains("completed")) {
+    todo.style.display = "flex";
+  } else if (e.target.value === "incomplete" &&
+    !todo.classList.contains("incomplete")) {
+    todo.style.display = "none";
+  } else {
+    todo.style.display = "flex";
+  }
+}
+
 
 //save the task to the local storage
 function saveLocalTodos(todo) {
