@@ -37,6 +37,8 @@ function checkForEmptyList() {
   }
 }
 
+setInterval(checkForEmptyList, 100)
+
 function htmlEncode(str) {
   return String(str).replace(/[^\w. ]/gi, function (c) {
     return '&#' + c.charCodeAt(0) + ';';
@@ -454,4 +456,3 @@ window.onclick = function (event) {
 var day = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
 document.getElementById("d2").innerHTML = day;
 
-setInterval(checkForEmptyList, 100)
