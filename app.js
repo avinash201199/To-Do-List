@@ -387,17 +387,38 @@ function closemodal() {
   document.getElementById("Modal").classList.remove("true");
 }
 
-//changed the sequence as the old one was looking odd
+function getTime(){
+  var date = new Date();
+  var h = date.getHours(); 
+  var m = date.getMinutes(); 
+  var s = date.getSeconds(); 
+  var session = "AM";
+  
+  if(h == 0){
+      h = 12;
+  }
+  
+  if(h > 12){
+      h = h - 12;
+      session = "PM";
+  }
+  
+  h = (h < 10) ? "0" + h : h;
+  m = (m < 10) ? "0" + m : m;
+  s = (s < 10) ? "0" + s : s;
+  
+  var time = h + ":" + m + ":" + s + " " + session;
+
+  return time
+ }
+
+//rewrote this function so that it shows time properly
+
 setInterval(function () {
-  var today = new Date();
-
-  var hour = today.getHours();
-  var min = today.getMinutes();
-  var sec = today.getSeconds();
-  var time = hour + " : " + min + " : " + sec;
-  document.getElementById("d1").innerHTML = time;
-
+    document.getElementById("d1").innerHTML = getTime();
 }, 100)
+
+
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = 'Please add items first';
@@ -433,3 +454,5 @@ window.onclick = function(event) {
 
 var day = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
 document.getElementById("d2").innerHTML = day;
+
+
