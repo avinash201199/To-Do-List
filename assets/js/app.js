@@ -16,9 +16,12 @@ var textField = document.getElementById("textInput");
 var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
 
+var day = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
+document.getElementById("d2").innerHTML = day;
+
 //Functions
 function htmlEncode(str) {
-  return String(str).replace(/[^\w. ]/gi, function(c){
+  return String(str).replace(/[^\w. ]/gi, function (c) {
     return '&#' + c.charCodeAt(0) + ';';
   });
 }
@@ -59,6 +62,8 @@ function addTodo(e) {
     status: "incomplete",
   };
   todoDiv.setAttribute("key", newTodoItem.id);
+
+  const createTime = getTime()
 
   //Save to local - do this last
   //Save to local
@@ -102,6 +107,14 @@ function addTodo(e) {
   trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
   trashButton.classList.add("trash-btn");
   todoDiv.appendChild(trashButton);
+  //Create info button
+  const infoButton = document.createElement("span");
+  infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
+  infoButton.classList.add("edit-btn");
+  todoDiv.appendChild(infoButton);
+  infoButton.addEventListener("click", () => {
+    alert(`The todo item was created at ${createTime}, ${day}`)
+  });
   //attach final Todo
   todoList.appendChild(todoDiv);
 }
@@ -200,7 +213,7 @@ function editTodo(todo, todoDiv) {
   }
   const editBtn = document.getElementById(`editBtn-` + `${todo.id}`);
   editBtn.addEventListener("click", (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     editTask(todo, todoDiv)
   });
 }
@@ -387,35 +400,35 @@ function closemodal() {
   document.getElementById("Modal").classList.remove("true");
 }
 
-function getTime(){
+function getTime() {
   var date = new Date();
-  var h = date.getHours(); 
-  var m = date.getMinutes(); 
-  var s = date.getSeconds(); 
+  var h = date.getHours();
+  var m = date.getMinutes();
+  var s = date.getSeconds();
   var session = "AM";
-  
-  if(h == 0){
-      h = 12;
+
+  if (h == 0) {
+    h = 12;
   }
-  
-  if(h > 12){
-      h = h - 12;
-      session = "PM";
+
+  if (h > 12) {
+    h = h - 12;
+    session = "PM";
   }
-  
+
   h = (h < 10) ? "0" + h : h;
   m = (m < 10) ? "0" + m : m;
   s = (s < 10) ? "0" + s : s;
-  
+
   var time = h + ":" + m + ":" + s + " " + session;
 
   return time
- }
+}
 
 //rewrote this function so that it shows time properly
 
 setInterval(function () {
-    document.getElementById("d1").innerHTML = getTime();
+  document.getElementById("d1").innerHTML = getTime();
 }, 100)
 
 
@@ -434,25 +447,24 @@ function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
 }
 
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
   textField.focus();
 }
 
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
 }
-addBtn.onclick = function() {
+addBtn.onclick = function () {
   modal.style.display = "none";
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
-var day = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
-document.getElementById("d2").innerHTML = day;
+
 
 
