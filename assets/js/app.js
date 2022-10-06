@@ -3,11 +3,12 @@ const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
+const todoItem = document.getElementsByClassName("todo")
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos);
 todoButton.addEventListener("click", addTodo);
-todoList.addEventListener("click", deleteTodo);
+todoList.addEventListener("click", deleteTodo, deleteBtnStatus);
 filterOption.addEventListener("click", filterTodo);
 
 var modal = document.getElementById("myModal");
@@ -15,6 +16,10 @@ var btn = document.getElementById("myBtn");
 var textField = document.getElementById("textInput");
 var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
+
+window.onload = function() {
+  deleteBtnStatus();
+};
 
 //Functions
 function htmlEncode(str) {
@@ -27,6 +32,15 @@ function getItemFromLocalStorage() {
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
   return todos;
+}
+
+function deleteBtnStatus(){
+  const todosB = JSON.parse(localStorage.getItem("todos")) || [];
+  if(!todosB.length){
+    document.getElementById("delete-all").style.display='none'
+  }else{
+    document.getElementById("delete-all").style.display='block'
+  }
 }
 
 function addTodo(e) {
@@ -104,6 +118,7 @@ function addTodo(e) {
   todoDiv.appendChild(trashButton);
   //attach final Todo
   todoList.appendChild(todoDiv);
+  deleteBtnStatus();
 }
 
 function deleteTodo(e) {
@@ -126,6 +141,7 @@ function deleteTodo(e) {
     const id = todo.getAttribute("key");
     saveStatus(id, status);
   }
+  deleteBtnStatus();
 }
 
 //save the status of the task -> and persist by saving it to the localstorage
@@ -374,6 +390,7 @@ function deleteAll() {
   [...document.getElementsByClassName("todo")].map((n) => n && n.remove());
   localStorage.removeItem("todos");
   document.getElementById("confirmation_box").classList.add("hide");
+  deleteBtnStatus();
 }
 
 function openmodal(color, message) {
