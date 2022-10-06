@@ -215,6 +215,7 @@ function editTodo(todo, todoDiv) {
   editBtn.addEventListener("click", (e) => {
     e.preventDefault();
     editTask(todo, todoDiv)
+    location.reload();
   });
 }
 
