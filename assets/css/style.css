@@ -112,6 +112,19 @@ form button,
     justify-content: center;
     margin: 2rem auto;
     display: flex;
+
+    width: 11rem;
+
+    @media (min-width: 359px) and (max-width: 741px) {
+        margin-left: 11px;
+        width:12rem;
+    
+    }
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
+        width:12rem;
+
+    }
+
     width: 20rem;
 
 @media (min-width: 359px) and (max-width: 741px) {
@@ -119,6 +132,7 @@ form button,
     width:12rem;
 
 }
+
 
 }
 
@@ -184,6 +198,10 @@ form button,
 
 .todo-button {
     background: darkcyan;
+
+    @media (min-width: 359px) and (max-width: 741px) {
+        height: 50px
+    }
 }
 
 form button,
@@ -241,6 +259,10 @@ form button:hover {
 
 .filter-todo {
     padding: 1rem;
+
+    @media only screen and (min-width: 819px) and (max-device-width: 1024px) {
+        width: 15px
+    }
 }
 
 .todo li {
