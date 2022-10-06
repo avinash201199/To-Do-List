@@ -263,29 +263,7 @@ function getTodos() {
     todoList.appendChild(todoDiv);
   });
 }
-// function filterTodo(e) {
-//   const todos = todoList.childNodes;
-//   todos.forEach(function(todo) {
-//     switch (e.target.value) {
-//       case "all":
-//         todo.style.display = "flex";
-//         break;
-//       case "completed":
-//         if (todo.classList.contains("completed")) {
-//           todo.style.display = "flex";
-//         } else {
-//           todo.style.display = "none";
-//         }
-//         break;
-//       case "incomplete":
-//         if (!todo.classList.contains("completed")) {
-//           todo.style.display = "flex";
-//         } else {
-//           todo.style.display = "none";
-//         }
-//     }
-//   });
-// }
+ 
 
 function saveLocalTodos(todo) {
   let todos;
@@ -387,72 +365,40 @@ function closemodal() {
   document.getElementById("Modal").classList.remove("true");
 }
 
-function getTime(){
-  var date = new Date();
-  var h = date.getHours(); 
-  var m = date.getMinutes(); 
-  var s = date.getSeconds(); 
-  var session = "AM";
-  
-  if(h == 0){
-      h = 12;
-  }
-  
-  if(h > 12){
-      h = h - 12;
-      session = "PM";
-  }
-  
-  h = (h < 10) ? "0" + h : h;
-  m = (m < 10) ? "0" + m : m;
-  s = (s < 10) ? "0" + s : s;
-  
-  var time = h + ":" + m + ":" + s + " " + session;
 
-  return time
- }
+(function () {
+  setInterval(() => {
+      var time = new Date().toLocaleTimeString();
+      var date = new Date().toLocaleDateString();
+      var day = new Date().getDay();
+      switch (day) {
+          case 0:
+              day = "Sunday,";
+              break;
+          case 1:
+              day = "Monday,";
+              break;
+          case 2:
+              day = "Tuseday,";
+              break;
+          case 3:
+              day = "Wednesday,";
+              break;
+          case 4:
+              day = "Thursday,";
+              break;
+          case 5:
+              day = "Friday,";
+              break;
+          case 6:
+              day = "Saturday,";
+              break;
+      }
+      // time = "<span>"+time.split(":").join("</span>:<span>")+"</span>"
+      document.getElementById("time").innerHTML = time;
+      document.getElementById("date").innerHTML = date;
+      document.getElementById("day").innerHTML = day;
 
-//rewrote this function so that it shows time properly
-
-setInterval(function () {
-    document.getElementById("d1").innerHTML = getTime();
-}, 100)
-
-
-function show_alert() {
-  if (localStorage.getItem("todos") === null) {
-    let html = 'Please add items first';
-    console.log(html);
-    alert(html);
-  }
-  else {
-    document.getElementById("confirmation_box").classList.remove("hide");
-  }
-
-}
-function goback() {
-  document.getElementById("confirmation_box").classList.add("hide");
-}
-
-btn.onclick = function() {
-  modal.style.display = "block";
-  textField.focus();
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-addBtn.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-var day = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) 
-document.getElementById("d2").innerHTML = day;
-
+  }, 1000)
+})();
 
