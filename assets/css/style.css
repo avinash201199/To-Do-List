@@ -218,14 +218,14 @@ form button:hover {
 }
 
 .delete-all {
-  background-color: #D75281;
+  background-color: red;
   color: white;
   width: 200px;
   margin: auto auto 1.5rem;
 }
 
 .delete-all:hover {
-    background-color: rgb(207, 2, 2);
+    background-color: rgb(225, 111, 111);
 }
 
 .todo-container {
@@ -286,12 +286,12 @@ form button:hover {
 }
 
 .complete-btn {
-    background-color: #55acee;
+    background-color: #25a048;
     color: #FFF;
 }
 
 .complete-btn:hover {
-    background: rgb(37, 180, 37);
+    background: rgb(18, 91, 0);
     color: #FFF;
 }
 
@@ -303,8 +303,8 @@ form button:hover {
 }
 
 .edit-btn:hover {
-    background: rgb(38, 36, 36);
-    color: white;
+    background: rgb(41, 50, 171);
+    color: rgb(255, 255, 255);
 }
 
 .trash-btn:hover {
