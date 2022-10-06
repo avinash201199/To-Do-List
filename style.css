@@ -28,10 +28,10 @@
 
 
 :root {
-  --black: rgb(0, 0, 0);
+  --secondary-color: rgb(0, 0, 0);
   --green: rgb(51, 243, 12);
   --backgroundGreen: rgb(139, 255, 116);
-  --white: rgb(255, 255, 255);
+  --primary-color: rgb(255, 255, 255);
   --blue: rgb(21, 17, 255);
 }
 
@@ -59,15 +59,15 @@ body {
 }
 
 body {
- background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%,rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%,rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%,rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%,rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%,rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%,rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%),linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%,rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%,rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%,rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%,rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%,rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%,rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%,rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+ background-image: var(--grue);
 
 }
 
 header {
   letter-spacing: -1px;
   background-color: #0093E9;
-  background-image: radial-gradient(circle at top center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 6%,transparent 6%, transparent 54%,transparent 54%, transparent 93%,rgba(48, 184, 210,0.15) 93%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 2%,transparent 2%, transparent 19%,transparent 19%, transparent 36%,rgba(48, 184, 210,0.15) 36%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 1%,transparent 1%, transparent 2%,transparent 2%, transparent 11%,rgba(48, 184, 210,0.15) 11%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at center center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 13%,transparent 13%, transparent 59%,transparent 59%, transparent 67%,rgba(48, 184, 210,0.15) 67%, rgba(48, 184, 210,0.15) 100%),linear-gradient(90deg, hsl(38,64%,92%),hsl(38,64%,92%)); background-size: 111px 111px;
-  color: #111;
+  background-image: var(--header);
+  color: var(--secondary-color);
   border-radius: 15px;
   padding: 0%;
 }
@@ -91,7 +91,7 @@ form button,
   font-size: 1rem;
   font-family: sans-serif;
   outline: none;
-  background-color: white;
+  background-color: var(--primary-color);
   border-radius: 5px;
   border: none;
 }
@@ -128,13 +128,13 @@ form button,
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: var(--secondary-color); /* Fallback color */
+  background-color: var(--secondary-color); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: var(--primary-color);
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -151,7 +151,7 @@ form button,
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: var(--secondary-color);
   text-decoration: none;
   cursor: pointer;
 }
@@ -176,12 +176,12 @@ form button,
 
 form button:hover {
   background: #5470B0;
-  color: var(--white);
+  color: var(--primary-color);
 }
 
 .delete-all {
   background-color: #D75281;
-  color: white;
+  color: var(--primary-color);
   width: 200px;
   margin: auto auto 1.5rem;
 }
@@ -205,10 +205,10 @@ form button:hover {
 
 .todo {
   margin: 0.5rem;
-  background: #FFF;
+  background: var(--primary-color);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--black);
+  color: var(--secondary-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -234,7 +234,7 @@ form button:hover {
 .trash-btn,
 .complete-btn {
   background: red;
-  color: #FFFFFF;
+  color: var(--primary-color);
   border: none;
   padding: 1rem;
   cursor: pointer;
@@ -243,12 +243,12 @@ form button:hover {
 
 .complete-btn {
   background-color: #55acee;
-  color: #FFF;
+  color: var(--primary-color);
 }
 
 .complete-btn:hover {
   background:rgb(37, 180, 37);
-  color:#FFF;
+  color: var(--primary-color);
 }
 
 .edit-btn {
@@ -260,7 +260,7 @@ form button:hover {
 
 .edit-btn:hover {
   background: rgb(38, 36, 36);
-  color:white;
+  color: var(--primary-color);
 }
 
 .trash-btn:hover {
@@ -340,7 +340,7 @@ select {
 }
 
 .footer {
-  background-image: radial-gradient(circle at top center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 6%,transparent 6%, transparent 54%,transparent 54%, transparent 93%,rgba(48, 184, 210,0.15) 93%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 2%,transparent 2%, transparent 19%,transparent 19%, transparent 36%,rgba(48, 184, 210,0.15) 36%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 1%,transparent 1%, transparent 2%,transparent 2%, transparent 11%,rgba(48, 184, 210,0.15) 11%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at center center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 13%,transparent 13%, transparent 59%,transparent 59%, transparent 67%,rgba(48, 184, 210,0.15) 67%, rgba(48, 184, 210,0.15) 100%),linear-gradient(90deg, hsl(38,64%,92%),hsl(38,64%,92%)); background-size: 111px 111px;
+  background-image: var(--header);
   height: 10vh;
   display: flex;
   justify-content: space-around;
@@ -376,7 +376,7 @@ select {
 .footer h3 {
   margin-block-start: 0;
   margin-block-end: 0;
-  color: #111;
+  color: var(--secondary-color);
 }
 
 .social-icon {
@@ -386,9 +386,31 @@ select {
 }
 
 .footer-desc {
-  color: #111;
+  color: var(--secondary-color);
   font-size: 0.9em;
-  font-weight: bold;
+  font-weight: bold; 
+  flex: 0.5;
+  text-align: right;
+}
+
+:root{
+  --primary-color: white;
+  --secondary-color: #111;
+  --grue: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%,rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%,rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%,rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%,rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%,rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%,rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%),linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%,rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%,rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%,rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%,rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%,rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%,rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%,rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+  --header: radial-gradient(circle at top center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 6%,transparent 6%, transparent 54%,transparent 54%, transparent 93%,rgba(48, 184, 210,0.15) 93%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 2%,transparent 2%, transparent 19%,transparent 19%, transparent 36%,rgba(48, 184, 210,0.15) 36%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 1%,transparent 1%, transparent 2%,transparent 2%, transparent 11%,rgba(48, 184, 210,0.15) 11%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at center center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 13%,transparent 13%, transparent 59%,transparent 59%, transparent 67%,rgba(48, 184, 210,0.15) 67%, rgba(48, 184, 210,0.15) 100%),linear-gradient(90deg, hsl(38,64%,92%),hsl(38,64%,92%)); background-size: 111px 111px;
+}
+.dark-theme{
+  --primary-color: #000106;
+  --secondary-color: #fff;
+  --grue: linear-gradient(323deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 16.667%,rgba(46, 46, 46, 0.01) 16.667%, rgba(46, 46, 46, 0.01) 33.334%,rgba(226, 226, 226, 0.01) 33.334%, rgba(226, 226, 226, 0.01) 50.001000000000005%,rgba(159, 159, 159, 0.01) 50.001%, rgba(159, 159, 159, 0.01) 66.668%,rgba(149, 149, 149, 0.01) 66.668%, rgba(149, 149, 149, 0.01) 83.33500000000001%,rgba(43, 43, 43, 0.01) 83.335%, rgba(43, 43, 43, 0.01) 100.002%),linear-gradient(346deg, rgba(166, 166, 166, 0.03) 0%, rgba(166, 166, 166, 0.03) 25%,rgba(240, 240, 240, 0.03) 25%, rgba(240, 240, 240, 0.03) 50%,rgba(121, 121, 121, 0.03) 50%, rgba(121, 121, 121, 0.03) 75%,rgba(40, 40, 40, 0.03) 75%, rgba(40, 40, 40, 0.03) 100%),linear-gradient(347deg, rgba(209, 209, 209, 0.01) 0%, rgba(209, 209, 209, 0.01) 25%,rgba(22, 22, 22, 0.01) 25%, rgba(22, 22, 22, 0.01) 50%,rgba(125, 125, 125, 0.01) 50%, rgba(125, 125, 125, 0.01) 75%,rgba(205, 205, 205, 0.01) 75%, rgba(205, 205, 205, 0.01) 100%),linear-gradient(84deg, rgba(195, 195, 195, 0.01) 0%, rgba(195, 195, 195, 0.01) 14.286%,rgba(64, 64, 64, 0.01) 14.286%, rgba(64, 64, 64, 0.01) 28.572%,rgba(67, 67, 67, 0.01) 28.572%, rgba(67, 67, 67, 0.01) 42.858%,rgba(214, 214, 214, 0.01) 42.858%, rgba(214, 214, 214, 0.01) 57.144%,rgba(45, 45, 45, 0.01) 57.144%, rgba(45, 45, 45, 0.01) 71.42999999999999%,rgba(47, 47, 47, 0.01) 71.43%, rgba(47, 47, 47, 0.01) 85.71600000000001%,rgba(172, 172, 172, 0.01) 85.716%, rgba(172, 172, 172, 0.01) 100.002%),linear-gradient(73deg, rgba(111, 111, 111, 0.03) 0%, rgba(111, 111, 111, 0.03) 16.667%,rgba(202, 202, 202, 0.03) 16.667%, rgba(202, 202, 202, 0.03) 33.334%,rgba(57, 57, 57, 0.03) 33.334%, rgba(57, 57, 57, 0.03) 50.001000000000005%,rgba(197, 197, 197, 0.03) 50.001%, rgba(197, 197, 197, 0.03) 66.668%,rgba(97, 97, 97, 0.03) 66.668%, rgba(97, 97, 97, 0.03) 83.33500000000001%,rgba(56, 56, 56, 0.03) 83.335%, rgba(56, 56, 56, 0.03) 100.002%),linear-gradient(132deg, rgba(88, 88, 88, 0.03) 0%, rgba(88, 88, 88, 0.03) 20%,rgba(249, 249, 249, 0.03) 20%, rgba(249, 249, 249, 0.03) 40%,rgba(2, 2, 2, 0.03) 40%, rgba(2, 2, 2, 0.03) 60%,rgba(185, 185, 185, 0.03) 60%, rgba(185, 185, 185, 0.03) 80%,rgba(196, 196, 196, 0.03) 80%, rgba(196, 196, 196, 0.03) 100%),linear-gradient(142deg, rgba(160, 160, 160, 0.03) 0%, rgba(160, 160, 160, 0.03) 12.5%,rgba(204, 204, 204, 0.03) 12.5%, rgba(204, 204, 204, 0.03) 25%,rgba(108, 108, 108, 0.03) 25%, rgba(108, 108, 108, 0.03) 37.5%,rgba(191, 191, 191, 0.03) 37.5%, rgba(191, 191, 191, 0.03) 50%,rgba(231, 231, 231, 0.03) 50%, rgba(231, 231, 231, 0.03) 62.5%,rgba(70, 70, 70, 0.03) 62.5%, rgba(70, 70, 70, 0.03) 75%,rgba(166, 166, 166, 0.03) 75%, rgba(166, 166, 166, 0.03) 87.5%,rgba(199, 199, 199, 0.03) 87.5%, rgba(199, 199, 199, 0.03) 100%),linear-gradient(238deg, rgba(116, 116, 116, 0.02) 0%, rgba(116, 116, 116, 0.02) 20%,rgba(141, 141, 141, 0.02) 20%, rgba(141, 141, 141, 0.02) 40%,rgba(152, 152, 152, 0.02) 40%, rgba(152, 152, 152, 0.02) 60%,rgba(61, 61, 61, 0.02) 60%, rgba(61, 61, 61, 0.02) 80%,rgba(139, 139, 139, 0.02) 80%, rgba(139, 139, 139, 0.02) 100%),linear-gradient(188deg, rgba(227, 227, 227, 0.01) 0%, rgba(227, 227, 227, 0.01) 20%,rgba(105, 105, 105, 0.01) 20%, rgba(105, 105, 105, 0.01) 40%,rgba(72, 72, 72, 0.01) 40%, rgba(72, 72, 72, 0.01) 60%,rgba(33, 33, 33, 0.01) 60%, rgba(33, 33, 33, 0.01) 80%,rgba(57, 57, 57, 0.01) 80%, rgba(57, 57, 57, 0.01) 100%),linear-gradient(90deg, hsl(237,0%,13%),hsl(237,0%,13%));
+  --header: repeating-linear-gradient(80deg, hsl(55,0%,7%) 0px, hsl(55,0%,7%) 10px,transparent 10px, transparent 12px),repeating-linear-gradient(228deg, hsl(55,0%,7%) 0px, hsl(55,0%,7%) 10px,transparent 10px, transparent 12px),repeating-linear-gradient(127deg, hsl(55,0%,7%) 0px, hsl(55,0%,7%) 10px,transparent 10px, transparent 12px),linear-gradient(90deg, rgb(136, 136, 136),rgb(92, 92, 92));
+}
+
+
+
+#icon{
+  width: 30px;
+  cursor: pointer;
 }
 
 
@@ -399,7 +421,7 @@ select {
   /* Stay in place */
   z-index: 9;
   /* Sit on top */
-  color: white;
+  color: var(--primary-color);
   opacity: 1;
   top: 1;
 
@@ -443,7 +465,7 @@ select {
 
 .modal-btn {
   background: transparent;
-  color: white;
+  color: var(--primary-color);
   box-shadow: none;
   border: none;
   padding: 0.02em 0.68em;
@@ -491,7 +513,7 @@ select {
   /* border: 1px solid black; */
   width: 700px;
   height: 300px;
-  background: #f7fffe;
+  background: var(--primary-color);
   bottom: 280px;
   border-radius: 20px;
   margin: 0;
@@ -569,7 +591,7 @@ select {
 
 .optbox_header i {
   font-size: 2rem;
-  color: #FFF;
+  color: var(--primary-color);
   position: relative;
   /* background-color:red; */
   width: 28px;
@@ -581,7 +603,7 @@ select {
 
 .optbox_header i:hover {
   cursor: pointer;
-  color: black;
+  color: var(--secondary-color);
 }
 
 @media only screen and (max-width: 440px) {
@@ -589,7 +611,7 @@ select {
     /* border: 1px solid black; */
     width: 300px;
     height: 300px;
-    background: #f7fffe;
+    background: var(--primary-color);
     position: relative;
     bottom: 280px;
     border-radius: 20px;
@@ -665,7 +687,7 @@ select {
 
   .optbox_header i {
     font-size: 2rem;
-    color: #FFF;
+    color: var(--primary-color);
     position: relative;
     /* background-color:red; */
     width: 28px;
@@ -677,7 +699,7 @@ select {
 
   .optbox_header i:hover {
     cursor: pointer;
-    color: black;
+    color: var(--secondary-color);
   }
 }
 
