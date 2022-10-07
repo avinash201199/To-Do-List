@@ -6,6 +6,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 100%;
     }
@@ -58,27 +59,28 @@ body {
 }
 
 body {
- background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%,rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%,rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%,rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%,rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%,rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%,rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%),linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%,rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%,rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%,rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%,rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%,rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%,rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%,rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+    background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
 }
 
 header {
-  letter-spacing: -1px;
-  background-color: #0093E9;
-  background-image: radial-gradient(circle at top center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 6%,transparent 6%, transparent 54%,transparent 54%, transparent 93%,rgba(48, 184, 210,0.15) 93%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 2%,transparent 2%, transparent 19%,transparent 19%, transparent 36%,rgba(48, 184, 210,0.15) 36%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 1%,transparent 1%, transparent 2%,transparent 2%, transparent 11%,rgba(48, 184, 210,0.15) 11%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at center center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 13%,transparent 13%, transparent 59%,transparent 59%, transparent 67%,rgba(48, 184, 210,0.15) 67%, rgba(48, 184, 210,0.15) 100%),linear-gradient(90deg, hsl(38,64%,92%),hsl(38,64%,92%)); background-size: 111px 111px;
-  color: #111;
-  border-radius: 10px;
-  padding: 0%;
+    letter-spacing: -1px;
+    background-color: #0093E9;
+    background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
+    background-size: 111px 111px;
+    color: #111;
+    border-radius: 10px;
+    padding: 0%;
 }
 
 header,
 form {
-  min-height: 10vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 0.5rem;
-  border-radius: 5px;
+    min-height: 10vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    border-radius: 5px;
 }
 
 form input,
@@ -117,25 +119,27 @@ form button,
 
     @media (min-width: 359px) and (max-width: 741px) {
         margin-left: 11px;
-        width:12rem;
-    
+        width: 12rem;
+
     }
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px){
-        width:12rem;
+
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        width: 12rem;
 
     }
 
     width: 20rem;
 
-@media (min-width: 359px) and (max-width: 741px) {
-    margin-left: 11px;
-    width:12rem;
+    @media (min-width: 359px) and (max-width: 741px) {
+        margin-left: 11px;
+        width: 12rem;
+
+    }
+
 
 }
 
-
-}
-.myBtn:hover{
+.myBtn:hover {
     background-color: #55acee;
 }
 
@@ -218,10 +222,10 @@ form button:hover {
 }
 
 .delete-all {
-  background-color: #D75281;
-  color: white;
-  width: 200px;
-  margin: auto auto 1.5rem;
+    background-color: #D75281;
+    color: white;
+    width: 200px;
+    margin: auto auto 1.5rem;
 }
 
 .delete-all:hover {
@@ -267,7 +271,8 @@ form button:hover {
         width: 15px
     }
 }
-.filter-todo:hover{
+
+.filter-todo:hover {
     background-color: #55acee;
 }
 
@@ -386,21 +391,23 @@ select {
 }
 
 .footer {
-  background-image: radial-gradient(circle at top center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 6%,transparent 6%, transparent 54%,transparent 54%, transparent 93%,rgba(48, 184, 210,0.15) 93%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 2%,transparent 2%, transparent 19%,transparent 19%, transparent 36%,rgba(48, 184, 210,0.15) 36%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at top right, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 1%,transparent 1%, transparent 2%,transparent 2%, transparent 11%,rgba(48, 184, 210,0.15) 11%, rgba(48, 184, 210,0.15) 100%),radial-gradient(circle at center center, rgba(17, 201, 137,0.15) 0%, rgba(17, 201, 137,0.15) 13%,transparent 13%, transparent 59%,transparent 59%, transparent 67%,rgba(48, 184, 210,0.15) 67%, rgba(48, 184, 210,0.15) 100%),linear-gradient(90deg, hsl(38,64%,92%),hsl(38,64%,92%)); background-size: 111px 111px;
-  height: 10vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: auto;
-  width: 100%;
-  background-color: #55acee;
-  text-align: center;
+    background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
+    background-size: 111px 111px;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: auto;
+    width: 100%;
+    background-color: #55acee;
+    text-align: center;
 }
 
 @media only screen and (max-width: 440px) {
     .abc {
         flex-direction: column;
     }
+
     .todoform {
         flex-direction: column;
     }
@@ -432,7 +439,7 @@ select {
     /* border-radius: 50%; */
 }
 
-.social-icon:hover{
+.social-icon:hover {
     transform: scale(1.3);
 }
 
@@ -506,6 +513,7 @@ select {
         top: -300px;
         opacity: 0
     }
+
     to {
         top: 0;
         opacity: 1
@@ -633,17 +641,20 @@ select {
         bottom: 280px;
         border-radius: 20px;
     }
+
     .optbox_header {
         background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
         height: 40px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
     }
+
     .confirmation_box p {
         position: relative;
         font-size: 1rem;
         text-align: center;
     }
+
     .proceed {
         background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
         height: 60px;
@@ -656,6 +667,7 @@ select {
         line-height: 60px;
         font-size: 2.2rem;
     }
+
     .donot_proceed {
         background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
         height: 60px;
@@ -668,6 +680,7 @@ select {
         line-height: 60px;
         font-size: 2.2rem;
     }
+
     .option_box {
         display: flex;
         justify-content: space-between;
@@ -676,6 +689,7 @@ select {
         left: 0px;
         top: 50px;
     }
+
     .proceed:hover {
         box-shadow: 10px 10px 10px rgb(132, 131, 131);
         cursor: pointer;
@@ -683,6 +697,7 @@ select {
         width: 95px;
         font-size: 2.8rem;
     }
+
     .donot_proceed:hover {
         box-shadow: 10px 10px 10px rgb(132, 131, 131);
         cursor: pointer;
@@ -690,6 +705,7 @@ select {
         width: 95px;
         font-size: 2.8rem;
     }
+
     .optbox_header i {
         font-size: 2rem;
         color: #FFF;
@@ -701,6 +717,7 @@ select {
         left: 255px;
         top: 5px;
     }
+
     .optbox_header i:hover {
         cursor: pointer;
         color: black;
@@ -721,4 +738,22 @@ select {
     }
 }
 
-  
+/* Style for fa-heart */
+.fa-heart-custom {
+    color: #e74c3c;
+    animation: 1.5s ease 0s infinite hear-beat;
+}
+
+@keyframes hear-beat {
+
+    0%,
+    50%,
+    100% {
+        transform: scale(1, 1);
+    }
+
+    30%,
+    80% {
+        transform: scale(0.90, 0.93);
+    }
+}
