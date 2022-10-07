@@ -376,12 +376,13 @@ function deleteAll() {
   document.getElementById("confirmation_box").classList.add("hide");
 }
 
-function openmodal(color, message) {
+function openmodal(color, message, timer = 3000) {
   //pass color as either 'red' (for error), 'blue' for info and 'green' for success
   console.log("in");
   document.getElementById("content").classList.add(color);
   document.getElementById("modal-text").innerText = message;
   document.getElementById("Modal").classList.add("true");
+  setTimeout(closemodal, timer) 
 }
 function closemodal() {
   document.getElementById("Modal").classList.remove("true");
