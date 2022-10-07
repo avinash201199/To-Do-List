@@ -3,6 +3,8 @@ const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
+const deleteAllButton = document.querySelector(".delete-all")
+const noToDoItemText = document.querySelector(".no-to-do-item")
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos);
@@ -20,6 +22,24 @@ var day = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numer
 document.getElementById("d2").innerHTML = day;
 
 //Functions
+function checkForEmptyList() {
+  if (localStorage.getItem("todos") === null) {
+    deleteAllButton.classList.add("hide")
+    noToDoItemText.classList.remove("hide")
+  }
+  else {
+    if (getItemFromLocalStorage().length == 0) {
+      deleteAllButton.classList.add("hide")
+      noToDoItemText.classList.remove("hide")
+    }
+    else {
+      deleteAllButton.classList.remove("hide")
+      noToDoItemText.classList.add("hide")
+    }
+  }
+}
+setInterval(checkForEmptyList, 100)
+
 function htmlEncode(str) {
   return String(str).replace(/[^\w. ]/gi, function (c) {
     return '&#' + c.charCodeAt(0) + ';';
