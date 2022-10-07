@@ -112,9 +112,26 @@ function addTodo(e) {
   infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
   infoButton.classList.add("edit-btn");
   todoDiv.appendChild(infoButton);
-  infoButton.addEventListener("click", () => {
-    alert(`The todo item was created at ${createTime}, ${day}`)
-  });
+
+  const tsModal = document.querySelector('#timestamp-modal')
+  tsModal.innerHTML = `
+    <div class="ts-modal-content">
+      <div class="ts-close">&times;</div>
+      <b>The todo item was created at ${createTime}, ${day}</b>
+    </div>
+    `
+  var close = document.getElementsByClassName("ts-close")[0];
+  infoButton.onclick = () => {
+    tsModal.style.display = "block";
+  }
+  close.onclick = function () {
+    tsModal.style.display = "none";
+  }
+  window.onclick = (e) => {
+    if (e.target == tsModal) {
+      tsModal.style.display = "none";
+    }
+  }
   //attach final Todo
   todoList.appendChild(todoDiv);
 }
