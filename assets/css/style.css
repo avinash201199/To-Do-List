@@ -4,7 +4,7 @@
 
 @keyframes slideInFromLeft {
     0% {
-        opacity: 0;
+        opacity: 0%;
     }
 
     100% {
@@ -15,7 +15,7 @@
 @keyframes expand {
     from {
         transform: scale(0);
-        opacity: 0;
+        opacity: 20;
         background: #5470B0;
     }
 }
@@ -32,7 +32,7 @@
     --green: rgb(51, 243, 12);
     --backgroundGreen: rgb(139, 255, 116);
     --white: rgb(255, 255, 255);
-    --blue: rgb(21, 17, 255);
+    --blue: rgb(31, 17, 255);
 }
 
 html {
@@ -44,7 +44,7 @@ html {
 }
 
 .column {
-    width: 100%;
+    width: 80%;
 }
 
 body {
