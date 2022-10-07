@@ -501,6 +501,12 @@ select {
     opacity: .7;
 }
 
+.no-to-do-item{
+    text-align: center;
+    padding-top: 80px;
+    color: #4d4c4c;
+}
+
 @keyframes slideIn {
     from {
         top: -300px;
