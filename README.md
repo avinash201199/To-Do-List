@@ -15,10 +15,11 @@ After marked as completed
 After deleting all tasks
 <img src="assets/images/Empty-Todolist.png"/>
 
-## Demo video
-<video src="assets/videos/project-demo-fast.mp4" data-canonical-src="assets/videos/project-demo-fast.mp4" controls="controls" muted="muted" class="d-block rounded-bottom-2 border-top width-fit" style="max-height:640px;">
 
-</video>
+## Demo video
+
+https://user-images.githubusercontent.com/99414512/194696750-68ce7d3d-f260-4f45-867d-a696f8ed4f05.mp4
+
 
 
 ### How to contribute 😎<br>
