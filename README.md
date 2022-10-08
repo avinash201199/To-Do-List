@@ -3,7 +3,7 @@
 # Are you excited to contribute under Hacktoberfest2022?😍
 
 ## Project Demo 
-<img src="/../../assets/images/List-of-tasks.png"/>
+<img src="assets/images/List-of-tasks.png"/>
 
 
 ### How to contribute 😎<br>
