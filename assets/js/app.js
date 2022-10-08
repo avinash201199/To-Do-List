@@ -55,6 +55,8 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
+  const createTime = getTime();
+  const infoText = `The todo item was created at ${createTime}, ${day}`;
   const currentValue = htmlEncode(todoInput.value)?.trim() || ""
   if (!currentValue) {
     //alert("Fill the box");
@@ -80,10 +82,10 @@ function addTodo(e) {
     id: Math.round(Math.random() * 100), //id for selection
     task: currentValue,
     status: "incomplete",
+    infoText: infoText,
   };
   todoDiv.setAttribute("key", newTodoItem.id);
 
-  const createTime = getTime()
 
   //Save to local - do this last
   //Save to local
@@ -133,7 +135,7 @@ function addTodo(e) {
   infoButton.classList.add("edit-btn");
   todoDiv.appendChild(infoButton);
   infoButton.addEventListener("click", () => {
-    alert(`The todo item was created at ${createTime}, ${day}`)
+    alert(infoText)
   });
   //attach final Todo
   todoList.appendChild(todoDiv);
@@ -399,6 +401,16 @@ function getTodos() {
     trashButton.classList.add("trash-btn");
     todoDiv.setAttribute("key", todo.id);
     todoDiv.appendChild(trashButton);
+    //Create info button
+    if (!todo.infoText)
+      todo.infoText = "Create time not found.";
+    const infoButton = document.createElement("span");
+    infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
+    infoButton.classList.add("edit-btn");
+    todoDiv.appendChild(infoButton);
+    infoButton.addEventListener("click", () => {
+      alert(todo.infoText)
+    });
     //attach final Todo
     todoList.appendChild(todoDiv);
   });
