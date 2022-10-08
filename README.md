@@ -10,7 +10,7 @@ Add Task
 <img src="assets/images/Add-Task.png"/>
 
 After marked as completed
-<img src="assets/images/With-completed-tasks.png"/>
+<img src="assets/images/With-completed-task.png"/>
 
 After deleting all tasks
 <img src="assets/images/Empty-Todolist.png"/>
