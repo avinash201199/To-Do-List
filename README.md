@@ -16,6 +16,12 @@ After deleting all tasks
 <img src="assets/images/Empty-Todolist.png"/>
 
 
+## Demo video
+
+https://user-images.githubusercontent.com/99414512/194696750-68ce7d3d-f260-4f45-867d-a696f8ed4f05.mp4
+
+
+
 ### How to contribute 😎<br>
 
 * Star this repository.
