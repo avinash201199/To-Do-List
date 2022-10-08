@@ -3,7 +3,17 @@
 # Are you excited to contribute under Hacktoberfest2022?😍
 
 ## Project Demo 
+List view after adding tasks in TO DO List
 <img src="assets/images/List-of-tasks.png"/>
+
+Add Task
+<img src="assets/images/Add-Task.png"/>
+
+After marked as completed
+<img src="assets/images/With-completed-tasks.png"/>
+
+After deleting all tasks
+<img src="assets/images/Empty-Todolist.png"/>
 
 
 ### How to contribute 😎<br>
