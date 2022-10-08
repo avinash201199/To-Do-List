@@ -3,6 +3,8 @@ const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
+const deleteAllButton = document.querySelector(".delete-all")
+const noToDoItemText = document.querySelector(".no-to-do-item")
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos);
@@ -20,6 +22,24 @@ var day = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numer
 document.getElementById("d2").innerHTML = day;
 
 //Functions
+function checkForEmptyList() {
+  if (localStorage.getItem("todos") === null) {
+    deleteAllButton.classList.add("hide")
+    noToDoItemText.classList.remove("hide")
+  }
+  else {
+    if (getItemFromLocalStorage().length == 0) {
+      deleteAllButton.classList.add("hide")
+      noToDoItemText.classList.remove("hide")
+    }
+    else {
+      deleteAllButton.classList.remove("hide")
+      noToDoItemText.classList.add("hide")
+    }
+  }
+}
+setInterval(checkForEmptyList, 100)
+
 function htmlEncode(str) {
   return String(str).replace(/[^\w. ]/gi, function (c) {
     return '&#' + c.charCodeAt(0) + ';';
@@ -35,6 +55,8 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
+  const createTime = getTime();
+  const infoText = `The todo item was created at ${createTime}, ${day}`;
   const currentValue = htmlEncode(todoInput.value)?.trim() || ""
   if (!currentValue) {
     //alert("Fill the box");
@@ -60,10 +82,10 @@ function addTodo(e) {
     id: Math.round(Math.random() * 100), //id for selection
     task: currentValue,
     status: "incomplete",
+    infoText: infoText,
   };
   todoDiv.setAttribute("key", newTodoItem.id);
 
-  const createTime = getTime()
 
   //Save to local - do this last
   //Save to local
@@ -112,6 +134,7 @@ function addTodo(e) {
   infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
   infoButton.classList.add("edit-btn");
   todoDiv.appendChild(infoButton);
+<<<<<<< HEAD
 
   const tsModal = document.querySelector('#timestamp-modal')
   tsModal.innerHTML = `
@@ -132,6 +155,11 @@ function addTodo(e) {
       tsModal.style.display = "none";
     }
   }
+=======
+  infoButton.addEventListener("click", () => {
+    alert(infoText)
+  });
+>>>>>>> 075654b90ce3756ba42b972c49bfad6c1aac21e7
   //attach final Todo
   todoList.appendChild(todoDiv);
 }
@@ -396,6 +424,16 @@ function getTodos() {
     trashButton.classList.add("trash-btn");
     todoDiv.setAttribute("key", todo.id);
     todoDiv.appendChild(trashButton);
+    //Create info button
+    if (!todo.infoText)
+      todo.infoText = "Create time not found.";
+    const infoButton = document.createElement("span");
+    infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
+    infoButton.classList.add("edit-btn");
+    todoDiv.appendChild(infoButton);
+    infoButton.addEventListener("click", () => {
+      alert(todo.infoText)
+    });
     //attach final Todo
     todoList.appendChild(todoDiv);
   });
@@ -407,12 +445,13 @@ function deleteAll() {
   document.getElementById("confirmation_box").classList.add("hide");
 }
 
-function openmodal(color, message) {
+function openmodal(color, message, timer = 3000) {
   //pass color as either 'red' (for error), 'blue' for info and 'green' for success
   console.log("in");
   document.getElementById("content").classList.add(color);
   document.getElementById("modal-text").innerText = message;
   document.getElementById("Modal").classList.add("true");
+  setTimeout(closemodal, timer) 
 }
 function closemodal() {
   document.getElementById("Modal").classList.remove("true");
