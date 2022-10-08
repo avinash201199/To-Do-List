@@ -1,7 +1,5 @@
 ### To-Do-List web link -> https://avinash201199.github.io/To-Do-List/
 
-## Add➕, Edit✎ and Complete✔️ your tasks to take control of your time!
-<a href="https://avinash201199.github.io/To-Do-List/"><img src="https://user-images.githubusercontent.com/59679281/194605374-e8951d28-f173-4dbf-bde8-de6d397b5f21.png"></a>
 # Are you excited to contribute under Hacktoberfest2022?😍
 
 
