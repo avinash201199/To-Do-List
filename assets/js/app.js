@@ -134,7 +134,6 @@ function addTodo(e) {
   infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
   infoButton.classList.add("edit-btn");
   todoDiv.appendChild(infoButton);
-<<<<<<< HEAD
 
   const tsModal = document.querySelector('#timestamp-modal')
   tsModal.innerHTML = `
@@ -155,11 +154,6 @@ function addTodo(e) {
       tsModal.style.display = "none";
     }
   }
-=======
-  infoButton.addEventListener("click", () => {
-    alert(infoText)
-  });
->>>>>>> 075654b90ce3756ba42b972c49bfad6c1aac21e7
   //attach final Todo
   todoList.appendChild(todoDiv);
 }
