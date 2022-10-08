@@ -3,8 +3,8 @@ const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 const filterOption = document.querySelector(".filter-todo");
-const deleteAllButton = document.querySelector(".delete-all")
-const noToDoItemText = document.querySelector(".no-to-do-item")
+const deleteAllButton = document.querySelector(".delete-all");
+const noToDoItemText = document.querySelector(".no-to-do-item");
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos);
@@ -18,31 +18,34 @@ var textField = document.getElementById("textInput");
 var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
 
-var day = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
+var day = new Date().toLocaleDateString("en-us", {
+  weekday: "long",
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
 document.getElementById("d2").innerHTML = day;
 
 //Functions
 function checkForEmptyList() {
   if (localStorage.getItem("todos") === null) {
-    deleteAllButton.classList.add("hide")
-    noToDoItemText.classList.remove("hide")
-  }
-  else {
+    deleteAllButton.classList.add("hide");
+    noToDoItemText.classList.remove("hide");
+  } else {
     if (getItemFromLocalStorage().length == 0) {
-      deleteAllButton.classList.add("hide")
-      noToDoItemText.classList.remove("hide")
-    }
-    else {
-      deleteAllButton.classList.remove("hide")
-      noToDoItemText.classList.add("hide")
+      deleteAllButton.classList.add("hide");
+      noToDoItemText.classList.remove("hide");
+    } else {
+      deleteAllButton.classList.remove("hide");
+      noToDoItemText.classList.add("hide");
     }
   }
 }
-setInterval(checkForEmptyList, 100)
+setInterval(checkForEmptyList, 100);
 
 function htmlEncode(str) {
   return String(str).replace(/[^\w. ]/gi, function (c) {
-    return '&#' + c.charCodeAt(0) + ';';
+    return "&#" + c.charCodeAt(0) + ";";
   });
 }
 
@@ -55,7 +58,7 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
-  const currentValue = htmlEncode(todoInput.value)?.trim() || ""
+  const currentValue = htmlEncode(todoInput.value)?.trim() || "";
   if (!currentValue) {
     //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
@@ -64,10 +67,9 @@ function addTodo(e) {
 
   // alert("Duplicate task")
   if (isDuplicate(currentValue)) {
-    openmodal('red', 'This Task is already added!');
+    openmodal("red", "This Task is already added!");
     return;
   }
-
 
   //Create todo div
   const todoDiv = document.createElement("div");
@@ -83,14 +85,14 @@ function addTodo(e) {
   };
   todoDiv.setAttribute("key", newTodoItem.id);
 
-  const createTime = getTime()
+  const createTime = getTime();
 
   //Save to local - do this last
   //Save to local
   saveLocalTodos(newTodoItem);
   //
   newTodo.classList.add("todo-item");
-  newTodo.classList.add("todo")
+  newTodo.classList.add("todo");
   todoDiv.appendChild(newTodo);
   todoInput.value = "";
   const edit = document.createElement("div");
@@ -133,7 +135,7 @@ function addTodo(e) {
   infoButton.classList.add("edit-btn");
   todoDiv.appendChild(infoButton);
   infoButton.addEventListener("click", () => {
-    alert(`The todo item was created at ${createTime}, ${day}`)
+    alert(`The todo item was created at ${createTime}, ${day}`);
   });
   //attach final Todo
   todoList.appendChild(todoDiv);
@@ -234,7 +236,7 @@ function editTodo(todo, todoDiv) {
   const editBtn = document.getElementById(`editBtn-` + `${todo.id}`);
   editBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    editTask(todo, todoDiv)
+    editTask(todo, todoDiv);
     location.reload();
   });
 }
@@ -249,23 +251,23 @@ function editTask(todo, todoDiv) {
     return;
   }
   if (isDuplicate(editValue)) {
-    openmodal('red', 'This Task is already added!');
+    openmodal("red", "This Task is already added!");
     return;
   }
   const updatedTodos = todos.map((t) => {
     if (t.id === todo.id) {
-      return { ...t, task: editValue }
+      return { ...t, task: editValue };
     }
     return t;
-  })
+  });
   localStorage.setItem("todos", JSON.stringify(updatedTodos));
   todoDiv.children[0].innerText = editValue;
 }
 
 function isDuplicate(task) {
   let todos = getItemFromLocalStorage();
-  const index = todos.findIndex(t => t.task === task)
-  return index > -1
+  const index = todos.findIndex((t) => t.task === task);
+  return index > -1;
 }
 
 function getTodos() {
@@ -416,7 +418,7 @@ function openmodal(color, message, timer = 3000) {
   document.getElementById("content").classList.add(color);
   document.getElementById("modal-text").innerText = message;
   document.getElementById("Modal").classList.add("true");
-  setTimeout(closemodal, timer) 
+  setTimeout(closemodal, timer);
 }
 function closemodal() {
   document.getElementById("Modal").classList.remove("true");
@@ -438,32 +440,29 @@ function getTime() {
     session = "PM";
   }
 
-  h = (h < 10) ? "0" + h : h;
-  m = (m < 10) ? "0" + m : m;
-  s = (s < 10) ? "0" + s : s;
+  h = h < 10 ? "0" + h : h;
+  m = m < 10 ? "0" + m : m;
+  s = s < 10 ? "0" + s : s;
 
   var time = h + ":" + m + ":" + s + " " + session;
 
-  return time
+  return time;
 }
 
 //rewrote this function so that it shows time properly
 
 setInterval(function () {
   document.getElementById("d1").innerHTML = getTime();
-}, 100)
-
+}, 100);
 
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
-    let html = 'Please add items first';
+    let html = "Please add items first";
     console.log(html);
     alert(html);
-  }
-  else {
+  } else {
     document.getElementById("confirmation_box").classList.remove("hide");
   }
-
 }
 function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
@@ -472,21 +471,17 @@ function goback() {
 btn.onclick = function () {
   modal.style.display = "block";
   textField.focus();
-}
+};
 
 span.onclick = function () {
   modal.style.display = "none";
-}
+};
 addBtn.onclick = function () {
   modal.style.display = "none";
-}
+};
 
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
-
-
-
-
+};
