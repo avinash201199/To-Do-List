@@ -16,7 +16,7 @@ After deleting all tasks
 <img src="assets/images/Empty-Todolist.png"/>
 
 ## Demo video
-<video src="assets/videos/project-demo.mp4" data-canonical-src="assets/videos/project-demo.mp4" controls="controls" muted="muted" class="d-block rounded-bottom-2 border-top width-fit" style="max-height:640px;">
+<video src="assets/videos/project-demo-fast.mp4" data-canonical-src="assets/videos/project-demo-fast.mp4" controls="controls" muted="muted" class="d-block rounded-bottom-2 border-top width-fit" style="max-height:640px;">
 
 </video>
 
