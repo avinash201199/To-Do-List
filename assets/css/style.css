@@ -43,6 +43,7 @@ html {
     display: none;
 }
 
+
 .column {
     width: 100%;
 }
@@ -70,6 +71,10 @@ header {
     color: #111;
     border-radius: 10px;
     padding: 0%;
+}
+
+header h1 {
+    font-weight: 800;
 }
 
 header,
@@ -437,10 +442,11 @@ select {
     width: 2rem;
     margin: .5rem;
     /* border-radius: 50%; */
+    transition: all 0.2s;
 }
 
 .social-icon:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 
 .footer-desc {
@@ -508,7 +514,7 @@ select {
     opacity: .7;
 }
 
-.no-to-do-item{
+.no-to-do-item {
     text-align: center;
     padding-top: 80px;
     color: #4d4c4c;
@@ -541,12 +547,13 @@ select {
     width: 100%;
     height: 100%;
     background: rgb(0 0 0 / 18%);
+    animation: slideIn 0.2s;
 }
 
 .confirmation_box_inner {
     /* border: 1px solid black; */
-    width: 700px;
-    height: 300px;
+    width: 550px;
+    height: 250px;
     background: #f7fffe;
     bottom: 280px;
     border-radius: 20px;
@@ -561,79 +568,63 @@ select {
 .optbox_header {
     background-color: #0093E9;
     background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
-    height: 40px;
+    height: 50px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
+.confirmation_box_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
 .confirmation_box p {
     position: relative;
-    font-size: 2rem;
-    text-align: center;
-}
-
-.proceed {
-    background-color: #0093E9;
-    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
-    height: 60px;
-    width: 180px;
-    border-radius: 10px;
-    position: relative;
-    left: 20px;
-    text-align: center;
-    line-height: 60px;
-    font-size: 2.2rem;
-}
-
-.donot_proceed {
-    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
-    height: 60px;
-    width: 180px;
-    border-radius: 10px;
-    position: relative;
-    left: 20px;
-    text-align: center;
-    line-height: 60px;
-    font-size: 2.2rem;
+    top: 35px;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .option_box {
     display: flex;
-    justify-content: space-between;
-    width: 500px;
-    position: relative;
-    left: 70px;
-    top: 50px;
+    gap: 100px;
 }
 
-.proceed:hover {
+.modal-button {
+    height: 50px;
+    width: 120px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 5px;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
     cursor: pointer;
-    height: 65px;
-    width: 200px;
-    font-size: 2.8rem;
+    outline: none;
+    border: none;
+    transition: all 0.2s;
+
 }
 
-.donot_proceed:hover {
-    cursor: pointer;
-    height: 65px;
-    width: 200px;
-    font-size: 2.8rem;
+.modal-button:hover {
+    transform: scale(102%);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 .optbox_header i {
     font-size: 2rem;
     color: #FFF;
     position: relative;
-    /* background-color:red; */
-    width: 28px;
-    height: 26px;
     border: none;
-    left: 665px;
-    top: 5px;
+    left: 510px;
+    top: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .optbox_header i:hover {
-    cursor: pointer;
     color: black;
 }
 
