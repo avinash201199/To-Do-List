@@ -338,8 +338,10 @@ function removeLocalTodos(todo) {
   } else {
     todos = JSON.parse(localStorage.getItem("todos"));
   }
-  const todoIndex = todo.children[0].innerText;
-  todos.splice(todos.indexOf(todoIndex), 1);
+  if (!isNaN(todo.getAttribute("key"))) {
+    const todoKey = Number(todo.getAttribute("key"));
+    todos = todos.filter((todo) => todo.id !== todoKey);
+  }
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
@@ -412,7 +414,6 @@ function deleteAll() {
 
 function openmodal(color, message, timer = 3000) {
   //pass color as either 'red' (for error), 'blue' for info and 'green' for success
-  console.log("in");
   document.getElementById("content").classList.add(color);
   document.getElementById("modal-text").innerText = message;
   document.getElementById("Modal").classList.add("true");
