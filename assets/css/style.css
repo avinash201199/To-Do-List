@@ -59,17 +59,24 @@ body {
 }
 
 body {
-    background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+    background-color: palevioletred;
 }
 
 header {
     letter-spacing: -1px;
-    background-color: #0093E9;
-    background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
     background-size: 111px 111px;
+    border-color: #000;
+    border-width: 2px;
     color: #111;
     border-radius: 10px;
     padding: 0%;
+    background-color: aquamarine;
+    font-size: 33px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
 }
 
 header,
@@ -105,16 +112,18 @@ form button,
     appearance: none;
     outline: 0;
     box-shadow: none;
-    border: 0 !important;
     background-image: none;
-    border-radius: 5px;
-    background-color: #80D0C7;
+    background-color: aquamarine;
     cursor: pointer;
     padding: 1rem;
     justify-content: center;
     margin: 2rem auto;
     display: flex;
-
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    border-radius: 5px;
     width: 11rem;
 
     @media (min-width: 359px) and (max-width: 741px) {
@@ -258,6 +267,11 @@ form button:hover {
     outline: none;
     border-radius: 5px;
     animation: expand .5s ease-in-out;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    border-radius: 5px;
 }
 
 .main_heading h1 {
@@ -288,6 +302,11 @@ form button:hover {
     padding: 1rem;
     cursor: pointer;
     font-size: 1rem;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    border-radius: 5px;
 }
 
 .complete-btn {
@@ -305,6 +324,11 @@ form button:hover {
     padding: 1rem;
     cursor: pointer;
     font-size: 1rem;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    border-radius: 5px;
 }
 
 .edit-btn:hover {
@@ -359,11 +383,14 @@ select {
     appearance: none;
     outline: 0;
     box-shadow: none;
-    border: 0 !important;
     background-image: none;
-    border-radius: 5px;
-    background-color: #80D0C7;
     cursor: pointer;
+    background-color: aquamarine;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    border-radius: 5px;
 }
 
 
@@ -391,7 +418,6 @@ select {
 }
 
 .footer {
-    background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
     background-size: 111px 111px;
     height: 10vh;
     display: flex;
@@ -399,8 +425,13 @@ select {
     align-items: center;
     margin-top: auto;
     width: 100%;
-    background-color: #55acee;
+    background-color: aquamarine;
     text-align: center;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    border-radius: 5px;
 }
 
 @media only screen and (max-width: 440px) {
@@ -437,6 +468,11 @@ select {
     width: 2rem;
     margin: .5rem;
     /* border-radius: 50%; */
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+    border-radius: 5px;
 }
 
 .social-icon:hover {
@@ -547,7 +583,6 @@ select {
     /* border: 1px solid black; */
     width: 700px;
     height: 300px;
-    background: #f7fffe;
     bottom: 280px;
     border-radius: 20px;
     margin: 0;
@@ -556,11 +591,15 @@ select {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    background-color: aquamarine;
 }
 
 .optbox_header {
-    background-color: #0093E9;
-    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
+    border-radius: 20 px;
+    background-color: palevioletred;
     height: 40px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -573,8 +612,6 @@ select {
 }
 
 .proceed {
-    background-color: #0093E9;
-    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
     height: 60px;
     width: 180px;
     border-radius: 10px;
@@ -583,10 +620,14 @@ select {
     text-align: center;
     line-height: 60px;
     font-size: 2.2rem;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-radius: 5px;
+    background-color: aquamarine;
 }
 
 .donot_proceed {
-    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
     height: 60px;
     width: 180px;
     border-radius: 10px;
@@ -595,6 +636,11 @@ select {
     text-align: center;
     line-height: 60px;
     font-size: 2.2rem;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-radius: 5px;
+    background-color: aquamarine;
 }
 
 .option_box {
@@ -627,7 +673,6 @@ select {
     /* background-color:red; */
     width: 28px;
     height: 26px;
-    border: none;
     left: 665px;
     top: 5px;
 }
@@ -649,7 +694,11 @@ select {
     }
 
     .optbox_header {
-        background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
+        border-width: 2px;
+        border-style: outset;
+        border-color: buttonborder;
+        border-radius: 5px;
+        background-color: aquamarine;
         height: 40px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
@@ -821,7 +870,7 @@ select {
   }
 
 .myBtn:hover{
-    animation: vibrate-1 0.3s linear infinite both;
+    animation: vibrate-2 0.3s linear infinite both;
 }
 
 .select:hover{
