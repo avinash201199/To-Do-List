@@ -10,7 +10,7 @@ const noToDoItemText = document.querySelector(".no-to-do-item");
 document.addEventListener("DOMContentLoaded", getTodos);
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteTodo);
-filterOption.addEventListener("click", filterTodo);
+filterOption.addEventListener("change", filterTodo);
 
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
