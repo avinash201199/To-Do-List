@@ -496,7 +496,7 @@ select {
     background-color: rgb(0, 0, 255);
 }
 
-.modal-btn {
+/* .modal-btn {
     background: transparent;
     color: white;
     box-shadow: none;
@@ -512,7 +512,7 @@ select {
 
 .modal-btn:hover {
     opacity: .7;
-}
+} */
 
 .no-to-do-item {
     text-align: center;
@@ -588,12 +588,12 @@ select {
     font-weight: 700;
 }
 
-.option_box {
+/* .option_box {
     display: flex;
     gap: 100px;
-}
+} */
 
-.modal-button {
+/* .modal-button {
     height: 50px;
     width: 120px;
     font-size: 1rem;
@@ -611,7 +611,7 @@ select {
 .modal-button:hover {
     transform: scale(102%);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-}
+} */
 
 .optbox_header i {
     font-size: 2rem;
@@ -736,34 +736,34 @@ select {
 }
 
 .ts-modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4); 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
   }
-  
+
   .ts-modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; 
+    width: 80%;
   }
-  
+
   .ts-close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-    
+
   }
-  
+
   .ts-close:hover,
   .ts-close:focus {
     color: black;
