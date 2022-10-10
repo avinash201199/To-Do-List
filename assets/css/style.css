@@ -54,23 +54,25 @@ body {
     min-height: 100%;
     box-sizing: border-box;
     display: flex;
+    background-color: #06283D;
     font-family: 'Montserrat', sans-serif;
     flex-direction: column;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 body {
-    background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+    /* linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%); */
 }
 
 header {
     letter-spacing: -1px;
-    background-color: #0093E9;
-    background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
-    background-size: 111px 111px;
-    color: #111;
+    background-color: #256D85;
+    /* background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%)); */
+    /* background-size: 111px 111px; */
+    color: #fff;
     border-radius: 10px;
-    padding: 0%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 header h1 {
@@ -88,9 +90,7 @@ form {
     border-radius: 5px;
 }
 
-form input,
-form button,
-.delete-all {
+form input,form button,.delete-all {
     padding: 10px 20px;
     margin: 1rem;
     font-size: 1rem;
@@ -113,13 +113,13 @@ form button,
     border: 0 !important;
     background-image: none;
     border-radius: 5px;
-    background-color: #80D0C7;
+    background-color: #256D85;
+    color: #fff;
     cursor: pointer;
     padding: 1rem;
     justify-content: center;
     margin: 2rem auto;
     display: flex;
-
     width: 11rem;
 
     @media (min-width: 359px) and (max-width: 741px) {
@@ -127,7 +127,6 @@ form button,
         width: 12rem;
 
     }
-
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
         width: 12rem;
 
@@ -140,10 +139,14 @@ form button,
         width: 12rem;
 
     }
-
-
 }
-
+.filter-todo{
+    background-color: #256D85;
+    color: #fff;
+}
+.filter-todo:hover {
+    background-color: #55acee;
+}
 .myBtn:hover {
     background-color: #55acee;
 }
@@ -182,7 +185,6 @@ form button,
     width: 80%;
 }
 
-
 /* The Close Button */
 
 .close {
@@ -209,7 +211,8 @@ form button,
 }
 
 .todo-button {
-    background: darkcyan;
+    background: #256D85;
+    color: #fff;
 
     @media (min-width: 359px) and (max-width: 741px) {
         height: 50px
@@ -275,10 +278,6 @@ form button:hover {
     @media only screen and (min-width: 819px) and (max-device-width: 1024px) {
         width: 15px
     }
-}
-
-.filter-todo:hover {
-    background-color: #55acee;
 }
 
 .todo li {
@@ -396,7 +395,7 @@ select {
 }
 
 .footer {
-    background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
+    /* background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%)); */
     background-size: 111px 111px;
     height: 10vh;
     display: flex;
@@ -404,7 +403,7 @@ select {
     align-items: center;
     margin-top: auto;
     width: 100%;
-    background-color: #55acee;
+    background-color: #256D85;
     text-align: center;
 }
 
@@ -432,10 +431,10 @@ select {
 
 /* Footer */
 
-.footer h3 {
+.footer h4 {
     margin-block-start: 0;
     margin-block-end: 0;
-    color: #111;
+    color: #fff;
 }
 
 .social-icon {
@@ -450,10 +449,13 @@ select {
 }
 
 .footer-desc {
-    color: rgba(17, 17, 17, 0.742);
+    color: #fff;
     font-size: 0.8rem;
     margin-top: .5rem;
     font-weight: 600;
+}
+.footer-desc .random:hover{
+    color: #0093E9;
 }
 
 .modal {
@@ -517,7 +519,7 @@ select {
 .no-to-do-item {
     text-align: center;
     padding-top: 80px;
-    color: #4d4c4c;
+    color: #a4a4a4;
 }
 
 @keyframes slideIn {
@@ -533,6 +535,7 @@ select {
 }
 
 .todayDate {
+    color: #fff;
     display: block;
     text-align: center;
     font-weight: bold;
