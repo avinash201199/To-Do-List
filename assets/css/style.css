@@ -59,8 +59,17 @@ body {
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
+/* class for dark mode*/
+.dark-mode {
+    background-color: black;
+    color: white;
+    filter: invert(1) contrast(0.95) saturate(0.5) hue-rotate(180deg)
+   
+  }
+
 body {
-    background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+    
+    /* background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%); */
 }
 
 header {
@@ -817,4 +826,47 @@ select {
 
 .select:hover{
     animation: vibrate-1 0.3s linear infinite both;
+}
+
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+    width: 59px;
+    height: 26px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 28px;
+    height: 27px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.2s;
+}
+
+input:checked + label {
+	background: #bada55;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 10px;
 }

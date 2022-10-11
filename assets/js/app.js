@@ -480,6 +480,12 @@ function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
 }
 
+//function to toggle darkmode
+function switchToDarkMode (){
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
+
 btn.onclick = function () {
   modal.style.display = "block";
   textField.focus();
