@@ -648,6 +648,10 @@ select {
 }
 
 @media only screen and (max-width: 440px) {
+    .buttons-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
     .confirmation_box {
         /* border: 1px solid black; */
         width: 300px;
