@@ -38,14 +38,16 @@
 html {
     height: 100%;
 }
-
 .hide {
     display: none;
 }
-
-
 .column {
     width: 100%;
+}
+.header{
+    font-size: large;
+    font-weight: 1000;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -84,7 +86,9 @@ form {
     border-radius: 5px;
 }
 
-form input,form button,.delete-all {
+form input,
+form button,
+.delete-all {
     padding: 10px 20px;
     margin: 1rem;
     font-size: 1rem;
