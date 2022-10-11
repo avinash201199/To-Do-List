@@ -100,7 +100,9 @@ function addTodo(e) {
   newTodo.classList.add("todo-item");
   newTodo.classList.add("todo");
   todoDiv.appendChild(newTodo);
+  // created a div to contain all the buttons, for making website responsive
   const allbuttons = document.createElement('div');
+  // added a class
   allbuttons.classList.add('all-buttons');
   todoInput.value = "";
   const edit = document.createElement("div");
