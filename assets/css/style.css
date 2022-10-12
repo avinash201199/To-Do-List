@@ -48,6 +48,12 @@ html {
     width: 100%;
 }
 
+.header{
+    font-size: large;
+    font-weight: 1000;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -60,7 +66,11 @@ body {
 }
 
 body {
-    background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+    background-image: url("https://www.slideteam.net/wp/wp-content/uploads/2016/05/Radial-1-690x518.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* opacity: 50%; */
+    /* background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%); */
 }
 
 header {
@@ -68,9 +78,11 @@ header {
     background-color: #0093E9;
     background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
     background-size: 111px 111px;
+    /* opacity: 70%; */
     color: #111;
     border-radius: 10px;
     padding: 0%;
+    margin-bottom: 5vh;
 }
 
 header h1 {
@@ -79,12 +91,14 @@ header h1 {
 
 header,
 form {
-    min-height: 10vh;
+    min-height: 15vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 0.5rem;
+    background-size: 100% ;
+    /* margin: 0.5rem; */
+    background-repeat: no-repeat;
     border-radius: 5px;
 }
 
@@ -397,9 +411,10 @@ select {
 
 .footer {
     background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
-    background-size: 111px 111px;
-    height: 10vh;
-    display: flex;
+    background-size: 100% 111px;
+    height: 20vh;
+    /* background-repeat: no-repeat; */
+    /* display: flex; */
     justify-content: space-around;
     align-items: center;
     margin-top: auto;
@@ -723,7 +738,7 @@ select {
 
 @media only screen and (max-width: 731px) {
     .footer {
-        background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+        /* background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%); */
         height: 20vh;
         display: grid;
         justify-content: space-around;
@@ -735,41 +750,6 @@ select {
     }
 }
 
-.ts-modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-  }
-
-  .ts-modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-
-  .ts-close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-
-  }
-
-  .ts-close:hover,
-  .ts-close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
 /* Style for fa-heart */
 .fa-heart-custom {
     color: #e74c3c;
@@ -788,33 +768,4 @@ select {
     80% {
         transform: scale(0.90, 0.93);
     }
-}
-
-@keyframes vibrate-1 {
-    0% {
-      transform: translate(0);
-    }
-    20% {
-      transform: translate(-2px, 2px);
-    }
-    40% {
-      transform: translate(-2px, -2px);
-    }
-    60% {
-      transform: translate(2px, 2px);
-    }
-    80% {
-      transform: translate(2px, -2px);
-    }
-    100% {
-      transform: translate(0);
-    }
-  }
-
-.myBtn:hover{
-    animation: vibrate-1 0.3s linear infinite both;
-}
-
-.select:hover{
-    animation: vibrate-1 0.3s linear infinite both;
 }
