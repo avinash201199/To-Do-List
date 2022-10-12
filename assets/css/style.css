@@ -43,8 +43,15 @@ html {
     display: none;
 }
 
+
 .column {
     width: 100%;
+}
+
+.header{
+    font-size: large;
+    font-weight: 1000;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -59,7 +66,11 @@ body {
 }
 
 body {
-    background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+    background-image: url("https://www.slideteam.net/wp/wp-content/uploads/2016/05/Radial-1-690x518.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* opacity: 50%; */
+    /* background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%); */
 }
 
 header {
@@ -67,19 +78,27 @@ header {
     background-color: #0093E9;
     background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
     background-size: 111px 111px;
+    /* opacity: 70%; */
     color: #111;
     border-radius: 10px;
     padding: 0%;
+    margin-bottom: 5vh;
+}
+
+header h1 {
+    font-weight: 800;
 }
 
 header,
 form {
-    min-height: 10vh;
+    min-height: 15vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 0.5rem;
+    background-size: 100% ;
+    /* margin: 0.5rem; */
+    background-repeat: no-repeat;
     border-radius: 5px;
 }
 
@@ -392,9 +411,10 @@ select {
 
 .footer {
     background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
-    background-size: 111px 111px;
-    height: 10vh;
-    display: flex;
+    background-size: 100% 111px;
+    height: 20vh;
+    /* background-repeat: no-repeat; */
+    /* display: flex; */
     justify-content: space-around;
     align-items: center;
     margin-top: auto;
@@ -437,10 +457,11 @@ select {
     width: 2rem;
     margin: .5rem;
     /* border-radius: 50%; */
+    transition: all 0.2s;
 }
 
 .social-icon:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 
 .footer-desc {
@@ -508,7 +529,7 @@ select {
     opacity: .7;
 }
 
-.no-to-do-item{
+.no-to-do-item {
     text-align: center;
     padding-top: 80px;
     color: #4d4c4c;
@@ -607,12 +628,13 @@ select {
     width: 100%;
     height: 100%;
     background: rgb(0 0 0 / 18%);
+    animation: slideIn 0.2s;
 }
 
 .confirmation_box_inner {
     /* border: 1px solid black; */
-    width: 700px;
-    height: 300px;
+    width: 550px;
+    height: 250px;
     background: #f7fffe;
     bottom: 280px;
     border-radius: 20px;
@@ -627,79 +649,63 @@ select {
 .optbox_header {
     background-color: #0093E9;
     background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
-    height: 40px;
+    height: 50px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
+.confirmation_box_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
 .confirmation_box p {
     position: relative;
-    font-size: 2rem;
-    text-align: center;
-}
-
-.proceed {
-    background-color: #0093E9;
-    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
-    height: 60px;
-    width: 180px;
-    border-radius: 10px;
-    position: relative;
-    left: 20px;
-    text-align: center;
-    line-height: 60px;
-    font-size: 2.2rem;
-}
-
-.donot_proceed {
-    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
-    height: 60px;
-    width: 180px;
-    border-radius: 10px;
-    position: relative;
-    left: 20px;
-    text-align: center;
-    line-height: 60px;
-    font-size: 2.2rem;
+    top: 35px;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .option_box {
     display: flex;
-    justify-content: space-between;
-    width: 500px;
-    position: relative;
-    left: 70px;
-    top: 50px;
+    gap: 100px;
 }
 
-.proceed:hover {
+.modal-button {
+    height: 50px;
+    width: 120px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 5px;
+    color: #fff;
+    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
     cursor: pointer;
-    height: 65px;
-    width: 200px;
-    font-size: 2.8rem;
+    outline: none;
+    border: none;
+    transition: all 0.2s;
+
 }
 
-.donot_proceed:hover {
-    cursor: pointer;
-    height: 65px;
-    width: 200px;
-    font-size: 2.8rem;
+.modal-button:hover {
+    transform: scale(102%);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 .optbox_header i {
     font-size: 2rem;
     color: #FFF;
     position: relative;
-    /* background-color:red; */
-    width: 28px;
-    height: 26px;
     border: none;
-    left: 665px;
-    top: 5px;
+    left: 510px;
+    top: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .optbox_header i:hover {
-    cursor: pointer;
     color: black;
 }
 
@@ -798,7 +804,7 @@ select {
 
 @media only screen and (max-width: 731px) {
     .footer {
-        background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%);
+        /* background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%); */
         height: 20vh;
         display: grid;
         justify-content: space-around;
