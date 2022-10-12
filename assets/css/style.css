@@ -48,7 +48,7 @@ html {
     width: 100%;
 }
 
-.header{
+.header {
     font-size: large;
     font-weight: 1000;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -96,7 +96,7 @@ form {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-size: 100% ;
+    background-size: 100%;
     /* margin: 0.5rem; */
     background-repeat: no-repeat;
     border-radius: 5px;
@@ -223,11 +223,16 @@ form button,
 }
 
 .todo-button {
-    background: darkcyan;
+    background: #80D0C7;
 
     @media (min-width: 359px) and (max-width: 741px) {
         height: 50px
     }
+}
+
+.todo-button:hover {
+    background-color: #55acee;
+    ;
 }
 
 form button,
@@ -532,7 +537,7 @@ select {
 .no-to-do-item {
     text-align: center;
     padding-top: 80px;
-    color: #4d4c4c;
+    color: #ffffff;
 }
 
 @keyframes slideIn {
@@ -551,6 +556,7 @@ select {
     display: block;
     text-align: center;
     font-weight: bold;
+    color: #ffffff;
 }
 
 .confirmation_box {

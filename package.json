@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/sheilaLygreWeitling/To-Do-List/issues"
   },
-  "homepage": "https://github.com/sheilaLygreWeitling/To-Do-List#readme"
+  "homepage": "https://github.com/sheilaLygreWeitling/To-Do-List#readme",
+  "dependencies": {}
 }
