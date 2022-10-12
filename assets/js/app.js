@@ -58,7 +58,6 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
-  window.location.reload();
 
   const createTime = getTime();
   const infoText = `The todo item was created at ${createTime}, ${day}`;
@@ -95,15 +94,9 @@ function addTodo(e) {
   //Save to local
   saveLocalTodos(newTodoItem);
   //
-  
-
   newTodo.classList.add("todo-item");
   newTodo.classList.add("todo");
   todoDiv.appendChild(newTodo);
-  // created a div to contain all the buttons, for making website responsive
-  const allbuttons = document.createElement('div');
-  // added a class
-  allbuttons.classList.add('all-buttons');
   todoInput.value = "";
   const edit = document.createElement("div");
   edit.innerHTML =
@@ -127,26 +120,25 @@ function addTodo(e) {
   const completedButton = document.createElement("button");
   completedButton.innerHTML = `<i class="fas fa-check"></i>`;
   completedButton.classList.add("complete-btn");
-  allbuttons.appendChild(completedButton);
+  todoDiv.appendChild(completedButton);
   //Create edit button
   const editButton = document.createElement("button");
   editButton.innerHTML = `<i class="fas fa-pen"></i>`;
   editButton.classList.add("edit-btn");
   editButton.addEventListener("click", () => editTodo(newTodoItem, todoDiv));
-  allbuttons.appendChild(editButton);
+  todoDiv.appendChild(editButton);
   //Create trash button
   const trashButton = document.createElement("button");
   trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
   trashButton.classList.add("trash-btn");
-  allbuttons.appendChild(trashButton);
+  todoDiv.appendChild(trashButton);
   //Create info button
   const infoButton = document.createElement("span");
   infoButton.innerHTML = `<i class="fas fa-info-circle infoIcon"><span class="infoToolTip">`+`${infoText}`+`</span></i>`;
   infoButton.classList.add("edit-btn");
-  allbuttons.appendChild(infoButton);
+  todoDiv.appendChild(infoButton);
 
   //attach final Todo
-  todoDiv.appendChild(allbuttons);
   todoList.appendChild(todoDiv);
 }
 
@@ -155,7 +147,7 @@ function deleteTodo(e) {
 
   if (item.classList[0] === "trash-btn") {
     // e.target.parentElement.remove();
-    const todo = item.parentElement.parentElement;
+    const todo = item.parentElement;
     todo.classList.add("fall");
     //at the end
     removeLocalTodos(todo);
@@ -164,7 +156,7 @@ function deleteTodo(e) {
     });
   }
   if (item.classList[0] === "complete-btn") {
-    const todo = item.parentElement.parentElement;
+    const todo = item.parentElement;
     todo.classList.toggle("completed");
     const status = "completed";
     const id = todo.getAttribute("key");
@@ -290,8 +282,6 @@ function getTodos() {
     }
     todoDiv.setAttribute("key", todo.id);
     //Create list
-    const allbuttons = document.createElement("div");
-    allbuttons.classList.add('all-buttons');
     const newTodo = document.createElement("li");
     newTodo.innerText = todo.task;
     newTodo.classList.add("todo-item");
@@ -300,14 +290,13 @@ function getTodos() {
     const completedButton = document.createElement("button");
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
     completedButton.classList.add("complete-btn");
-    allbuttons.appendChild(completedButton);
+    todoDiv.appendChild(completedButton);
     //Create trash button
     const trashButton = document.createElement("button");
     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
     trashButton.classList.add("trash-btn");
-    allbuttons.appendChild(trashButton);
+    todoDiv.appendChild(trashButton);
     //attach final Todo
-    todoDiv.appendChild(allbuttons);
     todoList.appendChild(todoDiv);
   });
 }
@@ -374,8 +363,6 @@ function getTodos() {
       todoDiv.classList.toggle("completed");
     }
     //Create list
-    const allbuttons = document.createElement("div");
-    allbuttons.classList.add('all-buttons');
     const newTodo = document.createElement("li");
     newTodo.innerText = todo.task;
     newTodo.classList.add("todo-item");
@@ -404,31 +391,30 @@ function getTodos() {
     const completedButton = document.createElement("button");
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
     completedButton.classList.add("complete-btn");
-    allbuttons.appendChild(completedButton);
+    todoDiv.appendChild(completedButton);
     //Create edit button
     const editButton = document.createElement("button");
     editButton.innerHTML = `<i class="fas fa-pen"></i>`;
     editButton.classList.add("edit-btn");
     editButton.addEventListener("click", () => editTodo(todo, todoDiv));
-    allbuttons.appendChild(editButton);
+    todoDiv.appendChild(editButton);
     //Create trash button
     const trashButton = document.createElement("button");
     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
     trashButton.classList.add("trash-btn");
     todoDiv.setAttribute("key", todo.id);
-    allbuttons.appendChild(trashButton);
+    todoDiv.appendChild(trashButton);
     //Create info button
     if (!todo.infoText)
       todo.infoText = "Create time not found.";
     const infoButton = document.createElement("span");
     infoButton.innerHTML = `<i class="fas fa-info-circle infoIcon"><span class="infoToolTip">`+`${todo.infoText}`+`</span></i>`;
     infoButton.classList.add("edit-btn");
-    allbuttons.appendChild(infoButton);
+    todoDiv.appendChild(infoButton);
     infoButton.addEventListener("click", () => {
       alert(todo.infoText)
     });
     //attach final Todo
-    todoDiv.appendChild(allbuttons);
     todoList.appendChild(todoDiv);
   });
 }
