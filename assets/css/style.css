@@ -65,6 +65,14 @@ body {
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
+/* class for dark mode*/
+.dark-mode {
+    background-color: black;
+    color: white;
+    filter: invert(1) contrast(0.95) saturate(0.5) hue-rotate(180deg)
+   
+  }
+
 body {
     background-image: url("https://www.slideteam.net/wp/wp-content/uploads/2016/05/Radial-1-690x518.png");
     background-repeat: no-repeat;
@@ -768,4 +776,77 @@ select {
     80% {
         transform: scale(0.90, 0.93);
     }
+
+}
+
+@keyframes vibrate-1 {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+.myBtn:hover{
+    animation: vibrate-1 0.3s linear infinite both;
+}
+
+.select:hover{
+    animation: vibrate-1 0.3s linear infinite both;
+}
+
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+    width: 59px;
+    height: 26px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 28px;
+    height: 27px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.2s;
+}
+
+input:checked + label {
+	background: #bada55;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 10px;
 }
