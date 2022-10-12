@@ -596,24 +596,33 @@ select {
     border-top-right-radius: 20px;
 }
 
-.confirmation_box_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-}
-
 .confirmation_box p {
-    position: relative;
-    top: 35px;
     font-size: 1.2rem;
     font-weight: 700;
+    line-height: 3;
+    text-align: center;
 }
 
 .option_box {
     display: flex;
-    gap: 100px;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.proceed, .donot_proceed{
+    cursor: pointer;
+}
+
+.proceed{
+    color: green;
+}
+
+.donot_proceed{
+    color: red;
+}
+
+.proceed:hover, .donot_proceed:hover{
+    text-decoration:underline;
 }
 
 .modal-button {
@@ -628,7 +637,6 @@ select {
     outline: none;
     border: none;
     transition: all 0.2s;
-
 }
 
 .modal-button:hover {
@@ -676,7 +684,7 @@ select {
     }
 
     .proceed {
-        background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
+     /*    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
         height: 60px;
         width: 90px;
         border-radius: 10px;
@@ -685,7 +693,8 @@ select {
         box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
         text-align: center;
         line-height: 60px;
-        font-size: 2.2rem;
+        font-size: 2.2rem; */
+        
     }
 
     .donot_proceed {
