@@ -85,8 +85,17 @@ header {
     margin-bottom: 5vh;
 }
 
+.headerDiv {
+    width: 100%;
+}
+
+.headerDiv .headingText {
+    text-align: center;
+}
+
 header h1 {
     font-weight: 800;
+    margin-top: 20px;
 }
 
 header,
@@ -329,6 +338,30 @@ form button:hover {
 .edit-btn:hover {
     background: rgb(38, 36, 36);
     color: white;
+}
+
+.infoIcon {
+    position: relative;
+    display: inline-block;
+}
+
+.infoIcon .infoToolTip {
+    visibility: hidden;
+    width: 200px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    border: 1px solid black;
+    margin-left: 10px;
+    font-style: italic;
+}
+
+.infoIcon:hover .infoToolTip {
+    visibility: visible;
 }
 
 .trash-btn:hover {
