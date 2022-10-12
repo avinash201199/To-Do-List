@@ -134,7 +134,7 @@ function addTodo(e) {
   todoDiv.appendChild(trashButton);
   //Create info button
   const infoButton = document.createElement("span");
-  infoButton.innerHTML = `<i class="fas fa-info-circle infoIcon"><span class="infoToolTip">`+`${infoText}`+`</span></i>`;
+  infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
   infoButton.classList.add("edit-btn");
   todoDiv.appendChild(infoButton);
 
@@ -408,7 +408,7 @@ function getTodos() {
     if (!todo.infoText)
       todo.infoText = "Create time not found.";
     const infoButton = document.createElement("span");
-    infoButton.innerHTML = `<i class="fas fa-info-circle infoIcon"><span class="infoToolTip">`+`${todo.infoText}`+`</span></i>`;
+    infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
     infoButton.classList.add("edit-btn");
     todoDiv.appendChild(infoButton);
     infoButton.addEventListener("click", () => {
