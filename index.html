@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8" />
 
@@ -17,14 +17,20 @@
 
 
     <link rel="stylesheet" href="assets/css/style.css" />
-    
-      
-      <input type="checkbox" id="switch"  onchange="switchToDarkMode()"/><label for="switch"></label>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+
+    <input type="checkbox" id="switch" onchange="switchToDarkMode()" /><label for="switch"></label>
 </head>
 
 <body>
     <header>
-        <div class="header"><b><h1>To-Do List</h1></b></div>
+        <div class="header"><b>
+                <h1>To-Do List</h1>
+            </b></div>
     </header>
     <div class="modal red" id="Modal">
         <div class="content" id="content">
@@ -59,7 +65,7 @@
     <!-- The Modal -->
     <div id="myModal" class="modal-new">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content animate__animated animate__fadeInDown">
             <span class="close">&times;</span>
             <form class="todoform">
                 <div class="input-group mb-3">
@@ -118,11 +124,15 @@
 
         </div>
         <div class="2ndrow-foter">
-        <p class="footer-desc">This project is a part of <a class="footer-desc"
-                href="https://hacktoberfest.digitalocean.com/" target="_blank" rel="noopener noreferrer">Hacktoberfest
-                2022</a>
-        </p></div>
-        <div class="3rd-row-footer"><h3>Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash</h3></div>
+            <p class="footer-desc">This project is a part of <a class="footer-desc"
+                    href="https://hacktoberfest.digitalocean.com/" target="_blank"
+                    rel="noopener noreferrer">Hacktoberfest
+                    2022</a>
+            </p>
+        </div>
+        <div class="3rd-row-footer">
+            <h3>Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash</h3>
+        </div>
     </footer>
 
     <script src="assets/js/app.js"></script>
