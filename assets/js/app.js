@@ -35,9 +35,7 @@ function checkForEmptyList() {
 setInterval(checkForEmptyList, 100);
 
 function htmlEncode(str) {
-  return String(str).replace(/[^\w. ]/gi, function (c) {
-    return "&#" + c.charCodeAt(0) + ";";
-  });
+  return String(str);
 }
 
 function getItemFromLocalStorage() {
