@@ -1,0 +1,50 @@
+body{
+    background: #377aa9;
+}
+.Social-menubar ul{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+.Social-menubar ul li{
+    list-style: none;
+    margin: 15px;
+}
+.Social-menubar ul li .fab{
+    font-size: 30px;
+    line-height: 60px;
+    transition: .3s;
+    color: #000;
+}
+.Social-menubar ul li .fab:hover{
+    color: #fff;
+}
+.Social-menubar ul li a{
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    text-align: center;
+    transition: .6s;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, .5);
+}
+.Social-menubar ul li a:hover{
+    transform: translate(0, -10%);
+}
+.Social-menubar ul li:nth-child(1) a:hover{
+    background-color: rgba(0, 0, 0, .829);
+}
+.Social-menubar ul li:nth-child(2) a:hover{
+    background-color: #e4405f;
+}
+.Social-menubar ul li:nth-child(3) a:hover{
+    background-color: #0077b5;
+}.Social-menubar ul li:nth-child(4) a:hover{
+    background-color: #000;
+}
