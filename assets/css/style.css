@@ -201,6 +201,8 @@ form button,
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    position: relative;
+    top: 200px;
 }
 
 
@@ -713,7 +715,6 @@ body {
 }
 
 .confirmation_box_inner {
-    /* border: 1px solid black; */
     width: 550px;
     height: 250px;
     background: #f7fffe;
@@ -725,6 +726,7 @@ body {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .optbox_header {
@@ -744,8 +746,9 @@ body {
 
 .option_box {
     display: flex;
+
+    gap: 50px;
     justify-content: center;
-    gap: 4rem;
 }
 
 .proceed,
@@ -825,42 +828,29 @@ body {
     }
 
     .proceed {
-        /*    background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
-        height: 60px;
-        width: 90px;
-        border-radius: 10px;
-        position: relative;
-        left: 20px;
-        box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
-        text-align: center;
-        line-height: 60px;
-        font-size: 2.2rem; */
-
+        background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
     }
 
     .donot_proceed {
         background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
-        height: 60px;
-        width: 90px;
         border-radius: 10px;
         position: relative;
         left: 20px;
-        box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
         text-align: center;
-        line-height: 60px;
         font-size: 2.2rem;
     }
 
     .option_box {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 50px;
         width: 250px;
         position: relative;
         left: 0px;
         top: 50px;
     }
 
-    .proceed:hover {
+    /* .proceed:hover {
         box-shadow: 10px 10px 10px rgb(132, 131, 131);
         cursor: pointer;
         height: 65px;
@@ -874,7 +864,7 @@ body {
         height: 65px;
         width: 95px;
         font-size: 2.8rem;
-    }
+    } */
 
     .optbox_header i {
         font-size: 2rem;

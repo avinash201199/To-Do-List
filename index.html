@@ -54,7 +54,7 @@
     </div>
 
     <div class="buttons-wrapper">
-        <div class="button-div"><button id="myBtn" class="myBtn">Add a new task</button></div>
+        <div class="button-div"><button type="button" id="myBtn" class="myBtn">Add a new task</button></div>
         <div class="select">
             <select name="todos" class="filter-todo " style="color:black;">
                 <option value="all" style="color:black;">All</option>
@@ -100,8 +100,8 @@
             </div>
             <p>Are you sure you want to delete all tasks?</p>
             <div class="option_box">
-                <div class="proceed" onclick="deleteAll();">Yes</div>
-                <div class="donot_proceed" onclick="goback()">No</div>
+                <button class="proceed btn btn-success mt-5 col-3" onclick="deleteAll();">Yes</button>
+                <button class="donot_proceed btn btn-danger mt-5 col-3" onclick="goback()">No</button>
             </div>
         </div>
     </div>
