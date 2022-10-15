@@ -48,7 +48,8 @@ function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
 
-  const createTime = getTime();
+  const d = new Date();
+  const createTime = d.getTime();
   const infoText = `The todo item was created at ${createTime}, ${day}`;
   const currentValue = htmlEncode(todoInput.value)?.trim() || ""
   if (!currentValue) {
