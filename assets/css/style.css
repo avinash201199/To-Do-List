@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@700&display=swap');
 /* removed the translate since it results in bad user expericence */
 
 @keyframes slideInFromLeft {
@@ -48,10 +49,10 @@ html {
     width: 100%;
 }
 
-.header {
-    font-size: large;
+.header h1{
+    font-size: 60px;
     font-weight: 1000;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Source Serif Pro', serif;
 }
 
 body {
@@ -67,10 +68,11 @@ body {
 
 /* class for dark mode*/
 .dark-mode {
-    background-color: black;
     color: white;
-    filter: invert(1) contrast(0.95) saturate(0.5) hue-rotate(180deg)
-}
+    background: #757575;
+    filter: invert(1) saturate(0.8) contrast(0.5) hue-rotate(180deg)
+   
+  }
 
 body {
     background-image: url("https://www.slideteam.net/wp/wp-content/uploads/2016/05/Radial-1-690x518.png");
@@ -103,7 +105,7 @@ form {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-size: 100%;
+    background-size: 100% ;
     /* margin: 0.5rem; */
     background-repeat: no-repeat;
     border-radius: 5px;
@@ -232,16 +234,11 @@ form button,
 }
 
 .todo-button {
-    background: #80D0C7;
+    background: darkcyan;
 
     @media (min-width: 359px) and (max-width: 741px) {
         height: 50px
     }
-}
-
-.todo-button:hover {
-    background-color: #55acee;
-    ;
 }
 
 form button,
@@ -546,7 +543,7 @@ select {
 .no-to-do-item {
     text-align: center;
     padding-top: 80px;
-    color: #ffffff;
+    color: #4d4c4c;
 }
 
 @keyframes slideIn {
@@ -561,16 +558,15 @@ select {
     }
 }
 
-/* Clock style modification  */
+  /* Clock style modification  */
 
-body {
+  body{
     background-color: rgb(247, 247, 249);
     min-height: 100vh;
     width: 100vw;
     display: grid;
 }
-
-.Clock {
+.Clock{
     display: flex;
     border: 2px solid black;
     background-color: rgb(126, 231, 243);
@@ -579,29 +575,28 @@ body {
     margin: auto;
     justify-content: center;
     border-radius: 20px;
-    box-shadow: inset 10px 10px 10px rgb(42, 34, 34),
-        inset -10px -10px 10px rgb(42, 34, 34);
+        box-shadow: inset 10px 10px 10px rgb(42, 34, 34),
+            inset -10px -10px 10px rgb(42, 34, 34);
     transition: transform .4s linear;
 }
-
-.Clock:hover {
+.Clock:hover{
     transform: rotate(360deg);
     background: rgb(238, 247, 248);
     cursor: pointer;
 }
 
-#time {
+#time{
     display: flex;
     justify-content: center;
     border-radius: 10px;
     background-color: rgba(104, 225, 189, 0.998);
     height: 80px;
     box-shadow: inset -2px -2px 15px rgb(189, 175, 148),
-        inset 2px 2px 15px rgb(172, 150, 107);
-    width: 250px;
+    inset 2px 2px 15px rgb(172, 150, 107);
+    width:250px;
     padding: 2vh;
     font-size: 30px;
-    text-shadow: 2px -2px 2px rgb(125, 118, 118);
+    text-shadow: 2px -2px 2px  rgb(125, 118, 118);
     font-weight: bolder;
     color: rgb(27, 32, 30);
     margin: auto;
@@ -611,96 +606,29 @@ body {
     transition: transform .4s linear;
 }
 
-.Clock:hover #time {
+.Clock:hover #time{
     background-color: rgb(247, 236, 218);
     -webkit-text-fill-color: rgb(162, 156, 163);
-    text-shadow: 2px -2px 2px black;
+    text-shadow: 2px -2px 2px  black;
     cursor: pointer;
     font-weight: bolder;
     transform: rotate(-720deg);
 }
 
-.week {
+.week{
     display: flex;
     position: absolute;
     color: rgb(27, 32, 30);
     font-size: 20px;
-    text-shadow: 1px 1px 10px rgb(224, 19, 19);
-    margin-top: 80px;
+    text-shadow: 1px 1px 10px  rgb(224, 19, 19);
+    margin-top:80px;
 }
 
-.Clock:hover .week {
-    text-shadow: 1px 1px 10px black;
+.Clock:hover .week{
+    text-shadow: 1px 1px 10px  black;
     font-size: 20px;
 }
-
-/* ################################### */
-
-.Clock {
-    display: flex;
-    border: 2px solid black;
-    background-color: rgb(126, 231, 243);
-    height: 150px;
-    width: 300px;
-    margin: auto;
-    justify-content: center;
-    border-radius: 20px;
-    box-shadow: inset 10px 10px 10px rgb(42, 34, 34),
-        inset -10px -10px 10px rgb(42, 34, 34);
-    transition: transform .4s linear;
-}
-
-.Clock:hover {
-    transform: rotate(360deg);
-    background: rgb(238, 247, 248);
-    cursor: pointer;
-}
-
-#time {
-    display: flex;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: rgba(104, 225, 189, 0.998);
-    height: 80px;
-    box-shadow: inset -2px -2px 15px rgb(189, 175, 148),
-        inset 2px 2px 15px rgb(172, 150, 107);
-    width: 250px;
-    padding: 2vh;
-    font-size: 30px;
-    text-shadow: 2px -2px 2px rgb(125, 118, 118);
-    font-weight: bolder;
-    color: rgb(27, 32, 30);
-    margin: auto;
-    color: transparent;
-    -webkit-text-fill-color: rgb(50, 49, 48);
-    -webkit-text-stroke-color: rgb(5, 16, 21);
-    transition: transform .4s linear;
-}
-
-.Clock:hover #time {
-    background-color: rgb(247, 236, 218);
-    -webkit-text-fill-color: rgb(162, 156, 163);
-    text-shadow: 2px -2px 2px black;
-    cursor: pointer;
-    font-weight: bolder;
-    transform: rotate(-720deg);
-}
-
-.week {
-    display: flex;
-    position: absolute;
-    color: rgb(27, 32, 30);
-    font-size: 20px;
-    text-shadow: 1px 1px 10px rgb(224, 19, 19);
-    margin-top: 80px;
-}
-
-.Clock:hover .week {
-    text-shadow: 1px 1px 10px black;
-    font-size: 20px;
-}
-
-/* ################################### */
+   /* ################################### */
 
 .confirmation_box {
     position: fixed;
@@ -751,22 +679,20 @@ body {
     justify-content: center;
 }
 
-.proceed,
-.donot_proceed {
+.proceed, .donot_proceed{
     cursor: pointer;
 }
 
-.proceed {
+.proceed{
     color: green;
 }
 
-.donot_proceed {
+.donot_proceed{
     color: red;
 }
 
-.proceed:hover,
-.donot_proceed:hover {
-    text-decoration: underline;
+.proceed:hover, .donot_proceed:hover{
+    text-decoration:underline;
 }
 
 .modal-button {
@@ -825,10 +751,6 @@ body {
         position: relative;
         font-size: 1rem;
         text-align: center;
-    }
-
-    .proceed {
-        background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
     }
 
     .donot_proceed {
@@ -921,77 +843,80 @@ body {
 
 @keyframes vibrate-1 {
     0% {
-        transform: translate(0);
+      transform: translate(0);
     }
-
     20% {
-        transform: translate(-2px, 2px);
+      transform: translate(-2px, 2px);
     }
-
     40% {
-        transform: translate(-2px, -2px);
+      transform: translate(-2px, -2px);
     }
-
     60% {
-        transform: translate(2px, 2px);
+      transform: translate(2px, 2px);
     }
-
     80% {
-        transform: translate(2px, -2px);
+      transform: translate(2px, -2px);
     }
-
     100% {
-        transform: translate(0);
+      transform: translate(0);
     }
-}
+  }
 
-.myBtn:hover {
+.myBtn:hover{
     animation: vibrate-1 0.3s linear infinite both;
 }
 
-.select:hover {
+.select:hover{
     animation: vibrate-1 0.3s linear infinite both;
 }
 
 
-input[type=checkbox] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-
-label {
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 59px;
-    height: 26px;
-    background: grey;
-    display: block;
-    border-radius: 100px;
-    position: relative;
-}
-
-label:after {
-    content: '';
+.checkbox {
+    opacity: 0;
     position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 28px;
-    height: 27px;
-    background: #fff;
-    border-radius: 90px;
-    transition: 0.2s;
-}
-
-input:checked+label {
-    background: #bada55;
-}
-
-input:checked+label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
-}
-
-label:active:after {
-    width: 10px;
-}
+    right: 20px;
+    top:50px;
+    z-index: 10;
+    height: 2rem;
+    width: 4rem;
+    cursor: pointer;
+  
+  }
+  
+  .label {
+    width: 54px;
+    height: 29px;
+    background-color: #111;
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
+    top:50px;
+    transform: scale(1);
+  }
+  
+  .ball {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    position: absolute;
+    top: 2px;
+    left: 2.5px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+  }
+  
+  .checkbox:checked + .label .ball {
+    transform: translateX(24px);
+  }
+  
+  .fa-moon {
+    color: pink;
+  }
+  
+  .fa-sun {
+    color: yellow;
+  }
