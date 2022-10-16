@@ -2,6 +2,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap');
 /* removed the translate since it results in bad user expericence */
 
+/* CSS Varible for colors [15-10-2022] */
+:root {
+    --black: rgb(0, 0, 0);
+    --black-opacity: rgba(0, 0, 0, 0.4);
+    --green: rgb(51, 243, 12);
+    --backgroundGreen: rgb(139, 255, 116);
+    --white: rgb(255, 255, 255);
+    --white-shade-1: #fefefe;
+    --gray-shade-1: #888888;
+    --gray-shade-2: #aaaaaa;
+    --blue: rgb(21, 17, 255);
+    --sky-blue: #0093E9;
+    --blue-shade-1: #55acee;
+    --blue-shade-1: #5470B0;
+    --dark-graphite-black: #111111;
+    --green-shade-1: #80D0C7;
+    --red-shade-1: rgb(207, 2, 2);
+    --pink-shade-1: #D75281;
+}
+
 @keyframes slideInFromLeft {
     0% {
         opacity: 0;
@@ -16,7 +36,7 @@
     from {
         transform: scale(0);
         opacity: 0;
-        background: #5470B0;
+        background: var(--blue-shade-1);
     }
 }
 
@@ -25,14 +45,6 @@
         width: 50%;
         float: left;
     }
-}
-
-:root {
-    --black: rgb(0, 0, 0);
-    --green: rgb(51, 243, 12);
-    --backgroundGreen: rgb(139, 255, 116);
-    --white: rgb(255, 255, 255);
-    --blue: rgb(21, 17, 255);
 }
 
 html {
@@ -67,8 +79,8 @@ body {
 
 /* class for dark mode*/
 .dark-mode {
-    background-color: black;
-    color: white;
+    background-color: var(--black);
+    color: var(--white);
     filter: invert(1) contrast(0.95) saturate(0.5) hue-rotate(180deg)
 }
 
@@ -82,11 +94,11 @@ body {
 
 header {
     letter-spacing: -1px;
-    background-color: #0093E9;
+    background-color: var(--sky-blue);
     background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
     background-size: 111px 111px;
     /* opacity: 70%; */
-    color: #111;
+    color: var(--dark-graphite-black);
     border-radius: 10px;
     padding: 0%;
     margin-bottom: 5vh;
@@ -116,7 +128,7 @@ form button,
     margin: 1rem;
     font-size: 1rem;
     outline: none;
-    background-color: white;
+    background-color: var(--white);
     border-radius: 5px;
     border: none;
 }
@@ -134,7 +146,7 @@ form button,
     border: 0 !important;
     background-image: none;
     border-radius: 5px;
-    background-color: #80D0C7;
+    background-color: var(--green-shade-1);
     cursor: pointer;
     padding: 1rem;
     justify-content: center;
@@ -166,7 +178,7 @@ form button,
 }
 
 .myBtn:hover {
-    background-color: #55acee;
+    background-color: var(--blue-shade-1);
 }
 
 .modal-new {
@@ -186,9 +198,9 @@ form button,
     /* Full height */
     overflow: auto;
     /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
+    background-color: var(--black);
     /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: var(--black-opacity);
     /* Black w/ opacity */
 }
 
@@ -196,10 +208,10 @@ form button,
 /* Modal Content */
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--white-shade-1);
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid var(--gray-shade);
     width: 80%;
     position: relative;
     top: 200px;
@@ -209,7 +221,7 @@ form button,
 /* The Close Button */
 
 .close {
-    color: #aaaaaa;
+    color: var(--gray-shade-2);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -217,7 +229,7 @@ form button,
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: var(--black);
     text-decoration: none;
     cursor: pointer;
 }
@@ -232,7 +244,7 @@ form button,
 }
 
 .todo-button {
-    background: #80D0C7;
+    background: var(--green-shade-1);
 
     @media (min-width: 359px) and (max-width: 741px) {
         height: 50px
@@ -240,8 +252,7 @@ form button,
 }
 
 .todo-button:hover {
-    background-color: #55acee;
-    ;
+    background-color: var(--blue-shade-1);
 }
 
 form button,
@@ -250,13 +261,13 @@ form button,
 }
 
 form button:hover {
-    background: #5470B0;
+    background: var(--blue-shade-1);
     color: var(--white);
 }
 
 .delete-all {
-    background-color: #D75281;
-    color: white;
+    background-color: var(--pink-shade-1);
+    color: var(--white);
     width: 200px;
     margin: auto auto 1.5rem;
 }
