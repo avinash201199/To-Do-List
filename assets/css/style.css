@@ -630,7 +630,7 @@ select {
 }
    /* ################################### */
 
-.confirmation_box {
+.confirmation_box, .congratulations_box{
     position: fixed;
     top: 0;
     bottom: 0;
@@ -642,7 +642,7 @@ select {
     animation: slideIn 0.2s;
 }
 
-.confirmation_box_inner {
+.confirmation_box_inner , .congratulations_box_inner{
     width: 550px;
     height: 250px;
     background: #f7fffe;
@@ -656,7 +656,11 @@ select {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
+/* congrats_text is the paragraph element of congratulations_box  */
+#congrats_text{
+    font-size: 2rem;
+    text-transform: capitalize;
+}
 .optbox_header {
     background-color: #0093E9;
     background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
@@ -915,8 +919,4 @@ select {
   
   .fa-moon {
     color: pink;
-  }
-  
-  .fa-sun {
-    color: yellow;
   }

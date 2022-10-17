@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8" />
 
@@ -12,23 +12,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
-     <!-- jquery CDN -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-     <!-- FontAwesome CDN-->
-     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- FontAwesome CDN-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU' crossorigin='anonymous'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU' crossorigin='anonymous'>
 
 
     <link rel="stylesheet" href="assets/css/style.css" />
-    
-      
+
+
 </head>
 
 <body>
     <header>
-        <div class="header"><b><h1>To-Do List</h1></b></div>
+        <div class="header"><b>
+                <h1>To-Do List</h1>
+            </b></div>
         <div class="col-auto">
             <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
             <label for="checkbox" class="label">
@@ -109,7 +113,16 @@
             </div>
         </div>
     </div>
-
+    <!-- Box to congratulate user for completing all tasks (to be triggered when list becomes empty) -->
+    <div class="congratulations_box  hide" id="congratulations_box">
+        <div class="congratulations_box_inner">
+            <div class="optbox_header">
+                <i class="fas fa-times" onclick="goback()"></i>
+            </div>
+            <p id="congrats_text">congratulation🥳🎉 You completed all your tasks!!</p>
+        </div>
+    </div>
+   
     <!-- footer -->
     <footer class="footer">
 
@@ -130,11 +143,15 @@
 
         </div>
         <div class="2ndrow-foter">
-        <p class="footer-desc">This project is a part of <a class="footer-desc"
-                href="https://hacktoberfest.digitalocean.com/" target="_blank" rel="noopener noreferrer">Hacktoberfest
-                2022</a>
-        </p></div>
-        <div class="3rd-row-footer"><h3>Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash</h3></div>
+            <p class="footer-desc">This project is a part of <a class="footer-desc"
+                    href="https://hacktoberfest.digitalocean.com/" target="_blank"
+                    rel="noopener noreferrer">Hacktoberfest
+                    2022</a>
+            </p>
+        </div>
+        <div class="3rd-row-footer">
+            <h3>Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash</h3>
+        </div>
     </footer>
 
     <script src="assets/js/app.js"></script>
