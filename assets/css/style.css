@@ -563,7 +563,7 @@ select {
   body{
     background-color: rgb(247, 247, 249);
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;  /* keeping width: 100 viewport width can cause horizontal scrollbar which is an issue */
     display: grid;
 }
 .Clock{
