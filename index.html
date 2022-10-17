@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
-     <!-- jquery CDN -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
      <!-- FontAwesome CDN-->
      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
@@ -28,13 +25,13 @@
 
 <body>
     <header>
-        <div class="header"><b><h1>To-Do List</h1></b></div>
+        <div class="header"><h1><b>To-Do List</b></h1></div>
         <div class="col-auto">
             <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
             <label for="checkbox" class="label">
-                <i class="fas fa-sun"></i>
-                <i class='fas fa-moon'></i>
-                <div class='ball'>
+                <i class="fas fa-sun"/>
+                <i class='fas fa-moon'/>
+                <div class='ball'/>
             </label>
         </div>
     </header>
@@ -49,11 +46,10 @@
 
     <!-- Clock Modification -->
     <div class="Clock">
-        <div id="time"></div>
+        <div id="time"/>
         <div class="week">
-            <div id="day"></div>
-            <div id="date"></div>
-
+            <div id="day"/>
+            <div id="date"/>
         </div>
     </div>
 
@@ -79,7 +75,7 @@
                         required />
                     <div class="abc">
                         <button id="todo-button" class="todo-button" type="submit">
-                            <i class="fas fa-plus-square"></i>
+                            <i class="fas fa-plus-square"/>
                         </button>
                     </div>
                 </div>
@@ -97,7 +93,7 @@
 
     <!-- <div cla ss="confirmation_box"></div> -->
 
-    <div class="confirmation_box hide " id="confirmation_box">
+    <div class="confirmation_box hide" id="confirmation_box">
         <div class="confirmation_box_inner">
             <div class="optbox_header">
                 <i class="fas fa-times" onclick="goback()"></i>
@@ -137,6 +133,8 @@
         <div class="3rd-row-footer"><h3>Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash</h3></div>
     </footer>
 
+    <!-- jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="assets/js/app.js"></script>
 
 </body>
