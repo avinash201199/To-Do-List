@@ -668,7 +668,10 @@ select {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
-
+#text-modal{
+    color:red;
+    z-index:999;
+}
 .confirmation_box p {
     font-size: 1.2rem;
     font-weight: 700;
@@ -750,7 +753,6 @@ select {
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
     }
-
     .confirmation_box p {
         position: relative;
         font-size: 1rem;
@@ -808,6 +810,10 @@ select {
         cursor: pointer;
         color: black;
     }
+}
+#txt-color, #txt-color1{
+    color:white;
+    font-weight: 600;
 }
 
 @media only screen and (max-width: 731px) {
