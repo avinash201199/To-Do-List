@@ -6,20 +6,45 @@
 /* CSS Varible for colors [15-10-2022] */
 :root {
     --black: rgb(0, 0, 0);
+    --black-shade-1: rgb(38, 36, 36);
+    --black-shade-2: rgb(42, 34, 34);
+    --black-shade-3: rgb(27, 32, 30);
+    --black-shade-4: rgb(50, 49, 48);
+    --black-shade-5: rgb(5, 16, 21);
     --black-opacity: rgba(0, 0, 0, 0.4);
+    --black-opacity-1: rgba(17, 17, 17, 0.742);
     --green: rgb(51, 243, 12);
+    --green-shade-1: rgb(37, 180, 37);
+    --green-shade-2: rgb(76, 165, 76);
     --backgroundGreen: rgb(139, 255, 116);
     --white: rgb(255, 255, 255);
     --white-shade-1: #fefefe;
+    --white-shade-2: #f7fffe;
+    --white-shade-3: rgb(247, 247, 249);
+    --white-shade-4: rgb(238, 247, 248);
+    --white-shade-5: rgb(247, 236, 218);
     --gray-shade-1: #888888;
     --gray-shade-2: #aaaaaa;
+    --gray-shade-3: rgb(83, 82, 82);
+    --gray-shade-4: #4d4c4c;
+    --gray-shade-5: rgb(189, 175, 148);
+    --gray-shade-6: rgb(172, 150, 107);
+    --gray-shade-7: rgb(125, 118, 118);
+    --gray-shade-8: rgb(162, 156, 163);
     --blue: rgb(21, 17, 255);
+    --blue-shade-1: #1511ff;
+    --blue-shade-2: rgb(0, 0, 255);
     --sky-blue: #0093E9;
     --blue-shade-1: #55acee;
     --blue-shade-1: #5470B0;
     --dark-graphite-black: #111111;
     --green-shade-1: #80D0C7;
+    --green-shade-2: rgb(126, 231, 243);
+    --gren-shade-3: rgba(104, 225, 189, 0.998);
     --red-shade-1: rgb(207, 2, 2);
+    --red-shade-2: rgb(225, 111, 111);
+    --red-shade-3: rgb(255, 44, 44);
+    --red-shade-4: rgb(224, 19, 19);
     --pink-shade-1: #D75281;
 }
 
@@ -274,7 +299,7 @@ form button:hover {
 }
 
 .delete-all:hover {
-    background-color: rgb(207, 2, 2);
+    background-color: var(--red-shade-1);
 }
 
 .todo-container {
@@ -292,7 +317,7 @@ form button:hover {
 
 .todo {
     margin: 0.5rem;
-    background: #FFF;
+    background: var(--white);
     font-size: 1rem;
     font-weight: 500;
     color: var(--black);
@@ -318,7 +343,7 @@ form button:hover {
 }
 
 .filter-todo:hover {
-    background-color: #55acee;
+    background-color: var(--blue-shade-1);
 }
 
 .todo li {
@@ -327,8 +352,8 @@ form button:hover {
 
 .trash-btn,
 .complete-btn {
-    background: red;
-    color: #FFFFFF;
+    background: var(--red-shade-1);
+    color: var(--white);
     border: none;
     padding: 1rem;
     cursor: pointer;
@@ -336,13 +361,13 @@ form button:hover {
 }
 
 .complete-btn {
-    background-color: #55acee;
-    color: #FFF;
+    background-color: var(--blue-shade-1);
+    color: var(--white);
 }
 
 .complete-btn:hover {
-    background: rgb(37, 180, 37);
-    color: #FFF;
+    background: var(--green-shade-1);
+    color: var(--white);
 }
 
 .edit-btn {
@@ -353,12 +378,12 @@ form button:hover {
 }
 
 .edit-btn:hover {
-    background: rgb(38, 36, 36);
-    color: white;
+    background: var(--black-shade-1);
+    color: var(--white);
 }
 
 .trash-btn:hover {
-    background: rgb(225, 111, 111);
+    background: var(--red-shade-2);
 }
 
 .todo-item {
@@ -383,12 +408,12 @@ form button:hover {
 
 .todo-list form input,
 .todo-list form button {
-    background-color: #80D0C7;
-    color: #111;
+    background-color: var(--green-shade-1);
+    color: var(--dark-graphite-black);
 }
 
 .todo-list form input::placeholder {
-    color: rgb(83, 82, 82);
+    color: var(--gray-shade-3);
 }
 
 
@@ -407,7 +432,7 @@ select {
     border: 0 !important;
     background-image: none;
     border-radius: 5px;
-    background-color: #80D0C7;
+    background-color: var(--green-shade-1);
     cursor: pointer;
 }
 
@@ -421,7 +446,7 @@ select {
     justify-content: center;
     margin: 1rem;
     overflow: hidden;
-    background-color: #80D0C7;
+    background-color: var(--gray-shade-1);
     border-radius: 5px;
 }
 
@@ -445,7 +470,7 @@ select {
     align-items: center;
     margin-top: auto;
     width: 100%;
-    background-color: #55acee;
+    background-color: var(--blue-shade-1);
     text-align: center;
 }
 
@@ -466,8 +491,8 @@ select {
 /* Transition  */
 
 .select:hover::after {
-    background-color: #f7fffe;
-    color: #1511ff;
+    background-color: var(--white-shade-2);
+    color: var(--blue-shade-1);
 }
 
 
@@ -476,7 +501,7 @@ select {
 .footer h3 {
     margin-block-start: 0;
     margin-block-end: 0;
-    color: #111;
+    color: var(--dark-graphite-black);
 }
 
 .social-icon {
@@ -491,7 +516,7 @@ select {
 }
 
 .footer-desc {
-    color: rgba(17, 17, 17, 0.742);
+    color: var(--black-opacity-1);
     font-size: 0.8rem;
     margin-top: .5rem;
     font-weight: 600;
@@ -503,7 +528,7 @@ select {
     /* Stay in place */
     z-index: 9;
     /* Sit on top */
-    color: white;
+    color: var(--white);
     opacity: 1;
     top: 1;
     height: fit-content;
@@ -525,21 +550,21 @@ select {
 }
 
 .green {
-    background-color: rgb(76, 165, 76);
+    background-color: var(--green-shade-2);
 }
 
 .red {
-    background-color: rgb(255, 44, 44);
+    background-color: var(--red-shade-3);
     border-radius: 0.25em;
 }
 
 .blue {
-    background-color: rgb(0, 0, 255);
+    background-color: var(--blue-shade-2);
 }
 
 .modal-btn {
     background: transparent;
-    color: white;
+    color: var(--white);
     box-shadow: none;
     border: none;
     padding: 0.02em 0.68em;
@@ -558,7 +583,7 @@ select {
 .no-to-do-item {
     text-align: center;
     padding-top: 80px;
-    color: #4d4c4c;
+    color: var(--gray-shade-3);
 }
 
 @keyframes slideIn {
@@ -576,7 +601,7 @@ select {
 /* Clock style modification  */
 
 body {
-    background-color: rgb(247, 247, 249);
+    background-color: var(--white-shade-3);
     min-height: 100vh;
     width: 100vw;
     display: grid;
@@ -584,21 +609,21 @@ body {
 
 .Clock {
     display: flex;
-    border: 2px solid black;
-    background-color: rgb(126, 231, 243);
+    border: 2px solid var(--black);
+    background-color: var(--green-shade-2);
     height: 150px;
     width: 300px;
     margin: auto;
     justify-content: center;
     border-radius: 20px;
-    box-shadow: inset 10px 10px 10px rgb(42, 34, 34),
-        inset -10px -10px 10px rgb(42, 34, 34);
+    box-shadow: inset 10px 10px 10px var(--black-shade-2),
+        inset -10px -10px 10px var(--black-shade-2);
     transition: transform .4s linear;
 }
 
 .Clock:hover {
     transform: rotate(360deg);
-    background: rgb(238, 247, 248);
+    background: var(--white-shade-4);
     cursor: pointer;
 }
 
@@ -606,27 +631,27 @@ body {
     display: flex;
     justify-content: center;
     border-radius: 10px;
-    background-color: rgba(104, 225, 189, 0.998);
+    background-color: var(--gren-shade-3);
     height: 80px;
-    box-shadow: inset -2px -2px 15px rgb(189, 175, 148),
-        inset 2px 2px 15px rgb(172, 150, 107);
+    box-shadow: inset -2px -2px 15px var(--gray-shade-5),
+        inset 2px 2px 15px var(--gray-shade-6);
     width: 250px;
     padding: 2vh;
     font-size: 30px;
-    text-shadow: 2px -2px 2px rgb(125, 118, 118);
+    text-shadow: 2px -2px 2px var(--gray-shade-7);
     font-weight: bolder;
-    color: rgb(27, 32, 30);
+    color: var(--black-shade-3);
     margin: auto;
     color: transparent;
-    -webkit-text-fill-color: rgb(50, 49, 48);
-    -webkit-text-stroke-color: rgb(5, 16, 21);
+    -webkit-text-fill-color: var(--black-shade-4);
+    -webkit-text-stroke-color: var(--black-shade-5);
     transition: transform .4s linear;
 }
 
 .Clock:hover #time {
-    background-color: rgb(247, 236, 218);
-    -webkit-text-fill-color: rgb(162, 156, 163);
-    text-shadow: 2px -2px 2px black;
+    background-color: var(--white-shade-5);
+    -webkit-text-fill-color: var(--gray-shade-8);
+    text-shadow: 2px -2px 2px var(--black);
     cursor: pointer;
     font-weight: bolder;
     transform: rotate(-720deg);
@@ -635,14 +660,14 @@ body {
 .week {
     display: flex;
     position: absolute;
-    color: rgb(27, 32, 30);
+    color: var(--black-shade-3);
     font-size: 20px;
-    text-shadow: 1px 1px 10px rgb(224, 19, 19);
+    text-shadow: 1px 1px 10px var(--red-shade-4);
     margin-top: 80px;
 }
 
 .Clock:hover .week {
-    text-shadow: 1px 1px 10px black;
+    text-shadow: 1px 1px 10px var(--black);
     font-size: 20px;
 }
 
@@ -835,7 +860,7 @@ body {
         align-items: center;
         margin-top: auto;
         width: 100%;
-        background-color: #55acee;
+        background-color: var(--blue-shade-1);
         text-align: center;
     }
 }
