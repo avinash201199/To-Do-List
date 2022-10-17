@@ -486,7 +486,7 @@ select {
     display: none;
     position: fixed;
     /* Stay in place */
-    z-index: 9;
+    z-index: 99;
     /* Sit on top */
     color: white;
     opacity: 1;
@@ -656,7 +656,10 @@ select {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
+#text-modal{
+    color:red;
+    z-index:999;
+}
 .optbox_header {
     background-color: #0093E9;
     background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
@@ -678,7 +681,10 @@ select {
     gap: 50px;
     justify-content: center;
 }
-
+#txt-color, #txt-color1{
+    color:white;
+    font-weight: 600;
+}
 .proceed, .donot_proceed{
     cursor: pointer;
 }
