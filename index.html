@@ -8,26 +8,35 @@
     <title>To-Do List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <!-- favicon -->
+    <link rel="shortcut icon" type="image/jpg" href="assets/images/favicon.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+     <!-- jquery CDN -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+     <!-- FontAwesome CDN-->
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU' crossorigin='anonymous'>
 
 
     <link rel="stylesheet" href="assets/css/style.css" />
     
-
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-
+      
 </head>
 
 <body>
     <header>
         <div class="header"><b><h1>To-Do List</h1></b></div>
+        <div class="col-auto">
+            <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
+            <label for="checkbox" class="label">
+                <i class="fas fa-sun"></i>
+                <i class='fas fa-moon'></i>
+                <div class='ball'>
+            </label>
+        </div>
     </header>
     <div class="modal red" id="Modal">
         <div class="content" id="content">
@@ -37,12 +46,19 @@
             <button onclick="closemodal()" class="modal-btn"><i class="fas fa-times"></i></button>
         </div>
     </div>
-    <span class="todayDate"><span id="d2"></span></span>
-    <span class="todayDate">Current Time: <span id="d1"></span></span>
-    <!-- Trigger/Open The Modal -->
+
+    <!-- Clock Modification -->
+    <div class="Clock">
+        <div id="time"></div>
+        <div class="week">
+            <div id="day"></div>
+            <div id="date"></div>
+
+        </div>
+    </div>
 
     <div class="buttons-wrapper">
-        <div class="button-div"><button id="myBtn" class="myBtn">Add a new task</button></div>
+        <div class="button-div"><button type="button" id="myBtn" class="myBtn">Add a new task</button></div>
         <div class="select">
             <select name="todos" class="filter-todo " style="color:black;">
                 <option value="all" style="color:black;">All</option>
@@ -71,7 +87,7 @@
         </div>
     </div>
 
-      <div class="no-to-do-item">
+    <div class="no-to-do-item">
         <h1>The List Is Empty</h1>
     </div>
     <div class="todo-container">
@@ -88,8 +104,8 @@
             </div>
             <p>Are you sure you want to delete all tasks?</p>
             <div class="option_box">
-                <div class="proceed" onclick="deleteAll();">Yes</div>
-                <div class="donot_proceed" onclick="goback()">No</div>
+                <button class="proceed btn btn-success mt-5 col-3" onclick="deleteAll();">Yes</button>
+                <button class="donot_proceed btn btn-danger mt-5 col-3" onclick="goback()">No</button>
             </div>
         </div>
     </div>

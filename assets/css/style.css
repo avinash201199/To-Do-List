@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@700&display=swap');
 /* removed the translate since it results in bad user expericence */
 
 @keyframes slideInFromLeft {
@@ -48,10 +49,10 @@ html {
     width: 100%;
 }
 
-.header{
-    font-size: large;
+.header h1{
+    font-size: 60px;
     font-weight: 1000;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Source Serif Pro', serif;
 }
 
 body {
@@ -64,6 +65,14 @@ body {
     flex-direction: column;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
+
+/* class for dark mode*/
+.dark-mode {
+    color: white;
+    background: #757575;
+    filter: invert(1) saturate(0.8) contrast(0.5) hue-rotate(180deg)
+   
+  }
 
 body {
     background-image: url("https://www.slideteam.net/wp/wp-content/uploads/2016/05/Radial-1-690x518.png");
@@ -194,6 +203,8 @@ form button,
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    position: relative;
+    top: 200px;
 }
 
 
@@ -547,11 +558,77 @@ select {
     }
 }
 
-.todayDate {
-    display: block;
-    text-align: center;
-    font-weight: bold;
+  /* Clock style modification  */
+
+  body{
+    background-color: rgb(247, 247, 249);
+    min-height: 100vh;
+    width: 100vw;
+    display: grid;
 }
+.Clock{
+    display: flex;
+    border: 2px solid black;
+    background-color: rgb(126, 231, 243);
+    height: 150px;
+    width: 300px;
+    margin: auto;
+    justify-content: center;
+    border-radius: 20px;
+        box-shadow: inset 10px 10px 10px rgb(42, 34, 34),
+            inset -10px -10px 10px rgb(42, 34, 34);
+    transition: transform .4s linear;
+}
+.Clock:hover{
+    transform: rotate(360deg);
+    background: rgb(238, 247, 248);
+    cursor: pointer;
+}
+
+#time{
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(104, 225, 189, 0.998);
+    height: 80px;
+    box-shadow: inset -2px -2px 15px rgb(189, 175, 148),
+    inset 2px 2px 15px rgb(172, 150, 107);
+    width:250px;
+    padding: 2vh;
+    font-size: 30px;
+    text-shadow: 2px -2px 2px  rgb(125, 118, 118);
+    font-weight: bolder;
+    color: rgb(27, 32, 30);
+    margin: auto;
+    color: transparent;
+    -webkit-text-fill-color: rgb(50, 49, 48);
+    -webkit-text-stroke-color: rgb(5, 16, 21);
+    transition: transform .4s linear;
+}
+
+.Clock:hover #time{
+    background-color: rgb(247, 236, 218);
+    -webkit-text-fill-color: rgb(162, 156, 163);
+    text-shadow: 2px -2px 2px  black;
+    cursor: pointer;
+    font-weight: bolder;
+    transform: rotate(-720deg);
+}
+
+.week{
+    display: flex;
+    position: absolute;
+    color: rgb(27, 32, 30);
+    font-size: 20px;
+    text-shadow: 1px 1px 10px  rgb(224, 19, 19);
+    margin-top:80px;
+}
+
+.Clock:hover .week{
+    text-shadow: 1px 1px 10px  black;
+    font-size: 20px;
+}
+   /* ################################### */
 
 .confirmation_box {
     position: fixed;
@@ -566,7 +643,6 @@ select {
 }
 
 .confirmation_box_inner {
-    /* border: 1px solid black; */
     width: 550px;
     height: 250px;
     background: #f7fffe;
@@ -578,6 +654,7 @@ select {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .optbox_header {
@@ -588,24 +665,34 @@ select {
     border-top-right-radius: 20px;
 }
 
-.confirmation_box_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-}
-
 .confirmation_box p {
-    position: relative;
-    top: 35px;
     font-size: 1.2rem;
     font-weight: 700;
+    line-height: 3;
+    text-align: center;
 }
 
 .option_box {
     display: flex;
-    gap: 100px;
+
+    gap: 50px;
+    justify-content: center;
+}
+
+.proceed, .donot_proceed{
+    cursor: pointer;
+}
+
+.proceed{
+    color: green;
+}
+
+.donot_proceed{
+    color: red;
+}
+
+.proceed:hover, .donot_proceed:hover{
+    text-decoration:underline;
 }
 
 .modal-button {
@@ -620,7 +707,6 @@ select {
     outline: none;
     border: none;
     transition: all 0.2s;
-
 }
 
 .modal-button:hover {
@@ -667,42 +753,26 @@ select {
         text-align: center;
     }
 
-    .proceed {
-        background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
-        height: 60px;
-        width: 90px;
-        border-radius: 10px;
-        position: relative;
-        left: 20px;
-        box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
-        text-align: center;
-        line-height: 60px;
-        font-size: 2.2rem;
-    }
-
     .donot_proceed {
         background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 44%, rgba(155, 110, 198, 1) 100%);
-        height: 60px;
-        width: 90px;
         border-radius: 10px;
         position: relative;
         left: 20px;
-        box-shadow: 10px 10px 10px rgba(132, 131, 131, 0.537);
         text-align: center;
-        line-height: 60px;
         font-size: 2.2rem;
     }
 
     .option_box {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 50px;
         width: 250px;
         position: relative;
         left: 0px;
         top: 50px;
     }
 
-    .proceed:hover {
+    /* .proceed:hover {
         box-shadow: 10px 10px 10px rgb(132, 131, 131);
         cursor: pointer;
         height: 65px;
@@ -716,7 +786,7 @@ select {
         height: 65px;
         width: 95px;
         font-size: 2.8rem;
-    }
+    } */
 
     .optbox_header i {
         font-size: 2rem;
@@ -768,4 +838,85 @@ select {
     80% {
         transform: scale(0.90, 0.93);
     }
+
 }
+
+@keyframes vibrate-1 {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+
+.myBtn:hover{
+    animation: vibrate-1 0.3s linear infinite both;
+}
+
+.select:hover{
+    animation: vibrate-1 0.3s linear infinite both;
+}
+
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+    right: 20px;
+    top:50px;
+    z-index: 10;
+    height: 2rem;
+    width: 4rem;
+    cursor: pointer;
+  
+  }
+  
+  .label {
+    width: 54px;
+    height: 29px;
+    background-color: #111;
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
+    top:50px;
+    transform: scale(1);
+  }
+  
+  .ball {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    position: absolute;
+    top: 2px;
+    left: 2.5px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+  }
+  
+  .checkbox:checked + .label .ball {
+    transform: translateX(24px);
+  }
+  
+  .fa-moon {
+    color: pink;
+  }
+  
+  .fa-sun {
+    color: yellow;
+  }

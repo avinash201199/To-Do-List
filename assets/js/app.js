@@ -17,15 +17,6 @@ var btn = document.getElementById("myBtn");
 var textField = document.getElementById("textInput");
 var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
-
-var day = new Date().toLocaleDateString("en-us", {
-  weekday: "long",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
-document.getElementById("d2").innerHTML = day;
-
 //Functions
 function checkForEmptyList() {
   if (localStorage.getItem("todos") === null) {
@@ -44,9 +35,7 @@ function checkForEmptyList() {
 setInterval(checkForEmptyList, 100);
 
 function htmlEncode(str) {
-  return String(str).replace(/[^\w. ]/gi, function (c) {
-    return "&#" + c.charCodeAt(0) + ";";
-  });
+  return String(str);
 }
 
 function getItemFromLocalStorage() {
@@ -59,7 +48,8 @@ function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
 
-  const createTime = getTime();
+  const d = new Date();
+  const createTime = d.getTime();
   const infoText = `The todo item was created at ${createTime}, ${day}`;
   const currentValue = htmlEncode(todoInput.value)?.trim() || ""
   if (!currentValue) {
@@ -88,7 +78,6 @@ function addTodo(e) {
     infoText: infoText,
   };
   todoDiv.setAttribute("key", newTodoItem.id);
-
 
   //Save to local - do this last
   //Save to local
@@ -436,37 +425,44 @@ function closemodal() {
   document.getElementById("Modal").classList.remove("true");
 }
 
-function getTime() {
-  var date = new Date();
-  var h = date.getHours();
-  var m = date.getMinutes();
-  var s = date.getSeconds();
-  var session = "AM";
+/* Clock JS modification  */
+(function () {
+  setInterval(() => {
+      var time = new Date().toLocaleTimeString();
+      var date = new Date().toLocaleDateString();
+      var day = new Date().getDay();
+      switch (day) {
+          case 0:
+              day = "Sunday,";
+              break;
+          case 1:
+              day = "Monday,";
+              break;
+          case 2:
+              day = "Tuseday,";
+              break;
+          case 3:
+              day = "Wednesday,";
+              break;
+          case 4:
+              day = "Thursday,";
+              break;
+          case 5:
+              day = "Friday,";
+              break;
+          case 6:
+              day = "Saturday,";
+              break;
+      }
+      document.getElementById("time").innerHTML = time;
+      document.getElementById("date").innerHTML = date;
+      document.getElementById("day").innerHTML = day;
 
-  if (h == 0) {
-    h = 12;
-  }
+  }, 1000)
+})();
 
-  if (h > 12) {
-    h = h - 12;
-    session = "PM";
-  }
-
-  h = h < 10 ? "0" + h : h;
-  m = m < 10 ? "0" + m : m;
-  s = s < 10 ? "0" + s : s;
-
-  var time = h + ":" + m + ":" + s + " " + session;
-
-  return time;
-}
-
-//rewrote this function so that it shows time properly
-
-setInterval(function () {
-  document.getElementById("d1").innerHTML = getTime();
-}, 100);
-
+ /* ################################### */
+ 
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = "Please add items first";
@@ -478,6 +474,12 @@ function show_alert() {
 }
 function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
+}
+
+//function to toggle darkmode
+function switchToDarkMode (){
+  var element = document.body;
+  element.classList.toggle("dark-mode");
 }
 
 btn.onclick = function () {
