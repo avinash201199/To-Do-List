@@ -691,11 +691,11 @@ select {
 }
 
 .proceed{
-    color: green;
+    color: white;
 }
 
 .donot_proceed{
-    color: red;
+    color: white;
 }
 
 .proceed:hover, .donot_proceed:hover{
