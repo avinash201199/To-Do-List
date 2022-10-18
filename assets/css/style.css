@@ -541,9 +541,13 @@ select {
 }
 
 .no-to-do-item {
+    font-style: oblique;
+    font-size: xx-small;
     text-align: center;
-    padding-top: 80px;
-    color: #4d4c4c;
+    padding-top: 50px;
+    color: whitesmoke;
+    font-weight: lighter;
+    
 }
 
 @keyframes slideIn {
