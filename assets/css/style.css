@@ -77,7 +77,7 @@ body {
 body {
     background-image: url("https://www.slideteam.net/wp/wp-content/uploads/2016/05/Radial-1-690x518.png");
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 1000%;
     /* opacity: 50%; */
     /* background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%); */
 }
@@ -563,7 +563,7 @@ select {
   body{
     background-color: rgb(247, 247, 249);
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;  /* keeping width: 100 viewport width can cause horizontal scrollbar which is an issue, fixed using percentage */
     display: grid;
 }
 .Clock{
@@ -630,7 +630,7 @@ select {
 }
    /* ################################### */
 
-.confirmation_box {
+.confirmation_box, .congratulations_box{
     position: fixed;
     top: 0;
     bottom: 0;
@@ -642,7 +642,7 @@ select {
     animation: slideIn 0.2s;
 }
 
-.confirmation_box_inner {
+.confirmation_box_inner , .congratulations_box_inner{
     width: 550px;
     height: 250px;
     background: #f7fffe;
@@ -656,7 +656,11 @@ select {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
+/* congrats_text is the paragraph element of congratulations_box  */
+#congrats_text{
+    font-size: 2rem;
+    text-transform: capitalize;
+}
 .optbox_header {
     background-color: #0093E9;
     background: linear-gradient(90deg, rgba(111, 108, 221, 1) 0%, rgba(57, 190, 193, 1) 100%);
@@ -915,8 +919,4 @@ select {
   
   .fa-moon {
     color: pink;
-  }
-  
-  .fa-sun {
-    color: yellow;
   }
