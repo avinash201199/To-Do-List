@@ -150,6 +150,7 @@ function deleteTodo(e) {
     const status = "completed";
     const id = todo.getAttribute("key");
     saveStatus(id, status);
+    checkIfAllTaksCompleted();
   }
 }
 
@@ -212,6 +213,7 @@ function removeLocalTodos(id) {
   const newTodo = todos.filter((todo) => todo.id !== intId);
 
   localStorage.setItem("todos", JSON.stringify(newTodo));
+
 }
 
 //function to toggle display
@@ -313,6 +315,26 @@ function getTodos() {
 //   });
 // }
 
+// to display congratulations pop-up if all tasks are completed
+function checkIfAllTaksCompleted() {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  let counter = 0;
+  let totalItems = todos.length;
+  todos.forEach((todo) => {
+    if (todo.status == "completed") {
+      counter++;
+    }
+  })
+  if (counter == totalItems) {
+    document.getElementById("congratulations_box").classList.remove("hide");
+  }
+}
+
 function saveLocalTodos(todo) {
   let todos;
   if (localStorage.getItem("todos") === null) {
@@ -344,12 +366,14 @@ function getTodos() {
   } else {
     todos = JSON.parse(localStorage.getItem("todos"));
   }
+
   todos.forEach(function (todo) {
     //Create todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
     if (todo.status == "completed") {
       todoDiv.classList.toggle("completed");
+
     }
     //Create list
     const newTodo = document.createElement("li");
@@ -428,41 +452,41 @@ function closemodal() {
 /* Clock JS modification  */
 (function () {
   setInterval(() => {
-      var time = new Date().toLocaleTimeString();
-      var date = new Date().toLocaleDateString();
-      var day = new Date().getDay();
-      switch (day) {
-          case 0:
-              day = "Sunday,";
-              break;
-          case 1:
-              day = "Monday,";
-              break;
-          case 2:
-              day = "Tuseday,";
-              break;
-          case 3:
-              day = "Wednesday,";
-              break;
-          case 4:
-              day = "Thursday,";
-              break;
-          case 5:
-              day = "Friday,";
-              break;
-          case 6:
-              day = "Saturday,";
-              break;
-      }
-      document.getElementById("time").innerHTML = time;
-      document.getElementById("date").innerHTML = date;
-      document.getElementById("day").innerHTML = day;
+    var time = new Date().toLocaleTimeString();
+    var date = new Date().toLocaleDateString();
+    var day = new Date().getDay();
+    switch (day) {
+      case 0:
+        day = "Sunday,";
+        break;
+      case 1:
+        day = "Monday,";
+        break;
+      case 2:
+        day = "Tuseday,";
+        break;
+      case 3:
+        day = "Wednesday,";
+        break;
+      case 4:
+        day = "Thursday,";
+        break;
+      case 5:
+        day = "Friday,";
+        break;
+      case 6:
+        day = "Saturday,";
+        break;
+    }
+    document.getElementById("time").innerHTML = time;
+    document.getElementById("date").innerHTML = date;
+    document.getElementById("day").innerHTML = day;
 
   }, 1000)
 })();
 
- /* ################################### */
- 
+/* ################################### */
+
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = "Please add items first";
@@ -474,10 +498,11 @@ function show_alert() {
 }
 function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
+  document.getElementById("congratulations_box").classList.add("hide");
 }
 
 //function to toggle darkmode
-function switchToDarkMode (){
+function switchToDarkMode() {
   var element = document.body;
   element.classList.toggle("dark-mode");
 }
@@ -499,4 +524,3 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-
