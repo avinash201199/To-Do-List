@@ -624,6 +624,7 @@ body {
     box-shadow: inset 10px 10px 10px var(--black-shade-2),
         inset -10px -10px 10px var(--black-shade-2);
     transition: transform .4s linear;
+    box-shadow: 5px 10px;
 }
 
 .Clock:hover {
