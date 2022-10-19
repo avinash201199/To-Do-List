@@ -581,9 +581,13 @@ select {
 }
 
 .no-to-do-item {
+    font-style: oblique;
+    font-size: xx-small;
     text-align: center;
-    padding-top: 80px;
-    color: var(--gray-shade-3);
+    padding-top: 50px;
+    color: whitesmoke;
+    font-weight: lighter;
+
 }
 
 @keyframes slideIn {
@@ -717,6 +721,11 @@ body {
     border-top-right-radius: 20px;
 }
 
+#text-modal {
+    color: red;
+    z-index: 999;
+}
+
 .confirmation_box p {
     font-size: 1.2rem;
     font-weight: 700;
@@ -737,11 +746,11 @@ body {
 }
 
 .proceed {
-    color: green;
+    color: white;
 }
 
 .donot_proceed {
-    color: red;
+    color: white;
 }
 
 .proceed:hover,
@@ -858,6 +867,12 @@ body {
         cursor: pointer;
         color: black;
     }
+}
+
+#txt-color,
+#txt-color1 {
+    color: white;
+    font-weight: 600;
 }
 
 @media only screen and (max-width: 731px) {

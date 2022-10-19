@@ -91,8 +91,8 @@
         </div>
     </div>
 
-    <div class="no-to-do-item">
-        <h1>The List Is Empty</h1>
+    <div style="color: whitesmoke; font-size:xx-small;" class="no-to-do-item">
+        <h1>THE LIST IS EMPTY !</h1>
     </div>
     <div class="todo-container">
         <ul class="todo-list"></ul>
@@ -106,10 +106,10 @@
             <div class="optbox_header">
                 <i class="fas fa-times" onclick="goback()"></i>
             </div>
-            <p>Are you sure you want to delete all tasks?</p>
+            <p id = "text-modal">Are you sure you want to delete all tasks?</p>
             <div class="option_box">
-                <button class="proceed btn btn-success mt-5 col-3" onclick="deleteAll();">Yes</button>
-                <button class="donot_proceed btn btn-danger mt-5 col-3" onclick="goback()">No</button>
+                <button class="proceed btn btn-success mt-5 col-3" id = "txt-color"onclick="deleteAll();">Yes</button>
+                <button class="donot_proceed btn btn-danger mt-5 col-3" id = "txt-color1" onclick="goback()">No</button>
             </div>
         </div>
     </div>
