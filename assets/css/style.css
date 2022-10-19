@@ -168,7 +168,7 @@ form button,
 }
 
 .myBtn:hover {
-    background-color: #55acee;
+    background-color: coral;
 }
 
 .modal-new {
@@ -303,7 +303,7 @@ form button:hover {
 }
 
 .filter-todo:hover {
-    background-color: #55acee;
+    background-color: lightcoral;
 }
 
 .todo li {
