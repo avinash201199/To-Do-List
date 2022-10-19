@@ -582,6 +582,7 @@ select {
         box-shadow: inset 10px 10px 10px rgb(42, 34, 34),
             inset -10px -10px 10px rgb(42, 34, 34);
     transition: transform .4s linear;
+    box-shadow: 5px 10px;
 }
 .Clock:hover{
     transform: rotate(360deg);
