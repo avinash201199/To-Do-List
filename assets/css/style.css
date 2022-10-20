@@ -991,3 +991,28 @@ body {
 .fa-moon {
     color: pink;
 }
+  
+.fa-sun {
+  color: yellow;
+}
+
+/* scrollTop css codes */
+#scrollTop {
+  display: none;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background: inherit;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+#scrollTop:hover {
+  background-color: #555;
+}
