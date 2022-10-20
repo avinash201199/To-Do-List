@@ -87,7 +87,7 @@ html {
 }
 
 .header h1 {
-    font-size: 60px;
+    font-size: 4rem;
     font-weight: 1000;
     font-family: 'Source Serif Pro', serif;
 }
@@ -949,8 +949,8 @@ body {
 .checkbox {
     opacity: 0;
     position: absolute;
-    right: 20px;
-    top: 50px;
+    right: 5px;
+    top: 5px;
     z-index: 10;
     height: 2rem;
     width: 4rem;
@@ -969,9 +969,24 @@ body {
     padding: 5px;
     position: absolute;
     right: 20px;
-    top: 50px;
+    top: 5px;
     transform: scale(1);
 }
+
+/* .label-center {
+    width: 54px;
+    height: 29px;
+    background-color: #111;
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    transform: scale(1);
+} */
 
 .ball {
     width: 24px;
