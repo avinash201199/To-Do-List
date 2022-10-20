@@ -505,7 +505,20 @@ function goback() {
 function switchToDarkMode() {
   var element = document.body;
   element.classList.toggle("dark-mode");
+  if (element.className=="dark-mode") {
+    localStorage.setItem("display-theme", "dark"); 
+  }
+  else{
+    localStorage.setItem("display-theme", "light"); 
+  }
 }
+//Function to check current Theme of webpage
+function checkTheme(){
+  if (localStorage.getItem("display-theme")=="dark") {
+    switchToDarkMode();
+  }
+}
+checkTheme();
 
 btn.onclick = function () {
   modal.style.display = "block";
