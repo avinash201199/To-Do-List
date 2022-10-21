@@ -51,7 +51,7 @@ function addTodo(e) {
   const d = new Date();
   const createTime = d.getTime();
   const infoText = `The todo item was created at ${createTime}, ${day}`;
-  const currentValue = htmlEncode(todoInput.value)?.trim() || ""
+  const currentValue = htmlEncode(todoInput.value)?.trim() || "";
   if (!currentValue) {
     //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
@@ -76,6 +76,7 @@ function addTodo(e) {
     task: currentValue,
     status: "incomplete",
     infoText: infoText,
+    createTime: createTime,
   };
   todoDiv.setAttribute("key", newTodoItem.id);
 
@@ -213,7 +214,6 @@ function removeLocalTodos(id) {
   const newTodo = todos.filter((todo) => todo.id !== intId);
 
   localStorage.setItem("todos", JSON.stringify(newTodo));
-
 }
 
 //function to toggle display
@@ -329,7 +329,7 @@ function checkIfAllTaksCompleted() {
     if (todo.status == "completed") {
       counter++;
     }
-  })
+  });
   if (counter == totalItems) {
     document.getElementById("congratulations_box").classList.remove("hide");
   }
@@ -373,7 +373,6 @@ function getTodos() {
     todoDiv.classList.add("todo");
     if (todo.status == "completed") {
       todoDiv.classList.toggle("completed");
-
     }
     //Create list
     const newTodo = document.createElement("li");
@@ -418,14 +417,14 @@ function getTodos() {
     todoDiv.setAttribute("key", todo.id);
     todoDiv.appendChild(trashButton);
     //Create info button
-    if (!todo.infoText)
-      todo.infoText = "Create time not found.";
+    if (!todo.infoText) todo.infoText = "Create time not found.";
     const infoButton = document.createElement("span");
     infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
     infoButton.classList.add("edit-btn");
     todoDiv.appendChild(infoButton);
     infoButton.addEventListener("click", () => {
-      alert(todo.infoText)
+      const time = new Date(todo.createTime);
+      alert(`The todo item was created at ${time.toString().slice(0, 24)}`);
     });
     //attach final Todo
     todoList.appendChild(todoDiv);
@@ -481,8 +480,7 @@ function closemodal() {
     document.getElementById("time").innerHTML = time;
     document.getElementById("date").innerHTML = date;
     document.getElementById("day").innerHTML = day;
-
-  }, 1000)
+  }, 1000);
 })();
 
 /* ################################### */
@@ -505,16 +503,15 @@ function goback() {
 function switchToDarkMode() {
   var element = document.body;
   element.classList.toggle("dark-mode");
-  if (element.className=="dark-mode") {
-    localStorage.setItem("display-theme", "dark"); 
-  }
-  else{
-    localStorage.setItem("display-theme", "light"); 
+  if (element.className == "dark-mode") {
+    localStorage.setItem("display-theme", "dark");
+  } else {
+    localStorage.setItem("display-theme", "light");
   }
 }
 //Function to check current Theme of webpage
-function checkTheme(){
-  if (localStorage.getItem("display-theme")=="dark") {
+function checkTheme() {
+  if (localStorage.getItem("display-theme") == "dark") {
     switchToDarkMode();
   }
 }
