@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    
 <head>
     <meta charset="UTF-8" />
 
@@ -27,11 +26,12 @@
       crossorigin="anonymous"
     />
 
-     <!-- jquery CDN -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 
-     <!-- FontAwesome CDN-->
+    <!-- FontAwesome CDN-->
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
@@ -40,20 +40,29 @@
 
 
     <link rel="stylesheet" href="assets/css/style.css" />
-    
-      
+
+
 </head>
 
 <body>
     <header>
-        <div class="header"><b><h1>To-Do List</h1></b></div>
-        <div class="col-auto">
-            <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
-            <label for="checkbox" class="label">
-                <i class="fas fa-sun"></i>
-                <i class='fas fa-moon'></i>
-                <div class='ball'>
-            </label>
+        <div class="navbar">
+            <a href="#"><img src="assets\images\logo.png" alt="logo" width="120px"></a>
+            <a href="#">
+                <div class="header"><b>
+                        <h1>To-Do List</h1>
+                    </b></div>
+            </a>
+            <a href="#">
+                <div class="col-auto">
+                    <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
+                    <label for="checkbox" class="label">
+                        <i class="fas fa-sun"></i>
+                        <i class='fas fa-moon'></i>
+                        <div class='ball'>
+                    </label>
+                </div>
+            </a>
         </div>
 
     </header>
@@ -122,6 +131,17 @@
 
     <!-- <div cla ss="confirmation_box"></div> -->
 
+
+    <div class="confirmation_box hide " id="confirmation_box">
+        <div class="confirmation_box_inner">
+            <div class="optbox_header">
+                <i class="fas fa-times" onclick="goback()"></i>
+            </div>
+            <p id="text-modal">Are you sure you want to delete all tasks?</p>
+            <div class="option_box">
+                <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">Yes</button>
+                <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">No</button>
+            </div>
     <div class="confirmation_box hide" id="confirmation_box">
       <div class="confirmation_box_inner">
         <div class="optbox_header">
@@ -177,38 +197,40 @@
         <div class="3rd-row-footer">
             <h3>Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash</h3>
         </div>
-       
+
     </footer>
 
     <script src="assets/js/app.js"></script>
-    
-<button onclick="scrollWindow()" id="scrollTop" title="Go to top">&uArr;</button>
-<script>
-let scrollBtn = document.getElementById("scrollTop");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+    <button onclick="scrollWindow()" id="scrollTop" title="Go to top">&uArr;</button>
+    <script>
+        let scrollBtn = document.getElementById("scrollTop");
 
-function scrollFunction() {
-if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-scrollBtn.style.display = "block";
-} else {
-scrollBtn.style.display = "none";
-}
-}
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
 
-const scrollWindow = function () {
-if (window.scrollY != 0) {
-setTimeout(function () {
-window.scrollTo(0, window.scrollY - 50);
-window.scroll({top: 0, behavior: "smooth"})
-scrollWindow();
-}, 10);
-}
-}
-</script>
-   
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        }
+
+        const scrollWindow = function () {
+            if (window.scrollY != 0) {
+                setTimeout(function () {
+                    window.scrollTo(0, window.scrollY - 50);
+                    window.scroll({ top: 0, behavior: "smooth" })
+                    scrollWindow();
+                }, 10);
+            }
+        }
+    </script>
+
 </body>
 
 
 </html>
+
+

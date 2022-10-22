@@ -89,7 +89,8 @@ html {
 .header h1 {
     font-size: 4rem;
     font-weight: 1000;
-    font-family: 'Source Serif Pro', serif;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    padding-left: 4em;
 }
 
 body {
@@ -161,7 +162,7 @@ form button,
 
 .myBtn {
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    font-family:"Comic Sans MS", "Comic Sans", cursive;
     font-weight: bold;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -262,6 +263,7 @@ form button,
 
 .buttons-wrapper {
     margin: 2rem auto;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 .button-div {
@@ -306,6 +308,7 @@ form button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 .todo-list {
@@ -587,6 +590,7 @@ select {
     padding-top: 50px;
     color: whitesmoke;
     font-weight: lighter;
+    font-family:"Comic Sans MS", "Comic Sans", cursive;
 
 }
 
@@ -681,6 +685,7 @@ body {
 
 .confirmation_box,
 .congratulations_box {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -1031,3 +1036,16 @@ body {
 #scrollTop:hover {
   background-color: #555;
 }
+.navbar {
+    width: 100%;
+    /* background-color: #555; */
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    /* padding: 12px; */
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
