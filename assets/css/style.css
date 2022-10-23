@@ -108,7 +108,7 @@ body {
 .dark-mode {
     background-color: var(--black);
     color: var(--white);
-    filter: invert(1) contrast(0.95) saturate(0.5) hue-rotate(180deg)
+    filter: invert(1) contrast(0.95) saturate(0.4) hue-rotate(100deg)
 }
 
 body {
