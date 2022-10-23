@@ -466,7 +466,7 @@ select {
 .footer {
     background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
     background-size: 100% 111px;
-    height: 20vh;
+    height: 12vh;
     /* background-repeat: no-repeat; */
     /* display: flex; */
     justify-content: space-around;
@@ -505,11 +505,17 @@ select {
     margin-block-start: 0;
     margin-block-end: 0;
     color: var(--dark-graphite-black);
+    font-size: 25px;
+    text-align: center;
+    margin-top: 25px;
 }
 
 .social-icon {
     width: 2rem;
     margin: .5rem;
+    margin-top: 25px;
+    margin-left: 10px;
+    float: left;
     /* border-radius: 50%; */
     transition: all 0.2s;
 }
@@ -884,11 +890,11 @@ body {
 @media only screen and (max-width: 731px) {
     .footer {
         /* background-image: linear-gradient(135deg, #0093E9 0%, #80D0C7 100%); */
-        height: 20vh;
+        height: 22vh;
         display: grid;
         justify-content: space-around;
         align-items: center;
-        margin-top: auto;
+        margin-top: -28%;
         width: 100%;
         background-color: var(--blue-shade-1);
         text-align: center;
@@ -1020,8 +1026,10 @@ body {
 #scrollTop {
   display: none;
   position: fixed;
-  bottom: 5%;
+  bottom: 2%;
   right: 5%;
+  width: 40px;
+  height: 50px;
   z-index: 99;
   font-size: 18px;
   border: none;
@@ -1029,7 +1037,6 @@ body {
   background: inherit;
   color: white;
   cursor: pointer;
-  padding: 15px;
   border-radius: 8px;
 }
 
