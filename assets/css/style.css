@@ -162,7 +162,7 @@ form button,
 
 .myBtn {
     text-align: center;
-    font-family:"Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-weight: bold;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -468,9 +468,10 @@ select {
     background-size: 100% 111px;
     height: 12vh;
     /* background-repeat: no-repeat; */
-    /* display: flex; */
-    justify-content: space-around;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 1rem;
     margin-top: auto;
     width: 100%;
     background-color: var(--blue-shade-1);
@@ -511,11 +512,10 @@ select {
 }
 
 .social-icon {
-    width: 2rem;
-    margin: .5rem;
-    margin-top: 25px;
-    margin-left: 10px;
+    width: 32px;
+    height: auto;
     float: left;
+    margin: 0.5rem;
     /* border-radius: 50%; */
     transition: all 0.2s;
 }
@@ -596,7 +596,7 @@ select {
     padding-top: 50px;
     color: whitesmoke;
     font-weight: lighter;
-    font-family:"Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 
 }
 
@@ -1017,42 +1017,58 @@ body {
 .fa-moon {
     color: pink;
 }
-  
+
 .fa-sun {
-  color: yellow;
+    color: yellow;
 }
 
 /* scrollTop css codes */
 #scrollTop {
-  display: none;
-  position: fixed;
-  bottom: 2%;
-  right: 5%;
-  width: 40px;
-  height: 50px;
-  z-index: 99;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  background: inherit;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
+    display: none;
+    position: fixed;
+    bottom: 2%;
+    right: 5%;
+    width: 40px;
+    height: 50px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: inherit;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
 #scrollTop:hover {
-  background-color: #555;
+    background-color: #555;
 }
+
 .navbar {
     width: 100%;
     /* background-color: #555; */
     overflow: auto;
-  }
-  
-  .navbar a {
+}
+
+.navbar a {
     float: left;
-    /* padding: 12px; */
+    padding: 12px;
     color: white;
     text-decoration: none;
     font-size: 17px;
-  }
+}
+
+.navbar a img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.footer-desc {
+    margin-top: unset;
+    margin-bottom: unset;
+}
+
+.footer-creator-label h3 {
+    margin-top: unset;
+}
