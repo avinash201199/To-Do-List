@@ -89,8 +89,9 @@ html {
 .header h1 {
     font-size: 4rem;
     font-weight: 1000;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Lato", "Lato Bold", cursive;
     padding-left: 4em;
+    color: #111;
 }
 
 body {
@@ -99,7 +100,7 @@ body {
     min-height: 100%;
     box-sizing: border-box;
     display: flex;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lato', sans-serif;
     flex-direction: column;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }
@@ -121,8 +122,7 @@ body {
 
 header {
     letter-spacing: -1px;
-    background-color: var(--sky-blue);
-    background-image: radial-gradient(circle at top center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 6%, transparent 6%, transparent 54%, transparent 54%, transparent 93%, rgba(48, 184, 210, 0.15) 93%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 2%, transparent 2%, transparent 19%, transparent 19%, transparent 36%, rgba(48, 184, 210, 0.15) 36%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at top right, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 1%, transparent 1%, transparent 2%, transparent 2%, transparent 11%, rgba(48, 184, 210, 0.15) 11%, rgba(48, 184, 210, 0.15) 100%), radial-gradient(circle at center center, rgba(17, 201, 137, 0.15) 0%, rgba(17, 201, 137, 0.15) 13%, transparent 13%, transparent 59%, transparent 59%, transparent 67%, rgba(48, 184, 210, 0.15) 67%, rgba(48, 184, 210, 0.15) 100%), linear-gradient(90deg, hsl(38, 64%, 92%), hsl(38, 64%, 92%));
+    background-color: white;
     background-size: 111px 111px;
     /* opacity: 70%; */
     color: var(--dark-graphite-black);
@@ -162,7 +162,7 @@ form button,
 
 .myBtn {
     text-align: center;
-    font-family:"Comic Sans MS", "Comic Sans", cursive;
+    font-family:"Lato", "Lato", cursive;
     font-weight: bold;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -172,8 +172,9 @@ form button,
     box-shadow: none;
     border: 0 !important;
     background-image: none;
+    color: white;
     border-radius: 5px;
-    background-color: var(--green-shade-1);
+    background-color: var(--black);
     cursor: pointer;
     padding: 1rem;
     justify-content: center;
@@ -205,7 +206,8 @@ form button,
 }
 
 .myBtn:hover {
-    background-color: coral;
+    background-color: rgb(255, 255, 255);
+    color: black;
 }
 
 .modal-new {
@@ -263,7 +265,7 @@ form button,
 
 .buttons-wrapper {
     margin: 2rem auto;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Lato", "Lato", cursive;
 }
 
 .button-div {
@@ -596,7 +598,7 @@ select {
     padding-top: 50px;
     color: whitesmoke;
     font-weight: lighter;
-    font-family:"Comic Sans MS", "Comic Sans", cursive;
+    font-family:"Lato", "Lato", cursive;
 
 }
 
@@ -625,21 +627,19 @@ body {
 .Clock {
     display: flex;
     border: 2px solid var(--black);
-    background-color: var(--green-shade-2);
+    background-color: var(--white-shade-1);
     height: 150px;
     width: 300px;
     margin: auto;
     justify-content: center;
     border-radius: 20px;
-    box-shadow: inset 10px 10px 10px var(--black-shade-2),
-        inset -10px -10px 10px var(--black-shade-2);
-    transition: transform .4s linear;
-    box-shadow: 5px 10px;
+    /* transition: transform .4s linear; */
+    /* box-shadow: 5px 10px; */
 }
 
 .Clock:hover {
     transform: rotate(360deg);
-    background: var(--white-shade-4);
+    background: var(--black);
     cursor: pointer;
 }
 
@@ -647,26 +647,23 @@ body {
     display: flex;
     justify-content: center;
     border-radius: 10px;
-    background-color: var(--gren-shade-3);
+    background-color: var(--white-shade-2);
     height: 80px;
-    box-shadow: inset -2px -2px 15px var(--gray-shade-5),
-        inset 2px 2px 15px var(--gray-shade-6);
     width: 250px;
     padding: 2vh;
     font-size: 30px;
-    text-shadow: 2px -2px 2px var(--gray-shade-7);
     font-weight: bolder;
     color: var(--black-shade-3);
     margin: auto;
-    color: transparent;
+    color: white;
     -webkit-text-fill-color: var(--black-shade-4);
     -webkit-text-stroke-color: var(--black-shade-5);
-    transition: transform .4s linear;
+    /* transition: transform .4s linear; */
 }
 
 .Clock:hover #time {
-    background-color: var(--white-shade-5);
-    -webkit-text-fill-color: var(--gray-shade-8);
+    background-color: var(--black);
+    -webkit-text-fill-color: var(--white);
     text-shadow: 2px -2px 2px var(--black);
     cursor: pointer;
     font-weight: bolder;
@@ -676,22 +673,22 @@ body {
 .week {
     display: flex;
     position: absolute;
-    color: var(--black-shade-3);
+    color: var(--gray-shade-4);
     font-size: 20px;
-    text-shadow: 1px 1px 10px var(--red-shade-4);
     margin-top: 80px;
 }
 
 .Clock:hover .week {
     text-shadow: 1px 1px 10px var(--black);
     font-size: 20px;
+    color: white;
 }
 
 /* ################################### */
 
 .confirmation_box,
 .congratulations_box {
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Lato", "Lato", cursive;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -949,11 +946,11 @@ body {
 }
 
 .myBtn:hover {
-    animation: vibrate-1 0.3s linear infinite both;
+    animation:  0.3s linear infinite both;
 }
 
 .select:hover {
-    animation: vibrate-1 0.3s linear infinite both;
+    animation:  0.3s linear infinite both;
 }
 
 

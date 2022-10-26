@@ -23,7 +23,7 @@ width: 350px;
 }
 .list h2
 {
-background-image: #03a9f4;
+background-image: #ffffff;
 color: #fff;
 padding: 10px 20px;
 font-weight:600;
@@ -66,7 +66,7 @@ font-weight:600;
     position: relative;
     width: 20px;
     height: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -79,8 +79,8 @@ font-weight:600;
     top: 5px;
     width: 10px;
     height: 5px;
-    border-left: 2px solid #ccc;
-    border-bottom: 2px solid #ccc;
+    border-left: 2px solid rgb(255, 255, 255);
+    border-bottom: 2px solid #fff;
     transform: rotate(-40deg);
 }
 .list ul li label input:checked~p
