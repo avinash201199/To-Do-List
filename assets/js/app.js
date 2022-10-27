@@ -57,6 +57,11 @@ function addTodo(e) {
     openmodal("red", "Please enter a Task!");
     return;
   }
+  //alert("Only Number is Type");
+  if (!/\D/.test(currentValue)==true) {
+    openmodal("red", "Do not enter only Numbers, Please enter a valid Task!");
+    return;
+  }
 
   // alert("Duplicate task")
   if (isDuplicate(currentValue)) {
