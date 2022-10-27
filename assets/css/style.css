@@ -90,7 +90,27 @@ html {
     font-size: 4rem;
     font-weight: 1000;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
-    padding-left: 4em;
+    padding-left: 2em;
+}
+
+@media only screen and (max-width: 768px) {
+    .header h1 {
+        padding-left: 0em;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .header h1 {
+        padding-left: 0em;
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 354px) {
+    .header h1 {
+        padding-left: 0em;
+        font-size: 1.5em;
+    }
 }
 
 body {
