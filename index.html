@@ -9,22 +9,11 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     /> -->
     <title>To-Do List</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0,user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
     <!-- favicon -->
-    <link
-      rel="shortcut icon"
-      type="image/jpg"
-      href="assets/images/favicon.png"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
-      crossorigin="anonymous"
-    />
+    <link rel="shortcut icon" type="image/jpg" href="assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
     <!-- jquery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -48,11 +37,13 @@
     <header>
         <div class="navbar">
             <a href="#"><img src="assets\images\logo.png" alt="logo" width="120px"></a>
+
             <a href="#">
                 <div class="header"><b>
                         <h1>To-Do List</h1>
                     </b></div>
             </a>
+
             <a href="#">
                 <div class="col-auto">
                     <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
@@ -67,65 +58,60 @@
 
     </header>
     <div class="modal red" id="Modal">
-      <div class="content" id="content">
-        <span id="modal-text"> Some Text </span>
-        <button onclick="closemodal()" class="modal-btn">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+        <div class="content" id="content">
+            <span id="modal-text"> Some Text </span>
+            <button onclick="closemodal()" class="modal-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
     </div>
 
     <!-- Clock Modification -->
     <div class="Clock">
-      <div id="time"></div>
-      <div class="week">
-        <div id="day"></div>
-        <div id="date"></div>
-      </div>
+        <div id="time"></div>
+        <div class="week">
+            <div id="day"></div>
+            <div id="date"></div>
+        </div>
     </div>
 
     <div class="buttons-wrapper">
-      <div class="button-div">
-        <button type="button" id="myBtn" class="myBtn">Add a new task</button>
-      </div>
-      <div class="select">
-        <select name="todos" class="filter-todo" style="color: black">
-          <option value="all" style="color: black">All</option>
-          <option value="completed" style="color: black">Completed</option>
-          <option value="incomplete" style="color: black">Incomplete</option>
-        </select>
-      </div>
+        <div class="button-div">
+            <button type="button" id="myBtn" class="myBtn">Add a new task</button>
+        </div>
+        <div class="select">
+            <select name="todos" class="filter-todo" style="color: black">
+                <option value="all" style="color: black">All</option>
+                <option value="completed" style="color: black">Completed</option>
+                <option value="incomplete" style="color: black">Incomplete</option>
+            </select>
+        </div>
     </div>
 
     <!-- The Modal -->
     <div id="myModal" class="modal-new">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <form class="todoform">
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              placeholder="Add a new Task .."
-              class="todo-input form-control"
-              id="textInput"
-              required
-            />
-            <div class="abc">
-              <button id="todo-button" class="todo-button" type="submit">
-                <i class="fas fa-plus-square"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="todoform">
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Add a new Task .." class="todo-input form-control" id="textInput"
+                        required />
+                    <div class="abc">
+                        <button id="todo-button" class="todo-button" type="submit">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div style="color: whitesmoke; font-size: xx-small" class="no-to-do-item">
-      <h1>THE LIST IS EMPTY !</h1>
+        <h1>THE LIST IS EMPTY !</h1>
     </div>
     <div class="todo-container">
-      <ul class="todo-list"></ul>
+        <ul class="todo-list"></ul>
     </div>
     <button class="delete-all" onclick="show_alert()">Delete All Tasks</button>
 
@@ -142,30 +128,22 @@
                 <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">Yes</button>
                 <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">No</button>
             </div>
-    <div class="confirmation_box hide" id="confirmation_box">
-      <div class="confirmation_box_inner">
-        <div class="optbox_header">
-          <i class="fas fa-times" onclick="goback()"></i>
-        </div>
-        <p id="text-modal">Are you sure you want to delete all tasks?</p>
-        <div class="option_box">
-          <button
-            class="proceed btn btn-success mt-5 col-3"
-            id="txt-color"
-            onclick="deleteAll();"
-          >
-            Yes
-          </button>
-          <button
-            class="donot_proceed btn btn-danger mt-5 col-3"
-            id="txt-color1"
-            onclick="goback()"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
+            <div class="confirmation_box hide" id="confirmation_box">
+                <div class="confirmation_box_inner">
+                    <div class="optbox_header">
+                        <i class="fas fa-times" onclick="goback()"></i>
+                    </div>
+                    <p id="text-modal">Are you sure you want to delete all tasks?</p>
+                    <div class="option_box">
+                        <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">
+                            Yes
+                        </button>
+                        <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">
+                            No
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -189,13 +167,13 @@
 
         </div>
         <div class="2ndrow-foter">
-            <!-- <p class="footer-desc">This project is a part of <a class="footer-desc"
+            <p class="footer-desc">This project is a part of <a class="footer-desc"
                     href="https://hacktoberfest.digitalocean.com/" target="_blank"
                     rel="noopener noreferrer">Hacktoberfest
-                    2022</a> -->
+                    2022</a>
             </p>
         </div>
-        <div class="3rd-row-footer">
+        <div class="3rd-row-footer footer-creator-label">
             <h3>Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash</h3>
         </div>
 
@@ -233,5 +211,3 @@
 
 
 </html>
-
-
