@@ -91,7 +91,26 @@ html {
     font-weight: 1000;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     padding-left: 2.5em;
+    }
+    @media only screen and (max-width: 768px) {
+    .header h1 {
+        padding-left: 0em;
+    }
 }
+@media only screen and (max-width: 425px) {
+    .header h1 {
+        padding-left: 0em;
+        font-size: 2em;
+    }
+    
+}
+@media only screen and (max-width: 354px) {
+    .header h1 {
+        padding-left: 0em;
+        font-size: 1.5em;
+    }
+    }
+
 
 body {
     margin: 0;
@@ -126,7 +145,7 @@ header {
     background-size: 111px 111px;
     /* opacity: 70%; */
     color: var(--dark-graphite-black);
-    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 0%;
     margin-bottom: 5vh;
 }
@@ -134,6 +153,11 @@ header {
 header h1 {
     font-weight: 800;
 }
+.col-auto{
+    position: relative;
+    margin-top: -10px
+}
+
 
 header,
 form {
@@ -476,6 +500,7 @@ select {
     width: 100%;
     background-color: var(--blue-shade-1);
     text-align: center;
+    box-shadow: 10px -4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 @media only screen and (max-width: 440px) {
