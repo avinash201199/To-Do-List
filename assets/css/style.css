@@ -149,6 +149,7 @@ header {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 0%;
     margin-bottom: 5vh;
+    font-family: 'Montserrat', sans-serif ;
 }
 
 header h1 {
@@ -187,8 +188,9 @@ form button,
 
 .myBtn {
     text-align: center;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: 'Baloo Bhai 2';
     font-weight: bold;
+    font-size: 20px;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -288,7 +290,7 @@ form button,
 
 .buttons-wrapper {
     margin: 2rem auto;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: 'Baloo Bhai 2', cursive;
 }
 
 .button-div {
@@ -333,7 +335,7 @@ form button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: 'Baloo Bhai 2', cursive;
 }
 
 .todo-list {
@@ -449,11 +451,11 @@ form button:hover {
 
 select {
     text-align: center;
-    font-family: "Montserrat", sans-serif;
     font-weight: bold;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
+    font-size: 20px;
     appearance: none;
     outline: 0;
     box-shadow: none;
@@ -464,6 +466,22 @@ select {
     cursor: pointer;
 }
 
+header h1{
+    font-family: 'Montserrat' !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    margin-left: 50px;
+    color: black
+    
+
+}
+
+.myModal h1{
+    font-family: 'Montserrat' !important;
+    text-decoration: none;
+    font-style: normal  !important;
+
+}
 
 /* Custom Select */
 
@@ -476,6 +494,7 @@ select {
     overflow: hidden;
     background-color: var(--gray-shade-1);
     border-radius: 5px;
+    font-family: 'Baloo Bhai 2', cursive !important;
 }
 
 .abc {
@@ -616,13 +635,10 @@ select {
 }
 
 .no-to-do-item {
-    font-style: oblique;
-    font-size: xx-small;
     text-align: center;
     padding-top: 50px;
     color: whitesmoke;
     font-weight: lighter;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
 
 }
 
