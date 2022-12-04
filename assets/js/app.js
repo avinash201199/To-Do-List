@@ -135,6 +135,12 @@ function addTodo(e) {
 
   //attach final Todo
   todoList.appendChild(todoDiv);
+
+  if (localStorage.getItem("display-theme") == "dark") {
+    document.querySelectorAll('.todo');
+    todoDiv.classList.toggle('dark-mode');
+    newTodo.classList.toggle('dark-mode');
+  }
 }
 
 function deleteTodo(e) {
@@ -267,35 +273,36 @@ function isDuplicate(task) {
   return index > -1;
 }
 
-function getTodos() {
-  let todos = getItemFromLocalStorage();
-  todos.forEach(function (todo) {
-    //Create todo div
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add("todo");
-    if (todo.status === "completed") {
-      todoDiv.classList.add("completed");
-    }
-    todoDiv.setAttribute("key", todo.id);
-    //Create list
-    const newTodo = document.createElement("li");
-    newTodo.innerText = todo.task;
-    newTodo.classList.add("todo-item");
-    todoDiv.appendChild(newTodo);
-    //Create Completed Button
-    const completedButton = document.createElement("button");
-    completedButton.innerHTML = `<i class="fas fa-check"></i>`;
-    completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(completedButton);
-    //Create trash button
-    const trashButton = document.createElement("button");
-    trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
-    trashButton.classList.add("trash-btn");
-    todoDiv.appendChild(trashButton);
-    //attach final Todo
-    todoList.appendChild(todoDiv);
-  });
-}
+// function getTodos() {
+//   let todos = getItemFromLocalStorage();
+//   todos.forEach(function (todo) {
+    
+//     //Create todo div
+//     const todoDiv = document.createElement("div");
+//     todoDiv.classList.add("todo");
+//     if (todo.status === "completed") {
+//       todoDiv.classList.add("completed");
+//     }
+//     todoDiv.setAttribute("key", todo.id);
+//     //Create list
+//     const newTodo = document.createElement("li");
+//     newTodo.innerText = todo.task;
+//     newTodo.classList.add("todo-item");
+//     todoDiv.appendChild(newTodo);
+//     //Create Completed Button
+//     const completedButton = document.createElement("button");
+//     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+//     completedButton.classList.add("complete-btn");
+//     todoDiv.appendChild(completedButton);
+//     //Create trash button
+//     const trashButton = document.createElement("button");
+//     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+//     trashButton.classList.add("trash-btn");
+//     todoDiv.appendChild(trashButton);
+//     //attach final Todo
+//     todoList.appendChild(todoDiv);
+//   });
+// }
 // function filterTodo(e) {
 //   const todos = todoList.childNodes;
 //   todos.forEach(function(todo) {
@@ -433,6 +440,9 @@ function getTodos() {
     });
     //attach final Todo
     todoList.appendChild(todoDiv);
+    if (localStorage.getItem("display-theme") == "dark") {
+      todoDiv.classList.toggle('dark-mode');
+    }
   });
 }
 
@@ -506,13 +516,36 @@ function goback() {
 
 //function to toggle darkmode
 function switchToDarkMode() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
-  if (element.className == "dark-mode") {
+  var elem1 = document.querySelector('.navbar');
+  var elem2 = document.querySelector('.header h1');
+  var elem3 = document.querySelector('.footer');
+  var elem4 = document.querySelectorAll('.footerelements');
+  var elem5 = document.querySelector('.Clock');
+  var elem6 = document.querySelectorAll('.todo');
+  var elem7 = document.body;
+  var elem8 = document.querySelector('.modal-content');
+  var elem9 = document.getElementById('textInput');
+
+  elem1.classList.toggle("dark-mode");
+  elem2.classList.toggle("dark-mode");
+  elem3.classList.toggle("dark-mode");
+  elem5.classList.toggle("dark-mode");
+  for(var i=0; i<elem4.length; i++){
+    elem4[i].classList.toggle("dark-mode");
+  }
+  for(var i=0; i<elem6.length; i++){
+    elem6[i].classList.toggle("dark-mode");
+  }
+  elem7.classList.toggle('body-background');
+
+  if (elem1.className == "navbar dark-mode") {
     localStorage.setItem("display-theme", "dark");
   } else {
     localStorage.setItem("display-theme", "light");
   }
+
+  elem8.classList.toggle('dark-mode');
+  elem9.classList.toggle('dark-mode');
 }
 //Function to check current Theme of webpage
 function checkTheme() {
@@ -525,6 +558,7 @@ checkTheme();
 btn.onclick = function () {
   modal.style.display = "block";
   textField.focus();
+  // checkTheme();
 };
 
 span.onclick = function () {
