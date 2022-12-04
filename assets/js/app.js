@@ -546,10 +546,12 @@ function switchToDarkMode() {
 
   elem8.classList.toggle('dark-mode');
   elem9.classList.toggle('dark-mode');
+
 }
 //Function to check current Theme of webpage
 function checkTheme() {
   if (localStorage.getItem("display-theme") == "dark") {
+    document.querySelector(".checkbox").checked = true;
     switchToDarkMode();
   }
 }
