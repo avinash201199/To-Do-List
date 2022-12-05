@@ -47,7 +47,6 @@ function getItemFromLocalStorage() {
 function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
-
   const d = new Date();
   const createTime = d.getTime();
   const infoText = `The todo item was created at ${createTime}, ${day}`;
@@ -132,7 +131,10 @@ function addTodo(e) {
   infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
   infoButton.classList.add("edit-btn");
   todoDiv.appendChild(infoButton);
-
+  infoButton.addEventListener("click", () => {
+    const time = new Date(todoDiv.createTime);
+    alert(`The todo item was created at ${time.toString().slice(0, 24)}`);
+  });
   //attach final Todo
   todoList.appendChild(todoDiv);
 
