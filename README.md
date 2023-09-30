@@ -18,6 +18,7 @@ This is a simple to-do-list webpage
 
 - Star this repository.
 - Create an issue with description of how you want to contribute in this project.
+- Wait to be assigned.
 - Then fork this repository.
 - In the forked repository add your changes.
 - Then make a pull request with the issue number.
