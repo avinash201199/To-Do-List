@@ -88,6 +88,7 @@ function addTodo(e) {
   //Save to local - do this last
   //Save to local
   saveLocalTodos(newTodoItem);
+
   //
   newTodo.classList.add("todo-item");
   newTodo.classList.add("todo");
@@ -141,6 +142,7 @@ function addTodo(e) {
     todoDiv.classList.toggle('dark-mode');
     newTodo.classList.toggle('dark-mode');
   }
+  setAggregatedToDos();
 }
 
 function deleteTodo(e) {
@@ -164,6 +166,8 @@ function deleteTodo(e) {
     saveStatus(id, status);
     checkIfAllTaksCompleted();
   }
+
+  setAggregatedToDos();
 }
 
 //save the status of the task -> and persist by saving it to the localstorage
@@ -276,7 +280,7 @@ function isDuplicate(task) {
 // function getTodos() {
 //   let todos = getItemFromLocalStorage();
 //   todos.forEach(function (todo) {
-    
+
 //     //Create todo div
 //     const todoDiv = document.createElement("div");
 //     todoDiv.classList.add("todo");
@@ -444,12 +448,15 @@ function getTodos() {
       todoDiv.classList.toggle('dark-mode');
     }
   });
+
+  setAggregatedToDos();
 }
 
 function deleteAll() {
   [...document.getElementsByClassName("todo")].map((n) => n && n.remove());
   localStorage.removeItem("todos");
   document.getElementById("confirmation_box").classList.add("hide");
+  setAggregatedToDos();
 }
 
 function openmodal(color, message, timer = 3000) {
@@ -503,7 +510,7 @@ function closemodal() {
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = "Please add items first";
-    console.log({html}); 
+    console.log({html});
     alert(html);
   } else {
     document.getElementById("confirmation_box").classList.remove("hide");
@@ -575,3 +582,28 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+function setAggregatedToDos() {
+  let todos;
+  let totalCompletedTask = 0;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+
+  const totalTask = todos.length;
+
+  todos.forEach(function (todo) {
+    if (todo.status == "completed") {
+      totalCompletedTask += 1;
+    }
+  })
+
+  const elemTotalTask = document.getElementById("state1");
+  const elemRemainingTask = document.getElementById("state2");
+  const elemCompletedTask = document.getElementById("state3");
+  elemTotalTask.textContent = totalTask;
+  elemRemainingTask.textContent = totalTask - totalCompletedTask;
+  elemCompletedTask.textContent = totalCompletedTask;
+}
