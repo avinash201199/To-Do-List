@@ -347,6 +347,7 @@ function checkIfAllTaksCompleted() {
     }
   });
   if (counter == totalItems) {
+    setAggregatedToDos();
     document.getElementById("congratulations_box").classList.remove("hide");
   }
 }
