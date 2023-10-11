@@ -18,7 +18,7 @@ This is a simple to-do-list webpage
 
 - Check [contributing.md file to contribute](https://github.com/avinash201199/To-Do-List/blob/main/CONTRIBUTING.md)
 - Star this repository.
-- Create an issue with description of how you want to contribute in this project.
+- Create an issue with the description of how you want to contribute to this project.
 - Wait to be assigned.
 - Then fork this repository.
 - In the forked repository add your changes.
