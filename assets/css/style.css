@@ -87,8 +87,8 @@ html {
 }
 
 .header h1 {
-    font-size: 4rem;
-    font-weight: 1000;
+    font-size: 3.5rem;
+    font-weight: 1500;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     padding-left: 2.5em;
     }
@@ -228,7 +228,7 @@ form button,
 }
 
 .myBtn:hover {
-    background-color: coral;
+    background-color: rgb(255, 106, 51);
 }
 
 .modal-new {
@@ -369,7 +369,7 @@ form button:hover {
 }
 
 .filter-todo:hover {
-    background-color: lightcoral;
+    background-color: rgb(241, 56, 56);
 }
 
 .todo li {
