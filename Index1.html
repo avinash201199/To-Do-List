@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>To-Do List App</title>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Links -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css"
+      integrity="sha512-NXUhxhkDgZYOMjaIgd89zF2w51Mub53Ru3zCNp5LTlEzMbNNAjTjDbpURYGS5Mop2cU4b7re1nOIucsVlrx9fA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <!-- Main Header -->
+    <header class="main-header">
+      <div class="ui container">
+        <h1>To-Do List App</h1>
+      </div>
+    </header>
+    <!-- End Main Header -->
+
+    <div class="ui container">
+      <!-- Add Task -->
+      <form id="add-task" class="ui left icon input fluid">
+        <input
+          id="add-task-input"
+          class="large"
+          type="text"
+          placeholder="Write your task here..."
+        />
+        <i class="tasks icon"></i>
+      </form>
+      <!-- End Add Task -->
+
+      <!-- Buttons -->
+      <div id="buttons" class="ui stackable grid equal width">
+        <button
+          id="clear-all-tasks"
+          class="ui button column"
+          onclick="showClearAllTasksModal()"
+        >
+          Clear all tasks
+        </button>
+        <button
+          disabled
+          class="ui button column"
+          onclick="showClearCompletedTasksModal()"
+        >
+          Clear completed tasks
+        </button>
+      </div>
+      <!-- End Buttons -->
+
+      <!-- Tasks List -->
+      <ul id="tasks-list" class="ui segments"></ul>
+      <!-- End Tasks List -->
+
+      <!-- Edit Modal -->
+      <div id="edit-modal" class="ui tiny modal">
+        <div class="header">Update Your Task</div>
+        <div class="content">
+          <div class="ui fluid input">
+            <input id="task-id" type="hidden" />
+            <input id="task-text" type="text" />
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui cancel button">Cancel</div>
+          <div id="update-button" class="ui positive right labeled icon button">
+            Update
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Edit Modal -->
+
+      <!-- Delete Modal -->
+      <div id="remove-modal" class="ui tiny modal">
+        <div class="header">Delete Your Task</div>
+        <div class="content">
+          <div class="ui fluid input">
+            <input id="task-id" type="hidden" />
+            <p>Are you sure you want to delete your task?</p>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui cancel red button">No</div>
+          <div id="remove-button" class="ui positive right labeled icon button">
+            Yes
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Delete Modal -->
+
+      <!-- Clear All Tasks Modal -->
+      <div id="clear-all-tasks-modal" class="ui tiny modal">
+        <div class="header">Clear All Tasks</div>
+        <div class="content">
+          <div class="ui fluid input">
+            <input id="task-id" type="hidden" />
+            <p>Are you sure you want to clear all tasks?</p>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui cancel red button">No</div>
+          <div
+            id="remove-button"
+            onclick="clearAllTasks()"
+            class="ui positive right labeled icon button"
+          >
+            Yes
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Clear All Tasks Modal -->
+
+      <!-- Clear Completed Tasks Modal -->
+      <div id="clear-completed-tasks-modal" class="ui tiny modal">
+        <div class="header">Clear Completed Tasks</div>
+        <div class="content">
+          <div class="ui fluid input">
+            <input id="task-id" type="hidden" />
+            <p>Are you sure you want to clear completed tasks?</p>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui cancel red button">No</div>
+          <div
+            id="remove-button"
+            onclick="clearAllTasks()"
+            class="ui positive right labeled icon button"
+          >
+            Yes
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+      <!-- End Clear Completed Tasks Modal -->
+    </div>
+
+    <!-- Scripts -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
+      integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+      integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>
