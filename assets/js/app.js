@@ -58,7 +58,7 @@ function addTodo(e) {
     return;
   }
   //alert("Only Number is Type");
-  if (!/\D/.test(currentValue)==true) {
+  if (!/\D/.test(currentValue) == true) {
     openmodal("red", "Do not enter only Numbers, Please enter a valid Task!");
     return;
   }
@@ -138,9 +138,9 @@ function addTodo(e) {
   todoList.appendChild(todoDiv);
 
   if (localStorage.getItem("display-theme") == "dark") {
-    document.querySelectorAll('.todo');
-    todoDiv.classList.toggle('dark-mode');
-    newTodo.classList.toggle('dark-mode');
+    document.querySelectorAll(".todo");
+    todoDiv.classList.toggle("dark-mode");
+    newTodo.classList.toggle("dark-mode");
   }
   setAggregatedToDos();
 }
@@ -149,15 +149,46 @@ function deleteTodo(e) {
   const item = e.target;
 
   if (item.classList[0] === "trash-btn") {
-    // e.target.parentElement.remove();
+    e.preventDefault();
+    const confirmationBox = document.getElementById("custom-confirm");
+    const confirmYesButton = document.getElementById("confirm-yes");
+    const confirmNoButton = document.getElementById("confirm-no");
+    const confirmCancelButton = document.getElementById("confirm-cancel");
     const todo = item.parentElement;
-    todo.classList.add("fall");
-    //at the end
-    removeLocalTodos(todo);
-    todo.addEventListener("transitionend", (e) => {
-      todo.remove();
-    });
+
+    const handleYesClick = () => {
+      confirmationBox.style.display = "none";
+      todo.classList.add("fall");
+      removeLocalTodos(todo);
+      todo.addEventListener("transitionend", () => {
+        todo.remove();
+      });
+      confirmYesButton.removeEventListener("click", handleYesClick);
+      confirmNoButton.removeEventListener("click", handleNoClick);
+      confirmCancelButton.removeEventListener("click", handleCancelClick);
+    };
+
+    const handleNoClick = () => {
+      confirmationBox.style.display = "none";
+      confirmYesButton.removeEventListener("click", handleYesClick);
+      confirmNoButton.removeEventListener("click", handleNoClick);
+      confirmCancelButton.removeEventListener("click", handleCancelClick);
+    };
+
+    const handleCancelClick = () => {
+      confirmationBox.style.display = "none";
+      confirmYesButton.removeEventListener("click", handleYesClick);
+      confirmNoButton.removeEventListener("click", handleNoClick);
+      confirmCancelButton.removeEventListener("click", handleCancelClick);
+    };
+
+    confirmYesButton.addEventListener("click", handleYesClick);
+    confirmNoButton.addEventListener("click", handleNoClick);
+    confirmCancelButton.addEventListener("click", handleCancelClick);
+
+    confirmationBox.style.display = "block";
   }
+
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
@@ -446,7 +477,7 @@ function getTodos() {
     //attach final Todo
     todoList.appendChild(todoDiv);
     if (localStorage.getItem("display-theme") == "dark") {
-      todoDiv.classList.toggle('dark-mode');
+      todoDiv.classList.toggle("dark-mode");
     }
   });
 
@@ -511,7 +542,7 @@ function closemodal() {
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = "Please add items first";
-    console.log({html});
+    console.log({ html });
     alert(html);
   } else {
     document.getElementById("confirmation_box").classList.remove("hide");
@@ -524,27 +555,27 @@ function goback() {
 
 //function to toggle darkmode
 function switchToDarkMode() {
-  var elem1 = document.querySelector('.navbar');
-  var elem2 = document.querySelector('.header h1');
-  var elem3 = document.querySelector('.footer');
-  var elem4 = document.querySelectorAll('.footerelements');
-  var elem5 = document.querySelector('.Clock');
-  var elem6 = document.querySelectorAll('.todo');
+  var elem1 = document.querySelector(".navbar");
+  var elem2 = document.querySelector(".header h1");
+  var elem3 = document.querySelector(".footer");
+  var elem4 = document.querySelectorAll(".footerelements");
+  var elem5 = document.querySelector(".Clock");
+  var elem6 = document.querySelectorAll(".todo");
   var elem7 = document.body;
-  var elem8 = document.querySelector('.modal-content');
-  var elem9 = document.getElementById('textInput');
+  var elem8 = document.querySelector(".modal-content");
+  var elem9 = document.getElementById("textInput");
 
   elem1.classList.toggle("dark-mode");
   elem2.classList.toggle("dark-mode");
   elem3.classList.toggle("dark-mode");
   elem5.classList.toggle("dark-mode");
-  for(var i=0; i<elem4.length; i++){
+  for (var i = 0; i < elem4.length; i++) {
     elem4[i].classList.toggle("dark-mode");
   }
-  for(var i=0; i<elem6.length; i++){
+  for (var i = 0; i < elem6.length; i++) {
     elem6[i].classList.toggle("dark-mode");
   }
-  elem7.classList.toggle('body-background');
+  elem7.classList.toggle("body-background");
 
   if (elem1.className == "navbar dark-mode") {
     localStorage.setItem("display-theme", "dark");
@@ -552,9 +583,8 @@ function switchToDarkMode() {
     localStorage.setItem("display-theme", "light");
   }
 
-  elem8.classList.toggle('dark-mode');
-  elem9.classList.toggle('dark-mode');
-
+  elem8.classList.toggle("dark-mode");
+  elem9.classList.toggle("dark-mode");
 }
 //Function to check current Theme of webpage
 function checkTheme() {
@@ -599,7 +629,7 @@ function setAggregatedToDos() {
     if (todo.status == "completed") {
       totalCompletedTask += 1;
     }
-  })
+  });
 
   const elemTotalTask = document.getElementById("state1");
   const elemRemainingTask = document.getElementById("state2");
