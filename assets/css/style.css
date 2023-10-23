@@ -47,7 +47,16 @@
     --red-shade-4: rgb(224, 19, 19);
     --pink-shade-1: #D75281;
 }
-
+.loader-container{
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-page{
+    display: none;
+}
 @keyframes slideInFromLeft {
     0% {
         opacity: 0;

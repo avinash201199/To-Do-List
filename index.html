@@ -37,6 +37,10 @@
 </head>
 
 <body>
+    <div class="loader-container">
+        <img src="./assets/images/Loading-animation.gif" alt="Loading-animation">
+    </div>
+    <div class="main-page">
     <header>
         <div class="navbar">
             <a href="#"><img src="assets\images\logo.png" alt="logo" width="120px"></a>
@@ -234,6 +238,7 @@
     <script src="assets/js/app.js"></script>
 
     <button onclick="scrollWindow()" id="scrollTop" title="Go to top">&uArr;</button>
+</div>
     <script>
         let scrollBtn = document.getElementById("scrollTop");
 
@@ -276,6 +281,18 @@
         }
     </script>
 
+    <script>
+        const loader=document.querySelector(".loader-container")
+        const mainPage=document.querySelector(".main-page")
+
+        function hideLoader()
+        {
+            loader.style.display="none";
+            mainPage.style.display="block";
+        }
+
+        setTimeout(hideLoader,4000)
+    </script>
 
 </body>
 
