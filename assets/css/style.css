@@ -1109,3 +1109,18 @@ body {
 .footer-creator-label h3 {
     margin-top: unset;
 }
+
+.search-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Style the search input field */
+.search-container input[type="text"] {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
