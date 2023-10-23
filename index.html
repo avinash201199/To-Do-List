@@ -138,6 +138,10 @@
                 <option value="incomplete" style="color: black">Incomplete</option>
             </select>
         </div>
+        <!-- Add the search input field below -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." oninput="searchTasks()">
+        </div>
     </div>
 
     <!-- The Modal -->
@@ -252,6 +256,24 @@
             }
         }
     </script>
+
+    <script>
+        // Function to search tasks
+        function searchTasks() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const tasks = document.querySelectorAll(".todo");
+            
+            tasks.forEach(function(task) {
+                const taskText = task.querySelector("li").innerText.toLowerCase();
+                if (taskText.includes(searchInput)) {
+                    task.style.display = "flex"; // Display matching tasks
+                } else {
+                    task.style.display = "none"; // Hide non-matching tasks
+                }
+            });
+        }
+    </script>
+
 
 </body>
 
