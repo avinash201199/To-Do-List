@@ -37,6 +37,20 @@
 </head>
 
 <body>
+    <!-- Confirmation dialog -->
+    <div id="custom-confirm" class="custom-confirm">
+      <div class="confirm-content">
+        <div class="optbox_header">
+          <i id="confirm-cancel" class="fas fa-times close-button"></i>
+        </div>
+        <h2>Confirmation</h2>
+        <h4 id="confirm-msg">Are you sure you want to delete this task?</h4>
+        <div class="option_box">
+        <button class="btn btn-success mt-5 col-3"id="confirm-yes">Yes</button>
+        <button class="btn btn-danger mt-5 col-3" id="confirm-no">No</button>
+        </div>
+      </div>
+    </div>
     <header>
         <div class="navbar">
             <a href="#"><img src="assets\images\logo.png" alt="logo" width="120px"></a>
@@ -179,22 +193,6 @@
             <div class="option_box">
                 <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">Yes</button>
                 <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">No</button>
-            </div>
-            <div class="confirmation_box hide" id="confirmation_box">
-                <div class="confirmation_box_inner">
-                    <div class="optbox_header">
-                        <i class="fas fa-times" onclick="goback()"></i>
-                    </div>
-                    <p id="text-modal">Are you sure you want to delete all tasks?</p>
-                    <div class="option_box">
-                        <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">
-                            Yes
-                        </button>
-                        <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">
-                            No
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
