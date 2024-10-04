@@ -131,6 +131,7 @@
         <div class="button-div">
             <button type="button" id="myBtn" class="myBtn">Add a new task</button>
         </div>
+<ul id="taskList"></ul>
         <div class="select">
             <select name="todos" class="filter-todo" style="color: black">
                 <option value="all" style="color: black">All</option>
@@ -160,7 +161,17 @@
                             <option value="shopping">Household</option>
                             
                         </select>
-                        
+                <div>
+                    <input type="text" id="taskInput" placrholder="add new task"/>
+                     <!-- Add a priority dropdown -->
+                    <select id="priorityInput">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                    </select>
+                </div>
+ 
+                    <!-- Your existing task list (if present) -->       
                         
                         
                     <div class="abc">

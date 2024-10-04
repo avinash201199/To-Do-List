@@ -1242,3 +1242,34 @@ body {
     border-radius: 5px;
     font-size: 16px;
 }
+
+/* High priority tasks */
+.high-priority {
+  background-color: #ea1212;
+  color: #721c24;
+}
+
+/* Medium priority tasks */
+.medium-priority {
+  background-color: #ffd6a5;
+  color: #856404;
+}
+
+/* Low priority tasks */
+.low-priority {
+  background-color: #caffbf;
+  color: #155724;
+}
+
+/* Style for the task list (optional) */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  margin: 5px 0;
+  display: flex;
+  list-style:none;
+}
