@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Montserrat:wght@500&display=swap"
         rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- jquery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -56,7 +57,7 @@
             <a href="index.html"><img src="assets\images\logo.png" alt="logo" width="120px"></a>
 
             <a href="#">
-                <div class="header"><b>
+                <div class="header" data-aos="zoom-in"><b>
                         <h1>To-Do List</h1>
                     </b></div>
             </a>
@@ -84,8 +85,12 @@
     </div>
 
     <!-- Clock Modification -->
-    <div class="Clock">
-        <div id="time"></div>
+    <div class="Clock" data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000">
+        <div id="time" data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"></div>
         <div class="week">
             <div id="day"></div>
             <div id="date"></div>
@@ -285,6 +290,10 @@
             });
         }
     </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
 
 
 </body>
