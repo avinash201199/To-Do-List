@@ -4,7 +4,7 @@ This is a simple to-do-list webpage
 
 ## Website Link-
 
- `<a href="https://avinash201199.github.io/To-Do-List/">`To-Do-List`</a>`
+ [To-Do-List](https://avinash201199.github.io/To-Do-List/)
 
 ## Table of Contents-
 
