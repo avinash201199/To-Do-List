@@ -4,6 +4,79 @@
 /* removed the translate since it results in bad user expericence */
 
 /* CSS Varible for colors [15-10-2022] */
+.buttons-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Align items to the start */
+  padding: 20px; /* Add some padding */
+  background-color: #818184; /* Light background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 0px 20px 7px rgb(244 244 244); /* Soft shadow */
+}
+
+.button-div {
+  margin-bottom: 10px; /* Space between button and the list */
+}
+
+.myBtn {
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px; /* Button font size */
+  color: white; /* Text color */
+  background-color: #007bff; /* Button background color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.myBtn:hover {
+  animation: glowing 0.5s infinite alternate; /* Apply glowing animation on hover */
+}
+
+/* Glowing animation */
+@keyframes glowing {
+  0% {
+      box-shadow: 0 0 5px #007bff, 0 0 10px #007bff, 0 0 15px #007bff, 0 0 20px #007bff;
+  }
+  100% {
+      box-shadow: 0 0 10px #0056b3, 0 0 20px #0056b3, 0 0 30px #0056b3, 0 0 40px #0056b3;
+  }
+}
+
+.select {
+  margin: 10px 0; /* Space between select and search */
+}
+
+.filter-todo {
+  padding: 10px; /* Padding for select box */
+  font-size: 16px; /* Font size for select box */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.search-container {
+  display: flex; /* Flexbox for search input and icon */
+  align-items: center; /* Center vertically */
+  margin-top: 10px; /* Space above the search */
+}
+
+#searchInput {
+  padding: 10px; /* Padding for input */
+  font-size: 16px; /* Font size */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 5px; /* Rounded corners */
+  width: 92%; /* Width of input */
+  margin-right: 10px; /* Space between input and icon */
+}
+@media (min-width: 300px) {
+  
+}
+.search-icon {
+  font-size: 18px; /* Font size for the search icon */
+  color: #007bff; /* Color for the search icon */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
 :root {
   --black: rgb(0, 0, 0);
   --black-shade-1: rgb(38, 36, 36);
@@ -1097,12 +1170,9 @@ body {
   }
 }
 
-.myBtn:hover {
-  animation: vibrate-1 0.3s linear infinite both;
-}
 
 .select:hover {
-  animation: vibrate-1 0.3s linear infinite both;
+  animation: glowing 0.5s infinite alternate;
 }
 
 .checkbox {

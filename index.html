@@ -132,24 +132,24 @@
         </div>
       </section>
 
-    <div class="buttons-wrapper mt-0">
+      <div class="buttons-wrapper mt-0">
         <div class="button-div">
             <button type="button" id="myBtn" class="myBtn">Add a new task</button>
         </div>
-<ul id="taskList"></ul>
+        <ul id="taskList"></ul>
         <div class="select">
-            <select name="todos" class="filter-todo" style="color: black">
-                <option value="all" style="color: black">All</option>
-                <option value="completed" style="color: black">Completed</option>
-                <option value="incomplete" style="color: black">Incomplete</option>
+            <select name="todos" class="filter-todo">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="incomplete">Incomplete</option>
             </select>
         </div>
-        <!-- Add the search input field below -->
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search..." oninput="searchTasks()">
             <i class="fa fa-search search-icon"></i>
         </div>
     </div>
+    
 
     <!-- The Modal -->
     <div id="myModal" class="modal-new">
