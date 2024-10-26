@@ -219,19 +219,26 @@
             </div>
         </section>
 
-        <!-- Task List Section -->
-        <div class="buttons-wrapper">
+<div class="buttons-wrapper mt-0">
+    <div class="button-div">
             <button type="button" id="myBtn" class="myBtn">Add a new task</button>
             <button class="delete-all" onclick="deleteAll()">Delete All Tasks</button>
         </div>
-
-        <ul id="taskList" class="todo-list"></ul>
-
-        <div class="search-container position-relative">
+<div class="search-container position-relative">
+        <ul id="taskList"></ul>
+        <div class="select">
+            <select name="todos" class="filter-todo">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="incomplete">Incomplete</option>
+            </select>
+        </div>
+        <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search..." oninput="searchTasks()">
             <i class="fa fa-search search-icon"></i>
         </div>
     </div>
+    
 
     <!-- Add Task Modal -->
     <div id="myModal" class="modal-new">
