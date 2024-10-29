@@ -3,228 +3,139 @@
 
 <head>
     <meta charset="UTF-8" />
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    /> -->
     <title>To-Do List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <!-- favicon -->
     <link rel="shortcut icon" type="image/jpg" href="assets/images/favicon.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Montserrat:wght@500&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Styling Enhancements */
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-        body {
-            background-color: #f7f9fc;
-            font-family: 'Montserrat', sans-serif;
-        }
+    <!-- jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-        header {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
 
-        header h1 {
-            font-family: 'Baloo Bhai 2', cursive;
-            font-size: 36px;
-            letter-spacing: 2px;
-        }
+    <!-- FontAwesome CDN-->
 
-        .progress-bar {
-            background: linear-gradient(45deg, #ff7e5f, #feb47b);
-            transition: width 0.6s ease;
-            border-radius: 15px;
-            color: white;
-            font-weight: bold;
-            text-align: center;
-        }
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-        .progress {
-            background-color: #e0e0e0;
-            border-radius: 15px;
-            height: 30px;
-            margin-bottom: 20px;
-        }
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU' crossorigin='anonymous'>
 
-        .buttons-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
 
-        .myBtn {
-            background-color: #2575fc;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s ease;
-        }
+    <link rel="stylesheet" href="assets/css/style.css" />
 
-        .myBtn:hover {
-            background-color: #6a11cb;
-        }
-
-        .todo-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .todo {
-            background-color: white;
-            border: 2px solid #6a11cb;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .todo.completed {
-            background-color: #daf7dc;
-            text-decoration: line-through;
-        }
-
-        .todo:hover {
-            transform: scale(1.02);
-            box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .delete-all {
-            background-color: #ff4b5c;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s ease;
-        }
-
-        .delete-all:hover {
-            background-color: #ff1e3c;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #2575fc;
-            border-radius: 25px;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .search-container i {
-            position: absolute;
-            margin-left: -30px;
-            margin-top: 10px;
-        }
-
-        /* Dark mode styles */
-        body.dark-mode {
-            background-color: #181818;
-            color: #f0f0f0;
-        }
-
-        body.dark-mode .todo {
-            background-color: #333;
-            color: white;
-            border-color: #6a11cb;
-        }
-
-        body.dark-mode .todo.completed {
-            background-color: #485a43;
-        }
-
-        body.dark-mode header {
-            background: linear-gradient(to right, #2c2c54, #24243e);
-        }
-
-        body.dark-mode .progress {
-            background-color: #3c3c3c;
-        }
-
-        body.dark-mode .progress-bar {
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
-        }
-
-        body.dark-mode .myBtn, .delete-all {
-            background-color: #0072ff;
-        }
-
-        body.dark-mode .myBtn:hover, .delete-all:hover {
-            background-color: #0056b3;
-        }
-
-        /* Smooth transition for theme change */
-        * {
-            transition: all 0.3s ease;
-        }
-    </style>
 </head>
 
 <body>
+    <!-- Confirmation dialog -->
+    <div id="custom-confirm" class="custom-confirm">
+      <div class="confirm-content">
+        <div class="optbox_header">
+          <i id="confirm-cancel" class="fas fa-times close-button"></i>
+        </div>
+        <h2>Confirmation</h2>
+        <h4 id="confirm-msg">Are you sure you want to delete this task?</h4>
+        <div class="option_box">
+        <button class="btn btn-success mt-5 col-3"id="confirm-yes">Yes</button>
+        <button class="btn btn-danger mt-5 col-3" id="confirm-no">No</button>
+        </div>
+      </div>
+    </div>
     <header>
-        <h1>To-Do List</h1>
-    </header>
+        <div class="navbar">
+            <a href="index.html"><img src="assets\images\logo.png" alt="logo" width="120px"></a>
 
-    <div class="container mt-4">
-        <h4>Task Completion Progress</h4>
-        <div class="progress">
-            <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                aria-valuemin="0" aria-valuemax="100">0%</div>
-        </div>
+            <a href="#">
+                <div class="header" data-aos="zoom-in"><b>
+                        <h1>To-Do List</h1>
+                    </b></div>
+            </a>
 
-        <!-- Task Statistics Section -->
-        <section class="pt-3 pb-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9 mx-auto py-3">
-                        <div class="row">
-                            <div class="col-md-4 position-relative">
-                                <div class="p-3 text-center">
-                                    <h1 class="text-gradient text-dark"><span id="state1">0</span></h1>
-                                    <h5 class="mt-3">Total Tasks</h5>
-                                    <p class="text-sm">Number of tasks you have created</p>
-                                </div>
-                                <hr class="vertical dark">
-                            </div>
-                            <div class="col-md-4 position-relative">
-                                <div class="p-3 text-center">
-                                    <h1 class="text-gradient text-dark"> <span id="state2">0</span></h1>
-                                    <h5 class="mt-3">Remaining To Do</h5>
-                                    <p class="text-sm">Tasks remaining to complete.</p>
-                                </div>
-                                <hr class="vertical dark">
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3 text-center">
-                                    <h1 class="text-gradient text-dark" id="state3">0</h1>
-                                    <h5 class="mt-3">Completed Tasks</h5>
-                                    <p class="text-sm">Total Number of tasks completed</p>
-                                </div>
-                                <hr class="vertical dark">
-                            </div>
-                        </div>
-                    </div>
+            <a href="#">
+                <div class="col-auto">
+                    <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
+                    <label for="checkbox" class="label">
+                        <i class="fas fa-sun"></i>
+                        <i class='fas fa-moon'></i>
+                        <div class='ball'>
+                    </label>
                 </div>
-            </div>
-        </section>
-
-<div class="buttons-wrapper mt-0">
-    <div class="button-div">
-            <button type="button" id="myBtn" class="myBtn">Add a new task</button>
-            <button class="delete-all" onclick="deleteAll()">Delete All Tasks</button>
+            </a>
         </div>
-<div class="search-container position-relative">
+
+    </header>
+    <div class="modal red" id="Modal">
+        <div class="content" id="content">
+            <span id="modal-text font-bold"> Some Text </span>
+            <button onclick="closemodal()" class="modal-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Clock Modification -->
+    <div class="Clock" data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000">
+        <div id="time" data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"></div>
+        <div class="week">
+            <div id="day"></div>
+            <div id="date"></div>
+        </div>
+    </div>
+
+    <section class="pt-3 pb-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 mx-auto py-3">
+              <div class="row">
+                <div class="col-md-4 position-relative">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white"><span id="state1">0</span></h1>
+                    <h5 class="mt-3 text-white font-bold ">Total Tasks</h5>
+                    <p class="text-sm font-weight-normal text-white ">Number of tasks you have created</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+                <div class="col-md-4 position-relative">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white"> <span id="state2">0</span></h1>
+                    <h5 class="mt-3 text-white font-bold">Remaining To Do</h5>
+                    <p class="text-sm font-weight-normal text-white">Tasks remaining to complete.</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white" id="state3">0</h1>
+                    <h5 class="mt-3 text-white">Completed Tasks</h5>
+                    <p class="text-sm font-weight-normal text-white font-bold">Total Number of tasks completed</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="buttons-wrapper mt-0">
+        <div class="button-div">
+            <button type="button" id="myBtn" class="myBtn">Add a new task</button>
+        </div>
         <ul id="taskList"></ul>
         <div class="select">
             <select name="todos" class="filter-todo">
@@ -240,29 +151,136 @@
     </div>
     
 
-    <!-- Add Task Modal -->
+    <!-- The Modal -->
     <div id="myModal" class="modal-new">
+        <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <form class="todoform">
                 <div class="input-group mb-3">
-                    <input type="text" placeholder="Add a new Task..." class="todo-input form-control" id="textInput"
+                    <input type="text" placeholder="Add a new Task .." class="todo-input form-control" id="textInput"
                         required />
-                    <button id="todo-button" class="todo-button" type="submit">
-                        <i class="fas fa-plus-square"></i>
-                    </button>
+                        <select id="categorySelect" class="form-select" >
+                            <option value="work">Work</option>
+                            <option value="personal">Personal</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="shopping">Household</option>
+                            
+                        </select>
+                <div>
+                    <input type="text" id="taskInput" placrholder="add new task"/>
+                     <!-- Add a priority dropdown -->
+                    <select id="priorityInput">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                    </select>
+                </div>
+ 
+                    <!-- Your existing task list (if present) -->       
+                        
+                        
+                    <div class="abc">
+                        <button id="todo-button" class="todo-button" type="submit">
+                            <i class="fas fa-plus-square"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
+
+    <div style="color: whitesmoke; font-size: xx-small" class="no-to-do-item">
+        <h1>THE LIST IS EMPTY !</h1>
+    </div>
+    <div class="todo-container">
+        <ul class="todo-list"></ul>
+    </div>
+    <button class="delete-all" onclick="show_alert()">Delete All Tasks</button>
+
+    <!-- <div cla ss="confirmation_box"></div> -->
+
+
+    <div class="confirmation_box hide " id="confirmation_box">
+        <div class="confirmation_box_inner">
+            <div class="optbox_header">
+                <i class="fas fa-times" onclick="goback()"></i>
+            </div>
+            <p id="text-modal">Are you sure you want to delete all tasks?</p>
+            <div class="option_box">
+                <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">Yes</button>
+                <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class = "footer">
+            <div class="social-media">
+                <!-- instagram -->
+                <a class="link" href="https://www.instagram.com/lets__code/" target="_blank" rel="noopener noreferrer"><img
+                        class="social-icon" src="assets/images/instagram.svg" alt="instagram" /></a>
+                <!-- linkedin -->
+                <a class="link" href="https://www.linkedin.com/in/avinash-singh-071b79175/" target="_blank"
+                    rel="noopener noreferrer"><img class="social-icon" src="assets/images/new-linkedIn.svg"
+                        alt="linkedin" /></a>
+                <!-- gmail -->
+                <a class="link" href="mailto: avinash201199@gmail.com" target="_blank" rel="noopener noreferrer"><img
+                        class="social-icon" src="assets/images/gmail.svg" alt="gmail" /></a>
+                <!-- github -->
+                <a class="link" href="https://github.com/avinash201199" target="_blank" rel="noopener noreferrer"><img
+                        class="social-icon" src="assets/images/github.svg" alt="Github" /></a>
+
+            </div>
+            <div class="2ndrow-foter">
+                <p class="footer-desc footerelements">This project is a part of <a class="footer-desc footerelements"
+                        href="https://hacktoberfest.digitalocean.com/" target="_blank"
+                        rel="noopener noreferrer">Hacktoberfest
+                        2023</a>
+                </p>
+            </div>
+            <div class="3rd-row-footer footer-creator-label footerclasses">
+                <h3 class="footerelements">Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash Singh</h3>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+
+    <button onclick="scrollWindow()" id="scrollTop" title="Go to top">&uArr;</button>
+    <script>
+        let scrollBtn = document.getElementById("scrollTop");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        }
+
+        const scrollWindow = function () {
+            if (window.scrollY != 0) {
+                setTimeout(function () {
+                    window.scrollTo(0, window.scrollY - 50);
+                    window.scroll({ top: 0, behavior: "smooth" })
+                    scrollWindow();
+                }, 10);
+            }
+        }
+    </script>
 
     <script>
         // Function to search tasks
         function searchTasks() {
             const searchInput = document.getElementById("searchInput").value.toLowerCase();
             const tasks = document.querySelectorAll(".todo");
-
-            tasks.forEach(function (task) {
+            
+            tasks.forEach(function(task) {
                 const taskText = task.querySelector("li").innerText.toLowerCase();
                 if (taskText.includes(searchInput)) {
                     task.style.display = "flex"; // Display matching tasks
@@ -271,102 +289,14 @@
                 }
             });
         }
-
-        // Function to update the progress bar
-        function updateProgressBar() {
-            const totalTasks = document.querySelectorAll('.todo').length;
-            const completedTasks = document.querySelectorAll('.todo.completed').length;
-
-            const progressPercentage = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
-
-            const progressBar = document.getElementById("progress-bar");
-            progressBar.style.width = `${progressPercentage}%`;
-            progressBar.innerText = `${progressPercentage}%`;
-            progressBar.setAttribute("aria-valuenow", progressPercentage);
-
-            // Update task statistics
-            document.getElementById("state1").innerText = totalTasks;
-            document.getElementById("state2").innerText = totalTasks - completedTasks;
-            document.getElementById("state3").innerText = completedTasks;
-        }
-
-        // Function to add a new task
-        function addTask(taskText) {
-            const taskList = document.getElementById("taskList");
-            const taskItem = document.createElement("li");
-            taskItem.className = "todo";
-            taskItem.innerHTML = `
-                <span>${taskText}</span>
-                <div>
-                    <button class="complete-btn"><i class="fas fa-check"></i></button>
-                    <button class="delete-btn"><i class="fas fa-trash"></i></button>
-                </div>
-            `;
-            
-            taskList.appendChild(taskItem);
-
-            // Add event listeners for complete and delete buttons
-            taskItem.querySelector('.complete-btn').addEventListener('click', completeTask);
-            taskItem.querySelector('.delete-btn').addEventListener('click', deleteTask);
-
-            // Update progress bar
-            updateProgressBar();
-        }
-
-        // Function to mark a task as completed
-        function completeTask(event) {
-            const task = event.target.closest('.todo');
-            task.classList.toggle('completed');
-            updateProgressBar();
-        }
-
-        // Function to delete a task
-        function deleteTask(event) {
-            const task = event.target.closest('.todo');
-            task.remove();
-            updateProgressBar();
-        }
-
-        // Function to delete all tasks
-        function deleteAll() {
-            const taskList = document.getElementById("taskList");
-            taskList.innerHTML = "";
-            updateProgressBar();
-        }
-
-        // Modal functionality
-        const modal = document.getElementById("myModal");
-        const addBtn = document.getElementById("myBtn");
-        const closeBtn = document.querySelector(".close");
-
-        addBtn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        closeBtn.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Adding task from modal input
-        document.querySelector('.todoform').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const taskInput = document.getElementById("textInput");
-            const taskText = taskInput.value.trim();
-            if (taskText) {
-                addTask(taskText);
-                taskInput.value = '';
-                modal.style.display = "none";
-            }
-        });
     </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+
+
 </body>
 
-</html>
 
-                   
+</html>
