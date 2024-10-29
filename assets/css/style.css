@@ -1367,3 +1367,21 @@ li {
   color: #888; 
   pointer-events: none; 
 }
+/* visited count */
+#visitor-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: #fff; /* White text color */
+  padding: 10px 20px;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 20px 11px 0px 0px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  z-index: 1000; /* Ensures it stays on top */
+}
+#visit-count {
+  font-weight: bold;
+  color: #ffdd57; /* Highlighted color for the count */
+}

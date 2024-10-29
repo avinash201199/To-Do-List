@@ -213,6 +213,9 @@
             </div>
         </div>
     </div>
+    <div id="visitor-counter">
+        <p>Visitor Counter: <span id="visit-count">0</span></p>
+    </div>
 
     <!-- footer -->
     <footer>
@@ -293,6 +296,16 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+        if (localStorage.getItem('page_visits')) {
+            // Increment the count
+            let count = parseInt(localStorage.getItem('page_visits'), 10) + 1;
+            localStorage.setItem('page_visits', count);
+            document.getElementById('visit-count').textContent = count;
+        } else {
+            // Initialize count if not set
+            localStorage.setItem('page_visits', 1);
+            document.getElementById('visit-count').textContent = 1;
+        }
       </script>
 
 
