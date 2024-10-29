@@ -13,6 +13,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Styling Enhancements */
+        #visitor-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow */
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            z-index: 1000; /* Ensures it stays on top */
+        }
+        #visit-count {
+            font-weight: bold;
+            color: #ffdd57; /* Highlighted color for the count */
+        }
 
         body {
             background-color: #f7f9fc;
@@ -255,8 +272,21 @@
             </form>
         </div>
     </div>
+    <div id="visitor-counter">
+        <p>Visited: <span id="visit-count">0</span></p>
+    </div>
 
     <script>
+         if (localStorage.getItem('page_visits')) {
+            // Increment the count
+            let count = parseInt(localStorage.getItem('page_visits'), 10) + 1;
+            localStorage.setItem('page_visits', count);
+            document.getElementById('visit-count').textContent = count;
+        } else {
+            // Initialize count if not set
+            localStorage.setItem('page_visits', 1);
+            document.getElementById('visit-count').textContent = 1;
+        }
         // Function to search tasks
         function searchTasks() {
             const searchInput = document.getElementById("searchInput").value.toLowerCase();
