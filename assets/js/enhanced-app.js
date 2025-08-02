@@ -1,3 +1,6 @@
+// Enhanced To-Do List Application
+// Major contribution: Advanced Task Management System
+
 //Select DOM
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
@@ -333,6 +336,20 @@ function filterTodo(e) {
         } else {
           todo.style.display = "none";
         }
+      } else {
+        todo.style.display = "none";
+      }
+    } else if (e.target.value === "high-priority") {
+      // Filter for high priority tasks
+      if (todo.classList.contains("high-priority")) {
+        todo.style.display = "flex";
+      } else {
+        todo.style.display = "none";
+      }
+    } else if (["work", "personal", "shopping", "household", "health", "education"].includes(e.target.value)) {
+      // Filter by category
+      if (todo.classList.contains(`category-${e.target.value}`)) {
+        todo.style.display = "flex";
       } else {
         todo.style.display = "none";
       }
@@ -720,7 +737,9 @@ function updateFilterOptions() {
       { value: "work", text: "Work" },
       { value: "personal", text: "Personal" },
       { value: "shopping", text: "Shopping" },
-      { value: "household", text: "Household" }
+      { value: "household", text: "Household" },
+      { value: "health", text: "Health" },
+      { value: "education", text: "Education" }
     ];
     
     filterSelect.innerHTML = "";
@@ -736,4 +755,4 @@ function updateFilterOptions() {
 // Initialize enhanced features
 document.addEventListener("DOMContentLoaded", function() {
   updateFilterOptions();
-});
+}); 
