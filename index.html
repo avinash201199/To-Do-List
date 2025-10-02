@@ -164,16 +164,23 @@
                             <option value="work">Work</option>
                             <option value="personal">Personal</option>
                             <option value="shopping">Shopping</option>
-                            <option value="shopping">Household</option>
-                            
+                            <option value="household">Household</option>
                         </select>
-                <div>
-                    <input type="text" id="taskInput" placrholder="add new task"/>
-                     <!-- Add a priority dropdown -->
-                    <select id="priorityInput">
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
+                </div>
+                <div class="input-group mb-3">
+                    <!-- Add a priority dropdown -->
+                    <select id="priorityInput" class="form-select">
+                        <option value="Low">Low Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="High">High Priority</option>
+                    </select>
+                    <!-- Add timer preset dropdown -->
+                    <select id="timerPreset" class="form-select">
+                        <option value="0">No Timer</option>
+                        <option value="25">Pomodoro (25 min)</option>
+                        <option value="15">Short Break (15 min)</option>
+                        <option value="30">Focus Time (30 min)</option>
+                        <option value="60">Deep Work (60 min)</option>
                     </select>
                 </div>
  
@@ -210,6 +217,21 @@
             <div class="option_box">
                 <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">Yes</button>
                 <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Congratulations Box -->
+    <div class="confirmation_box hide" id="congratulations_box">
+        <div class="confirmation_box_inner congratulations">
+            <div class="optbox_header">
+                <i class="fas fa-times" onclick="goback()"></i>
+            </div>
+            <div class="congratulations-content">
+                <i class="fas fa-trophy congratulations-icon"></i>
+                <h2>Congratulations!</h2>
+                <p>You've completed all your tasks! 🎉</p>
+                <button class="btn btn-primary mt-3" onclick="goback()">Awesome!</button>
             </div>
         </div>
     </div>
