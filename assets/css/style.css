@@ -77,6 +77,135 @@
   cursor: pointer; /* Pointer cursor on hover */
 }
 
+/* Task Priority and Category Styles */
+.task-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 5px;
+}
+
+.task-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.task-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.task-priority, .task-category, .task-timer, .time-spent {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.task-priority.priority-high {
+  background-color: #ff4757;
+  color: white;
+}
+
+.task-priority.priority-medium {
+  background-color: #ffa502;
+  color: white;
+}
+
+.task-priority.priority-low {
+  background-color: #2ed573;
+  color: white;
+}
+
+.task-category {
+  background-color: #5352ed;
+  color: white;
+}
+
+.task-timer {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.time-spent {
+  background-color: #4834d4;
+  color: white;
+}
+
+/* Timer Button Styles */
+.timer-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 3px;
+}
+
+.timer-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.timer-btn:disabled {
+  background: linear-gradient(135deg, #2ed573 0%, #17a2b8 100%);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.timer-display {
+  background-color: #f8f9fa;
+  color: #495057;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid #dee2e6;
+}
+
+/* Priority-based Todo Styling */
+.todo.priority-high {
+  border-left: 4px solid #ff4757;
+}
+
+.todo.priority-medium {
+  border-left: 4px solid #ffa502;
+}
+
+.todo.priority-low {
+  border-left: 4px solid #2ed573;
+}
+
+/* Congratulations Box Styling */
+.congratulations {
+  text-align: center;
+}
+
+.congratulations-content {
+  padding: 20px;
+}
+
+.congratulations-icon {
+  font-size: 48px;
+  color: #ffd700;
+  margin-bottom: 15px;
+}
+
+.congratulations h2 {
+  color: #2ed573;
+  margin-bottom: 10px;
+}
+
 :root {
   --black: rgb(0, 0, 0);
   --black-shade-1: rgb(38, 36, 36);

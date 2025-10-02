@@ -52,6 +52,10 @@ function addTodo(e) {
   const createTime = d.getTime();
   const infoText = `The todo item was created at ${createTime}, ${day}`;
   const currentValue = htmlEncode(todoInput.value)?.trim() || "";
+  const categoryValue = document.getElementById("categorySelect").value;
+  const priorityValue = document.getElementById("priorityInput").value;
+  const timerValue = parseInt(document.getElementById("timerPreset").value) || 0;
+  
   if (!currentValue) {
     //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
@@ -72,13 +76,30 @@ function addTodo(e) {
   //Create todo div
   const todoDiv = document.createElement("div");
   todoDiv.classList.add("todo");
+  todoDiv.classList.add(`priority-${priorityValue.toLowerCase()}`);
+  todoDiv.classList.add(`category-${categoryValue}`);
+  
   //Create list
   const newTodo = document.createElement("li");
-  newTodo.innerText = currentValue;
+  newTodo.innerHTML = `
+    <div class="task-content">
+      <span class="task-text">${currentValue}</span>
+      <div class="task-meta">
+        <span class="task-priority priority-${priorityValue.toLowerCase()}">${priorityValue}</span>
+        <span class="task-category">${categoryValue.charAt(0).toUpperCase() + categoryValue.slice(1)}</span>
+        ${timerValue > 0 ? `<span class="task-timer">⏱️ ${timerValue} min</span>` : ''}
+      </div>
+    </div>
+  `;
 
   let newTodoItem = {
-    id: Math.round(Math.random() * 100), //id for selection
+    id: Math.round(Math.random() * 100000), //id for selection - increased range to avoid duplicates
     task: currentValue,
+    category: categoryValue,
+    priority: priorityValue,
+    timerDuration: timerValue * 60, // Convert minutes to seconds
+    timeSpent: 0,
+    isTimerRunning: false,
     status: "incomplete",
     infoText: infoText,
     createTime: createTime,
@@ -94,6 +115,11 @@ function addTodo(e) {
   newTodo.classList.add("todo");
   todoDiv.appendChild(newTodo);
   todoInput.value = "";
+  
+  // Clear form inputs
+  document.getElementById("categorySelect").value = "work";
+  document.getElementById("priorityInput").value = "Low";
+  document.getElementById("timerPreset").value = "0";
   const edit = document.createElement("div");
   edit.innerHTML =
     ` <form class="editform">
@@ -112,6 +138,16 @@ function addTodo(e) {
   </form>`;
   edit.classList.add("hide");
   todoDiv.appendChild(edit);
+  //Create timer button (if timer is set)
+  if (timerValue > 0) {
+    const timerButton = document.createElement("button");
+    timerButton.innerHTML = `<i class="fas fa-play"></i>`;
+    timerButton.classList.add("timer-btn");
+    timerButton.title = "Start Timer";
+    timerButton.addEventListener("click", () => toggleTimer(newTodoItem, todoDiv, timerButton));
+    todoDiv.appendChild(timerButton);
+  }
+  
   //Create Completed Button
   const completedButton = document.createElement("button");
   completedButton.innerHTML = `<i class="fas fa-check"></i>`;
@@ -362,14 +398,8 @@ function isDuplicate(task) {
 //   });
 // }
 
-// to display congratulations pop-up if all tasks are completed
 function checkIfAllTaksCompleted() {
-  let todos;
-  if (localStorage.getItem("todos") === null) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem("todos"));
-  }
+  let todos = getItemFromLocalStorage();
   let counter = 0;
   let totalItems = todos.length;
   todos.forEach((todo) => {
@@ -377,34 +407,10 @@ function checkIfAllTaksCompleted() {
       counter++;
     }
   });
-  if (counter == totalItems) {
+  if (counter == totalItems && totalItems > 0) {
     setAggregatedToDos();
     document.getElementById("congratulations_box").classList.remove("hide");
   }
-}
-
-function saveLocalTodos(todo) {
-  let todos;
-  if (localStorage.getItem("todos") === null) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem("todos"));
-  }
-  todos.push(todo);
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
-function removeLocalTodos(todo) {
-  let todos;
-  if (localStorage.getItem("todos") === null) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem("todos"));
-  }
-  if (!isNaN(todo.getAttribute("key"))) {
-    const todoKey = Number(todo.getAttribute("key"));
-    todos = todos.filter((todo) => todo.id !== todoKey);
-  }
-  localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function getTodos() {
@@ -419,12 +425,28 @@ function getTodos() {
     //Create todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
+    if (todo.priority) todoDiv.classList.add(`priority-${todo.priority.toLowerCase()}`);
+    if (todo.category) todoDiv.classList.add(`category-${todo.category}`);
     if (todo.status == "completed") {
       todoDiv.classList.toggle("completed");
     }
-    //Create list
+    //Create list with enhanced display
     const newTodo = document.createElement("li");
-    newTodo.innerText = todo.task;
+    const priority = todo.priority || 'Low';
+    const category = todo.category || 'personal';
+    const timerDuration = todo.timerDuration || 0;
+    
+    newTodo.innerHTML = `
+      <div class="task-content">
+        <span class="task-text">${todo.task}</span>
+        <div class="task-meta">
+          <span class="task-priority priority-${priority.toLowerCase()}">${priority}</span>
+          <span class="task-category">${category.charAt(0).toUpperCase() + category.slice(1)}</span>
+          ${timerDuration > 0 ? `<span class="task-timer">⏱️ ${Math.floor(timerDuration / 60)} min</span>` : ''}
+          ${todo.timeSpent > 0 ? `<span class="time-spent">⏰ ${Math.floor(todo.timeSpent / 60)}m spent</span>` : ''}
+        </div>
+      </div>
+    `;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     todoInput.value = "";
@@ -447,6 +469,17 @@ function getTodos() {
   </form>`;
     edit.classList.add("hide");
     todoDiv.appendChild(edit);
+    
+    //Create timer button (if timer is set)
+    if (todo.timerDuration > 0) {
+      const timerButton = document.createElement("button");
+      timerButton.innerHTML = todo.isTimerRunning ? `<i class="fas fa-pause"></i>` : `<i class="fas fa-play"></i>`;
+      timerButton.classList.add("timer-btn");
+      timerButton.title = todo.isTimerRunning ? "Pause Timer" : "Start Timer";
+      timerButton.addEventListener("click", () => toggleTimer(todo, todoDiv, timerButton));
+      todoDiv.appendChild(timerButton);
+    }
+    
     //Create Completed Button
     const completedButton = document.createElement("button");
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
@@ -472,7 +505,8 @@ function getTodos() {
     todoDiv.appendChild(infoButton);
     infoButton.addEventListener("click", () => {
       const time = new Date(todo.createTime);
-      alert(`The todo item was created at ${time.toString().slice(0, 24)}`);
+      const timeSpentMsg = todo.timeSpent > 0 ? `\nTime spent: ${Math.floor(todo.timeSpent / 60)} minutes` : '';
+      alert(`The todo item was created at ${time.toString().slice(0, 24)}${timeSpentMsg}`);
     });
     //attach final Todo
     todoList.appendChild(todoDiv);
@@ -516,7 +550,7 @@ function closemodal() {
         day = "Monday,";
         break;
       case 2:
-        day = "Tuseday,";
+        day = "Tuesday,";
         break;
       case 3:
         day = "Wednesday,";
@@ -606,6 +640,11 @@ span.onclick = function () {
 };
 addBtn.onclick = function () {
   modal.style.display = "none";
+  // Clear form inputs when modal closes
+  document.getElementById("textInput").value = "";
+  document.getElementById("categorySelect").value = "work";
+  document.getElementById("priorityInput").value = "Low";
+  document.getElementById("timerPreset").value = "0";
 };
 
 window.onclick = function (event) {
@@ -637,4 +676,112 @@ function setAggregatedToDos() {
   elemTotalTask.textContent = totalTask;
   elemRemainingTask.textContent = totalTask - totalCompletedTask;
   elemCompletedTask.textContent = totalCompletedTask;
+}
+
+// Timer Management System
+let activeTimers = {};
+
+function toggleTimer(todoItem, todoDiv, timerButton) {
+  const todoId = todoItem.id;
+  
+  if (todoItem.isTimerRunning) {
+    // Stop timer
+    pauseTimer(todoId);
+    timerButton.innerHTML = `<i class="fas fa-play"></i>`;
+    timerButton.title = "Start Timer";
+    todoItem.isTimerRunning = false;
+  } else {
+    // Start timer
+    startTimer(todoId, todoItem, todoDiv, timerButton);
+    timerButton.innerHTML = `<i class="fas fa-pause"></i>`;
+    timerButton.title = "Pause Timer";
+    todoItem.isTimerRunning = true;
+  }
+  
+  // Update localStorage
+  updateTodoInStorage(todoItem);
+}
+
+function startTimer(todoId, todoItem, todoDiv, timerButton) {
+  if (activeTimers[todoId]) {
+    clearInterval(activeTimers[todoId]);
+  }
+  
+  let remainingTime = todoItem.timerDuration - (todoItem.timeSpent || 0);
+  
+  activeTimers[todoId] = setInterval(() => {
+    todoItem.timeSpent = (todoItem.timeSpent || 0) + 1;
+    remainingTime--;
+    
+    // Update UI to show remaining time
+    updateTimerDisplay(todoDiv, remainingTime);
+    
+    // Update localStorage every 10 seconds to persist progress
+    if (todoItem.timeSpent % 10 === 0) {
+      updateTodoInStorage(todoItem);
+    }
+    
+    // Timer completed
+    if (remainingTime <= 0) {
+      clearInterval(activeTimers[todoId]);
+      delete activeTimers[todoId];
+      
+      todoItem.isTimerRunning = false;
+      timerButton.innerHTML = `<i class="fas fa-check-circle"></i>`;
+      timerButton.title = "Timer Completed!";
+      timerButton.disabled = true;
+      
+      // Show completion notification
+      showTimerCompletedNotification(todoItem.task);
+      
+      // Update storage
+      updateTodoInStorage(todoItem);
+      
+      // Update time display
+      updateTimerDisplay(todoDiv, 0);
+    }
+  }, 1000);
+}
+
+function pauseTimer(todoId) {
+  if (activeTimers[todoId]) {
+    clearInterval(activeTimers[todoId]);
+    delete activeTimers[todoId];
+  }
+}
+
+function updateTimerDisplay(todoDiv, remainingSeconds) {
+  const timerDisplay = todoDiv.querySelector('.timer-display') || createTimerDisplay(todoDiv);
+  const minutes = Math.floor(remainingSeconds / 60);
+  const seconds = remainingSeconds % 60;
+  timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function createTimerDisplay(todoDiv) {
+  const timerDisplay = document.createElement('span');
+  timerDisplay.classList.add('timer-display');
+  const taskContent = todoDiv.querySelector('.task-content');
+  if (taskContent) {
+    taskContent.appendChild(timerDisplay);
+  }
+  return timerDisplay;
+}
+
+function showTimerCompletedNotification(taskName) {
+  openmodal("green", `Timer completed for "${taskName}"! Great job! 🎉`, 5000);
+  
+  // Play notification sound if available
+  try {
+    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmEaHwNLv+juxG');
+    audio.play().catch(() => {}); // Ignore errors if audio can't play
+  } catch (e) {}
+}
+
+function updateTodoInStorage(todoItem) {
+  let todos = getItemFromLocalStorage();
+  const todoIndex = todos.findIndex(t => t.id === todoItem.id);
+  if (todoIndex !== -1) {
+    todos[todoIndex] = todoItem;
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
 }
