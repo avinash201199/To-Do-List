@@ -8,6 +8,7 @@ const noToDoItemText = document.querySelector(".no-to-do-item");
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", getTodos);
+document.addEventListener("DOMContentLoaded", checkForEmptyList);
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteTodo);
 filterOption.addEventListener("change", filterTodo);
@@ -32,7 +33,6 @@ function checkForEmptyList() {
     }
   }
 }
-setInterval(checkForEmptyList, 100);
 
 function htmlEncode(str) {
   return String(str);
@@ -53,26 +53,21 @@ function addTodo(e) {
   const infoText = `The todo item was created at ${createTime}, ${day}`;
   const currentValue = htmlEncode(todoInput.value)?.trim() || "";
   if (!currentValue) {
-    //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
     return;
   }
-  //alert("Only Number is Type");
   if (!/\D/.test(currentValue) == true) {
     openmodal("red", "Do not enter only Numbers, Please enter a valid Task!");
     return;
   }
 
-  // alert("Duplicate task")
   if (isDuplicate(currentValue)) {
     openmodal("red", "This Task is already added!");
     return;
   }
 
-  //Create todo div
   const todoDiv = document.createElement("div");
   todoDiv.classList.add("todo");
-  //Create list
   const newTodo = document.createElement("li");
   newTodo.innerText = currentValue;
 
@@ -85,11 +80,8 @@ function addTodo(e) {
   };
   todoDiv.setAttribute("key", newTodoItem.id);
 
-  //Save to local - do this last
-  //Save to local
   saveLocalTodos(newTodoItem);
 
-  //
   newTodo.classList.add("todo-item");
   newTodo.classList.add("todo");
   todoDiv.appendChild(newTodo);
@@ -112,29 +104,24 @@ function addTodo(e) {
   </form>`;
   edit.classList.add("hide");
   todoDiv.appendChild(edit);
-  //Create Completed Button
   const completedButton = document.createElement("button");
   completedButton.innerHTML = `<i class="fas fa-check"></i>`;
   completedButton.classList.add("complete-btn");
   todoDiv.appendChild(completedButton);
-  //Create edit button
   const editButton = document.createElement("button");
   editButton.innerHTML = `<i class="fas fa-pen"></i>`;
   editButton.classList.add("edit-btn");
   editButton.addEventListener("click", () => editTodo(newTodoItem, todoDiv));
   todoDiv.appendChild(editButton);
-  //Create trash button
   const trashButton = document.createElement("button");
   trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
   trashButton.classList.add("trash-btn");
   todoDiv.appendChild(trashButton);
-  //Create info button
   const infoButton = document.createElement("span");
   infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
   infoButton.classList.add("edit-btn");
   todoDiv.appendChild(infoButton);
 
-  //attach final Todo
   todoList.appendChild(todoDiv);
 
   if (localStorage.getItem("display-theme") == "dark") {
@@ -143,6 +130,7 @@ function addTodo(e) {
     newTodo.classList.toggle("dark-mode");
   }
   setAggregatedToDos();
+  checkForEmptyList();
 }
 
 function deleteTodo(e) {
@@ -160,6 +148,7 @@ function deleteTodo(e) {
       confirmationBox.style.display = "none";
       todo.classList.add("fall");
       removeLocalTodos(todo);
+      checkForEmptyList();
       todo.addEventListener("transitionend", () => {
         todo.remove();
       });
@@ -201,7 +190,6 @@ function deleteTodo(e) {
   setAggregatedToDos();
 }
 
-//save the status of the task -> and persist by saving it to the localstorage
 function saveStatus(id, status) {
   const todos = getItemFromLocalStorage();
   const intId = Number(id);
@@ -218,7 +206,6 @@ function saveStatus(id, status) {
 function filterTodo(e) {
   const todos = todoList.childNodes;
   todos.forEach((todo) => {
-    // console.log(e.target.value);
 
     if (
       e.target.value === "completed" &&
@@ -246,14 +233,12 @@ function filterTodo(e) {
   });
 }
 
-//save the task to the local storage
 function saveLocalTodos(todo) {
   let todos = getItemFromLocalStorage();
   todos.push(todo);
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-//function to delete a task
 function removeLocalTodos(id) {
   const intId = Number(id);
   let todos = getItemFromLocalStorage();
@@ -262,7 +247,6 @@ function removeLocalTodos(id) {
   localStorage.setItem("todos", JSON.stringify(newTodo));
 }
 
-//function to toggle display
 function editTodo(todo, todoDiv) {
   for (let i = 0; i < todoDiv.children.length; i++) {
     if (i == 1) {
@@ -284,7 +268,6 @@ function editTask(todo, todoDiv) {
   const editInputElem = document.getElementById(`edit-` + `${todo.id}`);
   const editValue = editInputElem.value?.trim() || "";
   if (!editValue) {
-    //alert("Fill the box");
     openmodal("red", "Fill the box");
     return;
   }
@@ -308,61 +291,6 @@ function isDuplicate(task) {
   return index > -1;
 }
 
-// function getTodos() {
-//   let todos = getItemFromLocalStorage();
-//   todos.forEach(function (todo) {
-
-//     //Create todo div
-//     const todoDiv = document.createElement("div");
-//     todoDiv.classList.add("todo");
-//     if (todo.status === "completed") {
-//       todoDiv.classList.add("completed");
-//     }
-//     todoDiv.setAttribute("key", todo.id);
-//     //Create list
-//     const newTodo = document.createElement("li");
-//     newTodo.innerText = todo.task;
-//     newTodo.classList.add("todo-item");
-//     todoDiv.appendChild(newTodo);
-//     //Create Completed Button
-//     const completedButton = document.createElement("button");
-//     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
-//     completedButton.classList.add("complete-btn");
-//     todoDiv.appendChild(completedButton);
-//     //Create trash button
-//     const trashButton = document.createElement("button");
-//     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
-//     trashButton.classList.add("trash-btn");
-//     todoDiv.appendChild(trashButton);
-//     //attach final Todo
-//     todoList.appendChild(todoDiv);
-//   });
-// }
-// function filterTodo(e) {
-//   const todos = todoList.childNodes;
-//   todos.forEach(function(todo) {
-//     switch (e.target.value) {
-//       case "all":
-//         todo.style.display = "flex";
-//         break;
-//       case "completed":
-//         if (todo.classList.contains("completed")) {
-//           todo.style.display = "flex";
-//         } else {
-//           todo.style.display = "none";
-//         }
-//         break;
-//       case "incomplete":
-//         if (!todo.classList.contains("completed")) {
-//           todo.style.display = "flex";
-//         } else {
-//           todo.style.display = "none";
-//         }
-//     }
-//   });
-// }
-
-// to display congratulations pop-up if all tasks are completed
 function checkIfAllTaksCompleted() {
   let todos;
   if (localStorage.getItem("todos") === null) {
@@ -416,19 +344,16 @@ function getTodos() {
   }
 
   todos.forEach(function (todo) {
-    //Create todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
     if (todo.status == "completed") {
       todoDiv.classList.toggle("completed");
     }
-    //Create list
     const newTodo = document.createElement("li");
     newTodo.innerText = todo.task;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     todoInput.value = "";
-    //input box
     const edit = document.createElement("div");
     edit.innerHTML =
       ` <form class="editform">
@@ -447,24 +372,20 @@ function getTodos() {
   </form>`;
     edit.classList.add("hide");
     todoDiv.appendChild(edit);
-    //Create Completed Button
     const completedButton = document.createElement("button");
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
     completedButton.classList.add("complete-btn");
     todoDiv.appendChild(completedButton);
-    //Create edit button
     const editButton = document.createElement("button");
     editButton.innerHTML = `<i class="fas fa-pen"></i>`;
     editButton.classList.add("edit-btn");
     editButton.addEventListener("click", () => editTodo(todo, todoDiv));
     todoDiv.appendChild(editButton);
-    //Create trash button
     const trashButton = document.createElement("button");
     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
     trashButton.classList.add("trash-btn");
     todoDiv.setAttribute("key", todo.id);
     todoDiv.appendChild(trashButton);
-    //Create info button
     if (!todo.infoText) todo.infoText = "Create time not found.";
     const infoButton = document.createElement("span");
     infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
@@ -474,7 +395,6 @@ function getTodos() {
       const time = new Date(todo.createTime);
       alert(`The todo item was created at ${time.toString().slice(0, 24)}`);
     });
-    //attach final Todo
     todoList.appendChild(todoDiv);
     if (localStorage.getItem("display-theme") == "dark") {
       todoDiv.classList.toggle("dark-mode");
@@ -489,10 +409,10 @@ function deleteAll() {
   localStorage.removeItem("todos");
   document.getElementById("confirmation_box").classList.add("hide");
   setAggregatedToDos();
+  checkForEmptyList();
 }
 
 function openmodal(color, message, timer = 3000) {
-  //pass color as either 'red' (for error), 'blue' for info and 'green' for success
   document.getElementById("content").classList.add(color);
   document.getElementById("modal-text").innerText = message;
   document.getElementById("Modal").classList.add("true");
@@ -502,7 +422,6 @@ function closemodal() {
   document.getElementById("Modal").classList.remove("true");
 }
 
-/* Clock JS modification  */
 (function () {
   setInterval(() => {
     var time = new Date().toLocaleTimeString();
@@ -537,8 +456,6 @@ function closemodal() {
   }, 1000);
 })();
 
-/* ################################### */
-
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = "Please add items first";
@@ -553,7 +470,6 @@ function goback() {
   document.getElementById("congratulations_box").classList.add("hide");
 }
 
-//function to toggle darkmode
 function switchToDarkMode() {
   var elem1 = document.querySelector(".navbar");
   var elem2 = document.querySelector(".header h1");
@@ -586,7 +502,6 @@ function switchToDarkMode() {
   elem8.classList.toggle("dark-mode");
   elem9.classList.toggle("dark-mode");
 }
-//Function to check current Theme of webpage
 function checkTheme() {
   if (localStorage.getItem("display-theme") == "dark") {
     document.querySelector(".checkbox").checked = true;
@@ -598,7 +513,6 @@ checkTheme();
 btn.onclick = function () {
   modal.style.display = "block";
   textField.focus();
-  // checkTheme();
 };
 
 span.onclick = function () {
