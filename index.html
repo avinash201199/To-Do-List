@@ -142,6 +142,14 @@
                 <option value="all">All</option>
                 <option value="completed">Completed</option>
                 <option value="incomplete">Incomplete</option>
+                <option value="overdue">Overdue</option>
+                <option value="high-priority">High Priority</option>
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="shopping">Shopping</option>
+                <option value="household">Household</option>
+                <option value="health">Health</option>
+                <option value="education">Education</option>
             </select>
         </div>
         <div class="search-container">
@@ -160,21 +168,29 @@
                 <div class="input-group mb-3">
                     <input type="text" placeholder="Add a new Task .." class="todo-input form-control" id="textInput"
                         required />
-                        <select id="categorySelect" class="form-select" >
-                            <option value="work">Work</option>
-                            <option value="personal">Personal</option>
-                            <option value="shopping">Shopping</option>
-                            <option value="shopping">Household</option>
-                            
-                        </select>
-                <div>
-                    <input type="text" id="taskInput" placrholder="add new task"/>
-                     <!-- Add a priority dropdown -->
-                    <select id="priorityInput">
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
+                </div>
+                <div class="input-group mb-3">
+                    <select id="categorySelect" class="form-select">
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="household">Household</option>
+                        <option value="health">Health</option>
+                        <option value="education">Education</option>
                     </select>
+                </div>
+                <div class="input-group mb-3">
+                    <select id="priorityInput" class="form-select">
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="date" id="dueDateInput" class="form-control" placeholder="Due Date (Optional)">
+                </div>
+                <div class="input-group mb-3">
+                    <textarea id="descriptionInput" class="form-control" placeholder="Task Description (Optional)" rows="3"></textarea>
                 </div>
  
                     <!-- Your existing task list (if present) -->       
@@ -247,6 +263,8 @@
     </footer>
 
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/data-manager.js"></script>
+    <script src="assets/js/analytics-dashboard.js"></script>
 
     <button onclick="scrollWindow()" id="scrollTop" title="Go to top">&uArr;</button>
     <script>

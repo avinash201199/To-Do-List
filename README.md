@@ -44,6 +44,40 @@ For contributing guidelines and standards, visit [contributing.md](https://githu
 <img alt="CSS3" src="https://img.shields.io/badge/css3-%23ffd2ce.svg?style=for-the-badge&logo=css3&logoColor=140200"/>
 <img alt="JavaScript" src="https://img.shields.io/badge/javascript-%23e4626b.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
 
+## 🚀 New Features (Major Contribution)
+
+### 📊 Advanced Task Management
+- **Enhanced Task Creation**: Add tasks with categories, priorities, due dates, and descriptions
+- **Smart Filtering**: Filter tasks by status, category, priority, and overdue items
+- **Visual Task Organization**: Color-coded tasks based on priority and category
+- **Task Details**: Expandable task details with all metadata
+
+### 📈 Analytics Dashboard
+- **Comprehensive Analytics**: Real-time insights into task completion and productivity
+- **Productivity Trends**: Weekly productivity visualization with interactive charts
+- **Category Breakdown**: Visual representation of task distribution by category
+- **Priority Distribution**: Analysis of task priorities and completion rates
+- **Completion Tracking**: Progress bars and detailed completion statistics
+- **Recent Activity**: Timeline of recent task activities
+
+### 💾 Data Management
+- **Export Functionality**: Export all tasks to JSON format for backup
+- **Import Functionality**: Import tasks from JSON files with duplicate detection
+- **Data Validation**: Robust validation and error handling for imports
+- **Statistics Export**: Export detailed analytics and statistics
+
+### 🎨 Enhanced User Experience
+- **Improved Form Design**: Better organized task creation form with all fields
+- **Responsive Design**: Optimized for all device sizes
+- **Dark Mode Support**: All new features support dark/light theme toggle
+- **Accessibility**: Improved keyboard navigation and screen reader support
+
+### 🔧 Technical Improvements
+- **Modular Architecture**: Separated concerns with dedicated modules
+- **Performance Optimization**: Efficient data handling and rendering
+- **Error Handling**: Comprehensive error handling and user feedback
+- **Code Quality**: Clean, maintainable, and well-documented code
+
 For any concerns contact me here: - `<br>`
 [`<img src="https://img.icons8.com/color/50/000000/instagram-new--v2.png"/>`](https://www.instagram.com/lets__code/) [`<img src="https://img.icons8.com/color/48/000000/github--v3.png"/>`](https://github.com/avinash201199)[`<img src="https://img.icons8.com/color/48/000000/linkedin.png"/>`](https://www.linkedin.com/in/avinash-singh-071b79175/)
 `<br>`(Must Check My Github for more cool stuff !)`<br>`
