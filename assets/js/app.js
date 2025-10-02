@@ -17,15 +17,6 @@ var btn = document.getElementById("myBtn");
 var textField = document.getElementById("textInput");
 var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
-
-var day = new Date().toLocaleDateString("en-us", {
-  weekday: "long",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
-document.getElementById("d2").innerHTML = day;
-
 //Functions
 function checkForEmptyList() {
   if (localStorage.getItem("todos") === null) {
@@ -44,9 +35,7 @@ function checkForEmptyList() {
 setInterval(checkForEmptyList, 100);
 
 function htmlEncode(str) {
-  return String(str).replace(/[^\w. ]/gi, function (c) {
-    return "&#" + c.charCodeAt(0) + ";";
-  });
+  return String(str);
 }
 
 function getItemFromLocalStorage() {
@@ -59,12 +48,18 @@ function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
 
-  const createTime = getTime();
+  const d = new Date();
+  const createTime = d.getTime();
   const infoText = `The todo item was created at ${createTime}, ${day}`;
-  const currentValue = htmlEncode(todoInput.value)?.trim() || ""
+  const currentValue = htmlEncode(todoInput.value)?.trim() || "";
   if (!currentValue) {
     //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
+    return;
+  }
+  //alert("Only Number is Type");
+  if (!/\D/.test(currentValue) == true) {
+    openmodal("red", "Do not enter only Numbers, Please enter a valid Task!");
     return;
   }
 
@@ -86,13 +81,14 @@ function addTodo(e) {
     task: currentValue,
     status: "incomplete",
     infoText: infoText,
+    createTime: createTime,
   };
   todoDiv.setAttribute("key", newTodoItem.id);
-
 
   //Save to local - do this last
   //Save to local
   saveLocalTodos(newTodoItem);
+
   //
   newTodo.classList.add("todo-item");
   newTodo.classList.add("todo");
@@ -140,28 +136,69 @@ function addTodo(e) {
 
   //attach final Todo
   todoList.appendChild(todoDiv);
+
+  if (localStorage.getItem("display-theme") == "dark") {
+    document.querySelectorAll(".todo");
+    todoDiv.classList.toggle("dark-mode");
+    newTodo.classList.toggle("dark-mode");
+  }
+  setAggregatedToDos();
 }
 
 function deleteTodo(e) {
   const item = e.target;
 
   if (item.classList[0] === "trash-btn") {
-    // e.target.parentElement.remove();
+    e.preventDefault();
+    const confirmationBox = document.getElementById("custom-confirm");
+    const confirmYesButton = document.getElementById("confirm-yes");
+    const confirmNoButton = document.getElementById("confirm-no");
+    const confirmCancelButton = document.getElementById("confirm-cancel");
     const todo = item.parentElement;
-    todo.classList.add("fall");
-    //at the end
-    removeLocalTodos(todo);
-    todo.addEventListener("transitionend", (e) => {
-      todo.remove();
-    });
+
+    const handleYesClick = () => {
+      confirmationBox.style.display = "none";
+      todo.classList.add("fall");
+      removeLocalTodos(todo);
+      todo.addEventListener("transitionend", () => {
+        todo.remove();
+      });
+      confirmYesButton.removeEventListener("click", handleYesClick);
+      confirmNoButton.removeEventListener("click", handleNoClick);
+      confirmCancelButton.removeEventListener("click", handleCancelClick);
+    };
+
+    const handleNoClick = () => {
+      confirmationBox.style.display = "none";
+      confirmYesButton.removeEventListener("click", handleYesClick);
+      confirmNoButton.removeEventListener("click", handleNoClick);
+      confirmCancelButton.removeEventListener("click", handleCancelClick);
+    };
+
+    const handleCancelClick = () => {
+      confirmationBox.style.display = "none";
+      confirmYesButton.removeEventListener("click", handleYesClick);
+      confirmNoButton.removeEventListener("click", handleNoClick);
+      confirmCancelButton.removeEventListener("click", handleCancelClick);
+    };
+
+    confirmYesButton.addEventListener("click", handleYesClick);
+    confirmNoButton.addEventListener("click", handleNoClick);
+    confirmCancelButton.addEventListener("click", handleCancelClick);
+
+    confirmationBox.style.display = "block";
   }
+
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
     const status = "completed";
     const id = todo.getAttribute("key");
     saveStatus(id, status);
+    checkIfAllTaksCompleted();
   }
+
+  setAggregatedToDos();
 }
 
 //save the status of the task -> and persist by saving it to the localstorage
@@ -271,35 +308,36 @@ function isDuplicate(task) {
   return index > -1;
 }
 
-function getTodos() {
-  let todos = getItemFromLocalStorage();
-  todos.forEach(function (todo) {
-    //Create todo div
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add("todo");
-    if (todo.status === "completed") {
-      todoDiv.classList.add("completed");
-    }
-    todoDiv.setAttribute("key", todo.id);
-    //Create list
-    const newTodo = document.createElement("li");
-    newTodo.innerText = todo.task;
-    newTodo.classList.add("todo-item");
-    todoDiv.appendChild(newTodo);
-    //Create Completed Button
-    const completedButton = document.createElement("button");
-    completedButton.innerHTML = `<i class="fas fa-check"></i>`;
-    completedButton.classList.add("complete-btn");
-    todoDiv.appendChild(completedButton);
-    //Create trash button
-    const trashButton = document.createElement("button");
-    trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
-    trashButton.classList.add("trash-btn");
-    todoDiv.appendChild(trashButton);
-    //attach final Todo
-    todoList.appendChild(todoDiv);
-  });
-}
+// function getTodos() {
+//   let todos = getItemFromLocalStorage();
+//   todos.forEach(function (todo) {
+
+//     //Create todo div
+//     const todoDiv = document.createElement("div");
+//     todoDiv.classList.add("todo");
+//     if (todo.status === "completed") {
+//       todoDiv.classList.add("completed");
+//     }
+//     todoDiv.setAttribute("key", todo.id);
+//     //Create list
+//     const newTodo = document.createElement("li");
+//     newTodo.innerText = todo.task;
+//     newTodo.classList.add("todo-item");
+//     todoDiv.appendChild(newTodo);
+//     //Create Completed Button
+//     const completedButton = document.createElement("button");
+//     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+//     completedButton.classList.add("complete-btn");
+//     todoDiv.appendChild(completedButton);
+//     //Create trash button
+//     const trashButton = document.createElement("button");
+//     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+//     trashButton.classList.add("trash-btn");
+//     todoDiv.appendChild(trashButton);
+//     //attach final Todo
+//     todoList.appendChild(todoDiv);
+//   });
+// }
 // function filterTodo(e) {
 //   const todos = todoList.childNodes;
 //   todos.forEach(function(todo) {
@@ -323,6 +361,27 @@ function getTodos() {
 //     }
 //   });
 // }
+
+// to display congratulations pop-up if all tasks are completed
+function checkIfAllTaksCompleted() {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  let counter = 0;
+  let totalItems = todos.length;
+  todos.forEach((todo) => {
+    if (todo.status == "completed") {
+      counter++;
+    }
+  });
+  if (counter == totalItems) {
+    setAggregatedToDos();
+    document.getElementById("congratulations_box").classList.remove("hide");
+  }
+}
 
 function saveLocalTodos(todo) {
   let todos;
@@ -355,6 +414,7 @@ function getTodos() {
   } else {
     todos = JSON.parse(localStorage.getItem("todos"));
   }
+
   todos.forEach(function (todo) {
     //Create todo div
     const todoDiv = document.createElement("div");
@@ -405,24 +465,30 @@ function getTodos() {
     todoDiv.setAttribute("key", todo.id);
     todoDiv.appendChild(trashButton);
     //Create info button
-    if (!todo.infoText)
-      todo.infoText = "Create time not found.";
+    if (!todo.infoText) todo.infoText = "Create time not found.";
     const infoButton = document.createElement("span");
     infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
     infoButton.classList.add("edit-btn");
     todoDiv.appendChild(infoButton);
     infoButton.addEventListener("click", () => {
-      alert(todo.infoText)
+      const time = new Date(todo.createTime);
+      alert(`The todo item was created at ${time.toString().slice(0, 24)}`);
     });
     //attach final Todo
     todoList.appendChild(todoDiv);
+    if (localStorage.getItem("display-theme") == "dark") {
+      todoDiv.classList.toggle("dark-mode");
+    }
   });
+
+  setAggregatedToDos();
 }
 
 function deleteAll() {
   [...document.getElementsByClassName("todo")].map((n) => n && n.remove());
   localStorage.removeItem("todos");
   document.getElementById("confirmation_box").classList.add("hide");
+  setAggregatedToDos();
 }
 
 function openmodal(color, message, timer = 3000) {
@@ -436,41 +502,47 @@ function closemodal() {
   document.getElementById("Modal").classList.remove("true");
 }
 
-function getTime() {
-  var date = new Date();
-  var h = date.getHours();
-  var m = date.getMinutes();
-  var s = date.getSeconds();
-  var session = "AM";
+/* Clock JS modification  */
+(function () {
+  setInterval(() => {
+    var time = new Date().toLocaleTimeString();
+    var date = new Date().toLocaleDateString();
+    var day = new Date().getDay();
+    switch (day) {
+      case 0:
+        day = "Sunday,";
+        break;
+      case 1:
+        day = "Monday,";
+        break;
+      case 2:
+        day = "Tuseday,";
+        break;
+      case 3:
+        day = "Wednesday,";
+        break;
+      case 4:
+        day = "Thursday,";
+        break;
+      case 5:
+        day = "Friday,";
+        break;
+      case 6:
+        day = "Saturday,";
+        break;
+    }
+    document.getElementById("time").innerHTML = time;
+    document.getElementById("date").innerHTML = date;
+    document.getElementById("day").innerHTML = day;
+  }, 1000);
+})();
 
-  if (h == 0) {
-    h = 12;
-  }
-
-  if (h > 12) {
-    h = h - 12;
-    session = "PM";
-  }
-
-  h = h < 10 ? "0" + h : h;
-  m = m < 10 ? "0" + m : m;
-  s = s < 10 ? "0" + s : s;
-
-  var time = h + ":" + m + ":" + s + " " + session;
-
-  return time;
-}
-
-//rewrote this function so that it shows time properly
-
-setInterval(function () {
-  document.getElementById("d1").innerHTML = getTime();
-}, 100);
+/* ################################### */
 
 function show_alert() {
   if (localStorage.getItem("todos") === null) {
     let html = "Please add items first";
-    console.log(html);
+    console.log({ html });
     alert(html);
   } else {
     document.getElementById("confirmation_box").classList.remove("hide");
@@ -478,11 +550,55 @@ function show_alert() {
 }
 function goback() {
   document.getElementById("confirmation_box").classList.add("hide");
+  document.getElementById("congratulations_box").classList.add("hide");
 }
+
+//function to toggle darkmode
+function switchToDarkMode() {
+  var elem1 = document.querySelector(".navbar");
+  var elem2 = document.querySelector(".header h1");
+  var elem3 = document.querySelector(".footer");
+  var elem4 = document.querySelectorAll(".footerelements");
+  var elem5 = document.querySelector(".Clock");
+  var elem6 = document.querySelectorAll(".todo");
+  var elem7 = document.body;
+  var elem8 = document.querySelector(".modal-content");
+  var elem9 = document.getElementById("textInput");
+
+  elem1.classList.toggle("dark-mode");
+  elem2.classList.toggle("dark-mode");
+  elem3.classList.toggle("dark-mode");
+  elem5.classList.toggle("dark-mode");
+  for (var i = 0; i < elem4.length; i++) {
+    elem4[i].classList.toggle("dark-mode");
+  }
+  for (var i = 0; i < elem6.length; i++) {
+    elem6[i].classList.toggle("dark-mode");
+  }
+  elem7.classList.toggle("body-background");
+
+  if (elem1.className == "navbar dark-mode") {
+    localStorage.setItem("display-theme", "dark");
+  } else {
+    localStorage.setItem("display-theme", "light");
+  }
+
+  elem8.classList.toggle("dark-mode");
+  elem9.classList.toggle("dark-mode");
+}
+//Function to check current Theme of webpage
+function checkTheme() {
+  if (localStorage.getItem("display-theme") == "dark") {
+    document.querySelector(".checkbox").checked = true;
+    switchToDarkMode();
+  }
+}
+checkTheme();
 
 btn.onclick = function () {
   modal.style.display = "block";
   textField.focus();
+  // checkTheme();
 };
 
 span.onclick = function () {
@@ -497,3 +613,28 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+function setAggregatedToDos() {
+  let todos;
+  let totalCompletedTask = 0;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+
+  const totalTask = todos.length;
+
+  todos.forEach(function (todo) {
+    if (todo.status == "completed") {
+      totalCompletedTask += 1;
+    }
+  });
+
+  const elemTotalTask = document.getElementById("state1");
+  const elemRemainingTask = document.getElementById("state2");
+  const elemCompletedTask = document.getElementById("state3");
+  elemTotalTask.textContent = totalTask;
+  elemRemainingTask.textContent = totalTask - totalCompletedTask;
+  elemCompletedTask.textContent = totalCompletedTask;
+}
