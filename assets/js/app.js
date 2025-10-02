@@ -17,27 +17,6 @@ var btn = document.getElementById("myBtn");
 var textField = document.getElementById("textInput");
 var span = document.getElementsByClassName("close")[0];
 var addBtn = document.getElementById("todo-button");
-
-// Enhanced task structure with categories, priorities, and due dates
-function createEnhancedTask(taskText, category = "personal", priority = "medium", dueDate = null, description = "") {
-  const d = new Date();
-  const createTime = d.getTime();
-  const infoText = `The todo item was created at ${createTime}, ${day}`;
-  
-  return {
-    id: Math.round(Math.random() * 1000000), // More unique ID
-    task: taskText,
-    category: category,
-    priority: priority,
-    dueDate: dueDate,
-    description: description,
-    status: "incomplete",
-    infoText: infoText,
-    createTime: createTime,
-    completedTime: null
-  };
-}
-
 //Functions
 function checkForEmptyList() {
   if (localStorage.getItem("todos") === null) {
@@ -61,6 +40,7 @@ function htmlEncode(str) {
 
 function getItemFromLocalStorage() {
   const todos = JSON.parse(localStorage.getItem("todos")) || [];
+
   return todos;
 }
 
@@ -68,80 +48,52 @@ function addTodo(e) {
   //Prevent natural behavior
   e.preventDefault();
 
+  const d = new Date();
+  const createTime = d.getTime();
+  const infoText = `The todo item was created at ${createTime}, ${day}`;
   const currentValue = htmlEncode(todoInput.value)?.trim() || "";
   if (!currentValue) {
+    //alert("Fill the box");
     openmodal("red", "Please enter a Task!");
     return;
   }
-  
+  //alert("Only Number is Type");
   if (!/\D/.test(currentValue) == true) {
     openmodal("red", "Do not enter only Numbers, Please enter a valid Task!");
     return;
   }
 
+  // alert("Duplicate task")
   if (isDuplicate(currentValue)) {
     openmodal("red", "This Task is already added!");
     return;
   }
 
-  // Get form values
-  const categorySelect = document.getElementById("categorySelect");
-  const prioritySelect = document.getElementById("priorityInput");
-  const dueDateInput = document.getElementById("dueDateInput");
-  const descriptionInput = document.getElementById("descriptionInput");
-  
-  const category = categorySelect ? categorySelect.value : "personal";
-  const priority = prioritySelect ? prioritySelect.value : "medium";
-  const dueDate = dueDateInput ? dueDateInput.value : null;
-  const description = descriptionInput ? descriptionInput.value : "";
-
-  // Create enhanced task object
-  const newTodoItem = createEnhancedTask(currentValue, category, priority, dueDate, description);
-
   //Create todo div
   const todoDiv = document.createElement("div");
   todoDiv.classList.add("todo");
-  todoDiv.classList.add(`${priority}-priority`);
-  todoDiv.classList.add(`category-${category}`);
-  
   //Create list
   const newTodo = document.createElement("li");
   newTodo.innerText = currentValue;
 
+  let newTodoItem = {
+    id: Math.round(Math.random() * 100), //id for selection
+    task: currentValue,
+    status: "incomplete",
+    infoText: infoText,
+    createTime: createTime,
+  };
   todoDiv.setAttribute("key", newTodoItem.id);
 
-  //Save to local storage
+  //Save to local - do this last
+  //Save to local
   saveLocalTodos(newTodoItem);
 
+  //
   newTodo.classList.add("todo-item");
   newTodo.classList.add("todo");
   todoDiv.appendChild(newTodo);
   todoInput.value = "";
-  
-  // Add task details display
-  const taskDetails = document.createElement("div");
-  taskDetails.classList.add("task-details");
-  taskDetails.classList.add("hide");
-  
-  let detailsHTML = `<div class="task-info">`;
-  if (category !== "personal") {
-    detailsHTML += `<span class="category-badge">${category}</span>`;
-  }
-  if (priority !== "medium") {
-    detailsHTML += `<span class="priority-badge ${priority}-priority">${priority}</span>`;
-  }
-  if (dueDate) {
-    detailsHTML += `<span class="due-date">Due: ${formatDate(dueDate)}</span>`;
-  }
-  if (description) {
-    detailsHTML += `<div class="task-description">${description}</div>`;
-  }
-  detailsHTML += `</div>`;
-  
-  taskDetails.innerHTML = detailsHTML;
-  todoDiv.appendChild(taskDetails);
-
-  //input box for editing
   const edit = document.createElement("div");
   edit.innerHTML =
     ` <form class="editform">
@@ -160,31 +112,26 @@ function addTodo(e) {
   </form>`;
   edit.classList.add("hide");
   todoDiv.appendChild(edit);
-  
   //Create Completed Button
   const completedButton = document.createElement("button");
   completedButton.innerHTML = `<i class="fas fa-check"></i>`;
   completedButton.classList.add("complete-btn");
   todoDiv.appendChild(completedButton);
-  
   //Create edit button
   const editButton = document.createElement("button");
   editButton.innerHTML = `<i class="fas fa-pen"></i>`;
   editButton.classList.add("edit-btn");
   editButton.addEventListener("click", () => editTodo(newTodoItem, todoDiv));
   todoDiv.appendChild(editButton);
-  
   //Create trash button
   const trashButton = document.createElement("button");
   trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
   trashButton.classList.add("trash-btn");
   todoDiv.appendChild(trashButton);
-  
   //Create info button
   const infoButton = document.createElement("span");
   infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
   infoButton.classList.add("edit-btn");
-  infoButton.addEventListener("click", () => toggleTaskDetails(todoDiv));
   todoDiv.appendChild(infoButton);
 
   //attach final Todo
@@ -196,29 +143,6 @@ function addTodo(e) {
     newTodo.classList.toggle("dark-mode");
   }
   setAggregatedToDos();
-}
-
-// Toggle task details visibility
-function toggleTaskDetails(todoDiv) {
-  const taskDetails = todoDiv.querySelector(".task-details");
-  if (taskDetails) {
-    taskDetails.classList.toggle("hide");
-  }
-}
-
-// Format date for display
-function formatDate(dateString) {
-  if (!dateString) return "";
-  const date = new Date(dateString);
-  return date.toLocaleDateString();
-}
-
-// Check if task is overdue
-function isOverdue(dueDate) {
-  if (!dueDate) return false;
-  const today = new Date();
-  const due = new Date(dueDate);
-  return due < today && due.getDate() !== today.getDate();
 }
 
 function deleteTodo(e) {
@@ -287,14 +211,6 @@ function saveStatus(id, status) {
   const todoIndex = todos.indexOf(newTodo);
   todos.splice(todoIndex, 1);
   newTodo.status = newStatus;
-  
-  // Add completion time if completing
-  if (newStatus === "completed") {
-    newTodo.completedTime = new Date().getTime();
-  } else {
-    newTodo.completedTime = null;
-  }
-  
   todos.splice(todoIndex, 0, newTodo);
   localStorage.setItem("todos", JSON.stringify(todos));
 }
@@ -302,6 +218,8 @@ function saveStatus(id, status) {
 function filterTodo(e) {
   const todos = todoList.childNodes;
   todos.forEach((todo) => {
+    // console.log(e.target.value);
+
     if (
       e.target.value === "completed" &&
       todo.classList.contains("completed")
@@ -322,20 +240,6 @@ function filterTodo(e) {
       !todo.classList.contains("incomplete")
     ) {
       todo.style.display = "none";
-    } else if (e.target.value === "overdue") {
-      // New filter for overdue tasks
-      const todoKey = todo.getAttribute("key");
-      if (todoKey) {
-        const todos = getItemFromLocalStorage();
-        const todoItem = todos.find(t => t.id === Number(todoKey));
-        if (todoItem && todoItem.dueDate && isOverdue(todoItem.dueDate)) {
-          todo.style.display = "flex";
-        } else {
-          todo.style.display = "none";
-        }
-      } else {
-        todo.style.display = "none";
-      }
     } else {
       todo.style.display = "flex";
     }
@@ -380,6 +284,7 @@ function editTask(todo, todoDiv) {
   const editInputElem = document.getElementById(`edit-` + `${todo.id}`);
   const editValue = editInputElem.value?.trim() || "";
   if (!editValue) {
+    //alert("Fill the box");
     openmodal("red", "Fill the box");
     return;
   }
@@ -402,6 +307,60 @@ function isDuplicate(task) {
   const index = todos.findIndex((t) => t.task === task);
   return index > -1;
 }
+
+// function getTodos() {
+//   let todos = getItemFromLocalStorage();
+//   todos.forEach(function (todo) {
+
+//     //Create todo div
+//     const todoDiv = document.createElement("div");
+//     todoDiv.classList.add("todo");
+//     if (todo.status === "completed") {
+//       todoDiv.classList.add("completed");
+//     }
+//     todoDiv.setAttribute("key", todo.id);
+//     //Create list
+//     const newTodo = document.createElement("li");
+//     newTodo.innerText = todo.task;
+//     newTodo.classList.add("todo-item");
+//     todoDiv.appendChild(newTodo);
+//     //Create Completed Button
+//     const completedButton = document.createElement("button");
+//     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+//     completedButton.classList.add("complete-btn");
+//     todoDiv.appendChild(completedButton);
+//     //Create trash button
+//     const trashButton = document.createElement("button");
+//     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+//     trashButton.classList.add("trash-btn");
+//     todoDiv.appendChild(trashButton);
+//     //attach final Todo
+//     todoList.appendChild(todoDiv);
+//   });
+// }
+// function filterTodo(e) {
+//   const todos = todoList.childNodes;
+//   todos.forEach(function(todo) {
+//     switch (e.target.value) {
+//       case "all":
+//         todo.style.display = "flex";
+//         break;
+//       case "completed":
+//         if (todo.classList.contains("completed")) {
+//           todo.style.display = "flex";
+//         } else {
+//           todo.style.display = "none";
+//         }
+//         break;
+//       case "incomplete":
+//         if (!todo.classList.contains("completed")) {
+//           todo.style.display = "flex";
+//         } else {
+//           todo.style.display = "none";
+//         }
+//     }
+//   });
+// }
 
 // to display congratulations pop-up if all tasks are completed
 function checkIfAllTaksCompleted() {
@@ -460,44 +419,15 @@ function getTodos() {
     //Create todo div
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo");
-    todoDiv.classList.add(`${todo.priority || 'medium'}-priority`);
-    todoDiv.classList.add(`category-${todo.category || 'personal'}`);
-    
     if (todo.status == "completed") {
       todoDiv.classList.toggle("completed");
     }
-    
     //Create list
     const newTodo = document.createElement("li");
     newTodo.innerText = todo.task;
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     todoInput.value = "";
-    
-    // Add task details display
-    const taskDetails = document.createElement("div");
-    taskDetails.classList.add("task-details");
-    taskDetails.classList.add("hide");
-    
-    let detailsHTML = `<div class="task-info">`;
-    if (todo.category && todo.category !== "personal") {
-      detailsHTML += `<span class="category-badge">${todo.category}</span>`;
-    }
-    if (todo.priority && todo.priority !== "medium") {
-      detailsHTML += `<span class="priority-badge ${todo.priority}-priority">${todo.priority}</span>`;
-    }
-    if (todo.dueDate) {
-      const isOverdueTask = isOverdue(todo.dueDate);
-      detailsHTML += `<span class="due-date ${isOverdueTask ? 'overdue' : ''}">Due: ${formatDate(todo.dueDate)}</span>`;
-    }
-    if (todo.description) {
-      detailsHTML += `<div class="task-description">${todo.description}</div>`;
-    }
-    detailsHTML += `</div>`;
-    
-    taskDetails.innerHTML = detailsHTML;
-    todoDiv.appendChild(taskDetails);
-    
     //input box
     const edit = document.createElement("div");
     edit.innerHTML =
@@ -539,8 +469,11 @@ function getTodos() {
     const infoButton = document.createElement("span");
     infoButton.innerHTML = `<i class="fas fa-info-circle"></i>`;
     infoButton.classList.add("edit-btn");
-    infoButton.addEventListener("click", () => toggleTaskDetails(todoDiv));
     todoDiv.appendChild(infoButton);
+    infoButton.addEventListener("click", () => {
+      const time = new Date(todo.createTime);
+      alert(`The todo item was created at ${time.toString().slice(0, 24)}`);
+    });
     //attach final Todo
     todoList.appendChild(todoDiv);
     if (localStorage.getItem("display-theme") == "dark") {
@@ -705,35 +638,3 @@ function setAggregatedToDos() {
   elemRemainingTask.textContent = totalTask - totalCompletedTask;
   elemCompletedTask.textContent = totalCompletedTask;
 }
-
-// Enhanced filter options
-function updateFilterOptions() {
-  const filterSelect = document.querySelector(".filter-todo");
-  if (filterSelect) {
-    // Add new filter options
-    const newOptions = [
-      { value: "all", text: "All" },
-      { value: "completed", text: "Completed" },
-      { value: "incomplete", text: "Incomplete" },
-      { value: "overdue", text: "Overdue" },
-      { value: "high-priority", text: "High Priority" },
-      { value: "work", text: "Work" },
-      { value: "personal", text: "Personal" },
-      { value: "shopping", text: "Shopping" },
-      { value: "household", text: "Household" }
-    ];
-    
-    filterSelect.innerHTML = "";
-    newOptions.forEach(option => {
-      const optionElement = document.createElement("option");
-      optionElement.value = option.value;
-      optionElement.textContent = option.text;
-      filterSelect.appendChild(optionElement);
-    });
-  }
-}
-
-// Initialize enhanced features
-document.addEventListener("DOMContentLoaded", function() {
-  updateFilterOptions();
-});
