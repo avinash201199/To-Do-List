@@ -264,13 +264,7 @@
         }
 
         const scrollWindow = function () {
-            if (window.scrollY != 0) {
-                setTimeout(function () {
-                    window.scrollTo(0, window.scrollY - 50);
-                    window.scroll({ top: 0, behavior: "smooth" })
-                    scrollWindow();
-                }, 10);
-            }
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     </script>
 
