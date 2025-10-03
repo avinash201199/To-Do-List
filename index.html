@@ -134,19 +134,62 @@
 
       <div class="buttons-wrapper mt-0">
         <div class="button-div">
-            <button type="button" id="myBtn" class="myBtn">Add a new task</button>
+            <button type="button" id="myBtn" class="myBtn">✨ Add a new task</button>
+            <button type="button" id="exportBtn" class="myBtn export-btn">📥 Export Tasks</button>
+            <button type="button" id="importBtn" class="myBtn import-btn">📤 Import Tasks</button>
+            <input type="file" id="importFile" accept=".json" style="display: none;">
         </div>
+        
+        <!-- Enhanced Stats Section -->
+        <div class="stats-enhanced">
+            <div class="stat-item">
+                <span class="stat-number" id="todayTasks">0</span>
+                <span class="stat-label">Today's Tasks</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="overdueTasks">0</span>
+                <span class="stat-label">Overdue</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="completionRate">0%</span>
+                <span class="stat-label">Completion Rate</span>
+            </div>
+        </div>
+
+        <!-- Quick Filters -->
+        <div class="quick-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="today">Today</button>
+            <button class="filter-btn" data-filter="overdue">Overdue</button>
+            <button class="filter-btn" data-filter="high-priority">High Priority</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+        
         <ul id="taskList"></ul>
-        <div class="select">
-            <select name="todos" class="filter-todo">
-                <option value="all">All</option>
-                <option value="completed">Completed</option>
-                <option value="incomplete">Incomplete</option>
-            </select>
-        </div>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search..." oninput="searchTasks()">
-            <i class="fa fa-search search-icon"></i>
+        <div class="controls-row">
+            <div class="select">
+                <select name="todos" class="filter-todo">
+                    <option value="all">All Tasks</option>
+                    <option value="completed">✅ Completed</option>
+                    <option value="incomplete">⏳ Pending</option>
+                    <option value="high">🔴 High Priority</option>
+                    <option value="medium">🟡 Medium Priority</option>
+                    <option value="low">🟢 Low Priority</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="🔍 Search tasks..." oninput="searchTasks()">
+                <i class="fa fa-search search-icon"></i>
+            </div>
+            <div class="sort-container">
+                <select id="sortSelect" class="form-select">
+                    <option value="date-desc">📅 Newest First</option>
+                    <option value="date-asc">📅 Oldest First</option>
+                    <option value="priority">🔴 Priority</option>
+                    <option value="due-date">⏰ Due Date</option>
+                    <option value="alphabetical">🔤 A-Z</option>
+                </select>
+            </div>
         </div>
     </div>
     
@@ -159,29 +202,46 @@
             <form class="todoform">
                 <div class="input-group mb-3">
                     <input type="text" placeholder="Add a new Task .." class="todo-input form-control" id="textInput"
-                        required />
+                        required maxlength="100" />
                         <select id="categorySelect" class="form-select" >
-                            <option value="work">Work</option>
-                            <option value="personal">Personal</option>
-                            <option value="shopping">Shopping</option>
-                            <option value="household">Household</option>
+                            <option value="work">💼 Work</option>
+                            <option value="personal">👤 Personal</option>
+                            <option value="shopping">🛒 Shopping</option>
+                            <option value="household">🏠 Household</option>
+                            <option value="health">💚 Health</option>
+                            <option value="education">📚 Education</option>
+                            <option value="finance">💰 Finance</option>
                         </select>
                 </div>
                 <div class="input-group mb-3">
                     <!-- Add a priority dropdown -->
                     <select id="priorityInput" class="form-select">
-                        <option value="Low">Low Priority</option>
-                        <option value="Medium">Medium Priority</option>
-                        <option value="High">High Priority</option>
+                        <option value="Low">🟢 Low Priority</option>
+                        <option value="Medium">🟡 Medium Priority</option>
+                        <option value="High">🔴 High Priority</option>
+                        <option value="Urgent">🚨 Urgent</option>
                     </select>
+                    <!-- Add due date input -->
+                    <input type="datetime-local" id="dueDateInput" class="form-control" title="Set due date">
+                </div>
+                <div class="input-group mb-3">
                     <!-- Add timer preset dropdown -->
                     <select id="timerPreset" class="form-select">
-                        <option value="0">No Timer</option>
-                        <option value="25">Pomodoro (25 min)</option>
-                        <option value="15">Short Break (15 min)</option>
-                        <option value="30">Focus Time (30 min)</option>
-                        <option value="60">Deep Work (60 min)</option>
+                        <option value="0">⏰ No Timer</option>
+                        <option value="25">🍅 Pomodoro (25 min)</option>
+                        <option value="15">☕ Short Break (15 min)</option>
+                        <option value="30">⚡ Focus Time (30 min)</option>
+                        <option value="60">🎯 Deep Work (60 min)</option>
+                        <option value="90">🔥 Extended Session (90 min)</option>
                     </select>
+                    <!-- Add tags input -->
+                    <input type="text" id="tagsInput" class="form-control" placeholder="Tags (comma separated)" 
+                           title="Add tags separated by commas">
+                </div>
+                <div class="input-group mb-3">
+                    <!-- Add task notes -->
+                    <textarea id="notesInput" class="form-control" placeholder="Add notes (optional)" 
+                              rows="2" maxlength="200"></textarea>
                 </div>
  
                     <!-- Your existing task list (if present) -->       
@@ -197,13 +257,104 @@
         </div>
     </div>
 
+    <!-- Edit Task Modal -->
+    <div id="editModal" class="modal-new">
+        <div class="modal-content">
+            <span class="close-edit">&times;</span>
+            <h3>✏️ Edit Task</h3>
+            <form class="editTaskForm">
+                <div class="input-group mb-3">
+                    <input type="text" id="editTextInput" class="form-control" required maxlength="100">
+                </div>
+                <div class="input-group mb-3">
+                    <select id="editCategorySelect" class="form-select">
+                        <option value="work">💼 Work</option>
+                        <option value="personal">👤 Personal</option>
+                        <option value="shopping">🛒 Shopping</option>
+                        <option value="household">🏠 Household</option>
+                        <option value="health">💚 Health</option>
+                        <option value="education">📚 Education</option>
+                        <option value="finance">💰 Finance</option>
+                    </select>
+                    <select id="editPriorityInput" class="form-select">
+                        <option value="Low">🟢 Low Priority</option>
+                        <option value="Medium">🟡 Medium Priority</option>
+                        <option value="High">🔴 High Priority</option>
+                        <option value="Urgent">🚨 Urgent</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="datetime-local" id="editDueDateInput" class="form-control">
+                    <input type="text" id="editTagsInput" class="form-control" placeholder="Tags (comma separated)">
+                </div>
+                <div class="input-group mb-3">
+                    <textarea id="editNotesInput" class="form-control" placeholder="Notes" rows="2" maxlength="200"></textarea>
+                </div>
+                <div class="abc">
+                    <button id="save-edit-button" class="todo-button" type="submit">
+                        💾 Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Productivity Analytics Modal -->
+    <div id="analyticsModal" class="modal-new">
+        <div class="modal-content">
+            <span class="close-analytics">&times;</span>
+            <h3>📊 Productivity Analytics</h3>
+            <div class="analytics-content">
+                <div class="chart-container">
+                    <canvas id="productivityChart" width="400" height="200"></canvas>
+                </div>
+                <div class="analytics-stats">
+                    <div class="stat-card">
+                        <h4>🏆 Total Completed</h4>
+                        <span id="totalCompleted">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>⚡ Average Completion Time</h4>
+                        <span id="avgCompletionTime">0 min</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>🔥 Current Streak</h4>
+                        <span id="currentStreak">0 days</span>
+                    </div>
+                    <div class="stat-card">
+                        <h4>📈 Most Productive Day</h4>
+                        <span id="mostProductiveDay">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div style="color: whitesmoke; font-size: xx-small" class="no-to-do-item">
         <h1>THE LIST IS EMPTY !</h1>
     </div>
     <div class="todo-container">
         <ul class="todo-list"></ul>
     </div>
-    <button class="delete-all" onclick="show_alert()">Delete All Tasks</button>
+    <button class="delete-all" onclick="show_alert()">🗑️ Delete All Tasks</button>
+    
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <button class="fab main-fab" onclick="toggleFabMenu()">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div class="fab-menu">
+            <button class="fab sub-fab" onclick="document.getElementById('myBtn').click()" title="Add Task">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="fab sub-fab" onclick="openAnalytics()" title="Analytics">
+                <i class="fas fa-chart-bar"></i>
+            </button>
+            <button class="fab sub-fab" onclick="toggleBulkMode()" title="Bulk Actions">
+                <i class="fas fa-check-double"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- <div cla ss="confirmation_box"></div> -->
 
@@ -269,6 +420,7 @@
     </footer>
 
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/enhanced-features.js"></script>
 
     <button onclick="scrollWindow()" id="scrollTop" title="Go to top">&uArr;</button>
     <script>
