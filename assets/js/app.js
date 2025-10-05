@@ -315,6 +315,32 @@ function editTodo(todo, todoDiv) {
   });
 }
 
+const myModal = document.getElementById("myModal");
+  const closeBtn = myModal.querySelector(".close");
+
+  // Function to open modal
+  function openMyModal() {
+    myModal.style.display = "flex";
+    document.body.classList.add("modal-open"); // disable background scroll
+  }
+
+  // Function to close modal
+  function closeMyModal() {
+    myModal.style.display = "none";
+    document.body.classList.remove("modal-open"); // enable background scroll
+  }
+
+  // Close modal when clicking on the "×" button
+  closeBtn.addEventListener("click", closeMyModal);
+
+  // Optional: close modal when clicking outside content
+  window.addEventListener("click", (e) => {
+    if (e.target === myModal) {
+      closeMyModal();
+    }
+  });
+
+
 function editTask(todo, todoDiv) {
   let todos = getItemFromLocalStorage();
   const editInputElem = document.getElementById(`edit-` + `${todo.id}`);
