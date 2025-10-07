@@ -202,6 +202,14 @@ function deleteTodo(e) {
       confirmYesButton.removeEventListener("click", handleYesClick);
       confirmNoButton.removeEventListener("click", handleNoClick);
       confirmCancelButton.removeEventListener("click", handleCancelClick);
+      Toastify({
+        text: "Task deleted successfully 🗑️",
+        duration: 2000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#f44336",
+      }).showToast();
+      
     };
 
     const handleNoClick = () => {
@@ -321,13 +329,13 @@ const myModal = document.getElementById("myModal");
   // Function to open modal
   function openMyModal() {
     myModal.style.display = "flex";
-    document.body.classList.add("modal-open"); // disable background scroll
+    document.body.classList.add("modal-open");
   }
 
   // Function to close modal
   function closeMyModal() {
     myModal.style.display = "none";
-    document.body.classList.remove("modal-open"); // enable background scroll
+    document.body.classList.remove("modal-open");
   }
 
   // Close modal when clicking on the "×" button
@@ -548,6 +556,13 @@ function deleteAll() {
   [...document.getElementsByClassName("todo")].map((n) => n && n.remove());
   localStorage.removeItem("todos");
   document.getElementById("confirmation_box").classList.add("hide");
+  Toastify({
+    text: "All tasks deleted successfully 🗑️",
+    duration: 2000,
+    gravity: "top",
+    position: "right",
+    backgroundColor: "#f44336",
+  }).showToast();
   setAggregatedToDos();
 }
 
@@ -671,6 +686,15 @@ addBtn.onclick = function () {
   document.getElementById("categorySelect").value = "work";
   document.getElementById("priorityInput").value = "Low";
   document.getElementById("timerPreset").value = "0";
+
+  Toastify({
+    text: "Task added successfully ✅",
+    duration: 2000,
+    gravity: "top",
+    position: "right",
+    backgroundColor: "#4CAF50",
+  }).showToast();
+  
 };
 
 window.onclick = function (event) {
