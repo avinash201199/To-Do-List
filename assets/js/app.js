@@ -202,6 +202,14 @@ function deleteTodo(e) {
       confirmYesButton.removeEventListener("click", handleYesClick);
       confirmNoButton.removeEventListener("click", handleNoClick);
       confirmCancelButton.removeEventListener("click", handleCancelClick);
+      Toastify({
+        text: "Task deleted successfully 🗑️",
+        duration: 2000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#f44336",
+      }).showToast();
+      
     };
 
     const handleNoClick = () => {
@@ -314,6 +322,32 @@ function editTodo(todo, todoDiv) {
     location.reload();
   });
 }
+
+const myModal = document.getElementById("myModal");
+  const closeBtn = myModal.querySelector(".close");
+
+  // Function to open modal
+  function openMyModal() {
+    myModal.style.display = "flex";
+    document.body.classList.add("modal-open");
+  }
+
+  // Function to close modal
+  function closeMyModal() {
+    myModal.style.display = "none";
+    document.body.classList.remove("modal-open");
+  }
+
+  // Close modal when clicking on the "×" button
+  closeBtn.addEventListener("click", closeMyModal);
+
+  // Optional: close modal when clicking outside content
+  window.addEventListener("click", (e) => {
+    if (e.target === myModal) {
+      closeMyModal();
+    }
+  });
+
 
 function editTask(todo, todoDiv) {
   let todos = getItemFromLocalStorage();
@@ -522,6 +556,13 @@ function deleteAll() {
   [...document.getElementsByClassName("todo")].map((n) => n && n.remove());
   localStorage.removeItem("todos");
   document.getElementById("confirmation_box").classList.add("hide");
+  Toastify({
+    text: "All tasks deleted successfully 🗑️",
+    duration: 2000,
+    gravity: "top",
+    position: "right",
+    backgroundColor: "#f44336",
+  }).showToast();
   setAggregatedToDos();
 }
 
@@ -645,6 +686,15 @@ addBtn.onclick = function () {
   document.getElementById("categorySelect").value = "work";
   document.getElementById("priorityInput").value = "Low";
   document.getElementById("timerPreset").value = "0";
+
+  Toastify({
+    text: "Task added successfully ✅",
+    duration: 2000,
+    gravity: "top",
+    position: "right",
+    backgroundColor: "#4CAF50",
+  }).showToast();
+  
 };
 
 window.onclick = function (event) {

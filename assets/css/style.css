@@ -353,14 +353,37 @@
   color: #007bff;
 }
 
-/* Enhanced Input Styles */
-.form-control, .form-select {
-  padding: 12px 16px;
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* equal spacing between inputs */
+  margin-bottom: 16px;
+  background-color: transparent; /* remove red after testing */
+}
+
+.form-control,
+.form-select,
+textarea {
+  flex: 1; /* make all equal width inside each group */
   font-size: 14px;
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
+  border: 2px solid #e9ecef !important;
+  border-radius: 8px !important;
   transition: all 0.3s ease;
-  background: white;
+  box-sizing: border-box;
+  height: 48px;
+  margin-left: 0px;
+}
+
+
+textarea.form-control {
+  height: auto; /* let textarea expand naturally */
+  padding-top:10px;
+}
+
+/* Optional: make modal content spacing consistent */
+.todoform {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-control:focus, .form-select:focus {
@@ -1046,20 +1069,70 @@ form button,
   background-color: var(--black);
   /* Fallback color */
   background-color: var(--black-opacity);
+  backdrop-filter: blur(10px);
+
   /* Black w/ opacity */
+}
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Make sure modal overlay allows clicks only on itself */
+.modal-new {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+  overflow-y: auto; /* scroll modal content if needed */
+}
+
+
+/* Stop background scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Modal styles */
+.modal-new {
+  position: fixed;
+  inset: 0; /* top, right, bottom, left = 0 */
+  display: none; /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* dim background */
+  z-index: 1000;
+  overflow-y: auto; /* allow modal itself to scroll if long */
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
 }
 
 /* Modal Content */
 
 .modal-content {
   background-color: var(--white-shade-1);
-  margin: auto;
   padding: 20px;
   border: 1px solid var(--gray-shade);
-  width: 80%;
-  position: relative;
-  top: 200px;
+  width: 50%;
+  max-width: 600px;
+  border-radius: 10px;
+
+  /* Centering fix */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Optional */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+
 
 /* The Close Button */
 
