@@ -65,46 +65,51 @@
 <style>
     /* Visual tweaks for calendar badges & legend */
     .flatpickr-calendar { box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-radius: 8px; }
-    .flatpickr-day.badge-start::after,
-    .flatpickr-day.badge-due::after,
-    .flatpickr-day.reminder-highlight::after {
-      position: absolute;
-      bottom: 4px;
-      right: 4px;
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 10px;
-      line-height: 1;
+    
+    /* Make the day cells have colored backgrounds */
+    .flatpickr-day.badge-start { 
+      background: #0d6efd !important; 
+      color: white !important; 
+      border-radius: 50% !important;
+      font-weight: bold !important;
     }
-    .flatpickr-day.badge-start::after { content: "Start"; background: #0d6efd; color: #fff; }
-    .flatpickr-day.badge-due::after   { content: "Due";   background: #198754; color: #fff; }
-    .flatpickr-day.reminder-highlight::after { content: "🔔"; background: #ffc107; color: #000; padding: 2px 4px; }
+    
+    .flatpickr-day.badge-due { 
+      background: #198754 !important; 
+      color: white !important; 
+      border-radius: 50% !important;
+      font-weight: bold !important;
+    }
+    
+    .flatpickr-day.reminder-highlight { 
+  background: #ffc107 !important; 
+  color: black !important; 
+  border-radius: 50% !important;
+  font-weight: bold !important;
+    }
+
+    .flatpickr-calendar {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.flatpickr-day {
+  cursor: default !important;
+  pointer-events: none !important;
+}
 
     /* subtle range shading (in addition to the built-in selected styles) */
-    .flatpickr-day.in-range-custom { background: rgba(13,110,253,0.12) !important; color:inherit !important; }
+    .flatpickr-day.in-range-custom { 
+      background: rgba(13,110,253,0.12) !important; 
+      color: inherit !important; 
+    }
 
     /* Notice text */
     #calendarNotice { color: #6c757d; font-size: 0.95rem; margin-bottom: 0.75rem; }
 
     /* Legend */
     .timeline-legend .badge { margin-right: 8px; }
-  </style>
-
-  <style>
-    #viewTimelineBtn {
-  background: linear-gradient(90deg, #ff6f61, #ff9a76);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-#viewTimelineBtn:hover {
-  filter: brightness(1.1);
-}
-
-  </style>
+</style>
 
 </head>
 
@@ -182,6 +187,7 @@
 <div class="text-center mt-4">
   <button id="openTimelineBtn" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#timelineModal">
     📅 View Visual Timeline
+    
   </button>
 </div>
 
@@ -196,7 +202,7 @@
         <div class="modal-body">
 
           <!-- tiny notice / validation message -->
-          <div id="calendarNotice">Open the timeline to preview Start → Due → Reminder.</div>
+          <div id="calendarNotice">Loading tasks...</div>
 
           <!-- Legend -->
           <div class="timeline-legend mb-2">
@@ -686,10 +692,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // -------- Render Task in the DOM --------
-    // Find and replace the task rendering code in the form submit event listener
-
-// Inside taskForm event listener, replace the todoDiv creation code with:
+// -------- Render Task in the DOM --------
 const todoDiv = document.createElement("div");
 todoDiv.classList.add("todo");
 
@@ -727,28 +730,36 @@ newTask.innerHTML = `
 newTask.classList.add("todo-item");
 todoDiv.appendChild(newTask);
 
+// Store dates for timeline visualization
+todoDiv.dataset.taskTitle = taskTitle;
+todoDiv.dataset.startDate = startDate;
+todoDiv.dataset.dueDate = dueDate;
+const deadlineInput = document.getElementById('deadlineTime').value;
+if (deadlineInput) {
+  todoDiv.dataset.reminderDate = deadlineInput.split('T')[0];
+}
 
-    // Buttons
-    const completedBtn = document.createElement("button");
-    completedBtn.innerHTML = '<i class="fas fa-check"></i>';
-    completedBtn.classList.add("complete-btn");
-    completedBtn.onclick = function () {
-      todoDiv.classList.toggle("completed");
-      updateStats();
-    };
-    todoDiv.appendChild(completedBtn);
+// Buttons
+const completedBtn = document.createElement("button");
+completedBtn.innerHTML = '<i class="fas fa-check"></i>';
+completedBtn.classList.add("complete-btn");
+completedBtn.onclick = function () {
+  todoDiv.classList.toggle("completed");
+  updateStats();
+};
+todoDiv.appendChild(completedBtn);
 
-    const trashBtn = document.createElement("button");
-    trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
-    trashBtn.classList.add("trash-btn");
-    trashBtn.onclick = function () {
-      todoDiv.remove();
-      updateStats();
-    };
-    todoDiv.appendChild(trashBtn);
+const trashBtn = document.createElement("button");
+trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
+trashBtn.classList.add("trash-btn");
+trashBtn.onclick = function () {
+  todoDiv.remove();
+  updateStats();
+};
+todoDiv.appendChild(trashBtn);
 
-    // Append to list
-    todoList.appendChild(todoDiv);
+// Append to list
+todoList.appendChild(todoDiv);
 
     // Update counters
     updateStats();
@@ -869,11 +880,11 @@ function closeAnalysisModal() {
         setTimeout(() => {
           if (Notification.permission === "granted") {
             new Notification("⏰ Task Reminder", {
-              body: `Your task "${taskTitle}" is due now!`,
+              body: `Your task "${taskTitle}" is due soon!`,
               icon: "https://cdn-icons-png.flaticon.com/512/1827/1827349.png"
             });
           } else {
-            alert(`Your task "${taskTitle}" is due now!`);
+            alert(`Your task "${taskTitle}" is due soon!`);
           }
         }, delay);
 
@@ -889,136 +900,149 @@ function closeAnalysisModal() {
   <!-- Bootstrap Bundle (includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Flatpickr -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- Flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-  <script>
-    // Elements
-    const startEl = document.getElementById('startDate');
-    const dueEl   = document.getElementById('dueDate');
-    const remEl   = document.getElementById('deadlineTime');
-    const notice  = document.getElementById('calendarNotice');
-    const modal   = document.getElementById('timelineModal');
-    const calendarContainer = document.getElementById('calendar');
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById('timelineModal');
+  const notice = document.getElementById('calendarNotice');
 
-    let fpInstance = null;
+  let fpInstance = null;
 
-    // Initialize Flatpickr inside modal the first time it's opened
-    modal.addEventListener('shown.bs.modal', () => {
-      if (!fpInstance) {
-        // initialize on the container element (inline)
-        fpInstance = flatpickr(calendarContainer, {
-          inline: true,
-          mode: "range",
-          dateFormat: "Y-m-d",
-          allowInput: false,
-          disableMobile: true,
-          // small performance: we'll add highlights after the calendar renders
-          onReady: () => highlightStyles()
-        });
+  // Initialize calendar once when modal opens
+  modal.addEventListener('shown.bs.modal', () => {
+    console.log("Modal opened");
+    
+    // Destroy old instance if exists
+    if (fpInstance) {
+      fpInstance.destroy();
+    }
+    
+    // Create new instance
+    const calDiv = document.getElementById('calendar');
+    calDiv.innerHTML = '<input type="text" id="flatpickr-input" style="display:none;">';
+    
+    fpInstance = flatpickr("#flatpickr-input", {
+      inline: true,
+      mode: "range",
+      clickOpens: false,
+      allowInput: false,
+      disableMobile: true,
+      defaultDate: new Date(),
+      appendTo: calDiv,
+      onReady: function(selectedDates, dateStr, instance) {
+        console.log("Flatpickr ready!");
+        setTimeout(() => {
+          loadAndDisplayTasks();
+        }, 200);
       }
-      // update view on open
-      updateCalendarFromInputs();
     });
+  });
 
-    // Clear highlights helper
-    function clearHighlights() {
-      const marked = calendarContainer.querySelectorAll('.flatpickr-day.reminder-highlight, .flatpickr-day.badge-start, .flatpickr-day.badge-due, .flatpickr-day.in-range-custom');
-      marked.forEach(el => {
-        el.classList.remove('reminder-highlight','badge-start','badge-due','in-range-custom');
-      });
+  function loadAndDisplayTasks() {
+    // Get only the FIRST task in the list
+    const firstTask = document.querySelector('.todo');
+    
+    if (!firstTask) {
+      notice.textContent = 'No tasks found. Create a task with start and due dates!';
+      return;
     }
 
-    // When any input changes, update the calendar if modal is open
-    [startEl, dueEl, remEl].forEach(inp => {
-      inp.addEventListener('change', () => {
-        // only update if modal is visible (keeps behavior light)
-        if (document.querySelector('.modal.show')) {
-          updateCalendarFromInputs();
-        }
-      });
-    });
+    const startDate = firstTask.dataset.startDate;
+    const dueDate = firstTask.dataset.dueDate;
+    const reminderDate = firstTask.dataset.reminderDate;
+    const taskTitle = firstTask.dataset.taskTitle;
 
-    // Main sync function
-    function updateCalendarFromInputs() {
-      clearHighlights();
+    console.log("First task data:", { taskTitle, startDate, dueDate, reminderDate });
 
-      const start = startEl.value || '';
-      const due   = dueEl.value   || '';
-      const rem   = remEl.value ? remEl.value.split('T')[0] : '';
+    if (!startDate || !dueDate) {
+      notice.textContent = 'First task has no dates. Please set start and due dates!';
+      return;
+    }
 
-      // Basic validation
-      if (!start || !due) {
-        notice.textContent = 'Please set both Start Date and Due Date to preview timeline.';
-        // clear selected dates in fpInstance but keep calendar visible
-        if (fpInstance) fpInstance.clear();
+    const task = {
+      title: taskTitle || 'Task',
+      start: startDate,
+      due: dueDate,
+      reminder: reminderDate || null
+    };
+
+    notice.textContent = `Displaying: "${task.title}"`;
+    updateCalendar(task);
+  }
+
+  function clearHighlights() {
+    const marked = document.querySelectorAll(
+      '.flatpickr-day.reminder-highlight, .flatpickr-day.badge-start, .flatpickr-day.badge-due, .flatpickr-day.in-range-custom'
+    );
+    marked.forEach(el => el.classList.remove('reminder-highlight','badge-start','badge-due','in-range-custom'));
+  }
+
+  function updateCalendar(task) {
+    clearHighlights();
+    
+    fpInstance.jumpToDate(new Date(task.start));
+
+    const tryHighlight = (attempts = 0) => {
+      const days = document.querySelectorAll('.flatpickr-day');
+      console.log(`Attempt ${attempts + 1}: Calendar days found:`, days.length);
+      
+      if (days.length === 0 && attempts < 10) {
+        setTimeout(() => tryHighlight(attempts + 1), 200);
         return;
       }
-
-      // date order check
-      const startDate = new Date(start + "T00:00:00");
-      const dueDate   = new Date(due + "T00:00:00");
-      if (startDate > dueDate) {
-        notice.textContent = 'Start date is after Due date — please fix the inputs.';
-        if (fpInstance) {
-          // show them but swapped so user sees range anyway
-          fpInstance.setDate([due, start], true);
-        }
+      
+      if (days.length === 0) {
+        console.error("Calendar never rendered!");
         return;
       }
+      
+      console.log("Processing task:", task);
 
-      // valid
-      notice.textContent = '';
+      const startDate = new Date(task.start + "T00:00:00");
+      const dueDate = new Date(task.due + "T00:00:00");
+      const reminderDate = task.reminder ? new Date(task.reminder.split('T')[0] + "T00:00:00") : null;
 
-      // set the range in flatpickr (this also adds default selected classes)
-      fpInstance.setDate([start, due], true);
+      days.forEach(cell => {
+        if (!cell.dateObj) return;
+        
+        const cellISO = cell.dateObj.toISOString().slice(0,10);
+        const cellDate = new Date(cellISO + "T00:00:00");
 
-      // Wait very shortly so flatpickr has rendered day cells, then apply custom badges
-      setTimeout(() => {
-        const dayCells = calendarContainer.querySelectorAll('.flatpickr-day');
-        dayCells.forEach(cell => {
-          if (!cell.dateObj) return;
-          const cellISO = cell.dateObj.toISOString().slice(0,10);
-
-          // start/due badges
-          if (cellISO === start) {
-            cell.classList.add('badge-start');
-          } else if (cellISO === due) {
-            cell.classList.add('badge-due');
-          } else {
-            // if between, add light shading
-            if (cell.dateObj >= startDate && cell.dateObj <= dueDate) {
-              cell.classList.add('in-range-custom');
-            }
-          }
-
-          // reminder marker
-          if (rem && cellISO === rem) {
-            cell.classList.add('reminder-highlight');
-          }
-        });
-      }, 40);
-    }
-
-    // add the CSS used for coloring (keeps JS tidy)
-    function highlightStyles() {
-      const style = document.createElement('style');
-      style.innerHTML = `
-        .flatpickr-day.selected.startRange, .flatpickr-day.selected.endRange {
-          background: #0d6efd !important;
-          color: white !important;
+        // Mark start date (BLUE)
+        if (cellISO === task.start) {
+          console.log("Marking START date:", cellISO);
+          cell.classList.add('badge-start');
         }
-        .flatpickr-day.inRange { /* fallback to built-in class - but we also have in-range-custom */
-          background: rgba(13,110,253,0.08) !important;
+        
+        // Mark due date (GREEN)
+        else if (cellISO === task.due) {
+          console.log("Marking DUE date:", cellISO);
+          cell.classList.add('badge-due');
         }
-      `;
-      document.head.appendChild(style);
-    }
-
-    // If you want the modal to auto-open for demo, uncomment:
-    // new bootstrap.Modal(modal).show();
-  </script>
-
+        
+        // Mark reminder date (YELLOW) - only if not start/due
+        else if (task.reminder && cellISO === task.reminder.split('T')[0]) {
+          console.log("Marking REMINDER date:", cellISO);
+          cell.classList.add('reminder-highlight');
+        }
+        
+        // Shade the range between start and due (light blue)
+        else if (cellDate > startDate && cellDate < dueDate) {
+          cell.classList.add('in-range-custom');
+        }
+      });
+      
+      console.log("Start dates:", document.querySelectorAll('.badge-start').length);
+      console.log("Due dates:", document.querySelectorAll('.badge-due').length);
+      console.log("Reminder dates:", document.querySelectorAll('.reminder-highlight').length);
+    };
+    
+    tryHighlight();
+  }
+});
+</script>
 
 </body>
 </html>
