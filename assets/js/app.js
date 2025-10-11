@@ -32,7 +32,6 @@ function checkForEmptyList() {
     }
   }
 }
-setInterval(checkForEmptyList, 100);
 
 function htmlEncode(str) {
   return String(str);
@@ -93,7 +92,7 @@ function addTodo(e) {
   `;
 
   let newTodoItem = {
-    id: Math.round(Math.random() * 100000), //id for selection - increased range to avoid duplicates
+    id: createTime, //Use timestamp as unique ID
     task: currentValue,
     category: categoryValue,
     priority: priorityValue,
@@ -235,6 +234,7 @@ function deleteTodo(e) {
   }
 
   setAggregatedToDos();
+  checkForEmptyList();
 }
 
 //save the status of the task -> and persist by saving it to the localstorage
@@ -311,7 +311,6 @@ function editTodo(todo, todoDiv) {
   editBtn.addEventListener("click", (e) => {
     e.preventDefault();
     editTask(todo, todoDiv);
-    location.reload();
   });
 }
 
@@ -336,6 +335,15 @@ function editTask(todo, todoDiv) {
   });
   localStorage.setItem("todos", JSON.stringify(updatedTodos));
   todoDiv.children[0].innerText = editValue;
+  const taskTextElement = todoDiv.querySelector(".task-text");
+  if (taskTextElement) {
+    taskTextElement.innerText = editValue;
+  }
+  const taskViewElements = todoDiv.querySelectorAll(".todo-item, .complete-btn, .edit-btn, .trash-btn, .timer-btn, .fa-info-circle");
+  const editView = todoDiv.querySelector(".editform").parentElement;
+  taskViewElements.forEach(el => el.classList.remove('hide'));
+  editView.classList.add('hide');
+  todoDiv.querySelector('.todo-item').classList.remove('hide');
 }
 
 function isDuplicate(task) {
@@ -523,6 +531,7 @@ function deleteAll() {
   localStorage.removeItem("todos");
   document.getElementById("confirmation_box").classList.add("hide");
   setAggregatedToDos();
+  checkForEmptyList();
 }
 
 function openmodal(color, message, timer = 3000) {
