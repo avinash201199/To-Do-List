@@ -311,7 +311,6 @@ function editTodo(todo, todoDiv) {
   editBtn.addEventListener("click", (e) => {
     e.preventDefault();
     editTask(todo, todoDiv);
-    location.reload();
   });
 }
 
@@ -336,6 +335,15 @@ function editTask(todo, todoDiv) {
   });
   localStorage.setItem("todos", JSON.stringify(updatedTodos));
   todoDiv.children[0].innerText = editValue;
+  const taskTextElement = todoDiv.querySelector(".task-text");
+  if (taskTextElement) {
+    taskTextElement.innerText = editValue;
+  }
+  const taskViewElements = todoDiv.querySelectorAll(".todo-item, .complete-btn, .edit-btn, .trash-btn, .timer-btn, .fa-info-circle");
+  const editView = todoDiv.querySelector(".editform").parentElement;
+  taskViewElements.forEach(el => el.classList.remove('hide'));
+  editView.classList.add('hide');
+  todoDiv.querySelector('.todo-item').classList.remove('hide');
 }
 
 function isDuplicate(task) {
