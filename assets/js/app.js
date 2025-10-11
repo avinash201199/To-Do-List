@@ -92,7 +92,7 @@ function addTodo(e) {
   `;
 
   let newTodoItem = {
-    id: Math.round(Math.random() * 100000), //id for selection - increased range to avoid duplicates
+    id: createTime, //Use timestamp as unique ID
     task: currentValue,
     category: categoryValue,
     priority: priorityValue,
