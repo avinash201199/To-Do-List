@@ -32,7 +32,6 @@ function checkForEmptyList() {
     }
   }
 }
-setInterval(checkForEmptyList, 100);
 
 function htmlEncode(str) {
   return String(str);
@@ -235,6 +234,7 @@ function deleteTodo(e) {
   }
 
   setAggregatedToDos();
+  checkForEmptyList();
 }
 
 //save the status of the task -> and persist by saving it to the localstorage
@@ -531,6 +531,7 @@ function deleteAll() {
   localStorage.removeItem("todos");
   document.getElementById("confirmation_box").classList.add("hide");
   setAggregatedToDos();
+  checkForEmptyList();
 }
 
 function openmodal(color, message, timer = 3000) {
