@@ -68,7 +68,7 @@
     
     /* Make the day cells have colored backgrounds */
     .flatpickr-day.badge-start { 
-      background: #0d6efd !important; 
+      background: #7e00b5 !important; 
       color: white !important; 
       border-radius: 50% !important;
       font-weight: bold !important;
@@ -109,6 +109,20 @@
 
     /* Legend */
     .timeline-legend .badge { margin-right: 8px; }
+
+    /* Center the calendar */
+    #calendar { display: flex; justify-content: center; }
+
+    /* Center modal content */
+    #timelineModal .modal-body { text-align: center; }
+
+    /* Current date as circular outline */
+    .flatpickr-day.today {
+      background: transparent !important;
+      border: 2px solid #007bff !important;
+      color: #007bff !important;
+      font-weight: bold !important;
+    }
 </style>
 
 </head>
@@ -183,10 +197,7 @@
     <!-- 📊 Productivity Button -->
 <button id="analysisBtn" onclick="openAnalysisModal()">📊 Productivity</button>
 
-  <!-- BUTTON TO OPEN TIMELINE -->
-<div class="text-center mt-4">
-  <button id="openTimelineBtn" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#timelineModal">
-    📅 View Visual Timeline
+  
     
   </button>
 </div>
@@ -206,7 +217,7 @@
 
           <!-- Legend -->
           <div class="timeline-legend mb-2">
-            <span class="badge bg-primary">Start (white)</span>
+            <span class="badge" style="background:#7e00b5">Start (purple)</span>
             <span class="badge bg-success">Due (green)</span>
             <span class="badge" style="background:#ffc107;color:#000">Reminder (yellow)</span>
           </div>
@@ -311,6 +322,15 @@ setInterval(updateClock, 1000);
         <div class="button-div">
             <button type="button" id="myBtn" class="myBtn">Add a new task</button>
         </div>
+
+        <!-- BUTTON TO OPEN TIMELINE -->
+        <div class="text-center mt-4">
+          <button id="openTimelineBtn" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#timelineModal">
+            📅 View Visual Timeline
+
+          </button>
+        </div>
+
         <ul id="taskList"></ul>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search..." oninput="searchTasks()">
@@ -325,7 +345,7 @@ setInterval(updateClock, 1000);
   </select>
 </div>
     </div>
-    
+
 <!-- 📊 Productivity / Analysis Modal -->
 <div id="analysisModal" class="modal" 
      style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
@@ -650,7 +670,112 @@ document.addEventListener("DOMContentLoaded", function () {
   const state1 = document.getElementById("state1");
   const state2 = document.getElementById("state2");
   const state3 = document.getElementById("state3");
-  const emptyMessage = document.getElementById("emptyMessage"); // 👈 add this in your HTML: <p id="emptyMessage">THE LIST IS EMPTY</p>
+  const emptyMessage = document.getElementById("emptyMessage");
+
+  const username = localStorage.getItem("loggedInUser") || "User";
+  const storageKey = "tasks_" + username;
+
+  // -------- Load Tasks from localStorage --------
+  function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    tasks.forEach(taskData => renderTask(taskData));
+    updateStats();
+  }
+
+  // -------- Save Tasks to localStorage --------
+  function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll(".todo").forEach(todoDiv => {
+      const taskTitle = todoDiv.dataset.taskTitle;
+      const startDate = todoDiv.dataset.startDate;
+      const dueDate = todoDiv.dataset.dueDate;
+      const reminderDate = todoDiv.dataset.reminderDate;
+      const priority = todoDiv.querySelector(".badge").textContent; // Assuming first badge is priority
+      const stage = todoDiv.querySelectorAll(".badge")[1]?.textContent || "pending"; // Second badge
+      const completed = todoDiv.classList.contains("completed");
+      const subtasks = [];
+      todoDiv.querySelectorAll(".subtask-item").forEach(item => {
+        subtasks.push({
+          title: item.textContent.trim(),
+          status: item.classList.contains("completed") ? "completed" : "pending",
+          date: item.querySelector("small")?.textContent.replace(/[()]/g, "") || ""
+        });
+      });
+      tasks.push({ taskTitle, startDate, dueDate, reminderDate, priority, stage, completed, subtasks });
+    });
+    localStorage.setItem(storageKey, JSON.stringify(tasks));
+  }
+
+  // -------- Render Task in the DOM --------
+  function renderTask(taskData) {
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
+    if (taskData.completed) todoDiv.classList.add("completed");
+
+    const newTask = document.createElement("li");
+    newTask.innerHTML = `
+      <div class="task-content p-3">
+        <div class="task-header mb-2">
+          <h5 class="task-title mb-1">${taskData.taskTitle}</h5>
+          <span class="badge ${taskData.priority.toLowerCase()}-priority">${taskData.priority}</span>
+          <span class="badge ${taskData.stage.toLowerCase()}-stage">${taskData.stage}</span>
+        </div>
+
+        <div class="task-dates mb-2">
+          <small class="text-muted">
+            <i class="far fa-calendar-alt"></i> ${taskData.startDate} → ${taskData.dueDate}
+          </small>
+        </div>
+
+        ${taskData.subtasks.length > 0 ? `
+          <div class="subtasks-section">
+            <small class="text-muted d-block mb-2">Subtasks:</small>
+            <ul class="subtasks-list">
+              ${taskData.subtasks.map(st => `
+                <li class="subtask-item ${st.status === 'completed' ? 'completed' : ''}">
+                  <i class="fas fa-circle-notch"></i>
+                  ${st.title}
+                  <small>${st.date ? `(${st.date})` : ''}</small>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
+      </div>`;
+
+    newTask.classList.add("todo-item");
+    todoDiv.appendChild(newTask);
+
+    // Store dates for timeline visualization
+    todoDiv.dataset.taskTitle = taskData.taskTitle;
+    todoDiv.dataset.startDate = taskData.startDate;
+    todoDiv.dataset.dueDate = taskData.dueDate;
+    if (taskData.reminderDate) todoDiv.dataset.reminderDate = taskData.reminderDate;
+
+    // Buttons
+    const completedBtn = document.createElement("button");
+    completedBtn.innerHTML = '<i class="fas fa-check"></i>';
+    completedBtn.classList.add("complete-btn");
+    completedBtn.onclick = function () {
+      todoDiv.classList.toggle("completed");
+      updateStats();
+      saveTasks();
+    };
+    todoDiv.appendChild(completedBtn);
+
+    const trashBtn = document.createElement("button");
+    trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
+    trashBtn.classList.add("trash-btn");
+    trashBtn.onclick = function () {
+      todoDiv.remove();
+      updateStats();
+      saveTasks();
+    };
+    todoDiv.appendChild(trashBtn);
+
+    // Append to list
+    todoList.appendChild(todoDiv);
+  }
 
   // -------- Add Subtask --------
   addSubtaskBtn.addEventListener("click", function () {
@@ -692,82 +817,17 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-// -------- Render Task in the DOM --------
-const todoDiv = document.createElement("div");
-todoDiv.classList.add("todo");
-
-const newTask = document.createElement("li");
-newTask.innerHTML = `
-  <div class="task-content p-3">
-    <div class="task-header mb-2">
-      <h5 class="task-title mb-1">${taskTitle}</h5>
-      <span class="badge ${priority.toLowerCase()}-priority">${priority}</span>
-      <span class="badge ${stage.toLowerCase()}-stage">${stage}</span>
-    </div>
-    
-    <div class="task-dates mb-2">
-      <small class="text-muted">
-        <i class="far fa-calendar-alt"></i> ${startDate} → ${dueDate}
-      </small>
-    </div>
-
-    ${subtasks.length > 0 ? `
-      <div class="subtasks-section">
-        <small class="text-muted d-block mb-2">Subtasks:</small>
-        <ul class="subtasks-list">
-          ${subtasks.map(st => `
-            <li class="subtask-item ${st.status === 'completed' ? 'completed' : ''}">
-              <i class="fas fa-circle-notch"></i>
-              ${st.title}
-              <small>${st.date ? `(${st.date})` : ''}</small>
-            </li>
-          `).join('')}
-        </ul>
-      </div>
-    ` : ''}
-  </div>`;
-
-newTask.classList.add("todo-item");
-todoDiv.appendChild(newTask);
-
-// Store dates for timeline visualization
-todoDiv.dataset.taskTitle = taskTitle;
-todoDiv.dataset.startDate = startDate;
-todoDiv.dataset.dueDate = dueDate;
-const deadlineInput = document.getElementById('deadlineTime').value;
-if (deadlineInput) {
-  todoDiv.dataset.reminderDate = deadlineInput.split('T')[0];
-}
-
-// Buttons
-const completedBtn = document.createElement("button");
-completedBtn.innerHTML = '<i class="fas fa-check"></i>';
-completedBtn.classList.add("complete-btn");
-completedBtn.onclick = function () {
-  todoDiv.classList.toggle("completed");
-  updateStats();
-};
-todoDiv.appendChild(completedBtn);
-
-const trashBtn = document.createElement("button");
-trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
-trashBtn.classList.add("trash-btn");
-trashBtn.onclick = function () {
-  todoDiv.remove();
-  updateStats();
-};
-todoDiv.appendChild(trashBtn);
-
-// Append to list
-todoList.appendChild(todoDiv);
+    const taskData = { taskTitle, startDate, dueDate, priority, stage, completed: false, subtasks, reminderDate: document.getElementById('deadlineTime').value.split('T')[0] || null };
+    renderTask(taskData);
 
     // Update counters
     updateStats();
+    saveTasks();
 
     // Reset form + close modal
     taskForm.reset();
     subtaskList.innerHTML = "";
-    taskModal.style.display = "none"; // 👈 closes the white popup
+    taskModal.style.display = "none";
   });
 
   // -------- Update Stats --------
@@ -794,8 +854,8 @@ todoList.appendChild(todoDiv);
     }
   }
 
-  // Initialize empty message on load
-  updateEmptyMessage();
+  // Load tasks on page load
+  loadTasks();
 });
 </script>
 
