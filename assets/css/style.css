@@ -4,6 +4,23 @@
 /* removed the translate since it results in bad user expericence */
 
 /* Enhanced Buttons Wrapper */
+.quote-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #ffffff;
+    max-width: 600px;
+}
+
+.quote-container p {
+    margin: 0;
+    line-height: 1.5;
+}
+
 .buttons-wrapper {
   display: flex;
   flex-direction: column;

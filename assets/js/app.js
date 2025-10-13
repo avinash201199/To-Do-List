@@ -784,4 +784,25 @@ function updateTodoInStorage(todoItem) {
     todos[todoIndex] = todoItem;
     localStorage.setItem("todos", JSON.stringify(todos));
   }
+   
+
 }
+const quotes = [
+    "The secret of getting ahead is getting started. – Mark Twain",
+    "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
+    "The way to get started is to quit talking and begin doing. – Walt Disney",
+    "Motivation is what gets you started. Habit is what keeps you going. – Jim Ryun",
+    "It always seems impossible until it's done. – Nelson Mandela",
+    "Small steps every day lead to big results."
+];
+
+// Function to display a random quote
+function displayRandomQuote() {
+    const quoteElement = document.getElementById('quote');
+    if (!quoteElement) return;
+    const index = Math.floor(Math.random() * quotes.length);
+    quoteElement.textContent = quotes[index];
+}
+
+// Display a quote when the page loads
+document.addEventListener('DOMContentLoaded', displayRandomQuote);
