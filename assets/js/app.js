@@ -193,9 +193,10 @@ function deleteTodo(e) {
     const todo = item.parentElement;
 
     const handleYesClick = () => {
+      const todoId = todo.getAttribute("key");
       confirmationBox.style.display = "none";
       todo.classList.add("fall");
-      removeLocalTodos(todo);
+      removeLocalTodos(todoId);
       todo.addEventListener("transitionend", () => {
         todo.remove();
       });
