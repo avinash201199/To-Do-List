@@ -44,6 +44,136 @@
 
 
   <!-- ---------- Styles (paste to your CSS file or inside <style>) ---------- -->
+
+          <style>
+        /* Container Alignment */
+        .buttons-wrapper {
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 0 15px;
+        }
+
+        /* Add Task Button */
+        .myBtn {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          padding: 14px 20px;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 16px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+          display: block;
+          width: 100%;
+        }
+
+        .myBtn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Timeline Button */
+        #openTimelineBtn {
+          background: transparent;
+          border: 2px solid rgba(255,255,255,0.3);
+          backdrop-filter: blur(10px);
+          color: white;
+          font-weight: 500;
+          font-size: 15px;
+          padding: 12px 20px;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+          display: block;
+          width: 100%;
+        }
+
+        #openTimelineBtn:hover {
+          background: rgba(255,255,255,0.15);
+          border-color: rgba(255,255,255,0.5);
+          transform: translateY(-2px);
+        }
+
+        /* Search Input */
+        #searchInput {
+          background: rgba(255,255,255,0.9);
+          border: 2px solid #e0e0e0;
+          border-radius: 10px;
+          padding: 12px 15px 12px 45px;
+          font-size: 15px;
+          width: 100%;
+        }
+
+        #searchInput:focus {
+          outline: none;
+          border-color: #667eea;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon-custom {
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #6c757d;
+          pointer-events: none;
+        }
+
+        /* Sort Dropdown */
+        #sortBy {
+          background: rgba(255,255,255,0.9);
+          border: 2px solid #e0e0e0;
+          border-radius: 10px;
+          padding: 12px 15px;
+          cursor: pointer;
+          font-size: 15px;
+          width: 100%;
+        }
+
+        #sortBy:focus {
+          outline: none;
+          border-color: #667eea;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .buttons-wrapper {
+            padding: 0 10px;
+          }
+          
+          .myBtn, #openTimelineBtn {
+            font-size: 14px;
+            padding: 12px 16px;
+          }
+
+          #searchInput, #sortBy {
+            font-size: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .myBtn, #openTimelineBtn {
+            font-size: 13px;
+            padding: 10px 14px;
+          }
+        }
+
+        /* Prevent text overflow */
+        .myBtn, #openTimelineBtn, #searchInput, #sortBy {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        /* Remove any default margins/padding */
+        .button-div, .search-container, .sort-container {
+          margin-left: 0;
+          margin-right: 0;
+          padding-left: 0;
+          padding-right: 0;
+        }
+      </style>
 <style>
   .subtasks {
     background: #ffffff;
@@ -63,6 +193,79 @@
 </style>
 
 <style>
+
+          /* Responsive Button Styling */
+        .buttons-wrapper {
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 0 15px;
+        }
+
+        .myBtn {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          padding: 14px 20px;
+          border-radius: 12px;
+          font-weight: 600;
+          font-size: 16px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .myBtn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        #openTimelineBtn {
+          font-weight: 500;
+          font-size: 15px;
+          transition: all 0.3s ease;
+        }
+
+        #openTimelineBtn:hover {
+          background: rgba(255,255,255,0.15);
+          border-color: rgba(255,255,255,0.5);
+          transform: translateY(-2px);
+        }
+
+        #searchInput:focus, #sortBy:focus {
+          outline: none;
+          border-color: #667eea;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .buttons-wrapper {
+            padding: 0 10px;
+          }
+          
+          .myBtn, #openTimelineBtn {
+            font-size: 14px;
+            padding: 12px 16px;
+          }
+
+          #searchInput, #sortBy {
+            font-size: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .myBtn, #openTimelineBtn {
+            font-size: 13px;
+            padding: 10px 14px;
+          }
+        }
+
+        /* Prevent text overflow */
+        .myBtn, #openTimelineBtn, #searchInput, #sortBy {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
     /* Visual tweaks for calendar badges & legend */
     .flatpickr-calendar { box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-radius: 8px; }
     
@@ -319,32 +522,41 @@ setInterval(updateClock, 1000);
 </div>
 
       <div class="buttons-wrapper mt-0">
-        <div class="button-div">
-            <button type="button" id="myBtn" class="myBtn">Add a new task</button>
+        <!-- Add Task Button -->
+        <div class="button-div mb-3">
+            <button type="button" id="myBtn" class="myBtn w-100">
+              <i class="fas fa-plus-circle me-2"></i>Add a new task
+            </button>
         </div>
 
-        <!-- BUTTON TO OPEN TIMELINE -->
-        <div class="text-center mt-4">
-          <button id="openTimelineBtn" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#timelineModal">
-            📅 View Visual Timeline
-
+        <!-- Timeline Button -->
+        <div class="mb-3">
+          <button id="openTimelineBtn" class="btn btn-outline-light w-100 py-2" 
+                  data-bs-toggle="modal" data-bs-target="#timelineModal">
+            <i class="far fa-calendar-alt me-2"></i>View Visual Timeline
           </button>
         </div>
 
-        <ul id="taskList"></ul>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search..." oninput="searchTasks()">
-            <i class="fa fa-search search-icon"></i>
+        <!-- Search Bar -->
+        <div class="search-container mb-3" style="position: relative;">
+            <input type="text" id="searchInput" 
+                   class="form-control ps-5" 
+                   placeholder="Search tasks..." 
+                   oninput="searchTasks()">
+            <i class="fa fa-search search-icon-custom"></i>
         </div>
-        <!-- Add after the search-container div -->
-<div class="sort-container mt-3">
-  <select id="sortBy" class="form-select" onchange="sortTasks()">
-    <option value="">Sort By...</option>
-    <option value="priority">Priority</option>
-    <option value="dueDate">Due Date</option>
-  </select>
-</div>
-    </div>
+        
+        <!-- Sort Dropdown -->
+        <div class="sort-container mb-3">
+          <select id="sortBy" class="form-select" onchange="sortTasks()">
+            <option value="">📊 Sort By...</option>
+            <option value="priority">🔥 Priority</option>
+            <option value="dueDate">📅 Due Date</option>
+          </select>
+        </div>
+
+        <ul id="taskList"></ul>
+      </div>
 
 <!-- 📊 Productivity / Analysis Modal -->
 <div id="analysisModal" class="modal" 
