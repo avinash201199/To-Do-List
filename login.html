@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Signup</title>
+  <title>Login</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     body {
@@ -15,7 +15,7 @@
       margin: 0;
     }
 
-    .signup-container {
+    .login-container {
       background: #fff;
       padding: 2.5rem;
       border-radius: 15px;
@@ -25,7 +25,7 @@
       animation: fadeIn 0.8s ease;
     }
 
-    .signup-container h2 {
+    .login-container h2 {
       margin-bottom: 1.5rem;
       color: #333;
       font-weight: 700;
@@ -96,47 +96,37 @@
   </style>
 </head>
 <body>
-  <div class="signup-container">
-    <h2>Create Account</h2>
-    <form id="signupForm">
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
       <label for="username">Username</label>
       <input type="text" id="username" placeholder="Enter your username" required />
 
       <label for="password">Password</label>
       <input type="password" id="password" placeholder="Enter your password" required />
 
-      <button type="submit">Sign Up</button>
+      <button type="submit">Login</button>
     </form>
-    <p>Already have an account? <a href="login.html">Login here</a></p>
+    <p>Don’t have an account? <a href="index.html">Sign up here</a></p>
   </div>
 
   <script>
-    document.getElementById("signupForm").addEventListener("submit", function(e) {
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
 
-      if (!username || !password) {
-        alert("Please enter both username and password");
-        return;
-      }
-
       let users = JSON.parse(localStorage.getItem("users") || "{}");
 
-      if (users[username]) {
-        alert("Username already exists. Please choose another one.");
+      if (!users[username] || users[username].password !== password) {
+        alert("Invalid username or password");
         return;
       }
 
-      users[username] = {
-        password: password,
-        tasks: []
-      };
-
-      localStorage.setItem("users", JSON.stringify(users));
-      alert("Signup successful! Redirecting to login...");
-      window.location.href = "login.html";
+      localStorage.setItem("loggedInUser", username);
+      alert("Login successful! Redirecting to your tasks...");
+      window.location.href = "home.html";
     });
   </script>
 </body>

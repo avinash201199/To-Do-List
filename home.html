@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    /> -->
+    <title>To-Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/jpg" href="assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Montserrat:wght@500&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <!-- FontAwesome CDN-->
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' rel='stylesheet'
+        integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU' crossorigin='anonymous'>
+
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+<!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+  <!-- ---------- Styles (paste to your CSS file or inside <style>) ---------- -->
+<style>
+  .subtasks {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+  }
+  .subtask-row {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px;
+  }
+  /* small responsive tweaks */
+  @media (max-width: 900px) {
+    .subtask-row .col-md-5, .subtask-row .col-md-3, .subtask-row .col-md-2 { flex: 1 1 100%; max-width: 100%; }
+  }
+</style>
+
+<style>
+    /* Visual tweaks for calendar badges & legend */
+    .flatpickr-calendar { box-shadow: 0 6px 20px rgba(0,0,0,0.08); border-radius: 8px; }
+    
+    /* Make the day cells have colored backgrounds */
+    .flatpickr-day.badge-start { 
+      background: #7e00b5 !important; 
+      color: white !important; 
+      border-radius: 50% !important;
+      font-weight: bold !important;
+    }
+    
+    .flatpickr-day.badge-due { 
+      background: #198754 !important; 
+      color: white !important; 
+      border-radius: 50% !important;
+      font-weight: bold !important;
+    }
+    
+    .flatpickr-day.reminder-highlight { 
+  background: #ffc107 !important; 
+  color: black !important; 
+  border-radius: 50% !important;
+  font-weight: bold !important;
+    }
+
+    .flatpickr-calendar {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.flatpickr-day {
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
+    /* subtle range shading (in addition to the built-in selected styles) */
+    .flatpickr-day.in-range-custom { 
+      background: rgba(13,110,253,0.12) !important; 
+      color: inherit !important; 
+    }
+
+    /* Notice text */
+    #calendarNotice { color: #6c757d; font-size: 0.95rem; margin-bottom: 0.75rem; }
+
+    /* Legend */
+    .timeline-legend .badge { margin-right: 8px; }
+
+    /* Center the calendar */
+    #calendar { display: flex; justify-content: center; }
+
+    /* Center modal content */
+    #timelineModal .modal-body { text-align: center; }
+
+    /* Current date as circular outline */
+    .flatpickr-day.today {
+      background: transparent !important;
+      border: 2px solid #007bff !important;
+      color: #007bff !important;
+      font-weight: bold !important;
+    }
+</style>
+
+</head>
+
+<body>
+ <!-- Welcome Modal -->
+<div id="welcomeModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background: linear-gradient(135deg, #005eff, #c9c9cb); padding:40px; border-radius:20px; text-align:center; max-width:450px; width:90%; box-shadow:0 8px 30px rgba(0,0,0,0.3); font-family: 'Baloo Bhai 2', cursive; color:#fff;">
+    <h2 style="margin-bottom:20px; font-size:26px;">Hello 👋 <span id="userName">User</span>!</h2>
+    <p style="margin-bottom:25px; font-size:20px; line-height:1.5;">
+      Get ready to organize your tasks, set priorities, and stay on top of your day. Let’s make today productive and fun!
+    </p>
+    <button id="closeWelcome" style="padding:12px 30px; border:none; background:#ffdd59; color:#000; border-radius:10px; cursor:pointer; font-size:16px; font-weight:bold; transition:0.3s;">
+      Let’s Go!
+    </button>
+  </div>
+</div>
+
+    <!-- Confirmation dialog -->
+    <div id="custom-confirm" class="custom-confirm">
+      <div class="confirm-content">
+        <div class="optbox_header">
+          <i id="confirm-cancel" class="fas fa-times close-button"></i>
+        </div>
+        <h2>Confirmation</h2>
+        <h4 id="confirm-msg">Are you sure you want to delete this task?</h4>
+        <div class="option_box">
+        <button class="btn btn-success mt-5 col-3"id="confirm-yes">Yes</button>
+        <button class="btn btn-danger mt-5 col-3" id="confirm-no">No</button>
+        </div>
+      </div>
+    </div>
+    <header>
+    <div class="navbar">
+        <a href="index.html"><img src="assets/images/logo.png" alt="logo" width="120px"></a>
+
+        <a href="#">
+            <div class="header" data-aos="zoom-in"><b>
+                    <h1>To-Do List</h1>
+                </b></div>
+        </a>
+
+        <a href="#">
+            <div class="col-auto">
+                <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
+                <label for="checkbox" class="label">
+                    <i class="fas fa-sun"></i>
+                    <i class='fas fa-moon'></i>
+                    <div class='ball'>
+                </label>
+            </div>
+        </a>
+
+        <!-- 🚀 Solid Logout Button -->
+        <a href="login.html" class="btn btn-primary" 
+           style="margin-right:100px; padding:8px 18px; border-radius:8px; font-weight:600;">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+</header>
+
+
+    <div class="modal red" id="Modal">
+        <div class="content" id="content">
+            <span id="modal-text font-bold"> Some Text </span>
+            <button onclick="closemodal()" class="modal-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 📊 Productivity Button -->
+<button id="analysisBtn" onclick="openAnalysisModal()">📊 Productivity</button>
+
+  
+    
+  </button>
+</div>
+
+  <!-- TIMELINE MODAL -->
+  <div class="modal fade" id="timelineModal" tabindex="-1" aria-labelledby="timelineLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="timelineLabel">Visual Timeline</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <!-- tiny notice / validation message -->
+          <div id="calendarNotice">Loading tasks...</div>
+
+          <!-- Legend -->
+          <div class="timeline-legend mb-2">
+            <span class="badge" style="background:#7e00b5">Start (purple)</span>
+            <span class="badge bg-success">Due (green)</span>
+            <span class="badge" style="background:#ffc107;color:#000">Reminder (yellow)</span>
+          </div>
+
+          <!-- calendar container -->
+          <div id="calendar" class="mb-3"></div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Clock Modification -->
+    <div class="Clock" data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000">
+        <div id="time" data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"></div>
+        <div class="week">
+            <div id="day"></div>
+            <div id="date"></div>
+        </div>
+    </div>
+
+    <section class="pt-3 pb-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 mx-auto py-3">
+              <div class="row">
+                <div class="col-md-4 position-relative">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white"><span id="state1">0</span></h1>
+                    <h5 class="mt-3 text-white font-bold ">Total Tasks</h5>
+                    <p class="text-sm font-weight-normal text-white ">Number of tasks you have created</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+                <div class="col-md-4 position-relative">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white"> <span id="state2">0</span></h1>
+                    <h5 class="mt-3 text-white font-bold">Remaining To Do</h5>
+                    <p class="text-sm font-weight-normal text-white">Tasks remaining to complete.</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 text-center">
+                    <h1 class="text-gradient text-white" id="state3">0</h1>
+                    <h5 class="mt-3 text-white">Completed Tasks</h5>
+                    <p class="text-sm font-weight-normal text-white font-bold">Total Number of tasks completed</p>
+                  </div>
+                  <hr class="vertical dark">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+// filepath: c:\Users\Kennice Gonsalves\OneDrive\Desktop\To-Do-List\To-Do-List\home.html
+function updateClock() {
+  const now = new Date();
+  // Format time as HH:MM:SS
+  const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  // Format date as DD MMM YYYY
+  const date = now.toLocaleDateString([], { day: '2-digit', month: 'short', year: 'numeric' });
+  // Get weekday name
+  const day = now.toLocaleDateString([], { weekday: 'long' });
+
+  document.getElementById('time').textContent = time;
+  document.getElementById('date').textContent = date;
+  document.getElementById('day').textContent = day;
+}
+
+// Initial call and update every second
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+<!-- 📊 Progress Bar Section -->
+<div class="container my-4">
+  <h5 class="text-center text-white">Overall Progress</h5>
+  <div class="progress" style="height: 25px; border-radius: 12px; overflow: hidden;">
+    <div id="taskProgressBar" 
+         class="progress-bar bg-success" 
+         role="progressbar" 
+         style="width: 0%;" 
+         aria-valuenow="0" 
+         aria-valuemin="0" 
+         aria-valuemax="100">
+      0%
+    </div>
+  </div>
+</div>
+
+      <div class="buttons-wrapper mt-0">
+        <div class="button-div">
+            <button type="button" id="myBtn" class="myBtn">Add a new task</button>
+        </div>
+
+        <!-- BUTTON TO OPEN TIMELINE -->
+        <div class="text-center mt-4">
+          <button id="openTimelineBtn" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#timelineModal">
+            📅 View Visual Timeline
+
+          </button>
+        </div>
+
+        <ul id="taskList"></ul>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search..." oninput="searchTasks()">
+            <i class="fa fa-search search-icon"></i>
+        </div>
+        <!-- Add after the search-container div -->
+<div class="sort-container mt-3">
+  <select id="sortBy" class="form-select" onchange="sortTasks()">
+    <option value="">Sort By...</option>
+    <option value="priority">Priority</option>
+    <option value="dueDate">Due Date</option>
+  </select>
+</div>
+    </div>
+
+<!-- 📊 Productivity / Analysis Modal -->
+<div id="analysisModal" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background: rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:2000;">
+  <div style="background:white; padding:20px; border-radius:15px; max-width:700px; width:90%; 
+              box-shadow:0 8px 30px rgba(0,0,0,0.3);">
+    
+    <!-- Modal Title -->
+   <h2 class="text-center" style="margin-bottom:10px; color:black;">
+    📊 Productivity Analysis
+   </h2>
+    
+    <!-- Productivity Score -->
+    <p id="productivityScore" 
+       style="text-align:center; font-size:18px; font-weight:bold; margin-bottom:15px; color:#2c3e50;">
+    </p>
+
+    <!-- Chart -->
+    <div style="height:300px;">
+      <canvas id="productivityChart"></canvas>
+    </div>
+
+    <!-- Close Button -->
+    <button onclick="closeAnalysisModal()" 
+            style="margin-top:15px; background:#ff4757; color:white; border:none; 
+                   padding:8px 16px; border-radius:6px; cursor:pointer;">Close</button>
+  </div>
+</div>
+
+<!-- ---------- Modal (Add Task with Deadline & Reminder) ---------- -->
+<div class="modal" id="taskModal" tabindex="-1" aria-hidden="true" style="display:none;">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- header -->
+      <div class="modal-header">
+        <h5 class="text-primary"><strong>Add a new Task</strong></h5>
+        <button type="button" class="btn-close" aria-label="Close"
+          onclick="document.getElementById('taskModal').style.display='none'"></button>
+      </div>
+
+      <!-- body -->
+      <div class="modal-body">
+        <form id="taskForm" class="row g-3">
+
+          <!-- row 1 -->
+          <div class="col-md-6">
+            <label for="taskTitle" class="form-label text-primary ms-3">Task Title</label>
+            <input id="taskTitle" name="taskTitle" type="text" class="form-control" placeholder="Add a new Task.." required>
+          </div>
+
+          <div class="col-md-3">
+            <label for="priorityInput" class="form-label text-primary ms-3">Priority</label>
+            <select id="priorityInput" name="priority" class="form-select">
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="stageSelect" class="form-label text-primary ms-3">Task Stage</label>
+            <select id="stageSelect" name="stage" class="form-select">
+              <option value="pending">Pending</option>
+              <option value="in-progress">In Progress</option>
+              <option value="partially-completed">Partially Completed</option>
+            </select>
+          </div>
+
+          <!-- row 2 -->
+<div class="row g-3 align-items-start">
+  <div class="col-md-4">
+    <label for="startDate" class="form-label text-primary ms-3">Start Date</label>
+    <input id="startDate" name="startDate" type="date" class="form-control">
+  </div>
+
+  <div class="col-md-4">
+    <label for="dueDate" class="form-label text-primary ms-3">Due Date</label>
+    <input id="dueDate" name="dueDate" type="date" class="form-control">
+  </div>
+
+  <div class="col-md-4">
+    <label for="deadlineTime" class="form-label text-primary ms-3">Deadline & Reminder</label>
+    <input id="deadlineTime" name="deadlineTime" type="datetime-local" class="form-control">
+    <small class="text-muted mt-1 ms-1 d-block">You will get a browser notification at this time.</small>
+  </div>
+</div>
+
+
+
+          <!-- Notes -->
+          <div class="col-12">
+            <label for="taskNotes" class="form-label text-primary ms-3">Notes</label>
+            <textarea id="taskNotes" name="taskNotes" class="form-control" rows="3" placeholder="Add any additional notes or details for this task..."></textarea>
+          </div>
+
+          <!-- Subtasks -->
+          <div class="col-12">
+            <div id="subtasksWrapper" class="subtasks p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5><strong class="text-primary">Subtasks</strong></h5>
+                <button id="addSubtaskBtn" type="button" class="btn btn-sm btn-outline-primary">+ Add Subtask</button>
+              </div>
+              <div id="subtask-list" class="d-flex flex-column gap-2"></div>
+            </div>
+          </div>
+
+          <!-- submit -->
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-success">Add Task</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div id="emptyMessage" style="color: whitesmoke; font-size: xx-small" class="no-to-do-item">
+        <h1>THE LIST IS EMPTY !</h1>
+    </div>
+    <div class="todo-container">
+        <ul class="todo-list"></ul>
+    </div>
+    <button class="delete-all" onclick="show_alert()">Delete All Tasks</button>
+
+    <!-- <div cla ss="confirmation_box"></div> -->
+
+
+    <div class="confirmation_box hide " id="confirmation_box">
+        <div class="confirmation_box_inner">
+            <div class="optbox_header">
+                <i class="fas fa-times" onclick="goback()"></i>
+            </div>
+            <p id="text-modal" style="color: black;">Are you sure you want to delete all tasks?</p>.
+            <div class="option_box">
+                <button class="proceed btn btn-success mt-5 col-3" id="txt-color" onclick="deleteAll();">Yes</button>
+                <button class="donot_proceed btn btn-danger mt-5 col-3" id="txt-color1" onclick="goback()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class = "footer">
+            <div class="social-media">
+                <!-- instagram -->
+                <a class="link" href="https://www.instagram.com/lets__code/" target="_blank" rel="noopener noreferrer"><img
+                        class="social-icon" src="assets/images/instagram.svg" alt="instagram" /></a>
+                <!-- linkedin -->
+                <a class="link" href="https://www.linkedin.com/in/avinash-singh-071b79175/" target="_blank"
+                    rel="noopener noreferrer"><img class="social-icon" src="assets/images/new-linkedIn.svg"
+                        alt="linkedin" /></a>
+                <!-- gmail -->
+                <a class="link" href="mailto: avinash201199@gmail.com" target="_blank" rel="noopener noreferrer"><img
+                        class="social-icon" src="assets/images/gmail.svg" alt="gmail" /></a>
+                <!-- github -->
+                <a class="link" href="https://github.com/avinash201199" target="_blank" rel="noopener noreferrer"><img
+                        class="social-icon" src="assets/images/github.svg" alt="Github" /></a>
+
+            </div>
+            <div class="2ndrow-foter">
+                <p class="footer-desc footerelements">This project is a part of <a class="footer-desc footerelements"
+                        href="https://hacktoberfest.digitalocean.com/" target="_blank"
+                        rel="noopener noreferrer">Hacktoberfest
+                        2023</a>
+                </p>
+            </div>
+            <div class="3rd-row-footer footer-creator-label footerclasses">
+                <h3 class="footerelements">Made with <i class="fas fa-heart fa-heart-custom"></i> by Avinash Singh</h3>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+
+    <button onclick="scrollWindow()" id="scrollTop" title="Go to top">&uArr;</button>
+    <script>
+        let scrollBtn = document.getElementById("scrollTop");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        }
+
+        const scrollWindow = function () {
+            if (window.scrollY != 0) {
+                setTimeout(function () {
+                    window.scrollTo(0, window.scrollY - 50);
+                    window.scroll({ top: 0, behavior: "smooth" })
+                    scrollWindow();
+                }, 10);
+            }
+        }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const startDateInput = document.getElementById("startDate");
+  const dueDateInput = document.getElementById("dueDate");
+  const taskForm = document.getElementById("taskForm");
+
+  function validateDates() {
+    const startDate = startDateInput.value;
+    const dueDate = dueDateInput.value;
+
+    if (startDate && dueDate) {
+      if (dueDate < startDate) {
+        dueDateInput.setCustomValidity("Due date cannot be before start date.");
+      } else if (startDate > dueDate) {
+        startDateInput.setCustomValidity("Start date cannot be after due date.");
+      } else {
+        startDateInput.setCustomValidity("");
+        dueDateInput.setCustomValidity("");
+      }
+    } else {
+      startDateInput.setCustomValidity("");
+      dueDateInput.setCustomValidity("");
+    }
+  }
+
+  startDateInput.addEventListener("change", validateDates);
+  dueDateInput.addEventListener("change", validateDates);
+  taskForm.addEventListener("submit", function(e) {
+    validateDates();
+    if (!taskForm.checkValidity()) {
+      e.preventDefault();
+      taskForm.reportValidity();
+    }
+  });
+});
+    </script>
+
+    <script>
+        // Function to search tasks
+        function searchTasks() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const tasks = document.querySelectorAll(".todo");
+            
+            tasks.forEach(function(task) {
+                const taskText = task.querySelector("li").innerText.toLowerCase();
+                if (taskText.includes(searchInput)) {
+                    task.style.display = "flex"; // Display matching tasks
+                } else {
+                    task.style.display = "none"; // Hide non-matching tasks
+                }
+            });
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+<script> 
+window.onload = function() {
+  const modal = document.getElementById("welcomeModal");
+  const closeBtn = document.getElementById("closeWelcome");
+
+  // Get the logged-in username from localStorage
+  const username = localStorage.getItem("loggedInUser") || "User";
+  document.getElementById("userName").textContent = username;
+
+  // Show the modal
+  modal.style.display = "flex";
+
+  // Close modal when clicking the button
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  // Optional: Close modal when clicking outside the popup
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+};
+</script>
+
+<script>
+function updateProgressBar() {
+  const totalTasks = document.getElementById("state1").textContent || 0;
+  const completedTasks = document.getElementById("state3").textContent || 0;
+
+  let percentage = 0;
+  if (totalTasks > 0) {
+    percentage = Math.round((completedTasks / totalTasks) * 100);
+  }
+
+  const progressBar = document.getElementById("taskProgressBar");
+  progressBar.style.width = percentage + "%";
+  progressBar.setAttribute("aria-valuenow", percentage);
+  progressBar.textContent = percentage + "%";
+}
+</script>
+
+<script>
+  const taskModal = document.getElementById("taskModal");
+  const openTaskBtn = document.getElementById("myBtn");
+
+  // open on button click
+  openTaskBtn.onclick = function() {
+    taskModal.style.display = "block";
+  };
+
+  // close if clicking outside modal
+  window.onclick = function(event) {
+    if (event.target === taskModal) {
+      taskModal.style.display = "none";
+    }
+  };
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const addSubtaskBtn = document.getElementById("addSubtaskBtn");
+  const subtaskList = document.getElementById("subtask-list");
+  const taskForm = document.getElementById("taskForm");
+  const taskModal = document.getElementById("taskModal");
+  const todoList = document.querySelector(".todo-list");
+  const state1 = document.getElementById("state1");
+  const state2 = document.getElementById("state2");
+  const state3 = document.getElementById("state3");
+  const emptyMessage = document.getElementById("emptyMessage");
+
+  const username = localStorage.getItem("loggedInUser") || "User";
+  const storageKey = "tasks_" + username;
+
+  // -------- Load Tasks from localStorage --------
+  function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    tasks.forEach(taskData => renderTask(taskData));
+    updateStats();
+  }
+
+  // -------- Save Tasks to localStorage --------
+  function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll(".todo").forEach(todoDiv => {
+      const taskTitle = todoDiv.dataset.taskTitle;
+      const startDate = todoDiv.dataset.startDate;
+      const dueDate = todoDiv.dataset.dueDate;
+      const reminderDate = todoDiv.dataset.reminderDate;
+      const priority = todoDiv.querySelector(".badge").textContent; // Assuming first badge is priority
+      const stage = todoDiv.querySelectorAll(".badge")[1]?.textContent || "pending"; // Second badge
+      const completed = todoDiv.classList.contains("completed");
+      const notes = todoDiv.dataset.notes || "";
+      const subtasks = [];
+      todoDiv.querySelectorAll(".subtask-item").forEach(item => {
+        subtasks.push({
+          title: item.textContent.trim(),
+          status: item.classList.contains("completed") ? "completed" : "pending",
+          date: item.querySelector("small")?.textContent.replace(/[()]/g, "") || ""
+        });
+      });
+      tasks.push({ taskTitle, startDate, dueDate, reminderDate, priority, stage, completed, subtasks, notes });
+    });
+    localStorage.setItem(storageKey, JSON.stringify(tasks));
+  }
+
+  // -------- Render Task in the DOM --------
+  function renderTask(taskData) {
+    const todoDiv = document.createElement("div");
+    todoDiv.classList.add("todo");
+    if (taskData.completed) todoDiv.classList.add("completed");
+
+    const newTask = document.createElement("li");
+    newTask.innerHTML = `
+      <div class="task-content p-3">
+        <div class="task-header mb-2">
+          <h5 class="task-title mb-1">${taskData.taskTitle}</h5>
+          <span class="badge ${taskData.priority.toLowerCase()}-priority">${taskData.priority}</span>
+          <span class="badge ${taskData.stage.toLowerCase()}-stage">${taskData.stage}</span>
+        </div>
+
+        <div class="task-dates mb-2">
+          <small class="text-muted">
+            <i class="far fa-calendar-alt"></i> ${taskData.startDate} → ${taskData.dueDate}
+          </small>
+        </div>
+
+        ${taskData.subtasks.length > 0 ? `
+          <div class="subtasks-section">
+            <small class="text-muted d-block mb-2">Subtasks:</small>
+            <ul class="subtasks-list">
+              ${taskData.subtasks.map(st => `
+                <li class="subtask-item ${st.status === 'completed' ? 'completed' : ''}">
+                  <i class="fas fa-circle-notch"></i>
+                  ${st.title}
+                  <small>${st.date ? `(${st.date})` : ''}</small>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${taskData.notes ? `
+          <details class="notes-section">
+            <summary><small class="text-muted">Notes</small></summary>
+            <p class="notes-text">${taskData.notes}</p>
+          </details>
+        ` : ''}
+      </div>`;
+
+    newTask.classList.add("todo-item");
+    todoDiv.appendChild(newTask);
+
+    // Store dates for timeline visualization
+    todoDiv.dataset.taskTitle = taskData.taskTitle;
+    todoDiv.dataset.startDate = taskData.startDate;
+    todoDiv.dataset.dueDate = taskData.dueDate;
+    if (taskData.reminderDate) todoDiv.dataset.reminderDate = taskData.reminderDate;
+
+    // Buttons
+    const completedBtn = document.createElement("button");
+    completedBtn.innerHTML = '<i class="fas fa-check"></i>';
+    completedBtn.classList.add("complete-btn");
+    completedBtn.onclick = function () {
+      todoDiv.classList.toggle("completed");
+      updateStats();
+      saveTasks();
+    };
+    todoDiv.appendChild(completedBtn);
+
+    const trashBtn = document.createElement("button");
+    trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
+    trashBtn.classList.add("trash-btn");
+    trashBtn.onclick = function () {
+      // Show confirmation dialog
+      const confirmModal = document.getElementById("custom-confirm");
+      const confirmMsg = document.getElementById("confirm-msg");
+      confirmMsg.textContent = "Are you sure you want to delete this task?";
+      confirmModal.style.display = "block";
+
+      // Store the task to delete
+      window.taskToDelete = todoDiv;
+
+      // Handle confirmation
+      const confirmYes = document.getElementById("confirm-yes");
+      const confirmNo = document.getElementById("confirm-no");
+      const confirmCancel = document.getElementById("confirm-cancel");
+
+      const handleYes = function () {
+        if (window.taskToDelete) {
+          window.taskToDelete.remove();
+          updateStats();
+          saveTasks();
+        }
+        confirmModal.style.display = "none";
+        cleanup();
+      };
+
+      const handleNo = function () {
+        confirmModal.style.display = "none";
+        cleanup();
+      };
+
+      const cleanup = function () {
+        confirmYes.removeEventListener("click", handleYes);
+        confirmNo.removeEventListener("click", handleNo);
+        confirmCancel.removeEventListener("click", handleNo);
+        window.taskToDelete = null;
+      };
+
+      confirmYes.addEventListener("click", handleYes);
+      confirmNo.addEventListener("click", handleNo);
+      confirmCancel.addEventListener("click", handleNo);
+    };
+    todoDiv.appendChild(trashBtn);
+
+    // Append to list
+    todoList.appendChild(todoDiv);
+  }
+
+  // -------- Add Subtask --------
+  addSubtaskBtn.addEventListener("click", function () {
+    const row = document.createElement("div");
+    row.className = "d-flex gap-2 align-items-center subtask-row";
+    row.innerHTML = `
+      <input type="text" name="subtaskTitle[]" placeholder="Subtask title" class="form-control" required>
+      <select name="subtaskStatus[]" class="form-select">
+        <option value="pending">Pending</option>
+        <option value="partially-completed">Partially Completed</option>
+      </select>
+      <input type="date" name="subtaskDate[]" class="form-control">
+      <button type="button" class="btn btn-outline-danger btn-sm remove-subtask">&times;</button>
+    `;
+    // remove handler
+    row.querySelector(".remove-subtask").addEventListener("click", () => row.remove());
+    subtaskList.appendChild(row);
+  });
+
+  // -------- Add Task (form submit) --------
+  taskForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Gather task data
+    const taskTitle = document.getElementById("taskTitle").value.trim();
+    const priority = document.getElementById("priorityInput").value;
+    const stage = document.getElementById("stageSelect").value;
+    const startDate = document.getElementById("startDate").value;
+    const dueDate = document.getElementById("dueDate").value;
+
+    // Subtasks
+    const subtasks = [];
+    const rows = subtaskList.querySelectorAll(".subtask-row");
+    rows.forEach(row => {
+      subtasks.push({
+        title: row.querySelector('input[name="subtaskTitle[]"]').value.trim(),
+        status: row.querySelector('select[name="subtaskStatus[]"]').value,
+        date: row.querySelector('input[name="subtaskDate[]"]').value
+      });
+    });
+
+    const notes = document.getElementById("taskNotes").value.trim();
+    const taskData = { taskTitle, startDate, dueDate, priority, stage, completed: false, subtasks, notes, reminderDate: document.getElementById('deadlineTime').value.split('T')[0] || null };
+    renderTask(taskData);
+
+    // Update counters
+    updateStats();
+    saveTasks();
+
+    // Reset form + close modal
+    taskForm.reset();
+    subtaskList.innerHTML = "";
+    taskModal.style.display = "none";
+  });
+
+  // -------- Update Stats --------
+  function updateStats() {
+    const total = document.querySelectorAll(".todo").length;
+    const completed = document.querySelectorAll(".todo.completed").length;
+    const remaining = total - completed;
+
+    state1.textContent = total;
+    state2.textContent = remaining;
+    state3.textContent = completed;
+
+    updateEmptyMessage();
+    updateProgressBar(total, completed);
+  }
+
+  // -------- Empty Message --------
+  function updateEmptyMessage() {
+    const total = document.querySelectorAll(".todo").length;
+    if (total === 0) {
+      emptyMessage.style.display = "block";
+    } else {
+      emptyMessage.style.display = "none";
+    }
+  }
+
+  // Load tasks on page load
+  loadTasks();
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+function openAnalysisModal() {
+  document.getElementById("analysisModal").style.display = "flex";
+
+  const totalTasks = document.querySelectorAll(".todo").length;
+  const completedTasks = document.querySelectorAll(".todo.completed").length;
+  const remainingTasks = totalTasks - completedTasks;
+
+  // Calculate Productivity Score (percentage)
+  const productivity = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+  document.getElementById("productivityScore").innerText = 
+      `Productivity Score: ${productivity}%`;
+
+  // Destroy old chart if exists (avoid duplicate charts)
+  if (window.productivityChartInstance) {
+    window.productivityChartInstance.destroy();
+  }
+
+  // Create chart
+  const ctx = document.getElementById("productivityChart").getContext("2d");
+  window.productivityChartInstance = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Completed", "Remaining"],
+      datasets: [{
+        data: [completedTasks, remainingTasks],
+        backgroundColor: ["#2ecc71", "#e74c3c"]
+      }]
+    },
+    options: { 
+      responsive: true, 
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false } // 🔥 Removes that green box + "Tasks"
+      }
+    }
+  });
+}
+
+function closeAnalysisModal() {
+  document.getElementById("analysisModal").style.display = "none";
+}
+</script> 
+
+<script>
+  // Ask for notification permission on load
+  if ("Notification" in window) {
+    if (Notification.permission !== "granted" && Notification.permission !== "denied") {
+      Notification.requestPermission().then(permission => {
+        console.log("Notification permission:", permission);
+      });
+    }
+  } else {
+    alert("Your browser does not support notifications.");
+  }
+
+  // Integrate notifications inside the task form submit
+  document.getElementById("taskForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const taskTitle = document.getElementById("taskTitle").value.trim();
+    const deadlineInput = document.getElementById("deadlineTime").value;
+
+    if (!taskTitle) {
+      alert("Please enter a Task Title.");
+      return;
+    }
+
+    // Schedule notification if a deadline is set
+    if (deadlineInput) {
+      const deadlineTime = new Date(deadlineInput).getTime();
+      const now = Date.now();
+      const delay = deadlineTime - now;
+
+      if (delay <= 0) {
+        alert("Please select a future time for the reminder.");
+      } else {
+        setTimeout(() => {
+          if (Notification.permission === "granted") {
+            new Notification("⏰ Task Reminder", {
+              body: `Your task "${taskTitle}" is due soon!`,
+              icon: "https://cdn-icons-png.flaticon.com/512/1827/1827349.png"
+            });
+          } else {
+            alert(`Your task "${taskTitle}" is due soon!`);
+          }
+        }, delay);
+
+        console.log(`Reminder set for "${taskTitle}" at ${deadlineInput}`);
+      }
+    }
+
+    // Continue with existing task creation logic here...
+    // e.g., gather subtasks, render task in DOM, reset form, etc.
+  });
+</script>
+
+  <!-- Bootstrap Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Flatpickr -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById('timelineModal');
+  const notice = document.getElementById('calendarNotice');
+
+  let fpInstance = null;
+
+  // Initialize calendar once when modal opens
+  modal.addEventListener('shown.bs.modal', () => {
+    console.log("Modal opened");
+    
+    // Destroy old instance if exists
+    if (fpInstance) {
+      fpInstance.destroy();
+    }
+    
+    // Create new instance
+    const calDiv = document.getElementById('calendar');
+    calDiv.innerHTML = '<input type="text" id="flatpickr-input" style="display:none;">';
+    
+    fpInstance = flatpickr("#flatpickr-input", {
+      inline: true,
+      mode: "range",
+      clickOpens: false,
+      allowInput: false,
+      disableMobile: true,
+      defaultDate: new Date(),
+      appendTo: calDiv,
+      onReady: function(selectedDates, dateStr, instance) {
+        console.log("Flatpickr ready!");
+        setTimeout(() => {
+          loadAndDisplayTasks();
+        }, 200);
+      }
+    });
+  });
+
+  function loadAndDisplayTasks() {
+    // Get only the FIRST task in the list
+    const firstTask = document.querySelector('.todo');
+    
+    if (!firstTask) {
+      notice.textContent = 'No tasks found. Create a task with start and due dates!';
+      return;
+    }
+
+    const startDate = firstTask.dataset.startDate;
+    const dueDate = firstTask.dataset.dueDate;
+    const reminderDate = firstTask.dataset.reminderDate;
+    const taskTitle = firstTask.dataset.taskTitle;
+
+    console.log("First task data:", { taskTitle, startDate, dueDate, reminderDate });
+
+    if (!startDate || !dueDate) {
+      notice.textContent = 'First task has no dates. Please set start and due dates!';
+      return;
+    }
+
+    const task = {
+      title: taskTitle || 'Task',
+      start: startDate,
+      due: dueDate,
+      reminder: reminderDate || null
+    };
+
+    notice.textContent = `Displaying: "${task.title}"`;
+    updateCalendar(task);
+  }
+
+  function clearHighlights() {
+    const marked = document.querySelectorAll(
+      '.flatpickr-day.reminder-highlight, .flatpickr-day.badge-start, .flatpickr-day.badge-due, .flatpickr-day.in-range-custom'
+    );
+    marked.forEach(el => el.classList.remove('reminder-highlight','badge-start','badge-due','in-range-custom'));
+  }
+
+  function updateCalendar(task) {
+    clearHighlights();
+    
+    fpInstance.jumpToDate(new Date(task.start));
+
+    const tryHighlight = (attempts = 0) => {
+      const days = document.querySelectorAll('.flatpickr-day');
+      console.log(`Attempt ${attempts + 1}: Calendar days found:`, days.length);
+      
+      if (days.length === 0 && attempts < 10) {
+        setTimeout(() => tryHighlight(attempts + 1), 200);
+        return;
+      }
+      
+      if (days.length === 0) {
+        console.error("Calendar never rendered!");
+        return;
+      }
+      
+      console.log("Processing task:", task);
+
+      const startDate = new Date(task.start + "T00:00:00");
+      const dueDate = new Date(task.due + "T00:00:00");
+      const reminderDate = task.reminder ? new Date(task.reminder.split('T')[0] + "T00:00:00") : null;
+
+      days.forEach(cell => {
+        if (!cell.dateObj) return;
+        
+        const cellISO = cell.dateObj.toISOString().slice(0,10);
+        const cellDate = new Date(cellISO + "T00:00:00");
+
+        // Mark start date (BLUE)
+        if (cellISO === task.start) {
+          console.log("Marking START date:", cellISO);
+          cell.classList.add('badge-start');
+        }
+        
+        // Mark due date (GREEN)
+        else if (cellISO === task.due) {
+          console.log("Marking DUE date:", cellISO);
+          cell.classList.add('badge-due');
+        }
+        
+        // Mark reminder date (YELLOW) - only if not start/due
+        else if (task.reminder && cellISO === task.reminder.split('T')[0]) {
+          console.log("Marking REMINDER date:", cellISO);
+          cell.classList.add('reminder-highlight');
+        }
+        
+        // Shade the range between start and due (light blue)
+        else if (cellDate > startDate && cellDate < dueDate) {
+          cell.classList.add('in-range-custom');
+        }
+      });
+      
+      console.log("Start dates:", document.querySelectorAll('.badge-start').length);
+      console.log("Due dates:", document.querySelectorAll('.badge-due').length);
+      console.log("Reminder dates:", document.querySelectorAll('.reminder-highlight').length);
+    };
+    
+    tryHighlight();
+  }
+});
+    
+</script>
+
+</body>
+</html>
