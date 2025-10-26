@@ -884,15 +884,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const openTaskBtn = document.getElementById("myBtn");
   const closeTaskModalBtn = taskModal ? taskModal.querySelector(".btn-close") : null;
 
-  console.log("Task modal found:", !!taskModal);
-  console.log("Open button found:", !!openTaskBtn);
-
   // Open modal
   if (openTaskBtn && taskModal) {
     openTaskBtn.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log("Opening modal");
       taskModal.style.display = "block";
       setTimeout(() => document.getElementById("taskTitle")?.focus(), 100);
     });
@@ -1044,7 +1040,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   taskForm?.addEventListener("submit", function (e) {
     e.preventDefault();
-    console.log("Form submitted!");
 
     const taskTitle = document.getElementById("taskTitle").value.trim();
     if (!taskTitle) {
@@ -1141,7 +1136,7 @@ function closeAnalysisModal() {
   if ("Notification" in window) {
     if (Notification.permission !== "granted" && Notification.permission !== "denied") {
       Notification.requestPermission().then(permission => {
-        console.log("Notification permission:", permission);
+        // Notification permission requested
       });
     }
   }
@@ -1162,8 +1157,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize calendar once when modal opens
   modal.addEventListener('shown.bs.modal', () => {
-    console.log("Modal opened");
-    
     // Destroy old instance if exists
     if (fpInstance) {
       fpInstance.destroy();
@@ -1182,7 +1175,6 @@ document.addEventListener("DOMContentLoaded", function () {
       defaultDate: new Date(),
       appendTo: calDiv,
       onReady: function(selectedDates, dateStr, instance) {
-        console.log("Flatpickr ready!");
         setTimeout(() => {
           loadAndDisplayTasks();
         }, 200);
@@ -1203,8 +1195,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const dueDate = firstTask.dataset.dueDate;
     const reminderDate = firstTask.dataset.reminderDate;
     const taskTitle = firstTask.dataset.taskTitle;
-
-    console.log("First task data:", { taskTitle, startDate, dueDate, reminderDate });
 
     if (!startDate || !dueDate) {
       notice.textContent = 'First task has no dates. Please set start and due dates!';
@@ -1236,7 +1226,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const tryHighlight = (attempts = 0) => {
       const days = document.querySelectorAll('.flatpickr-day');
-      console.log(`Attempt ${attempts + 1}: Calendar days found:`, days.length);
       
       if (days.length === 0 && attempts < 10) {
         setTimeout(() => tryHighlight(attempts + 1), 200);
@@ -1247,8 +1236,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Calendar never rendered!");
         return;
       }
-      
-      console.log("Processing task:", task);
 
       const startDate = new Date(task.start + "T00:00:00");
       const dueDate = new Date(task.due + "T00:00:00");
@@ -1262,19 +1249,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mark start date (BLUE)
         if (cellISO === task.start) {
-          console.log("Marking START date:", cellISO);
           cell.classList.add('badge-start');
         }
         
         // Mark due date (GREEN)
         else if (cellISO === task.due) {
-          console.log("Marking DUE date:", cellISO);
           cell.classList.add('badge-due');
         }
         
         // Mark reminder date (YELLOW) - only if not start/due
         else if (task.reminder && cellISO === task.reminder.split('T')[0]) {
-          console.log("Marking REMINDER date:", cellISO);
           cell.classList.add('reminder-highlight');
         }
         
@@ -1283,10 +1267,6 @@ document.addEventListener("DOMContentLoaded", function () {
           cell.classList.add('in-range-custom');
         }
       });
-      
-      console.log("Start dates:", document.querySelectorAll('.badge-start').length);
-      console.log("Due dates:", document.querySelectorAll('.badge-due').length);
-      console.log("Reminder dates:", document.querySelectorAll('.reminder-highlight').length);
     };
     
     tryHighlight();
