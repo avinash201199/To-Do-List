@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,10 +81,23 @@
     }
 
     @keyframes floatOrb {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25% { transform: translate(50px, -50px) scale(1.1); }
-      50% { transform: translate(-30px, 30px) scale(0.9); }
-      75% { transform: translate(40px, 20px) scale(1.05); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      25% {
+        transform: translate(50px, -50px) scale(1.1);
+      }
+
+      50% {
+        transform: translate(-30px, 30px) scale(0.9);
+      }
+
+      75% {
+        transform: translate(40px, 20px) scale(1.05);
+      }
     }
 
     .login-container {
@@ -106,6 +120,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -314,7 +329,9 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Error message */
@@ -333,13 +350,40 @@
       display: block;
     }
 
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 18px;
+      user-select: none;
+      transition: color 0.3;
+    }
+
+    .toggle-password:hover {
+      color: #fff;
+    }
+
     @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-10px); }
-      75% { transform: translateX(10px); }
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-10px);
+      }
+
+      75% {
+        transform: translateX(10px);
+      }
     }
   </style>
 </head>
+
 <body>
   <canvas id="particleCanvas"></canvas>
   <div class="bg-orb orb1"></div>
@@ -368,6 +412,7 @@
         <div class="input-wrapper">
           <span class="input-icon">🔒</span>
           <input type="password" id="password" placeholder="Enter your password" required />
+          <span class="toggle-password" id="togglePassword">👁️</span>
         </div>
       </div>
 
@@ -388,10 +433,11 @@
   </div>
 
   <script>
+
     // Particle animation
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
-    
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -435,7 +481,7 @@
 
     function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       particles.forEach(particle => {
         particle.update();
         particle.draw();
@@ -477,7 +523,7 @@
       }, 4000);
     }
 
-    loginForm.addEventListener("submit", function(e) {
+    loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
       const username = document.getElementById("username").value.trim();
@@ -510,11 +556,11 @@
         } catch (e) {
           console.warn("localStorage not available");
         }
-        
+
         // Success animation
         submitButton.textContent = '✓ Success!';
         submitButton.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
-        
+
         setTimeout(() => {
           window.location.href = "home.html";
         }, 800);
@@ -524,15 +570,28 @@
     // Add input animation
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => {
-      input.addEventListener('focus', function() {
+      input.addEventListener('focus', function () {
         this.parentElement.style.transform = 'scale(1.02)';
         this.parentElement.style.transition = 'transform 0.2s ease';
       });
-      
-      input.addEventListener('blur', function() {
+
+      input.addEventListener('blur', function () {
         this.parentElement.style.transform = 'scale(1)';
       });
     });
+
+    // Show/Hide Password Toggle
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordField = document.getElementById("password");
+
+    togglePassword.addEventListener("click", () => {
+      const type = passwordField.type === "password" ? "text" : "password";
+      passwordField.type = type;
+      togglePassword.textContent = type === "password" ? "👁️" : "🙈";
+    });
+
+
   </script>
 </body>
+
 </html>
