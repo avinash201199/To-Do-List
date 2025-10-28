@@ -5,14 +5,97 @@
   <title>Signup</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
+    :root {
+      /* Dynamic Theme Colors */
+      --accent-primary: #667eea;
+      --accent-secondary: #764ba2;
+      --accent-light: rgba(102, 126, 234, 0.1);
+      --accent-hover: rgba(102, 126, 234, 0.8);
+      
+      /* Dynamic Background Colors */
+      --bg-primary: #667eea;
+      --bg-secondary: #764ba2;
+      --bg-tertiary: #8b9dc3;
+      --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    }
+
+    /* Theme Variations */
+    [data-theme="blue"] {
+      --accent-primary: #667eea;
+      --accent-secondary: #764ba2;
+      --accent-light: rgba(102, 126, 234, 0.1);
+      --accent-hover: rgba(102, 126, 234, 0.8);
+      --bg-primary: #667eea;
+      --bg-secondary: #764ba2;
+      --bg-tertiary: #8b9dc3;
+      --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    }
+
+    [data-theme="purple"] {
+      --accent-primary: #a855f7;
+      --accent-secondary: #7c3aed;
+      --accent-light: rgba(168, 85, 247, 0.1);
+      --accent-hover: rgba(168, 85, 247, 0.8);
+      --bg-primary: #a855f7;
+      --bg-secondary: #7c3aed;
+      --bg-tertiary: #c084fc;
+      --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    }
+
+    [data-theme="green"] {
+      --accent-primary: #10b981;
+      --accent-secondary: #059669;
+      --accent-light: rgba(16, 185, 129, 0.1);
+      --accent-hover: rgba(16, 185, 129, 0.8);
+      --bg-primary: #10b981;
+      --bg-secondary: #059669;
+      --bg-tertiary: #34d399;
+      --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    }
+
+    [data-theme="orange"] {
+      --accent-primary: #f59e0b;
+      --accent-secondary: #d97706;
+      --accent-light: rgba(245, 158, 11, 0.1);
+      --accent-hover: rgba(245, 158, 11, 0.8);
+      --bg-primary: #f59e0b;
+      --bg-secondary: #d97706;
+      --bg-tertiary: #fbbf24;
+      --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    }
+
+    [data-theme="pink"] {
+      --accent-primary: #ec4899;
+      --accent-secondary: #db2777;
+      --accent-light: rgba(236, 72, 153, 0.1);
+      --accent-hover: rgba(236, 72, 153, 0.8);
+      --bg-primary: #ec4899;
+      --bg-secondary: #db2777;
+      --bg-tertiary: #f472b6;
+      --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    }
+
+    [data-theme="teal"] {
+      --accent-primary: #14b8a6;
+      --accent-secondary: #0d9488;
+      --accent-light: rgba(20, 184, 166, 0.1);
+      --accent-hover: rgba(20, 184, 166, 0.8);
+      --bg-primary: #14b8a6;
+      --bg-secondary: #0d9488;
+      --bg-tertiary: #2dd4bf;
+      --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    }
+
     body {
       font-family: "Montserrat", sans-serif;
-      background: linear-gradient(135deg, #4a8cb5 0%, #6a11cb 100%);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
+      transition: background 0.5s ease;
     }
 
     .signup-container {
@@ -52,15 +135,15 @@
     }
 
     input:focus {
-      border-color: #6a11cb;
-      box-shadow: 0 0 5px rgba(106, 17, 203, 0.3);
+      border-color: var(--accent-secondary);
+      box-shadow: 0 0 5px var(--accent-light);
     }
 
     button {
       width: 100%;
       padding: 12px;
       border: none;
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
       color: #fff;
       border-radius: 8px;
       font-size: 1rem;
@@ -80,7 +163,7 @@
     }
 
     p a {
-      color: #2575fc;
+      color: var(--accent-primary);
       text-decoration: none;
       font-weight: 600;
     }
@@ -137,6 +220,12 @@
       localStorage.setItem("users", JSON.stringify(users));
       alert("Signup successful! Redirecting to login...");
       window.location.href = "login.html";
+    });
+
+    // Load saved theme on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('selectedTheme') || 'blue';
+      document.documentElement.setAttribute('data-theme', savedTheme);
     });
   </script>
 </body>

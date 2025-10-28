@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Color Demo - To-Do List</title>
+    <style>
+        :root {
+            /* Dynamic Theme Colors */
+            --accent-primary: #667eea;
+            --accent-secondary: #764ba2;
+            --accent-light: rgba(102, 126, 234, 0.1);
+            --accent-hover: rgba(102, 126, 234, 0.8);
+            
+            /* Dynamic Background Colors */
+            --bg-primary: #667eea;
+            --bg-secondary: #764ba2;
+            --bg-tertiary: #8b9dc3;
+            --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+        }
+
+        /* Theme Variations */
+        [data-theme="blue"] {
+            --accent-primary: #667eea;
+            --accent-secondary: #764ba2;
+            --accent-light: rgba(102, 126, 234, 0.1);
+            --accent-hover: rgba(102, 126, 234, 0.8);
+            --bg-primary: #667eea;
+            --bg-secondary: #764ba2;
+            --bg-tertiary: #8b9dc3;
+            --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+        }
+
+        [data-theme="purple"] {
+            --accent-primary: #a855f7;
+            --accent-secondary: #7c3aed;
+            --accent-light: rgba(168, 85, 247, 0.1);
+            --accent-hover: rgba(168, 85, 247, 0.8);
+            --bg-primary: #a855f7;
+            --bg-secondary: #7c3aed;
+            --bg-tertiary: #c084fc;
+            --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+        }
+
+        [data-theme="green"] {
+            --accent-primary: #10b981;
+            --accent-secondary: #059669;
+            --accent-light: rgba(16, 185, 129, 0.1);
+            --accent-hover: rgba(16, 185, 129, 0.8);
+            --bg-primary: #10b981;
+            --bg-secondary: #059669;
+            --bg-tertiary: #34d399;
+            --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+        }
+
+        [data-theme="orange"] {
+            --accent-primary: #f59e0b;
+            --accent-secondary: #d97706;
+            --accent-light: rgba(245, 158, 11, 0.1);
+            --accent-hover: rgba(245, 158, 11, 0.8);
+            --bg-primary: #f59e0b;
+            --bg-secondary: #d97706;
+            --bg-tertiary: #fbbf24;
+            --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+        }
+
+        [data-theme="pink"] {
+            --accent-primary: #ec4899;
+            --accent-secondary: #db2777;
+            --accent-light: rgba(236, 72, 153, 0.1);
+            --accent-hover: rgba(236, 72, 153, 0.8);
+            --bg-primary: #ec4899;
+            --bg-secondary: #db2777;
+            --bg-tertiary: #f472b6;
+            --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+        }
+
+        [data-theme="teal"] {
+            --accent-primary: #14b8a6;
+            --accent-secondary: #0d9488;
+            --accent-light: rgba(20, 184, 166, 0.1);
+            --accent-hover: rgba(20, 184, 166, 0.8);
+            --bg-primary: #14b8a6;
+            --bg-secondary: #0d9488;
+            --bg-tertiary: #2dd4bf;
+            --bg-gradient: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            transition: all 0.5s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .theme-selector {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        select {
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 2px solid var(--accent-primary);
+            background: white;
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            border-color: var(--accent-secondary);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        .demo-elements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .demo-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .demo-button {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-hover);
+        }
+
+        .demo-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .demo-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        .color-preview {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .primary {
+            background: var(--accent-primary);
+        }
+
+        .secondary {
+            background: var(--accent-secondary);
+        }
+
+        .light {
+            background: var(--accent-light);
+            color: var(--accent-primary);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Dynamic Accent Colors Demo</h1>
+        
+        <div class="theme-selector">
+            <label for="themeSelect">Choose a theme:</label><br><br>
+            <select id="themeSelect" onchange="changeTheme(this.value)">
+                <option value="blue">🔵 Blue Ocean</option>
+                <option value="purple">🟣 Purple Galaxy</option>
+                <option value="green">🟢 Forest Green</option>
+                <option value="orange">🟠 Sunset Orange</option>
+                <option value="pink">🩷 Cherry Blossom</option>
+                <option value="teal">🔷 Ocean Teal</option>
+            </select>
+        </div>
+
+        <div class="color-preview">
+            <div class="color-box primary">Primary</div>
+            <div class="color-box secondary">Secondary</div>
+            <div class="color-box light">Light</div>
+        </div>
+
+        <div class="demo-elements">
+            <div class="demo-card">
+                <h3>Buttons</h3>
+                <button class="demo-button">Add Task</button>
+                <button class="demo-button">Complete</button>
+            </div>
+
+            <div class="demo-card">
+                <h3>Form Elements</h3>
+                <input type="text" class="demo-input" placeholder="Search tasks..." />
+                <input type="text" class="demo-input" placeholder="Task title..." />
+            </div>
+
+            <div class="demo-card">
+                <h3>Interactive Elements</h3>
+                <button class="demo-button" onclick="showNotification()">Show Notification</button>
+                <p>All elements adapt to the selected theme color!</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center; color: #666;">
+            <p>This demo shows how the To-Do List app adapts to different accent colors.</p>
+            <p>The theme preference is saved and will persist across page reloads.</p>
+        </div>
+    </div>
+
+    <script>
+        function changeTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('selectedTheme', theme);
+            showNotification(`Theme changed to ${getThemeName(theme)}`);
+        }
+
+        function getThemeName(theme) {
+            const names = {
+                blue: 'Blue Ocean',
+                purple: 'Purple Galaxy',
+                green: 'Forest Green',
+                orange: 'Sunset Orange',
+                pink: 'Cherry Blossom',
+                teal: 'Ocean Teal'
+            };
+            return names[theme] || theme;
+        }
+
+        function showNotification(message = 'Theme updated!') {
+            // Remove existing notification
+            const existing = document.querySelector('.notification');
+            if (existing) {
+                existing.remove();
+            }
+
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => notification.classList.add('show'), 100);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        // Load saved theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'blue';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.getElementById('themeSelect').value = savedTheme;
+        });
+    </script>
+</body>
+</html>
