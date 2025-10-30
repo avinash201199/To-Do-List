@@ -13,7 +13,7 @@ const taskPriorityInput = document.getElementById("taskPriority");
 let tasks = [];
 let chartInstance = null;
 
-// Open Add Task Modal
+// Opens the "Add Task" modal window
 openAddTaskBtn.onclick = function () {
   addTaskModal.style.display = "block";
 };
@@ -317,7 +317,7 @@ btn.onclick = function () {
     if (custom) custom.style.display = "none";
   });
 })();
-// Add a new task
+// Adds a new task to the list with selected priority and delete option
 function addTask() {
   const taskInput = document.getElementById("taskInput").value.trim();
   const priorityInput = document.getElementById("priorityInput").value;
