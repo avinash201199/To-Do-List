@@ -308,7 +308,7 @@
     }
 
     /* Notice text */
-    #calendarNotice { color: #6c757d; font-size: 0.95rem; margin-bottom: 0.75rem; }
+    #calendarNotice { color: #b8deff; font-size: 0.95rem; margin-bottom: 0.75rem; }
 
     /* Legend */
     .timeline-legend .badge { margin-right: 8px; }
@@ -322,8 +322,8 @@
     /* Current date as circular outline */
     .flatpickr-day.today {
       background: transparent !important;
-      border: 2px solid #007bff !important;
-      color: #007bff !important;
+      border: 2px solid #66a9f1 !important;
+      color: #218cff !important;
       font-weight: bold !important;
     }
 </style>
@@ -435,93 +435,265 @@
       </div>
     </div>
   </div>
+<!-- 🌐 Top Dashboard Row -->
+<div class="top-dashboard">
 
-    <!-- Clock Modification -->
-    <div class="Clock" data-aos="flip-left"
-    data-aos-easing="ease-out-cubic"
-    data-aos-duration="2000">
-        <div id="time" data-aos="flip-left"
-        data-aos-easing="ease-out-cubic"
-        data-aos-duration="2000"></div>
-        <div class="week">
-            <div id="day"></div>
-            <div id="date"></div>
-        </div>
+  <!-- 📊 Vertical Progress Bar -->
+  <div class="progress-edge">
+    <div class="progress-label">Progress</div>
+    <div class="progress-container">
+      <div id="taskProgressBar"></div>
     </div>
+    <div id="progressValue">0%</div>
+  </div>
 
-    <section class="pt-3 pb-4">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-9 mx-auto py-3">
-              <div class="row">
-                <div class="col-md-4 position-relative">
-                  <div class="p-3 text-center">
-                    <h1 class="text-gradient text-white"><span id="state1">0</span></h1>
-                    <h5 class="mt-3 text-white font-bold ">Total Tasks</h5>
-                    <p class="text-sm font-weight-normal text-white ">Number of tasks you have created</p>
-                  </div>
-                  <hr class="vertical dark">
-                </div>
-                <div class="col-md-4 position-relative">
-                  <div class="p-3 text-center">
-                    <h1 class="text-gradient text-white"> <span id="state2">0</span></h1>
-                    <h5 class="mt-3 text-white font-bold">Remaining To Do</h5>
-                    <p class="text-sm font-weight-normal text-white">Tasks remaining to complete.</p>
-                  </div>
-                  <hr class="vertical dark">
-                </div>
-                <div class="col-md-4">
-                  <div class="p-3 text-center">
-                    <h1 class="text-gradient text-white" id="state3">0</h1>
-                    <h5 class="mt-3 text-white">Completed Tasks</h5>
-                    <p class="text-sm font-weight-normal text-white font-bold">Total Number of tasks completed</p>
-                  </div>
-                  <hr class="vertical dark">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <!-- ⏰ Digital Clock (Enlarged) -->
+  <div class="glass-box clock-box">
+    <div id="digital-time" class="clock-time">00:00:00</div>
+    <div id="digital-day" class="clock-day">Monday</div>
+    <div id="digital-date" class="clock-date">31 Oct 2025</div>
+  </div>
 
-      <script>
-// filepath: c:\Users\Kennice Gonsalves\OneDrive\Desktop\To-Do-List\To-Do-List\home.html
-function updateClock() {
-  const now = new Date();
-  // Format time as HH:MM:SS
-  const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  // Format date as DD MMM YYYY
-  const date = now.toLocaleDateString([], { day: '2-digit', month: 'short', year: 'numeric' });
-  // Get weekday name
-  const day = now.toLocaleDateString([], { weekday: 'long' });
-
-  document.getElementById('time').textContent = time;
-  document.getElementById('date').textContent = date;
-  document.getElementById('day').textContent = day;
-}
-
-// Initial call and update every second
-updateClock();
-setInterval(updateClock, 1000);
-</script>
-
-<!-- 📊 Progress Bar Section -->
-<div class="container my-4">
-  <h5 class="text-center text-white">Overall Progress</h5>
-  <div class="progress" style="height: 25px; border-radius: 12px; overflow: hidden;">
-    <div id="taskProgressBar" 
-         class="progress-bar bg-success" 
-         role="progressbar" 
-         style="width: 0%;" 
-         aria-valuenow="0" 
-         aria-valuemin="0" 
-         aria-valuemax="100">
-      0%
-    </div>
+  <!-- 📝 Today's To-Do List -->
+  <div class="glass-box todo-box">
+    <h4>Today's To-Do</h4>
+    <ul id="todaysList">
+      <li>No tasks yet!</li>
+    </ul>
   </div>
 </div>
 
-<div class="buttons-wrapper mt-0">
+<!-- 💅 STYLE -->
+<style>
+/* --- Page Background --- */
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  background: linear-gradient(135deg, #00111f, #002c54, #00457a);
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+/* --- Layout --- */
+.top-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin: 2rem auto;
+  max-width: 100%;
+  padding-left: 6rem;
+  position: relative;
+}
+
+<!-- 📊 Horizontal Progress Bar -->
+<div class="glass-box progress-box">
+  <div class="progress-label">Progress</div>
+  <div class="progress-container-horizontal">
+    <div id="taskProgressBar"></div>
+  </div>
+  <div id="progressValue">0%</div>
+</div>
+
+<style>
+<!-- 📊 Vertical Progress Bar -->
+<div class="progress-edge">
+  <div class="progress-label">Progress</div>
+  <div class="progress-container">
+    <div id="taskProgressBar"></div>
+    <span id="progressValue">0%</span>
+  </div>
+</div>
+
+<style>
+  <!-- 📊 Progress Bar -->
+<div class="progress-edge">
+  <div class="progress-label">Progress</div>
+  <div class="progress-container">
+    <div id="taskProgressBar"></div>
+    <span id="progressValue">0%</span>
+  </div>
+</div>
+
+<!-- 🧊 Clock + To-Do Boxes would go here -->
+
+<style>
+/* --- Progress Bar --- */
+
+.progress-edge {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers everything horizontally */
+  justify-content: center;
+  text-align: center;
+  position: relative; /* not fixed anymore */
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.progress-container {
+  position: relative;
+  width: 20px;
+  height: 5cm;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+#taskProgressBar {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #00e0ff, #00b7ff, #009dff);
+  transition: height 0.4s ease;
+  border-radius: 12px 12px 0 0;
+}
+
+/* 👇 This is the fix for misalignment */
+#progressValue {
+  position: static; /* remove absolute positioning */
+  margin-top: 10px; /* places it below the bar */
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #fff;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.7);
+  text-align: center;
+}
+.progress-label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: #fff;
+}
+
+.progress-container {
+  position: relative;
+  width: 20px;
+  height: 5cm;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+#taskProgressBar {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #00e0ff, #00b7ff, #009dff);
+  transition: height 0.4s ease;
+  border-radius: 12px 12px 0 0;
+}
+
+
+
+/* --- Glass Box --- */
+.glass-box {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.15);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.25);
+}
+
+/* --- Clock Box --- */
+.clock-box {
+  width: 11cm;
+  text-align: center;
+}
+
+.clock-time {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #00d0ff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+.clock-day, .clock-date {
+  font-size: 1rem;
+  color: #e0faff;
+  margin-top: 0.3rem;
+}
+
+/* --- To-Do Box --- */
+.todo-box {
+  width: 8cm;
+  text-align: left;
+}
+
+.todo-box h4 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #00e0ff;
+}
+
+.todo-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-box li {
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+
+.todo-box li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+</style>
+
+
+
+<!-- ⚙️ SCRIPT -->
+<script>
+// 🕓 Digital Clock
+function updateClock() {
+  const now = new Date();
+  const time = now.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', second: '2-digit'});
+  const day = now.toLocaleDateString([], {weekday: 'long'});
+  const date = now.toLocaleDateString([], {day: '2-digit', month: 'short', year: 'numeric'});
+
+  document.getElementById('digital-time').textContent = time;
+  document.getElementById('digital-day').textContent = day;
+  document.getElementById('digital-date').textContent = date;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+
+
+</script>
+
+
+
+
 
   <!-- Add Task Button -->
 <div class="button-div mb-3">
