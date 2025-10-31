@@ -55,7 +55,7 @@
 
         /* Add Task Button */
         .myBtn {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
           color: white;
           border: none;
           padding: 14px 20px;
@@ -63,14 +63,14 @@
           font-weight: 600;
           font-size: 16px;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+          box-shadow: 0 4px 15px var(--accent-light);
           display: block;
           width: 100%;
         }
 
         .myBtn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+          box-shadow: 0 6px 20px var(--accent-hover);
         }
 
         /* Timeline Button */
@@ -106,8 +106,8 @@
 
         #searchInput:focus {
           outline: none;
-          border-color: #667eea;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          border-color: var(--accent-primary);
+          box-shadow: 0 0 0 3px var(--accent-light);
         }
 
         .search-icon-custom {
@@ -132,8 +132,8 @@
 
         #sortBy:focus {
           outline: none;
-          border-color: #667eea;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          border-color: var(--accent-primary);
+          box-shadow: 0 0 0 3px var(--accent-light);
         }
 
         /* Responsive Design */
@@ -173,6 +173,8 @@
           padding-left: 0;
           padding-right: 0;
         }
+
+
       </style>
 <style>
   .subtasks {
@@ -202,7 +204,7 @@
         }
 
         .myBtn {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
           color: white;
           border: none;
           padding: 14px 20px;
@@ -210,7 +212,7 @@
           font-weight: 600;
           font-size: 16px;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+          box-shadow: 0 4px 15px var(--accent-light);
         }
 
         .myBtn:hover {
@@ -232,8 +234,8 @@
 
         #searchInput:focus, #sortBy:focus {
           outline: none;
-          border-color: #667eea;
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          border-color: var(--accent-primary);
+          box-shadow: 0 0 0 3px var(--accent-light);
         }
 
         /* Responsive Design */
@@ -359,33 +361,53 @@
       </div>
     </div>
     <header>
-    <div class="navbar">
-        <a href="index.html"><img src="assets/images/logo.png" alt="logo" width="120px"></a>
-
-        <a href="#">
-            <div class="header" data-aos="zoom-in"><b>
-                    <h1>To-Do List</h1>
-                </b></div>
-        </a>
-
-        <a href="#">
-            <div class="col-auto">
-                <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
-                <label for="checkbox" class="label">
-                    <i class="fas fa-sun"></i>
-                    <i class='fas fa-moon'></i>
-                    <div class='ball'>
-                </label>
+        <nav class="navbar">
+            <!-- Logo Section -->
+            <div class="navbar-brand">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/logo.png" alt="To-Do List Logo" class="logo-img">
+                </a>
             </div>
-        </a>
 
-        <!-- 🚀 Solid Logout Button -->
-        <a href="#" onclick="logout()" class="btn btn-primary" 
-           style="margin-right:100px; padding:8px 18px; border-radius:8px; font-weight:600;">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
-    </div>
-</header>
+            <!-- Title Section -->
+            <div class="navbar-title">
+                <a href="#" class="header" data-aos="zoom-in">
+                    <h1>✨ To-Do List</h1>
+                </a>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="navbar-controls">
+                <!-- Theme Color Selector -->
+                <div class="theme-selector" title="Choose Theme Color">
+                    <select id="themeSelector" onchange="changeTheme(this.value)" class="theme-select">
+                        <option value="blue">🔵 Blue Ocean</option>
+                        <option value="purple">🟣 Purple Galaxy</option>
+                        <option value="green">🟢 Forest Green</option>
+                        <option value="orange">🟠 Sunset Orange</option>
+                        <option value="pink">🩷 Cherry Blossom</option>
+                        <option value="teal">🔷 Ocean Teal</option>
+                    </select>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <div class="dark-mode-toggle" title="Toggle Dark Mode">
+                    <input type="checkbox" id="light" class="checkbox" onclick="switchToDarkMode()">
+                    <label for="light" class="label">
+                        <i class="fas fa-sun"></i>
+                        <i class='fas fa-moon'></i>
+                        <div class='ball'></div>
+                    </label>
+                </div>
+
+                <!-- Logout Button -->
+                <a href="#" onclick="logout()" class="logout-btn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="logout-text">Logout</span>
+                </a>
+            </div>
+        </nav>
+    </header>
 
 
     <div class="modal red" id="Modal">
@@ -1273,6 +1295,135 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
     
+</script>
+
+<script>
+// Theme Management
+function changeTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('selectedTheme', theme);
+  
+  // Show a brief notification
+  showThemeNotification(theme);
+}
+
+function showThemeNotification(theme) {
+  const themeNames = {
+    blue: 'Blue Ocean',
+    purple: 'Purple Galaxy',
+    green: 'Forest Green',
+    orange: 'Sunset Orange',
+    pink: 'Cherry Blossom',
+    teal: 'Ocean Teal'
+  };
+  
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--accent-primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  `;
+  notification.textContent = `Theme changed to ${themeNames[theme]}`;
+  
+  document.body.appendChild(notification);
+  
+  // Animate in
+  setTimeout(() => {
+    notification.style.transform = 'translateX(0)';
+  }, 100);
+  
+  // Remove after 2 seconds
+  setTimeout(() => {
+    notification.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 300);
+  }, 2000);
+}
+
+// Dark Mode Management
+function switchToDarkMode() {
+  const body = document.body;
+  const isDarkMode = body.classList.contains('dark-mode');
+  
+  if (isDarkMode) {
+    // Switch to light mode
+    body.classList.remove('dark-mode');
+    localStorage.setItem('darkMode', 'false');
+    showModeNotification('Light Mode');
+  } else {
+    // Switch to dark mode
+    body.classList.add('dark-mode');
+    localStorage.setItem('darkMode', 'true');
+    showModeNotification('Dark Mode');
+  }
+}
+
+function showModeNotification(mode) {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${mode === 'Dark Mode' ? '#333' : '#fff'};
+    color: ${mode === 'Dark Mode' ? '#fff' : '#333'};
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    border: 1px solid ${mode === 'Dark Mode' ? '#555' : '#ddd'};
+  `;
+  notification.textContent = `Switched to ${mode}`;
+  
+  document.body.appendChild(notification);
+  
+  // Animate in
+  setTimeout(() => {
+    notification.style.transform = 'translateX(0)';
+  }, 100);
+  
+  // Remove after 2 seconds
+  setTimeout(() => {
+    notification.style.transform = 'translateX(100%)';
+    setTimeout(() => {
+      if (document.body.contains(notification)) {
+        document.body.removeChild(notification);
+      }
+    }, 300);
+  }, 2000);
+}
+
+// Load saved theme and dark mode on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('selectedTheme') || 'blue';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  document.getElementById('themeSelector').value = savedTheme;
+  
+  // Load dark mode preference
+  const savedDarkMode = localStorage.getItem('darkMode');
+  const darkModeToggle = document.getElementById('light');
+  
+  if (savedDarkMode === 'true') {
+    document.body.classList.add('dark-mode');
+    if (darkModeToggle) {
+      darkModeToggle.checked = true;
+    }
+  }
+});
 </script>
 
 </body>
